@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dataSchema name="Boncuklu" preparer="Penny Crook">
-  <RelationshipElement name="Above - Below" type="hierarchical">
+<!--   <RelationshipElement name="Above - Below" type="hierarchical">
     <description>Implements a above below for contexts.</description>
     <parent>Above</parent>
     <child>Below</child>
@@ -25,7 +25,7 @@
   </RelationshipElement>  
   <RelationshipElement name="Bonded To" type="bidirectional">
     <description>Implements a bonded to for contexts</description>
-  </RelationshipElement>
+  </RelationshipElement> -->
   <RelationshipElement name="Physically - Cuts - Cut By" type="hierarchical">
     <description>Implements a cuts-cutby for contexts.</description>
     <parent>Physically - Cuts</parent>

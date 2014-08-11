@@ -200,6 +200,8 @@ onEvent("Context/Context_Deposits/newMatrix", "click", "saveContext(\"newMatrix(
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
 onEvent("Context/Context_Deposits/deleteMatrix", "click", "deleteMatrixFromContext()");
 
+onEvent("Context/Context_Structures/Deposit", "click", "showTab(\"Context/Context_Deposits\")");
+
 onEvent("Context/Context_Feature/AddContextGroup", "click", "saveContext(\"newContextGroup(false)\");newContextGroupRel = true;");
 onEvent("Context/Context_Feature/ShowContextGroup", "click", "loadContextGroupFromContext();newContextGroupRel = false;");
 onEvent("Context/Context_Feature/RemoveFromContextGroup", "click", "removeContextGroupReln()");
@@ -678,9 +680,9 @@ openContextTabs(){
             cancelTab("Context/Context_Skeletons", false);
             showTab("Context/Context_Cuts");
         } else if (vocab.equals("{Structure}")){
-            cancelTab("Context/Context_Deposits", false);
             cancelTab("Context/Context_Cuts", false);
             cancelTab("Context/Context_Skeletons", false);
+            showTab("Context/Context_Deposits");
             showTab("Context/Context_Structures");
         } else if (vocab.equals("{Skeleton}")){
             cancelTab("Context/Context_Deposits", false);

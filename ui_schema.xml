@@ -182,6 +182,48 @@
               </container10>
               <Update2/> 
             </Context_GeneralInformation>
+            <Context_Cuts>
+              <Your_Interpretation/>
+              <container1>
+                <child1>
+                  <Shape_of_Cut/>
+                </child1>
+                <child2>
+                  <Shape_of_Cut_Note/>
+                </child2>
+              </container1>
+              <Shape_of_Corners/>
+              <Break_of_Slope_Top/>
+              <container2>
+                <child1>
+                  <Sides_of_Cut/>
+                </child1>
+                <child2>
+                  <Shape_of_Base/>
+                </child2>
+              </container2>
+              <Cut_Function/>
+              <Orientation/>
+              <Inclination_of_axis/>
+              <Update/>
+            </Context_Cuts>
+            <Context_Structures>
+              <Your_Interpretation/>
+              <Structural_Components/>
+              <Bonding/>
+              <Bonding_Details/>
+              <BondingPacking/>
+              <Distinguishing_Marks/>
+              <Structure_Description/>
+              <Number_Courses/>
+              <Set_In_Cut/>
+              <Structure_Shape/>
+              <Mudbrick_Shape/>
+              <Component_Finish/>
+              <Update/>
+              <Delete/>
+              <Deposit/>
+            </Context_Structures>
             <Context_Deposits>
               <Your_Interpretation/>
               <Soil_Compaction_Type/>
@@ -224,47 +266,6 @@
               </container4>
               <Update/>
             </Context_Deposits>
-            <Context_Cuts>
-              <Your_Interpretation/>
-              <container1>
-                <child1>
-                  <Shape_of_Cut/>
-                </child1>
-                <child2>
-                  <Shape_of_Cut_Note/>
-                </child2>
-              </container1>
-              <Shape_of_Corners/>
-              <Break_of_Slope_Top/>
-              <container2>
-                <child1>
-                  <Sides_of_Cut/>
-                </child1>
-                <child2>
-                  <Shape_of_Base/>
-                </child2>
-              </container2>
-              <Cut_Function/>
-              <Orientation/>
-              <Inclination_of_axis/>
-              <Update/>
-            </Context_Cuts>
-            <Context_Structures>
-              <Your_Interpretation/>
-              <Structural_Components/>
-              <Bonding/>
-              <Bonding_Details/>
-              <BondingPacking/>
-              <Distinguishing_Marks/>
-              <Structure_Description/>
-              <Number_Courses/>
-              <Set_In_Cut/>
-              <Structure_Shape/>
-              <Mudbrick_Shape/>
-              <Component_Finish/>
-              <Update/>
-              <Delete/>
-            </Context_Structures>
             <Context_Skeletons>
               <container0>
                 <child1>
@@ -806,7 +807,6 @@
       <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container3/child1/X" type="decimal"/>
       <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container3/child2/Y" type="decimal"/>
       <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container3/child3/Z" type="decimal"/>
-      <bind nodeset="/faims/Sample/Sample_GeneralInformation/container1/child3/Sample_ID" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/Sample_Volume" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child1/X" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child2/Y" type="decimal"/>
@@ -1230,127 +1230,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         </trigger>
       </group>
 
-      <group faims_hidden="true" ref="Context_Deposits">
-        <label>Dep</label>
-        <!--We would like to see Dropdown-->
-        <select1 faims_attribute_name="Deposit Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
-          <label>Your Interpretation</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_name="Soil Compaction Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Compaction_Type">
-          <label>{Soil_Compaction_Type}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <input faims_attribute_name="Soil Compaction Description" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="false" ref="Soil_Compaction_Description">
-          <label>{Soil_Compaction_Description}</label>
-        </input>
-        <!--We would like to see Dropdown-->
-        <select1 faims_attribute_name="Soil Particle Sorting" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Particle_Sorting" type="image">
-          <label>{Soil_Particle_Sorting}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <select1 faims_attribute_name="Soil Texture" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Texture">
-              <label>{Soil_Texture}</label>
-                <item>
-                <label>placeholder</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <trigger ref="Texture_Helper">
-              <label>{Texture_Helper}</label>
-            </trigger>
-          </group>
-        </group>
-        <input faims_attribute_name="Soil Colour" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="false" ref="Soil_Colour">
-          <label>{Soil_Colour}</label>
-        </input>
-        <group faims_style="orientation" ref="container2">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <select1 faims_attribute_name="Composition Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Composition_Type">
-              <label>{Composition_Type}</label>
-              <item>
-                <label>placeholder</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <select1 faims_attribute_name="Deposit Bedding" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Deposit_Bedding">
-              <label>{Deposit_Bedding}</label>
-              <item>
-                <label>placeholder</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-        </group>
-         <group faims_style="orientation" ref="container3">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <select1 faims_attribute_name="Sterile" faims_attribute_type="vocab" appearance="full" faims_certainty="true" faims_read_only="false" ref="Sterile">
-              <label>{Sterile}</label>
-                <item>
-                <label>placeholder</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="freetext" faims_certainty="true" faims_read_only="false" ref="Deposit_Inclusions">
-              <label>{Deposit_Inclusions}</label>
-            </input>
-          </group>
-        </group>
-        <trigger ref="newMatrix">
-          <label>Add New {Matrix}</label>
-        </trigger>
-        <select1 faims_certainty="false" faims_read_only="false" ref="matrixList">
-          <label>Associated {Matrices}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container4">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <trigger ref="deleteMatrix">
-              <label>Delete {Matrix}</label>
-            </trigger>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <trigger ref="loadMatrix">
-              <label>Load {Matrix}</label>
-            </trigger>
-          </group>
-        </group>
-        <trigger ref="Update">
-          <label>Save Context</label>
-        </trigger>
-      </group>
       <group faims_hidden="true" ref="Context_Cuts">
         <label>{Cut}</label>
         <!--We would like to see Dropdown-->
@@ -1502,6 +1381,131 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         </select1>
         <trigger ref="Update">
           <label>Save {Context}</label>
+        </trigger>
+        <trigger ref="Deposit">
+          <label>Enter Sediment Descriptions</label>
+        </trigger>
+      </group>
+
+      <group faims_hidden="true" ref="Context_Deposits">
+        <label>Dep</label>
+        <!--We would like to see Dropdown-->
+        <select1 faims_attribute_name="Deposit Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
+          <label>Your Interpretation</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <select1 faims_attribute_name="Soil Compaction Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Compaction_Type">
+          <label>{Soil_Compaction_Type}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <input faims_attribute_name="Soil Compaction Description" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="false" ref="Soil_Compaction_Description">
+          <label>{Soil_Compaction_Description}</label>
+        </input>
+        <!--We would like to see Dropdown-->
+        <select1 faims_attribute_name="Soil Particle Sorting" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Particle_Sorting" type="image">
+          <label>{Soil_Particle_Sorting}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <group faims_style="orientation" ref="container1">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <select1 faims_attribute_name="Soil Texture" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Texture">
+              <label>{Soil_Texture}</label>
+                <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <trigger ref="Texture_Helper">
+              <label>{Texture_Helper}</label>
+            </trigger>
+          </group>
+        </group>
+        <input faims_attribute_name="Soil Colour" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="false" ref="Soil_Colour">
+          <label>{Soil_Colour}</label>
+        </input>
+        <group faims_style="orientation" ref="container2">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <select1 faims_attribute_name="Composition Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Composition_Type">
+              <label>{Composition_Type}</label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <select1 faims_attribute_name="Deposit Bedding" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Deposit_Bedding">
+              <label>{Deposit_Bedding}</label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+        </group>
+         <group faims_style="orientation" ref="container3">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <select1 faims_attribute_name="Sterile" faims_attribute_type="vocab" appearance="full" faims_certainty="true" faims_read_only="false" ref="Sterile">
+              <label>{Sterile}</label>
+                <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="freetext" faims_certainty="true" faims_read_only="false" ref="Deposit_Inclusions">
+              <label>{Deposit_Inclusions}</label>
+            </input>
+          </group>
+        </group>
+        <trigger ref="newMatrix">
+          <label>Add New {Matrix}</label>
+        </trigger>
+        <select1 faims_certainty="false" faims_read_only="false" ref="matrixList">
+          <label>Associated {Matrices}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <group faims_style="orientation" ref="container4">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <trigger ref="deleteMatrix">
+              <label>Delete {Matrix}</label>
+            </trigger>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <trigger ref="loadMatrix">
+              <label>Load {Matrix}</label>
+            </trigger>
+          </group>
+        </group>
+        <trigger ref="Update">
+          <label>Save Context</label>
         </trigger>
       </group>
       <group ref="Context_Skeletons" faims_hidden="true">
