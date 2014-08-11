@@ -1383,7 +1383,7 @@ Help can be found for individual entries by pressing the ? buttons throughout th
           <label>Save {Context}</label>
         </trigger>
         <trigger ref="Deposit">
-          <label>Enter Sediment Descriptions</label>
+          <label>Enter Sediment Description</label>
         </trigger>
       </group>
 
