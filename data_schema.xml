@@ -64,7 +64,7 @@
     <description>Implements a 1:N between context and its samples</description>
   </RelationshipElement>
   <RelationshipElement name="ContextSpecialFind" type="bidirectional">
-    <description>Implements a 1:N between context and its special finds</description>
+    <description>Implements a 1:N between context and its Small Finds</description>
   </RelationshipElement>
   <RelationshipElement name="ContextPhotographLog" type="bidirectional">
     <description>Implements a 1:N between context and its photograph logs
@@ -88,9 +88,7 @@
 
 	  Burial context codes begin with the letter Z, followed by the trench letter. Hence burial ZHA is the first burial context from trench H.
 
-	  Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.
-
-	  When you have typed in the context code press the “Create New Context” bar to create the context record. Also remember to press the “Save Context” bar at the bottom of the “General” tab in the “Context Tab Group” or your context will not be saved. Press the “Save Context” whenever you finish entering data on a page or your input will not be saved.</description>
+	  Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.</description>
     </property>
     <property isIdentifier="true" name="Context Name" type="freetext">
       <description>Brief name for the Context eg 'House A - west wall'</description>
@@ -131,9 +129,9 @@
     </property>
     <property name="Context Type" type="enum">
       <description>Describe the context type by selecting an icon as defined below.
-When you have selected a context type you can proceed to open the “Fill in context type details” page. Note this page will not open unless you have selected a context type.</description>
+When you have selected a context type you can proceed to open the "Fill in context type details" page. Note this page will not open unless you have selected a context type.</description>
       <lookup>
-        <term pictureURL="files/data/gallery/ContextType/Other/NA.png">{0No_Observation}
+        <term pictureURL="files/data/gallery/Blanks/Trail.png">{0No_Observation}
         <description>data not collected</description></term>
         <term pictureURL="files/data/gallery/ContextType/Orange/Cut.png">{Cut} 
         <description>Any Context which represents the removal of earlier deposit and thus forms a negative interface (cut) with another context, such as a cut for a pit, burial, ditch, wall foundation or robber trench.</description></term>
@@ -204,10 +202,10 @@ When you have selected a context type you can proceed to open the “Fill in con
       </lookup>
     </property>
     <property name="Soil Compaction Description" type="freetext">
-      <description>Description of the compaction of soil including changes throughout the deposit. Eg ‘Varies from loose to compact.</description>
+      <description>Description of the compaction of soil including changes throughout the deposit. Eg "Varies from loose to compact."</description>
     </property>
     <property name="Soil Texture Helper" type="enum">
-      <description>This helper is based on the standard flow chart for determining soil texture. Select each option and follow the prompts until you get a result, eg 'silty loam'. Then click the 'Update' button to have that value pasted onto your Deposit record.</description>
+      <description>This helper is based on the standard flow chart for determining soil texture. Start by taking 25g of soil and placing it in your palm. Select each option and follow the prompts for TASKS (like roll ribbon) until you get a result, eg 'silty loam'. Then click the 'Update' button to have that value pasted onto your Context record.</description>
       <lookup>
         <term>{Soil_does_NOT_remain_in_ball_when_squeezed} 
         <description>Place approximately 25 g soil in palm. Add water dropwise and knead the soil to break down all aggregates. Soil is at the proper consistency when plastic and moldable like moist putty.</description>
@@ -845,7 +843,7 @@ When you have selected a context type you can proceed to open the “Fill in con
       <description>The Y coordinate of Target D. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
     <property name="SearchHelp" type="freetext">
-      <description>This allows you to find any contexts that contain your search term or string in any field in a context record. Type in your term/string and press the “Search” button. Press “My Contexts” to return to the full list of contexts for this trench.</description>
+      <description>This allows you to find any contexts that contain your search term or string in any field in a context record. Type in your term/string and press the "Search" button. Press "My Contexts" to return to the full list of contexts for this trench.</description>
     </property>
   </ArchaeologicalElement>
 
@@ -1197,24 +1195,22 @@ When you have selected a context type you can proceed to open the “Fill in con
         <description>General collection of soil deposit from the Context.</description></term>
         <term>{Wood/Charcoal} 
         <description>Collection of wood or charcoal fragments from the Context.</description></term>
-        <term>{C14_Sample}
-        <description /></term>
-        <term>{Flot_Sample}
-        <description /></term>
+        <term>{C14_Sample}<description>An organic sample recovered for radiocarbon dating.</description></term>
+        <term>{Flot_Sample}<description>Flotation sample for recovery of plant remains.</description></term>
         <term>{Phytolith_Sample}
-        <description /></term>
+        <description>Small soil sample for phytolith analysis.</description></term>
         <term>{Arch_Soil}
-        <description /></term>
+        <description>A small archive soil sample.</description></term>
         <term>{Thin_Section}
-        <description /></term>
+       <description>Specially collected blocks for soil thin sectioning.</description></term>
         <term>{Wet_Sieve}
-        <description /></term>
+        <description>Bulk soil sample for wet-sieving.</description></term>
         <term>{Animal_Bone}
-        <description /></term>
+        <description>A sample of bone identified as animal.</description></term>
         <term>{Human_Bone}
-        <description /></term>
+        <description>A sample of bone identified as human.</description></term>
         <term>{zOther}
-        <description /></term>
+        <description>Sample not elsewhere described. Include details in Annotation field.</description></term>
       </lookup>
     </property>
     <property name="Sample Volume" type="float">
@@ -1227,7 +1223,7 @@ When you have selected a context type you can proceed to open the “Fill in con
       <description>The location of the sample at the time of entry.</description>
       <lookup>
         <term>{0No_Observation}<description>data not collected</description></term>
-        <term>{Site_depot}<description>L</description> </term>
+        <term>{Site_depot}<description></description> </term>
         <term>{Export_Liverpool}<description></description> </term>
         <term>{Export_Turkey}<description></description> </term>
         <term>{zaOther}<description></description> </term>        
@@ -1318,7 +1314,7 @@ When you have selected a context type you can proceed to open the “Fill in con
       <description>Unique number or code for each Context.</description>
     </property>
     <property isIdentifier="true" name="Special Find ID" type="freetext">
-      <description>Unique number or code for the special find.</description>
+      <description>Unique number or code for the Small Find.</description>
     </property>
     <property isIdentifier="true" name="Special Find Class" type="freetext">
       <description>Broad Artefact Class for each Artefact (eg Glass Ceramic Building Material).</description>
@@ -1433,19 +1429,19 @@ When you have selected a context type you can proceed to open the “Fill in con
       </lookup>
     </property>
     <property name="Special Find Name" type="freetext">
-      <description>Brief name or description for the Special Find eg 'Wedgwood plate'.</description>
+      <description>Brief name or description of the Small Find e.g. Ground Stone Pounder</description>
     </property>
     <property name="Special Find X" type="float">
-      <description>The reading from the x-axis (horizontal) of an arbitrary site grid corresponding to the location of the Special Find at the time of excavation.</description>
+      <description>The reading from the x-axis (horizontal) of an arbitrary site grid corresponding to the location of the Small Find at the time of excavation.</description>
     </property>
     <property name="Special Find Y" type="float">
-      <description>The reading from the y-axis (vertical) of an arbitrary site grid corresponding to the location of the Special Find at the time of excavation.</description>
+      <description>The reading from the y-axis (vertical) of an arbitrary site grid corresponding to the location of the Small Find at the time of excavation.</description>
     </property>
     <property name="Special Find Z" type="float">
-      <description>The elevation or depth of the Special Find at the time of excavation.</description>
+      <description>The elevation or depth of the Small Find at the time of excavation.</description>
     </property>
     <property name="Special Find Description" type="freetext">
-      <description>Description of the Special Find.</description>
+      <description>Description of the Small Find.</description>
     </property>
     <property name="Special Find Comment" type="freetext">
       <description></description>
@@ -1505,13 +1501,13 @@ When you have selected a context type you can proceed to open the “Fill in con
         <term>{0No_Observation}
         <description>data not collected</description></term>
         <term> Open
-          <description/>
+          <description>Photograph taken on opening the Context.</description>
         </term>
         <term> Close
-          <description/>
+          <description>Photograph taken on closing the Context.</description>
         </term>
         <term> Other
-          <description></description>
+          <description>Scene not elsewhere described. Enter detail into Annotation field.</description>
         </term>
       </lookup>
     </property>
