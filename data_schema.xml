@@ -157,6 +157,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{aHand_pick} 
         <description>Excavated by hand-pick.</description></term>
+        <term>{aaToothbrush} 
+        <description>Excavated by toothbrush.</description></term>
         <term>{bTrowel}
         <description>Excavated by trowel.</description></term>
         <term>{cPick} 
