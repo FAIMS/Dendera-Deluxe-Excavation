@@ -88,7 +88,7 @@
     <property name="Title" type="freetext">
       <description></description>
     </property>
-    <property name="AreaCode" type="enum">
+    <property name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -129,7 +129,7 @@
   <!-- CONTEXT -->
   <ArchaeologicalElement name="Context">
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
-    <property isIdentifier="true" name="AreaCode" type="enum">
+    <property isIdentifier="true" name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1105,7 +1105,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- ARTEFACT GROUP-->
   <ArchaeologicalElement name="Artefact Group">
     <description>The total group or assemblage of objects recovered from a single Context. These are sometimes referred to as 'Bulk Finds'.</description>
-    <property isIdentifier="true" name="AreaCode" type="enum">
+    <property isIdentifier="true" name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1300,7 +1300,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--SAMPLE-->
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
-    <property isIdentifier="true" name="AreaCode" type="enum">
+    <property isIdentifier="true" name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1470,7 +1470,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- SPECIAL FIND -->
   <ArchaeologicalElement name="Special Find">
     <description/>
-    <property isIdentifier="true" name="AreaCode" type="enum">
+    <property isIdentifier="true" name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1612,6 +1612,26 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
       </lookup>
     </property>
+    <property name="Source" type="enum">
+      <description/>
+      <lookup>
+        <term>{Null}                  <description/></term>
+        <term>{No_Observation}        <description/></term>
+        <term>{Excavation}            <description/></term>
+        <term>{Flotation}             <description/></term>
+        <term>{Wet_Sieve}             <description/></term>
+        <term>{Other}                 <description/></term>
+      </lookup>
+    </property>
+    <property name="Groundstone" type="enum">
+      <description/>
+      <lookup>
+        <term>{Yes} 
+        <description></description></term>
+        <term>{No} 
+        <description></description></term>
+      </lookup>
+    </property>
     <property name="Device Code" type="enum">
       <description/>
       <lookup>
@@ -1690,7 +1710,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
-    <property isIdentifier="true" name="AreaCode" type="enum">
+    <property isIdentifier="true" name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
