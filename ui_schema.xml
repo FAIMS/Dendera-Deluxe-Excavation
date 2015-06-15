@@ -458,7 +458,6 @@
               <deletePhotoLog/>
               <Update/>
               <SaveAndNew/>
-              <Duplicate/>
               <Delete/>
             </Context_Attachments>
             <Texture_Helper>
@@ -596,7 +595,6 @@
               <Update/>
               <SaveAndNew/>
               <SaveAndClose/>
-              <Duplicate/>
               <Delete/>
             </ContextGroup_Attachments>
           </ContextGroup>
@@ -648,7 +646,6 @@
               <Update/>
               <Delete/>
               <SaveAndNew/>
-              <Duplicate/>
             </Artefact_Group_GeneralInformation>
           </Artefact_Group>
 
@@ -690,7 +687,6 @@
               <Update/>
               <Delete/>
               <SaveAndNew/>
-              <Duplicate/>
             </Sample_GeneralInformation>
             <Sample_Attachments>
               <Sketch/>
@@ -705,7 +701,6 @@
               <Update/>
               <Delete/>
               <SaveAndNew/>
-              <Duplicate/>
             </Sample_Attachments>
           </Sample>
 
@@ -766,7 +761,6 @@
               <Update/>
               <Delete/>
               <SaveAndNew/>
-              <Duplicate/>
             </Special_Find_GeneralInformation>
           </Special_Find>
 
@@ -2052,9 +2046,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New {Context}</label>
         </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Context} (will not duplicate relationships, samples, or artefacts).</label>
-        </trigger>
         <trigger ref="Delete">
           <label>Delete {Context}</label>
         </trigger>
@@ -2407,9 +2398,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndClose">
           <label>Save and Close {Context_Group}</label>
         </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Context_Group}</label>
-        </trigger>
         <trigger ref="Delete">
           <label>Delete {Context_Group}</label>
         </trigger>
@@ -2538,9 +2526,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New {Artefact_Group}</label>
         </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Artefact_Group}</label>
-        </trigger>
         <trigger ref="Delete">
           <label>Delete {Artefact_Group}</label>
         </trigger>
@@ -2629,9 +2614,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New Sample</label>
         </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate Sample</label>
-        </trigger>
         <trigger ref="Delete">
           <label>Delete Sample</label>
         </trigger>
@@ -2686,9 +2668,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="SaveAndNew">
           <label>Save and New Sample</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate Sample</label>
         </trigger>
         <trigger ref="Delete">
           <label>Delete Sample</label>
@@ -2841,9 +2820,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="SaveAndNew">
           <label>Save and New {Special_Find}</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Special_Find}</label>
         </trigger>
         <trigger ref="Delete">
           <label>Delete {Special_Find}</label>

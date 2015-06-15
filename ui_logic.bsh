@@ -321,7 +321,6 @@ onEvent("Context/Context_Attachments/attachVideo", "click", "attachVideoTo(\"Con
 onEvent("Context/Context_Attachments/attachSketch", "click", "attachFileTo(\"Context/Context_Attachments/Sketch\")");
 onEvent("Context/Context_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_id)");
 onEvent("Context/Context_Attachments/SaveAndNew", "delayclick", "saveContext(\"newContext();\")");
-onEvent("Context/Context_Attachments/Duplicate", "delayclick", "saveContext(\"context_id = null; setFieldValue(\\\"Context/Context_GeneralInformation/Context_ID\\\", getFieldValue(\\\"control/data/ContextIncrement\\\"));\")");
 onEvent("Context/Context_Attachments/Delete", "delayclick", "deleteContext()");
 
 onEvent("Context/Context_Artefacts/newArtefactGroup", "delayclick", "saveContext(\"newArtefactGroup();\")");
@@ -918,7 +917,6 @@ onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArch
 onEvent("ContextGroup/ContextGroup_Attachments/Update", "delayclick", "saveContextGroup(\"\")");
 onEvent("ContextGroup/ContextGroup_Attachments/SaveAndNew", "delayclick", "saveContextGroup(\"newContextGroup(true);\")");
 onEvent("ContextGroup/ContextGroup_Attachments/SaveAndClose", "delayclick", "saveContextGroup(\"cancelTabGroup(\\\"ContextGroup\\\",false);\")");
-onEvent("ContextGroup/ContextGroup_Attachments/Duplicate", "delayclick", "saveContextGroup(\"context_group_id=null;autoNumFeature();\")");
 onEvent("ContextGroup/ContextGroup_Attachments/Delete", "click", "deleteContextGroup()");
 onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "saveContextGroup(\"isContext=false;newPhotoLog();verb=\\\"ContextGroupPhotographLog\\\";archent_id=context_group_id;\");");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadContextGroupPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
@@ -1193,7 +1191,6 @@ onEvent("Artefact_Group/Artefact_Group_GeneralInformation/viewattached", "click"
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/Update", "delayclick", "saveArtefactGroup()");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/SaveAndNew", "delayclick", "saveAndNewArtefactGroup()");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/Delete", "delayclick", "deleteArtefactGroup()");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/Duplicate", "delayclick", "duplicateArtefactGroup()");
 
 String artefact_group_id = null;
 
@@ -1279,24 +1276,6 @@ saveArtefactGroup(String callback) {
     }, enable_autosave);
 }
 
-duplicateArtefactGroup(){
-    if (isNull(getFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-
-    if (!isNull(artefact_group_id)) {
-        entity = fetchArchEnt(artefact_group_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Artefact Group cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-       saveTabGroup("Artefact_Group", artefact_group_id, null, null, "artefact_group_id = getLastSavedRecordId(); onArtefactGroupSaved(); artefact_group_id=null; autoNumArtefactGroup();");
-    }
-}
-
 onArtefactGroupSaved(){
     saveEntitiesToRel("ContextArtefactGroup", context_id, artefact_group_id);
     showToast("{Associated_with_Context}");
@@ -1341,11 +1320,9 @@ onEvent("Sample/Sample_Attachments/viewattached", "click", "viewArchEntAttachedF
 onEvent("Sample/Sample_Attachments/Update", "delayclick", "saveSample()");
 onEvent("Sample/Sample_Attachments/Delete", "delayclick", "deleteSample()");
 onEvent("Sample/Sample_Attachments/SaveAndNew", "delayclick", "saveAndNewSample()");
-onEvent("Sample/Sample_Attachments/Duplicate", "delayclick", "duplicateSample()");
 onEvent("Sample/Sample_GeneralInformation/Update", "delayclick", "saveSample()");
 onEvent("Sample/Sample_GeneralInformation/Delete", "delayclick", "deleteSample()");
 onEvent("Sample/Sample_GeneralInformation/SaveAndNew", "delayclick", "saveAndNewSample()");
-onEvent("Sample/Sample_GeneralInformation/Duplicate", "delayclick", "duplicateSample()");
 
 String sample_id = null;
 
@@ -1394,23 +1371,6 @@ onSampleSaved(){
     saveEntitiesToRel("ContextSample", context_id, sample_id);
     showToast("{Associated_with_Context}");
 
-}
-
-duplicateSample(){
-    if (isNull(getFieldValue("Sample/Sample_GeneralInformation/Sample_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-
-    if (!isNull(sample_id)) {
-        entity = fetchArchEnt(sample_id);
-    }
-    if(menu) {
-        saveTabGroup("Sample", sample_id, null, null, "sample_id = getLastSavedRecordId(); cancelTabGroup(\"Sample\", false); showTab(\"control/sample\"); showToast(\"Cannot create new Sample from main menu.\");");    
-    } else {
-        saveTabGroup("Sample", sample_id, null, null, "sample_id = getLastSavedRecordId(); onSampleSaved(); sample_id = null;");
-    }
-    
 }
 
 deleteSampleFromContext(){
@@ -1542,7 +1502,6 @@ onEvent("Special_Find/Special_Find_GeneralInformation/attachVideo", "click", "at
 onEvent("Special_Find/Special_Find_GeneralInformation/Update", "delayclick", "saveSpecialFind()");
 onEvent("Special_Find/Special_Find_GeneralInformation/Delete", "delayclick", "deleteSpecialFind()");
 onEvent("Special_Find/Special_Find_GeneralInformation/SaveAndNew", "delayclick", "saveAndNewSpecialFind()");
-onEvent("Special_Find/Special_Find_GeneralInformation/Duplicate", "delayclick", "duplicateSpecialFind()");
 
 String special_find_id = null;
 
@@ -1654,24 +1613,6 @@ reallyDeleteSpecialFind(){
 
 doNotDelete(){
     showToast("{Delete_Cancelled}");
-}
-
-duplicateSpecialFind(){
-    if (isNull(getFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-
-    if (!isNull(special_find_id)) {
-        entity = fetchArchEnt(special_find_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Special_Find cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-       saveTabGroup("Special_Find", special_find_id, null, null, "special_find_id = getLastSavedRecordId(); onSpecialFindSaved(); special_find_id = null; specialFindAutoNum();");
-    }
 }
 
 loadSpecialFindAttributes(){
