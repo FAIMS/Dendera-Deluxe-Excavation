@@ -100,7 +100,7 @@
                   <Site_Code/>
                 </child1>
                 <child2>
-                  <AreaCode/>
+                  <Trench/>
                 </child2>
                 <child3>
                   <Context_ID/>
@@ -1084,7 +1084,7 @@ Help can be found for individual entries by pressing the ? buttons throughout th
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="AreaCode">
+            <input faims_annotation="false" faims_attribute_name="Trench" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="Trench">
               <label>Area Code:</label>
             </input>
           </group>

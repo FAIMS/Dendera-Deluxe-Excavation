@@ -100,7 +100,7 @@
     <property name="Plans" type="freetext">
       <description>Reference numbers to plans or drawings of this Context.</description>
     </property>
-    <property name="AreaCode" type="enum">
+    <property name="Trench" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <lookup>
         <term>H
