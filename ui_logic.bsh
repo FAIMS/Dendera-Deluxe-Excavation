@@ -280,7 +280,7 @@ loadSearchAttributes() {
 
 
 /*** ArchEnt: Context **/
-onEvent("Context", "show", "openContextTabs();");
+onEvent("Context", "show", "addNavigationButtons(\"Context\"); openContextTabs(); keepTabGroupChanges(\"Context\"); saveContext(\"\");refreshTabgroupCSS(\"Context\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Deposits\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Cuts\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Structures\");");
@@ -881,6 +881,7 @@ addCloseDate() {
 }
 
 /*** RelnEnt: Context Group***/
+onEvent("ContextGroup", "show", "addNavigationButtons(\"ContextGroup\"); keepTabGroupChanges(\"ContextGroup\"); saveContextGroup();refreshTabgroupCSS(\"ContextGroup\");");
 onEvent("ContextGroup/ContextGroup_Contexts/AddContext", "click", "addToContextGroup()");
 onEvent("ContextGroup/ContextGroup_Contexts/ShowContext", "click", "loadContextFromContextGroup()");
 onEvent("ContextGroup/ContextGroup_Contexts/RemoveContext", "click", "removeFromContextGroup()");
@@ -1162,6 +1163,7 @@ updateRelnsCG(){
 }
 
 /*** Artefact Group ***/
+onEvent("Artefact_Group", "show", "addNavigationButtons(\"Artefact_Group\"); keepTabGroupChanges(\"Artefact_Group\"); saveArtefactGroup(\"\");");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachPhoto", "click", "attachPictureTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Photo\")");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachAudio", "click", "attachAudioTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Audio\")");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachVideo", "click", "attachVideoTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Video\")");
@@ -1288,6 +1290,7 @@ loadArtefactGroupAttributes(){
 
 
 /*** Sample ***/
+onEvent("Sample", "show", "addNavigationButtons(\"Sample\"); keepTabGroupChanges(\"Sample\"); saveSample(\"\");");
 onEvent("Sample/Sample_Attachments/attachPhoto", "click", "attachPictureTo(\"Sample/Sample_Attachments/Photo\")");
 onEvent("Sample/Sample_Attachments/attachAudio", "click", "attachAudioTo(\"Sample/Sample_Attachments/Audio\")");
 onEvent("Sample/Sample_Attachments/attachVideo", "click", "attachVideoTo(\"Sample/Sample_Attachments/Video\")");
@@ -1374,6 +1377,8 @@ loadSampleAttributes(){
 }
 
 /*** Matrix ***/
+onEvent("Matrix", "show", "addNavigationButtons(\"Matrix\");keepTabGroupChanges(\"Matrix\"); saveMatrix(\"\");");
+
 String matrix_id = null;
 
 newMatrix(){
@@ -1462,6 +1467,7 @@ loadMatrixAttributes(){
 }
 
 /*** Special Find ***/
+onEvent("Special_Find", "show", "addNavigationButtons(\"Special_Find\"); keepTabGroupChanges(\"Special_Find\"); saveSpecialFind(\"\");");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachPhoto", "click", "attachPictureTo(\"Special_Find/Special_Find_GeneralInformation/Photo\")");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachAudio", "click", "attachAudioTo(\"Special_Find/Special_Find_GeneralInformation/Audio\")");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachVideo", "click", "attachVideoTo(\"Special_Find/Special_Find_GeneralInformation/Video\")");
