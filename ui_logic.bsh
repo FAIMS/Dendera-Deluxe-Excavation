@@ -259,7 +259,7 @@ onEvent("Context/Context_Relationships_to_Other_Contexts/listOfRelns", "click", 
 String context_id = null;
 // Context ID, Context Type Your 
 showRelnFromList(){
-    // todo: (brian) is this query listing all entities related to the contetx?
+    // todo: unneccessary performanc hack, can be deleted 
 
     // listID = getListItemValue();
     
@@ -279,7 +279,7 @@ showRelnFromList(){
 }
 
 showCGRelnFromList(){
-    // todo: replace with context - context group relation query
+    // todo: as above
 
     // listID = getListItemValue();
     
@@ -299,7 +299,7 @@ showCGRelnFromList(){
 }
 
 showCGFromList(){
-    // todo: 
+    // todo: as above
 
    //  listID = getListItemValue();
     
@@ -319,7 +319,7 @@ showCGFromList(){
 
 
 showSampleFromList(){
-    // todo: 
+    // todo: as above
 
     // listID = getListItemValue();
     // foo = fetchOne("select group_concat(response, '\n') from ( select attributename || ': ' || coalesce(vocabname, freetext) as response from ( " +
@@ -337,7 +337,7 @@ showSampleFromList(){
 }
 
 showContextFromList(){
-    // todo: 
+    // todo: as above
 
     // listID = getListItemValue();
     // foo = fetchOne("select group_concat(response, '\n') from ( select attributename || ': ' || coalesce(vocabname, freetext) as response from ( " +
@@ -366,7 +366,7 @@ newContext(){
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
     String date2 = new java.text.SimpleDateFormat("d-MMM-yy").format(new Date());
     setFieldValue("Context/Context_GeneralInformation/Date_Opened", date2);
-    // todo: (brian) replace with date2 above?
+    // todo: replace with set timestamp
     // datetime = fetchOne("select datetime('now', 'localtime');");
     // setFieldValue("Context/Context_GeneralInformation/CreatingDate", datetime.get(0));
 }
