@@ -210,6 +210,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>Any Context consisting of deliberately constructed structural element, independent of a Negative Element (i.e. cut, such as a wall or a hearth).</description></term>
         <term pictureURL="files/data/gallery/ContextType/Orange/Skeleton.png">{Skeleton} 
         <description>Human skeletal remains.</description></term>
+        <term pictureURL="files/data/gallery/ContextType/Orange/Artefact group.png">{Artefact_Group} 
+        <description></description></term>
       </lookup>
     </property>
     <property name="Date Opened" type="date">
