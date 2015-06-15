@@ -100,7 +100,7 @@
                   <Site_Code/>
                 </child1>
                 <child2>
-                  <AreaCode/>
+                  <Trench/>
                 </child2>
                 <child3>
                   <Context_ID/>
@@ -785,6 +785,19 @@
               <Scene_Type/>
             </Photograph_Log>
           </Photograph_Log>
+          <Diary>
+            <Diary>
+              <Timestamp/>
+              <CreatedBy/>
+              <Title/>
+              <Trench/>
+              <Text/>
+              <Audio/>
+              <Video/>
+              <Photo/>
+              <FileAttach/>
+            </Diary>
+          </Diary>
         </faims>
       </instance>
       <!--list of numeric and blocktext(memo) attributes(fields)-->
@@ -1087,7 +1100,7 @@ Help can be found for individual entries by pressing the ? buttons throughout th
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="AreaCode">
+            <input faims_annotation="false" faims_attribute_name="Trench" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="Trench">
               <label>Area Code:</label>
             </input>
           </group>
@@ -2871,6 +2884,61 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </item>
           </select1>
         </group>
+    </group>
+
+    <!-- ArchEnt: Diary -->
+    <group ref="Diary" faims_archent_type="Diary">
+      <label>{Diary}</label>
+      <group ref="Diary">
+        <label>{Diary}</label>
+        <input faims_attribute_name="Timestamp" faims_attribute_type="freetext" faims_read_only="true" ref="Timestamp" faims_certainty="false">
+          <label>{Timestamp}</label>
+        </input>
+        <input faims_attribute_name="CreatedBy" faims_attribute_type="freetext" faims_read_only="true" ref="CreatedBy" faims_certainty="false">
+          <label>{CreatedBy}</label>
+        </input>
+        <input faims_attribute_name="Title" faims_attribute_type="freetext" faims_read_only="true" ref="Title" faims_certainty="false">
+          <label>{Title}</label>
+        </input>
+        <select1 faims_attribute_name="Trench" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Trench">
+          <label>{Trench}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+        <input faims_attribute_name="Text" faims_attribute_type="freetext" faims_read_only="true" ref="Text" faims_certainty="false">
+          <label>{Text}</label>
+        </input>
+        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="freetext" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+            <label>{Attached_Audio_Files}</label>
+            <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+            </item>
+        </select>
+        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="freetext" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
+          <label>{Attached_Videos}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select>
+        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="freetext" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
+          <label>{Attached_Photos}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select>
+        <select ref="FileAttach" faims_attribute_name="FileAttach" faims_attribute_type="freetext" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+            <label>{FileAttach}</label>
+            <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+            </item>
+        </select>
+      </group>
     </group>
   </h:body>
 </h:html>
