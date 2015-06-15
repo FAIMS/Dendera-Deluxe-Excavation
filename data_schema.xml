@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dataSchema name="Boncuklu" preparer="Penny Crook">
-<!--   <RelationshipElement name="Above - Below" type="hierarchical">
+  <!--   <RelationshipElement name="Above - Below" type="hierarchical">
     <description>Implements a above below for contexts.</description>
     <parent>Above</parent>
     <child>Below</child>
@@ -50,7 +50,6 @@
     <parent>Stratigraphically - Immediately Earlier Than</parent>
     <child>Stratigraphically - Immediately Later Than</child>
   </RelationshipElement>
-
   <RelationshipElement name="ContextMatrix" type="bidirectional">
     <description>Implements a 1:N between contexts and matrices</description>
   </RelationshipElement>
@@ -74,7 +73,6 @@
     <description>Implements a 1:N between context group and its photograph logs
     </description>
   </RelationshipElement>
-  
   <!-- CONTEXT -->
   <ArchaeologicalElement name="Context">
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
@@ -104,21 +102,21 @@
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <lookup>
         <term>H
-        <description></description></term>
+        <description/></term>
         <term>K 
-        <description></description></term>
+        <description/></term>
         <term>L 
-        <description></description></term>
-		    <term>M 
-        <description></description></term>
+        <description/></term>
+        <term>M 
+        <description/></term>
         <term>N 
-        <description></description></term>
+        <description/></term>
         <term>P 
-        <description></description></term>
+        <description/></term>
         <term>Q
-        <description></description></term>
+        <description/></term>
         <term>X
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Grid X" type="freetext">
@@ -212,7 +210,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Is_too_dry} 
         <description>The soil sample is too dry.</description>
         <term>NO RESULT: Add more water and start again 
-        <description></description></term></term>
+        <description/></term></term>
         <term>{Is_too_wet} 
         <description>The soil sample is too wet.</description>
         <term>NO RESULT: Add dry soil and start again 
@@ -314,13 +312,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>Clays are tough and can be moulded into shapes when moist. Clays form a long flexible ribbon when rubbed between the palms and the ribbon can often be bent into a U shape without breaking. Clays dry into very hard clods. (VDEPI 2009: AG0058)</description></term>
         <term>{3.Sandy_Clay} 
         <description>A sandy clay is like a clay but sand grains can be felt (and heard - see Sandy Loam). (VDEPI 2009: AG0058)</description></term>
-       <term>{4.Silt} 
-        <description>Silt.</description></term> 
-    <term>{4.Sandy_Silt} 
-        <description>Sandy silt.</description></term> 
-    <term>{5.Other} 
-        <description>Other: describe in Annotation.</description></term> 
- </lookup>
+        <term>{4.Silt} 
+        <description>Silt.</description></term>
+        <term>{4.Sandy_Silt} 
+        <description>Sandy silt.</description></term>
+        <term>{5.Other} 
+        <description>Other: describe in Annotation.</description></term>
+      </lookup>
     </property>
     <property name="Soil Particle Sorting" type="enum">
       <description>Assessment of the frequency with which particles of the same size occur.</description>
@@ -431,7 +429,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Sharp} 
         <description>Clear sharp slope, almost right-angled.</description></term>
         <term>{Shallow} 
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Sides of Cut" type="enum">
@@ -439,19 +437,19 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{0No_Observation}<description/></term>
         <term>{Vertical} 
-        <description /></term>
+        <description/></term>
         <term>{Convex} 
-        <description /></term>
+        <description/></term>
         <term>{Concave} 
-        <description /></term>
+        <description/></term>
         <term>{Stepped} 
-        <description /></term>
+        <description/></term>
         <term>{Sloping} 
-        <description />
+        <description/>
         <term>{Slightly_sloping} 
-        <description /></term>
+        <description/></term>
         <term>{Steeply_sloping} 
-        <description /></term>v</term>
+        <description/></term>v</term>
       </lookup>
     </property>
     <property name="Shape of Base" type="enum">
@@ -460,21 +458,21 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{0No_Observation}
         <description>data not collected</description></term>
         <term>{Concave} 
-        <description></description></term>
+        <description/></term>
         <term>{Flat} 
-        <description></description></term>
+        <description/></term>
         <term>{Pointed} 
-        <description></description></term>
+        <description/></term>
         <term>{Sloping} 
-        <description></description></term>
+        <description/></term>
         <term>{Tapered} 
-        <description></description>
+        <description/>
         <term>{Blunt} 
-        <description></description></term>
+        <description/></term>
         <term>{Sharp} 
-        <description></description></term></term>
+        <description/></term></term>
         <term>{Uneven} 
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Cut Function" type="freetext">
@@ -501,13 +499,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{0No_Observation}
         <description>data not collected</description></term>
         <term>{aVertical} 
-        <description></description></term>
+        <description/></term>
         <term>{b45-90_degrees} 
-        <description></description></term>
+        <description/></term>
         <term>{c45_degrees} 
-        <description></description></term>
+        <description/></term>
         <term>{dless_than_45} 
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Structure Your Interpretation" type="freetext">
@@ -515,23 +513,23 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{0No_Observation}<description/></term>
         <term>{Your_Interpretation_Structure_Indeterminate} 
-        <description></description></term>
+        <description/></term>
         <term>{Floor_or_Surface} 
-        <description></description></term>
+        <description/></term>
         <term>{Mud_or_Plaster_Face} 
-        <description></description></term>
+        <description/></term>
         <term>{Wall} 
-        <description></description></term>
+        <description/></term>
         <term>{Platform_or_Bench} 
-        <description></description></term>
+        <description/></term>
         <term>{Paving} 
-        <description></description></term>
+        <description/></term>
         <term>{Bin} 
-        <description></description></term>
+        <description/></term>
         <term>{Oven} 
-        <description></description></term>
+        <description/></term>
         <term>{Pillar} 
-        <description></description></term>
+        <description/></term>
         <term>{zOther} 
         <description>Function not elsewhere described. Provide details in Annotation field.</description></term>
       </lookup>
@@ -541,25 +539,25 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{0No_Observation}<description/></term>
         <term>{aYour_Interpretation_Cut_Indeterminate} 
-        <description></description></term>
+        <description/></term>
         <term>{Animal_or_Plant_hole} 
-        <description></description></term>
+        <description/></term>
         <term>{Stakehole} 
-        <description></description></term>
+        <description/></term>
         <term>{Posthole} 
-        <description></description></term>
+        <description/></term>
         <term>{Pit} 
-        <description></description></term>
+        <description/></term>
         <term>{Hearth_or_Fire_pit} 
-        <description></description></term>
+        <description/></term>
         <term>{Ditch_or_Trench} 
-        <description></description></term>
+        <description/></term>
         <term>{Construction_Cut} 
-        <description></description></term>
+        <description/></term>
         <term>{Burial} 
-        <description></description></term>
+        <description/></term>
         <term>{Erosional_Feature} 
-        <description></description></term>
+        <description/></term>
         <term>{zOther} 
         <description>Function not elsewhere described. Provide details in Annotation field.</description></term>
       </lookup>
@@ -628,9 +626,9 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Stone} 
         <description>Worked or unworked stone used in masonry walls.</description></term>
         <term>{Plaster} 
-        <description></description></term>
+        <description/></term>
         <term>{Mudbrick} 
-        <description></description></term>
+        <description/></term>
         <term>{Other} 
         <description>Material not otherwise described. Add description and notes in Annotation field.</description></term>
       </lookup>
@@ -663,7 +661,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{0No_Observation}
         <description>data not collected</description></term>
         <term>{Brick} 
-        <description></description>
+        <description/>
         <term pictureURL="files/data/gallery/BrickBonds/Brown/English.png">{English_Bond} 
         <description>Full courses of headers alternating with full courses of stretchers.</description></term>
         <term pictureURL="files/data/gallery/BrickBonds/Brown/Flemish.png">{Flemish_Bond} 
@@ -673,7 +671,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term pictureURL="files/data/gallery/BrickBonds/Brown/Stretcher.png">{Stretcher} 
         <description>Courses of full bricks where every course is offset half a brick from the course below.</description></term></term>
         <term>{Stone} 
-        <description></description>
+        <description/>
         <term>{Quoins_stressed} 
         <description>Large corner blocks set along side regular courses blocks.</description></term>
         <term>{Random_coursed} 
@@ -736,7 +734,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Boat_shaped} 
         <description>Concave surface opposite convex surface</description></term>
         <term>{Ovoid} 
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Component Finish" type="freetext">
@@ -816,7 +814,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>It is important to excavate skeletal remains as quickly as possible as the state of the bone will change during exposure. Any conditional change should also be noted. Excavate as quickly as possible because the bones will degrade rapidly.</description>
     </property>
     <property name="Skeleton Notes" type="freetext">
-      <description></description>
+      <description/>
     </property>
     <property name="Target A X" type="float">
       <description>The X coordinate of Target A. Targets are white-painted, large-headed nails used to rectify photographs.</description>
@@ -846,7 +844,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>This allows you to find any contexts that contain your search term or string in any field in a context record. Type in your term/string and press the "Search" button. Press "My Contexts" to return to the full list of contexts for this trench.</description>
     </property>
   </ArchaeologicalElement>
-
   <!--CONTEXT GROUP-->
   <ArchaeologicalElement name="Context Group" type="container">
     <description>A group of contexts.</description>
@@ -952,10 +949,9 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
-
   <!-- Matrix -->
   <ArchaeologicalElement name="Matrix">
-    <description></description>
+    <description/>
     <property name="Percentage" type="float" isIdentifier="true">
       <description>Enter the approximate % volume of this material in the Context.</description>
     </property>
@@ -1014,8 +1010,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
       </lookup>
     </property>
   </ArchaeologicalElement>
-
-
   <!-- ARTEFACT GROUP-->
   <ArchaeologicalElement name="Artefact Group">
     <description>The total group or assemblage of objects recovered from a single Context. These are sometimes referred to as 'Bulk Finds'.</description>
@@ -1034,110 +1028,110 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{0No_Observation}
         <description>data not collected</description></term>
         <term>{aChipped_Stone} 
-        <description></description>
+        <description/>
           <term>{Blade} 
-          <description></description></term>
+          <description/></term>
           <term>{Core} 
-          <description></description></term>
+          <description/></term>
           <term>{Cache} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{bGround_Stone} 
-        <description></description>
+        <description/>
           <term>{Grinder} 
-          <description></description></term>
+          <description/></term>
           <term>{Pestle} 
-          <description></description></term>
+          <description/></term>
           <term>{Shaft_Straightener} 
-          <description></description></term>
+          <description/></term>
           <term>{Pendant} 
-          <description></description></term>
+          <description/></term>
           <term>{Incised_Stone} 
-          <description></description></term>
+          <description/></term>
           <term>{Polisher} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{cBone} 
-        <description></description>
+        <description/>
           <term>{Point} 
-          <description></description></term>
+          <description/></term>
           <term>{Bead} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{dShell} 
-        <description></description>
+        <description/>
           <term>{Bead} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{ePlant} 
-        <description></description>
+        <description/>
           <term>{Charcoal} 
-          <description></description></term>
+          <description/></term>
           <term>{Hackberry} 
-          <description></description></term>
+          <description/></term>
           <term>{Charred_Seed} 
-          <description></description></term>
+          <description/></term>
           <term>{Siliceous_Material} 
-          <description></description></term>
+          <description/></term>
           <term>{Phytolith} 
-          <description></description></term>
+          <description/></term>
           <term>{Impression_Cast} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{fOchre} 
-        <description></description></term>
+        <description/></term>
         <term>{hClay_Object} 
-        <description></description>
+        <description/>
           <term>{Figurine} 
-          <description></description></term>
+          <description/></term>
           <term>{Token} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{iCeramic} 
-        <description></description>
+        <description/>
           <term>{Coarse} 
-          <description></description></term>
+          <description/></term>
           <term>{Fine} 
-          <description></description></term>
+          <description/></term>
           <term>{Terracotta} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{jGlass} 
-        <description></description>
+        <description/>
           <term>{Black} 
-          <description></description></term>
+          <description/></term>
           <term>{Colourless} 
-          <description></description></term>
+          <description/></term>
           <term>{Coloured} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{kMetal} 
-        <description></description>
+        <description/>
           <term>{Ferrous} 
-          <description></description></term>
+          <description/></term>
           <term>{Copper-alloy} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{lBuilding_Materials} 
-        <description></description></term>
+        <description/></term>
         <term>{mMiscellaneous} 
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Artefact X" type="float">
@@ -1171,7 +1165,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
-
   <!--SAMPLE-->
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
@@ -1223,10 +1216,10 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>The location of the sample at the time of entry.</description>
       <lookup>
         <term>{0No_Observation}<description>data not collected</description></term>
-        <term>{Site_depot}<description></description> </term>
-        <term>{Export_Liverpool}<description></description> </term>
-        <term>{Export_Turkey}<description></description> </term>
-        <term>{zaOther}<description></description> </term>        
+        <term>{Site_depot}<description/> </term>
+        <term>{Export_Liverpool}<description/> </term>
+        <term>{Export_Turkey}<description/> </term>
+        <term>{zaOther}<description/> </term>
       </lookup>
     </property>
     <property name="Sample X" type="float">
@@ -1246,7 +1239,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Dry-pressed} 
         <description>Dry pressed brick</description></term>
         <term>{Glazed_brick} 
-        <description></description></term>
+        <description/></term>
         <term>{Sandstock} 
         <description>Hand-made colonial bricks</description></term></term>
         <term>{Earth} 
@@ -1256,7 +1249,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Ashlar} 
         <description>Finely dressed stone with flat face.</description></term>
         <term>{Other} 
-        <description></description></term>
+        <description/></term>
         <term>{Roughly-hewn} 
         <description>Roughly cut stone: shows some sign of shaping.</description></term>
         <term>{Rubble} 
@@ -1303,10 +1296,9 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
-
   <!-- SPECIAL FIND -->
   <ArchaeologicalElement name="Special Find">
-    <description></description>
+    <description/>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
@@ -1322,110 +1314,110 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{0No_Observation}
         <description>data not collected</description></term>
         <term>{aChipped_Stone} 
-        <description></description>
+        <description/>
           <term>{Blade} 
-          <description></description></term>
+          <description/></term>
           <term>{Core} 
-          <description></description></term>
+          <description/></term>
           <term>{Cache} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{bGround_Stone} 
-        <description></description>
+        <description/>
           <term>{Grinder} 
-          <description></description></term>
+          <description/></term>
           <term>{Pestle} 
-          <description></description></term>
+          <description/></term>
           <term>{Shaft_Straightener} 
-          <description></description></term>
+          <description/></term>
           <term>{Pendant} 
-          <description></description></term>
+          <description/></term>
           <term>{Incised_Stone} 
-          <description></description></term>
+          <description/></term>
           <term>{Polisher} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{cBone} 
-        <description></description>
+        <description/>
           <term>{Point} 
-          <description></description></term>
+          <description/></term>
           <term>{Bead} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{dShell} 
-        <description></description>
+        <description/>
           <term>{Bead} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{ePlant} 
-        <description></description>
+        <description/>
           <term>{Charcoal} 
-          <description></description></term>
+          <description/></term>
           <term>{Hackberry} 
-          <description></description></term>
+          <description/></term>
           <term>{Charred_Seed} 
-          <description></description></term>
+          <description/></term>
           <term>{Siliceous_Material} 
-          <description></description></term>
+          <description/></term>
           <term>{Phytolith} 
-          <description></description></term>
+          <description/></term>
           <term>{Impression_Cast} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{fOchre} 
-        <description></description></term>
+        <description/></term>
         <term>{hClay_Object} 
-        <description></description>
+        <description/>
           <term>{Figurine} 
-          <description></description></term>
+          <description/></term>
           <term>{Token} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{iCeramic} 
-        <description></description>
+        <description/>
           <term>{Coarse} 
-          <description></description></term>
+          <description/></term>
           <term>{Fine} 
-          <description></description></term>
+          <description/></term>
           <term>{Terracotta} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{jGlass} 
-        <description></description>
+        <description/>
           <term>{Black} 
-          <description></description></term>
+          <description/></term>
           <term>{Colourless} 
-          <description></description></term>
+          <description/></term>
           <term>{Coloured} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{kMetal} 
-        <description></description>
+        <description/>
           <term>{Ferrous} 
-          <description></description></term>
+          <description/></term>
           <term>{Copper-alloy} 
-          <description></description></term>
+          <description/></term>
           <term>{zOther} 
-          <description></description></term>
+          <description/></term>
         </term>
         <term>{lBuilding_Materials} 
-        <description></description></term>
+        <description/></term>
         <term>{mMiscellaneous} 
-        <description></description></term>
+        <description/></term>
       </lookup>
     </property>
     <property name="Special Find Name" type="freetext">
@@ -1444,7 +1436,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Description of the Small Find.</description>
     </property>
     <property name="Special Find Comment" type="freetext">
-      <description></description>
+      <description/>
     </property>
     <property name="Photo" type="file">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
@@ -1456,7 +1448,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
-
   <!-- INVESTIGATOR -->
   <ArchaeologicalElement name="Investigator">
     <description>A team member not recording the data</description>
@@ -1485,14 +1476,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Associated Investigator's Last Name</description>
     </property>
   </ArchaeologicalElement>
-
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
     <property name="Context ID" type="freetext">
       <description>Unique number or code for each Context</description>
     </property>
-    <property name="Photograph Reference ID" isIdentifier= "true" type="freetext">
+    <property name="Photograph Reference ID" isIdentifier="true" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
     </property>
     <property name="Scene Type" type="enum">
