@@ -281,7 +281,7 @@ loadSearchAttributes() {
 }
 
 
-/*** ArchEnt: Context **
+/*** ArchEnt: Context **/
 onEvent("Context", "show", "openContextTabs();");
 onEvent("Context", "load", "showTab(\"Context/Context_Deposits\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Cuts\");");
@@ -1716,97 +1716,90 @@ loadSpecialFindAttributes(){
 }
 
 /*** Arch Ent: PhotoLog ***/
-onEvent("Photograph_Log/Photograph_Log/Update", "delayclick", "savePhotoLog()");
-onEvent("Photograph_Log/Photograph_Log/Delete", "delayclick", "deletePhotoLog()");
-onEvent("Photograph_Log/Photograph_Log/SaveAndNew", "delayclick", "saveAndNewPhotoLog()");
-onEvent("Photograph_Log/Photograph_Log/ReturnToContext", "delayclick", "cancelTabGroup(\"Photograph_Log\", true)");
+onEvent("Photograph_Log", "show", "addNavigationButtons(\"Photograph_Log\"); keepTabGroupChanges(\"Photograph_Log\"); savePhotoLog(\"\");");
 
 String photolog_id = null;
 
 newPhotoLog(){
+    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
+        return;
+    }
+    if (isNull(context_id)){
+        showToast("{You_must_save_a_context_first}");
+        return;
+    }
     photolog_id = null;
     newTabGroup("Photograph_Log");
-    if(isContext) {
-        setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
-    } else {
-        setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
-    }
+    setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
+    setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
 }
 
 loadPhotoLog() {
     photolog_id = getFieldValue("Context/Context_Attachments/PhotoLogList");
+    loadPhotoLogFrom(photolog_id);
+}
+
+loadPhotoLogFrom(String id) {
+    photolog_id = id;
     if (isNull(photolog_id)) return;
     showTabGroup("Photograph_Log", photolog_id);
 }
 
-loadContextGroupPhotoLog() {
-    photolog_id = getFieldValue("ContextGroup/ContextGroup_Attachments/PhotoLogList");
-    if (isNull(photolog_id)) return;
-    showTabGroup("Photograph_Log", photolog_id);
-}
+// todo: incorporate the following load into the context group event handling using the loadPhotoLogFrom(id) function
+// loadContextGroupPhotoLog() {
+//     photolog_id = getFieldValue("ContextGroup/ContextGroup_Attachments/PhotoLogList");
+//     if (isNull(photolog_id)) return;
+//     showTabGroup("Photograph_Log", photolog_id);
+// }
 
 loadPhotoLogAttributes(){
-    populateDropDown("Photograph_Log/Photograph_Log/Scene_Type",  makeVocab("Scene Type"));
+    makeVocab("DropDown", "Photograph_Log/Photograph_Log/Device_Code", "Device Code");
 }
 
-savePhotoLog() {
-    if (isNull(getFieldValue("Photograph_Log/Photograph_Log/Photograph_Reference_ID"))) {
-        showWarning("Logic Error", "Cannot save Photgraph without Reference ID.");
-        return;
-    }
-    
-    if (!isNull(photolog_id)) {
-        entity = fetchArchEnt(photolog_id);
-    }
-    if(isContext) {
-        saveTabGroup("Photograph_Log", photolog_id, null, null, "photolog_id = getLastSavedRecordId(); onPhotoLogSaved(); cancelTabGroup(\"Photograph_Log\", false);showTab(\"Context/Context_Attachments\");");    
-    } else {
-        saveTabGroup("Photograph_Log", photolog_id, null, null, "photolog_id = getLastSavedRecordId(); onPhotoLogSaved(); cancelTabGroup(\"Photograph_Log\", false);showTab(\"ContextGroup/ContextGroup_Attachments\");");
-    }
-    
-}
-
-saveAndNewPhotoLog() {
-    if (isNull(getFieldValue("Photograph_Log/Photograph_Log/Photograph_Reference_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    if (!isNull(photolog_id)) {
-        entity = fetchArchEnt(photolog_id);
-    }
-    saveTabGroup("Photograph_Log", photolog_id, null, null, "photolog_id = getLastSavedRecordId(); onPhotoLogSaved(); newPhotoLog();");
-    
+savePhotoLog(String callback) {
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    // TODO: does this photolog have area code and site code attributes/properties?
+    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Photograph_Log", photolog_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            photolog_id = uuid;
+            if (newRecord) {
+              onPhotoLogSaved();
+            }            
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
 }
 
 onPhotoLogSaved(){
-    photolog_id = getLastSavedRecordId();
-    saveEntitiesToRel(verb, archent_id, photolog_id);
+    saveEntitiesToRel("ContextPhotographLog", context_id, photolog_id);
+    showToast("{Associated_with_Context}");
 
 }
 
 deletePhotoLogFromContext(){
     photolog_id = getFieldValue("Context/Context_Attachments/PhotoLogList");
     if (!isNull(photolog_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Photograph Log!", "reallyDeletePhotoLog()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Photograph_Log}", "reallyDeletePhotoLog()", "doNotDelete()");
     }
 }
 
 deletePhotoLog(){
     if (!isNull(photolog_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Photograph Log!", "reallyDeletePhotoLog()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Photograph_Log}", "reallyDeletePhotoLog()", "doNotDelete()");
     } else {
         cancelTabGroup("Photograph_Log", true);
     }
 }
 
-reallyDeletePhotoLog(){
-    deleteArchEnt(photolog_id);
-    showTabGroup("Photograph_Log");
-    cancelTabGroup("Photograph_Log", false);
-}
-
 doNotDelete(){
-    showToast("Delete Cancelled.");
+    showToast("{Delete_Cancelled}");
 }
 
 /** Action Bar **/

@@ -1495,6 +1495,22 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Photograph Reference ID" isIdentifier= "true" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
     </property>
+    <!-- TODO: copy over area code / site code identifiers from PAZC? -->
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     <property name="Scene Type" type="enum">
       <description>The type of scene captured, eg opening or closing view of the Context. (Vocab: Open, Close, Other)</description>
       <lookup>
