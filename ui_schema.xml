@@ -25,6 +25,7 @@
             <usertab>
               <Area_Code/>
               <users/>
+              <Device_Code/>
               <login/>
               <guide/>
             </usertab>
@@ -49,6 +50,10 @@
                   <searchMyContext/>
                 </child2>
               </container1>
+              <Artefact_Group_Starting_ID/>
+              <SpecialFind_Starting_ID/>
+              <Sample_Starting_ID/>
+              <GPS_Diagnostics/>
             </data>
             <sample>
               <container1>
@@ -865,6 +870,13 @@
             <value>placeholder</value>
           </item>
         </select1>
+        <select1 ref="Device_Code" faims_style_class="required">
+          <label>{Select_Device_Code}</label>
+          <item>
+            <label>{placeholder}</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
         <trigger ref="login">
           <label>Login</label>
         </trigger>
@@ -936,6 +948,21 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <value>placeholder</value>
           </item>
         </select1>
+        <input faims_certainty="false" faims_read_only="false" ref="ContextIncrement">
+          <label>{Context_Starting_ID}</label>
+        </input>
+        <input faims_certainty="false" faims_read_only="false" ref="Artefact_Group_Starting_ID">
+          <label>{Artefact_Group_Starting_ID}</label>
+        </input>
+        <input faims_certainty="false" faims_read_only="false" ref="SpecialFind_Starting_ID">
+          <label>{SpecialFind_Starting_ID}</label>
+        </input>
+        <input faims_certainty="false" faims_read_only="false" ref="Sample_Starting_ID">
+          <label>{Sample_Starting_ID}</label>
+        </input>
+        <input ref="GPS_Diagnostics" faims_web="false" faims_certainty="false" faims_annotation="false" faims_read_only="true">
+          <label>{GPS_Diagnostics}</label>
+        </input>
       </group>
       
       <group faims_scrollable="false" ref="contextGroup">
