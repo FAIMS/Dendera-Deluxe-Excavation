@@ -101,6 +101,19 @@ validateFields(List fields, String htmlViewPath, Boolean showWarning) {
     String validationMessageHtml  = validateFields(fields, "HTML");
     populateWebViewHtml(htmlViewPath , validationMessageHtml);
 }
+
+validateContextTabGroup() {
+    Boolean showWarning = true;
+    validateContextTabGroup(showWarning);
+}
+
+validateContextTabGroup(Boolean showWarning) {
+    List f = new ArrayList(); // fields to be validated
+
+    "ref", "{Name}", "true"
+
+    validateFields(fields, "Context/Context_Validation/validationResults", showWarning);
+}
  
 /*** control ***/
 onEvent("control"                     , "show"  , "removeNavigationButtons(); setSearchTrench();");
@@ -111,11 +124,11 @@ onEvent("control/search"              , "show"  , "search();");
 onEvent("control/search/Search"       , "click" , "clearSearch()");
 onEvent("control/search/searchButton" , "click" , "search()");
 onEvent("control/search/entityTypes"  , "click" , "search()");
-onEvent("control/search/Area_Code"    , "click" , "search()");
+onEvent("control/search/Trench"    , "click" , "search()");
 onEvent("control/search/entityList"   , "click" , "loadEntity();");
 
 setSearchTrench() {
-    setFieldValue("control/search/Area_Code", getFieldValue("user/usertab/Area_Code"));
+    setFieldValue("control/search/Trench", getFieldValue("user/usertab/Trench"));
 }
 
 clearSearch(){
@@ -130,7 +143,7 @@ refreshEntities() {
 
 search(){
     String type = getFieldValue("control/search/entityTypes");
-    String areaCode = getFieldValue("control/search/Area_Code");
+    String areaCode = getFieldValue("control/search/Trench");
     String term = getFieldValue("control/search/Search");
     String searchQuery = "SELECT uuid, response "+
                          "  FROM latestNonDeletedArchEntFormattedIdentifiers  "+
@@ -1006,7 +1019,7 @@ newContextGroup(menu){
     // date = fetchOne("select datetime('now', 'localtime');");
     // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", date.get(0));
     // setFieldValue("ContextGroup/ContextGroup_Details/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
-    setFieldValue("ContextGroup/ContextGroup_Details/Area_Code", areaCode);
+    setFieldValue("ContextGroup/ContextGroup_Details/Trench", areaCode);
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
     autoNumFeature();
     populateContextGroup();
@@ -2526,8 +2539,8 @@ String device = "";
 String areaCode = "";
 
 login(){
-    if(isNull(getFieldValue("user/usertab/Area_Code")) || isNull(getFieldValue("user/usertab/users")) || isNull(getFieldValue("user/usertab/Device_Code"))){
-        showWarning("{Warning}", "{Please_select_a_User_and_an_Area_Code_and_a_Device_Code_before_logging_in}");
+    if(isNull(getFieldValue("user/usertab/Trench")) || isNull(getFieldValue("user/usertab/users")) || isNull(getFieldValue("user/usertab/Device_Code"))){
+        showWarning("{Warning}", "{Please_select_a_User_and_an_Trench_and_a_Device_Code_before_logging_in}");
         return;
     } else {
         String userVocabId = getFieldValue("user/usertab/users");
@@ -2544,7 +2557,7 @@ login(){
         });
 
         // store the user and area code into local settings, and set the globals
-        areaCode = getFieldValue("user/usertab/Area_Code");
+        areaCode = getFieldValue("user/usertab/Trench");
         device = getFieldValue("user/usertab/Device_Code");
         saveLoginDetails();
     }
@@ -2552,9 +2565,9 @@ login(){
 
 saveLoginDetails() {
   fetchOne("REPLACE INTO localSettings(key, value) VALUES('User_VocabID', '"+getFieldValue("user/usertab/users")+"');");
-  fetchOne("REPLACE INTO localSettings(key, value) VALUES('Trench_VocabID', '"+getFieldValue("user/usertab/Area_Code")+"');");
+  fetchOne("REPLACE INTO localSettings(key, value) VALUES('Trench_VocabID', '"+getFieldValue("user/usertab/Trench")+"');");
   fetchOne("REPLACE INTO localSettings(key, value) VALUES('DeviceCode_VocabID', '"+getFieldValue("user/usertab/Device_Code")+"');");
-  fetchOne("REPLACE INTO localsettings(key, value) SELECT 'Trench_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Area_Code")+";");
+  fetchOne("REPLACE INTO localsettings(key, value) SELECT 'Trench_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Trench")+";");
   fetchOne("REPLACE INTO localsettings(key, value) SELECT 'DeviceCode_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Device_Code")+";");
 }
 
@@ -2583,7 +2596,7 @@ loadLoginDetails() {
   fetchOne(areaCodeQ, new FetchCallback() {
     onFetch(result) {
       if (!isNull(result)) {
-        setFieldValue("user/usertab/Area_Code", result.get(0));
+        setFieldValue("user/usertab/Trench", result.get(0));
       }
     }  
   });
@@ -2777,9 +2790,9 @@ setTimestamp(String path) {
 
 // Stuff that needs to happen after everything.
 initialiseModule() {
-    makeVocab("DropDown", "user/usertab/Area_Code", "Trench");
+    makeVocab("DropDown", "user/usertab/Trench", "Trench");
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
-    makeVocab("DropDown", "control/search/Area_Code", "Trench");
+    makeVocab("DropDown", "control/search/Trench", "Trench");
     // loadSearchAttributes();
     // loadContextAttributes();
     // loadContextGroupAttributes();
