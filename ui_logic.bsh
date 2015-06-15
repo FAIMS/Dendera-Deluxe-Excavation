@@ -506,20 +506,24 @@ loadContextFrom(contextid) {
 }
 
 saveContext(String callback) {
-    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
-        showWarning("Logic Error", "Cannot save Context without Context Code");
-        showTab("Context/Context_GeneralInformation");
-        return;
-    }
-    if (!isNull(context_id)) {
-        entity = fetchArchEnt(context_id);
-    }
-    saveTabGroup("Context", context_id, null, null, "context_id = getLastSavedRecordId();getCounterFromDB();" + callback);
+    Boolean enable_autosave = true;
+    attributes = createAttributeList();
+    // todo: add attributes?
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Context", context_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            context_id = uuid;
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
 }
 
 deleteContext(){
     if (!isNull(context_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Context!", "reallyDeleteContext()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Context}", "reallyDeleteContext()", "doNotDelete()");
     } else {
         cancelTabGroup("Context", true);
     }
@@ -528,11 +532,10 @@ deleteContext(){
 reallyDeleteContext(){
     deleteArchEnt(context_id);
     cancelTabGroup("Context", false);
-    getCounterFromDB();
 }
 
 doNotDelete(){
-    showToast("Delete Cancelled.");
+    showToast("{Delete_Cancelled}");
 }
 
 getCounterFromDB(){
@@ -970,18 +973,27 @@ loadContextGroupFromContext() {
 
 }
 
-saveContextGroup(String callback){
-    if (isNull(context_group_id)) context_group_id = null;
-    if (isNull(getFieldValue("ContextGroup/ContextGroup_Details/Title"))) {
-        showWarning("Validation Error", "Feature requires a title to be saved.");
-        return;
-    }
-    saveTabGroup("ContextGroup", context_group_id, null, null, "context_group_id = getLastSavedRecordId();onContextGroupSaved();populateContextGroup();" + callback);
+saveContextGroup(){
+    Boolean enable_autosave = true;
+    attributes = createAttributeList();
+    // todo: add attributes?
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("ContextGroup", context_group_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            context_group_id = uuid;
+            if (newRecord) {
+              onContextGroupSaved();
+            }
+            populateContextGroup();
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
 }
 
 onContextGroupSaved(){
-    if(newContextGroupRel) {
-        context_group_id = getLastSavedRecordId();
+    if(!isNull(context_id)) {
         saveEntitiesToRel("ContextContextGroup", context_id, context_group_id);
     }
 }
@@ -1047,9 +1059,9 @@ loadContextFromContextGroup(){
 
 deleteContextGroup(){
     if (!isNull(context_group_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Context Group!", "reallyDeleteContextGroup()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Context_Group}", "reallyDeleteContextGroup()", "doNotDelete()");
     }
-}
+}           
 
 reallyDeleteContextGroup(){
     deleteArchEnt(context_group_id);
@@ -1057,7 +1069,7 @@ reallyDeleteContextGroup(){
 }
 
 doNotDelete(){
-    showToast("Delete Cancelled.");
+    showToast("{Delete_Cancelled}");
 }
 
 removeFromContextGroup() {
@@ -1247,39 +1259,24 @@ autoNumArtefactGroup(){
     // setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID", autoNum.get(0));
 }
 
-saveArtefactGroup() {
-    if (isNull(getFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    if (!isNull(artefact_group_id)) {
-        entity = fetchArchEnt(artefact_group_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Artefact Group cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-        saveTabGroup("Artefact_Group", artefact_group_id, null, null, "artefact_group_id = getLastSavedRecordId(); onArtefactGroupSaved(); cancelTabGroup(\"Artefact_Group\", false); showTab(\"Context/Context_Artefacts\");");
-    }
-}
-
-saveAndNewArtefactGroup(){
-    if (isNull(getFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-
-    if (!isNull(artefact_group_id)) {
-        entity = fetchArchEnt(artefact_group_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Artefact Group cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-       saveTabGroup("Artefact_Group", artefact_group_id, null, null, "artefact_group_id = getLastSavedRecordId(); onArtefactGroupSaved(); newArtefactGroup();");
-    }
+saveArtefactGroup(String callback) {
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    // TODO: add attributes?
+    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Artefact_Group", artefact_group_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            artefact_group_id = uuid;
+            if (newRecord) {
+              onArtefactGroupSaved();
+            }            
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
 }
 
 duplicateArtefactGroup(){
@@ -1301,24 +1298,22 @@ duplicateArtefactGroup(){
 }
 
 onArtefactGroupSaved(){
-    artefact_group_id = getLastSavedRecordId();
     saveEntitiesToRel("ContextArtefactGroup", context_id, artefact_group_id);
-    showToast("Associated with Context");
+    showToast("{Associated_with_Context}");
 }
 
 deleteArtefactGroupFromContext(){
     artefact_group_id = getFieldValue("Context/Context_Artefacts/artefactGroupList");
     if (!isNull(artefact_group_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Artefact Group!", "reallyDeleteArtefactGroup()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Artefact_Group}", "reallyDeleteArtefactGroup()", "doNotDelete()");
     }
 }
 
 deleteArtefactGroup(){
     if (!isNull(artefact_group_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Artefact Group!", "reallyDeleteArtefactGroup()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Artefact_Group}", "reallyDeleteArtefactGroup()", "doNotDelete()");
     } else {
         cancelTabGroup("Artefact_Group", true);
-        showTab("Context/Context_Artefacts");
     }
 }
 
@@ -1326,11 +1321,10 @@ reallyDeleteArtefactGroup(){
     deleteArchEnt(artefact_group_id);
     showTabGroup("Artefact_Group");
     cancelTabGroup("Artefact_Group", false);
-    showTab("Context/Context_Artefacts");
 }
 
 doNotDelete(){
-    showToast("Delete Cancelled.");
+    showToast("{Delete_Cancelled}");
 }
 
 loadArtefactGroupAttributes(){
@@ -1376,36 +1370,30 @@ loadSampleFrom(String id) {
     showTabGroup("Sample", sample_id);
 }
 
-saveSample() {
-    if (isNull(getFieldValue("Sample/Sample_GeneralInformation/Sample_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    
-    if (!isNull(sample_id)) {
-        entity = fetchArchEnt(sample_id);
-    }
-    if(menu) {
-        saveTabGroup("Sample", sample_id, null, null, "sample_id = getLastSavedRecordId(); cancelTabGroup(\"Sample\", false); showTab(\"control/sample\")");
-    } else {
-        saveTabGroup("Sample", sample_id, null, null, "sample_id = getLastSavedRecordId(); onSampleSaved(); cancelTabGroup(\"Sample\", false); showTab(\"Context/Context_Samples\")");
-    }
-    
+saveSample(String callback) {
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    // todo: add attributes?
+    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Sample", sample_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            sample_id = uuid;
+            if (newRecord) {
+              onSampleSaved();
+            }
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
 }
 
-saveAndNewSample() {
-    if (isNull(getFieldValue("Sample/Sample_GeneralInformation/Sample_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    if (!isNull(sample_id)) {
-        entity = fetchArchEnt(sample_id);
-    }
-    if(menu) {
-        saveTabGroup("Sample", sample_id, null, null, "sample_id = getLastSavedRecordId(); cancelTabGroup(\"Sample\", false); showTab(\"control/sample\"); showToast(\"Cannot create new Sample from main menu.\");");    
-    } else {
-        saveTabGroup("Sample", sample_id, null, null, "sample_id = getLastSavedRecordId(); onSampleSaved(); newSample();");    
-    }
+onSampleSaved(){
+    saveEntitiesToRel("ContextSample", context_id, sample_id);
+    showToast("{Associated_with_Context}");
+
 }
 
 duplicateSample(){
@@ -1425,23 +1413,18 @@ duplicateSample(){
     
 }
 
-onSampleSaved(){
-    sample_id = getLastSavedRecordId();
-    saveEntitiesToRel("ContextSample", context_id, sample_id);
-}
-
 deleteSampleFromContext(){
     sample_id = getFieldValue("Context/Context_Samples/sampleList");
     if (!isNull(sample_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Sample!", "reallyDeleteSample()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Sample}", "reallyDeleteSample()", "doNotDelete()");
     }
 }
 
 deleteSample(){
     if (!isNull(sample_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Sample!", "reallyDeleteSample()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Sample}", "reallyDeleteSample()", "doNotDelete()");
     } else {
-         cancelTabGroup("Sample", true);
+        cancelTabGroup("Sample", true);
     }
 }
 
@@ -1452,7 +1435,7 @@ reallyDeleteSample(){
 }
 
 doNotDelete(){
-    showToast("Delete Cancelled.");
+    showToast("{Delete_Cancelled}");
 }
 
 loadSampleAttributes(){
@@ -1492,70 +1475,48 @@ loadMatrixFrom(String id) {
     showTabGroup("Matrix", matrix_id);
 }
 
-saveMatrix() {
-    if (isNull(getFieldValue("Matrix/Matrix/Component")) || isNull(getFieldValue("Matrix/Matrix/Percentage"))) {
-        showWarning("Logic Error", "Cannot save Matrix without Component or Percentage");
-        return;
-    }
-    
-    if (!isNull(matrix_id)) {
-        entity = fetchArchEnt(matrix_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Matrix cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-        String percentage = getFieldValue("Matrix/Matrix/Percentage");
-        if(percentage.charAt(percentage.length()-1) != '%') {
-            percentage = percentage + "%";
-            setFieldValue("Matrix/Matrix/Percentage", percentage);
+saveMatrix(String callback) {
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    // todo: add attributes?
+    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            matrix_id = uuid;
+            if (newRecord) {
+              onMatrixSaved();
+            }
+            String percentage = getFieldValue("Matrix/Matrix/Percentage");
+            if(percentage.charAt(percentage.length()-1) != '%') {
+                percentage = percentage + "%";
+                setFieldValue("Matrix/Matrix/Percentage", percentage);
+            }
+            execute(callback);
         }
-        saveTabGroup("Matrix", matrix_id, null, null, "matrix_id = getLastSavedRecordId(); onMatrixSaved(); cancelTabGroup(\"Matrix\", false); showTab(\"Context/Context_Deposits\");");
-    }
-}
-
-saveAndNewMatrix() {
-    if (isNull(getFieldValue("Matrix/Matrix/Component")) || isNull(getFieldValue("Matrix/Matrix/Percentage"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    if (!isNull(matrix_id)) {
-        entity = fetchArchEnt(matrix_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Matrix cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-        String percentage = getFieldValue("Matrix/Matrix/Percentage");
-        if(percentage.charAt(percentage.length()-1) != '%') {
-            percentage = percentage + "%";
-            setFieldValue("Matrix/Matrix/Percentage", percentage);
+        onError(message) {
+            showToast(message);
         }
-       saveTabGroup("Matrix", matrix_id, null, null, "matrix_id = getLastSavedRecordId(); onMatrixSaved(); newMatrix();");
-    }
+    }, enable_autosave);
 }
 
 onMatrixSaved(){
-    matrix_id = getLastSavedRecordId();
     saveEntitiesToRel("ContextMatrix", context_id, matrix_id);
+    showToast("{Associated_with_Context}");
 
 }
 
 deleteMatrixFromContext(){
     matrix_id = getFieldValue("Context/Context_Deposits/matrixList");
     if (!isNull(matrix_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Matrix!", "reallyDeleteMatrix()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Matrix}", "reallyDeleteMatrix()", "doNotDelete()");
     }
 }
 
 deleteMatrix(){
     if (!isNull(matrix_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Matrix!", "reallyDeleteMatrix()", "doNotDelete()");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Matrix}", "reallyDeleteMatrix()", "doNotDelete()");
     } else {
         cancelTabGroup("Matrix", true);
-        showTab("Context/Context_Deposits");
     }
 }
 
@@ -1563,11 +1524,10 @@ reallyDeleteMatrix(){
     deleteArchEnt(matrix_id);
     showTabGroup("Matrix");
     cancelTabGroup("Matrix", false);
-    showTab("Context/Context_Deposits");
 }
 
 doNotDelete(){
-    showToast("Delete Cancelled.");
+    showToast("{Delete_Cancelled}");
 }
 
 loadMatrixAttributes(){
@@ -1647,40 +1607,53 @@ specialFindAutoNum(){
     // setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", autoNum.get(0));
 }
 
+saveSpecialFind(String callback) {
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Special_Find", special_find_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            special_find_id = uuid;
+            if (newRecord) {
+              onSpecialFindSaved();
+            }
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
+}
 
-saveSpecialFind() {
-    if (isNull(getFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    
+onSpecialFindSaved(){
+    saveEntitiesToRel("ContextSpecialFind", context_id, special_find_id);
+    showToast("{Associated_with_Context}");
+}
+
+deleteSpecialFindFromContext(){
+    special_find_id = getFieldValue("Context/Context_Artefacts/specialFindList");
     if (!isNull(special_find_id)) {
-        entity = fetchArchEnt(special_find_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Special_Find cannot be saved as parent context is not saved or loaded.");
-        return null;
-    } else {
-       saveTabGroup("Special_Find", special_find_id, null, null, "special_find_id = getLastSavedRecordId(); onSpecialFindSaved(); cancelTabGroup(\"Special_Find\", false); showTab(\"Context/Context_Artefacts\");");
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Special_Find}", "reallyDeleteSpecialFind()", "doNotDelete()");
     }
 }
 
-saveAndNewSpecialFind() {
-    if (isNull(getFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
+deleteSpecialFind(){
     if (!isNull(special_find_id)) {
-        entity = fetchArchEnt(special_find_id);
-    }
-
-    if (isNull(context_id)) {
-        showWarning("Logic Error", "Special_Find cannot be saved as parent context is not saved or loaded.");
-        return null;
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Special_Find}", "reallyDeleteSpecialFind()", "doNotDelete()");
     } else {
-       saveTabGroup("Special_Find", special_find_id, null, null, "special_find_id = getLastSavedRecordId(); onSpecialFindSaved(); newSpecialFind();");
+        cancelTabGroup("Special_Find", true);
     }
+}
+
+reallyDeleteSpecialFind(){
+    deleteArchEnt(special_find_id);
+    showTabGroup("Special_Find");
+    cancelTabGroup("Special_Find", false);
+}
+
+doNotDelete(){
+    showToast("{Delete_Cancelled}");
 }
 
 duplicateSpecialFind(){
@@ -1699,39 +1672,6 @@ duplicateSpecialFind(){
     } else {
        saveTabGroup("Special_Find", special_find_id, null, null, "special_find_id = getLastSavedRecordId(); onSpecialFindSaved(); special_find_id = null; specialFindAutoNum();");
     }
-}
-
-onSpecialFindSaved(){
-    special_find_id = getLastSavedRecordId();
-    saveEntitiesToRel("ContextSpecialFind", context_id, special_find_id);
-
-}
-
-deleteSpecialFindFromContext(){
-    special_find_id = getFieldValue("Context/Context_Artefacts/specialFindList");
-    if (!isNull(special_find_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Special Find!", "reallyDeleteSpecialFind()", "doNotDelete()");
-    }
-}
-
-deleteSpecialFind(){
-    if (!isNull(special_find_id)) {
-        showAlert("Confirm Deletion", "Press OK to Delete this Special Find!", "reallyDeleteSpecialFind()", "doNotDelete()");
-    } else {
-        cancelTabGroup("Special_Find", true);
-        showTab("Context/Context_Artefacts");
-    }
-}
-
-reallyDeleteSpecialFind(){
-    deleteArchEnt(special_find_id);
-    showTabGroup("Special_Find");
-    cancelTabGroup("Special_Find", false);
-    showTab("Context/Context_Artefacts");
-}
-
-doNotDelete(){
-    showToast("Delete Cancelled.");
 }
 
 loadSpecialFindAttributes(){
