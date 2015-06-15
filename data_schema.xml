@@ -73,79 +73,24 @@
     <description>Implements a 1:N between context group and its photograph logs
     </description>
   </RelationshipElement>
-  <!-- CONTEXT -->
+  <!-- DIARY -->
   <ArchaeologicalElement name="Diary">
     <description></description>
+    <!-- TODO: identifier format? -->
     <property name="Timestamp" type="freetext" isIdentifier="true">
       <description></description>
+      <formatString><![CDATA[$2]]></formatString>
     </property>
     <property name="CreatedBy" type="freetext" isIdentifier="true" >
       <description></description>
+      <formatString><![CDATA[$2]]></formatString>
     </property>
     <property name="Title" type="freetext">
       <description></description>
     </property>
-    <property name="Trench" type="enum">
-      <description></description>
-    </property>
-    <property name="Text" type="freetext">
-      <description></description>
-    </property>
-    <property name="Audio" type="file">
-      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
-    </property>
-    <property name="Video" type="file">
-      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
-    </property>
-    <property name="Photo" type="file">
-      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
-    </property>
-    <property name="FileAttach" type="file">
-      <description></description>
-    </property>
-  </ArchaeologicalElement>
-
-  <ArchaeologicalElement name="Context">
-    <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
-    <property name="Site Code" type="freetext">
-      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
-    </property>
-    <property isIdentifier="true" name="Context ID" type="freetext">
-      <description>Every archaeological context (negative element (cut), deposit, structure, skeleton) is given a unique 3 or 4 letter context code. Each trench is designated with a separate letter which starts the code, so it is immediately obvious to which trench a context belongs. For example context HAA belongs to Trench H, context MQP to Trench M etc.
-
-	  The contexts are labelled consecutively in alphabetical order using the letters following the trench letter. For Trench H the first context would be HAA, the second HAB, the third HAB and so on. In addition sets of letters can denote parts of trenches, buildings etc. E.g. HFs might denote contexts from a specific building.
-
-	  Burial context codes begin with the letter Z, followed by the trench letter. Hence burial ZHA is the first burial context from trench H.
-
-	  Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.</description>
-    <property name="Device Code" type="enum">
-      <description/>
-      <lookup>
-        <term>0<description/></term>
-        <term>1<description/></term>
-        <term>2<description/></term>
-        <term>3<description/></term>
-        <term>4<description/></term>
-        <term>5<description/></term>
-        <term>6<description/></term>
-        <term>7<description/></term>
-        <term>8<description/></term>
-        <term>9<description/></term>
-      </lookup>
-    </property>
-    </property>
-    <property isIdentifier="true" name="Context Name" type="freetext">
-      <description>Brief name for the Context eg 'House A - west wall'</description>
-    </property>
-    <property name="Excavators" type="really shitty multivalued">
-      <description>Initials of the excavators that have worked on the context.</description>
-      <!-- Instead of UBAF-27, we're sticking in a textarea-->
-    </property>
-    <property name="Plans" type="freetext">
-      <description>Reference numbers to plans or drawings of this Context.</description>
-    </property>
-    <property name="Trench" type="enum">
+    <property name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>H
         <description/></term>
@@ -164,6 +109,86 @@
         <term>X
         <description/></term>
       </lookup>
+    </property>
+    <property name="Text" type="freetext">
+      <description></description>
+    </property>
+    <property name="Audio" type="file">
+      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+    </property>
+    <property name="Video" type="file">
+      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+    </property>
+    <property name="Photo" type="file">
+      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+    </property>
+    <property name="FileAttach" type="file">
+      <description></description>
+    </property>
+  </ArchaeologicalElement>
+  <!-- CONTEXT -->
+  <ArchaeologicalElement name="Context">
+    <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
+    <property isIdentifier="true" name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
+      <lookup>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
+      </lookup>
+    </property>
+    <property isIdentifier="true" name="Context ID" type="freetext">
+      <description>Every archaeological context (negative element (cut), deposit, structure, skeleton) is given a unique 3 or 4 letter context code. Each trench is designated with a separate letter which starts the code, so it is immediately obvious to which trench a context belongs. For example context HAA belongs to Trench H, context MQP to Trench M etc.
+
+      The contexts are labelled consecutively in alphabetical order using the letters following the trench letter. For Trench H the first context would be HAA, the second HAB, the third HAB and so on. In addition sets of letters can denote parts of trenches, buildings etc. E.g. HFs might denote contexts from a specific building.
+
+      Burial context codes begin with the letter Z, followed by the trench letter. Hence burial ZHA is the first burial context from trench H.
+
+      Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.</description>
+      <formatString><![CDATA[$2-]]></formatString>
+    </property>
+    <property isIdentifier="true" name="Context Name" type="freetext">
+      <description>Brief name for the Context eg 'House A - west wall'</description>
+      <formatString><![CDATA[$2]]></formatString>
+    </property>
+    <property name="Site Code" type="freetext">
+      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
+    </property>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
+    <property name="Excavators" type="really shitty multivalued">
+      <description>Initials of the excavators that have worked on the context.</description>
+      <!-- Instead of UBAF-27, we're sticking in a textarea-->
+    </property>
+    <property name="Plans" type="freetext">
+      <description>Reference numbers to plans or drawings of this Context.</description>
     </property>
     <property name="Grid X" type="freetext">
       <description>The X coordinate on the SW corner of the context.</description>
@@ -893,6 +918,15 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--CONTEXT GROUP-->
   <ArchaeologicalElement name="Context Group" type="container">
     <description>A group of contexts.</description>
+    <!-- TODO: identifier format? -->
+    <property isIdentifier="true" name="Context Group ID" type="freetext">
+      <description>Feature number taken from the appropriate running list.</description>
+      <formatString><![CDATA[$2]]></formatString>
+    </property>
+    <property isIdentifier="true" name="Title" type="freetext">
+      <description>Enter the Feature name e.g. Hearth in Building 2.</description>
+      <formatString><![CDATA[$2]]></formatString>
+    </property>
     <property name="Device Code" type="enum">
       <description/>
       <lookup>
@@ -913,12 +947,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property name="Area Code" type="freetext">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
-    </property>
-    <property name="Context Group ID" type="freetext" isIdentifier="true">
-      <description>Feature number taken from the appropriate running list.</description>
-    </property>
-    <property isIdentifier="true" name="Title" type="freetext">
-      <description>Enter the Feature name e.g. Hearth in Building 2.</description>
     </property>
     <property name="Location Note CG" type="freetext">
       <description>Record where the feature is within a space / building/area if relevant and in particular its relationship to other features or key contexts.</description>
@@ -1013,11 +1041,14 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- Matrix -->
   <ArchaeologicalElement name="Matrix">
     <description/>
-    <property name="Percentage" type="float" isIdentifier="true">
+    <!-- TODO: identifier format? -->
+    <property isIdentifier="true" name="Percentage" type="float">
       <description>Enter the approximate % volume of this material in the Context.</description>
+      <formatString><![CDATA[$2]]></formatString>
     </property>
-    <property name="Component" type="enum" isIdentifier="true">
+    <property isIdentifier="true" name="Component" type="enum">
       <description>Describe the components which make up 10% or more of the deposit.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>{0No_Observation}
         <description>data not collected</description></term>
@@ -1074,29 +1105,35 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- ARTEFACT GROUP-->
   <ArchaeologicalElement name="Artefact Group">
     <description>The total group or assemblage of objects recovered from a single Context. These are sometimes referred to as 'Bulk Finds'.</description>
-    <property name="Device Code" type="enum">
-      <description/>
+    <property isIdentifier="true" name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
-        <term>0<description/></term>
-        <term>1<description/></term>
-        <term>2<description/></term>
-        <term>3<description/></term>
-        <term>4<description/></term>
-        <term>5<description/></term>
-        <term>6<description/></term>
-        <term>7<description/></term>
-        <term>8<description/></term>
-        <term>9<description/></term>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
       </lookup>
     </property>
-    <property name="Site Code" type="freetext">
-      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
-    </property>
-    <property name="Context ID" type="freetext">
+    <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for the Context from which this {Artefact_Group} was collected.</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Artefact Group ID" type="freetext">
       <description>Unique number or code for the {Artefact_Group}.</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Artefact Class" type="enum">
       <description>Broad Artefact Class for each Artefact (eg Glass Ceramic Building Material).</description>
@@ -1210,6 +1247,25 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
       </lookup>
     </property>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
+    <property name="Site Code" type="freetext">
+      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
+    </property>
+    
     <property name="Artefact X" type="float">
       <description>The reading from the x-axis (horizontal) of an arbitrary site grid corresponding to the location of the {Artefact_Group} at the time of excavation.</description>
     </property>
@@ -1244,29 +1300,35 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--SAMPLE-->
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
-    <property name="Device Code" type="enum">
-      <description/>
+    <property isIdentifier="true" name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
-        <term>0<description/></term>
-        <term>1<description/></term>
-        <term>2<description/></term>
-        <term>3<description/></term>
-        <term>4<description/></term>
-        <term>5<description/></term>
-        <term>6<description/></term>
-        <term>7<description/></term>
-        <term>8<description/></term>
-        <term>9<description/></term>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
       </lookup>
     </property>
-    <property name="Site Code" type="freetext">
-      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
-    </property>
-    <property name="Context ID" type="freetext">
+    <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for the Context from which this Artefact Cluster was collected.</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Sample ID" type="freetext">
       <description>The unique code or reference for the Sample.</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Sample Type" type="enum">
       <description>The type of Sample collected eg Soil Wood Pollen.</description>
@@ -1296,6 +1358,24 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{zOther}
         <description>Sample not elsewhere described. Include details in Annotation field.</description></term>
       </lookup>
+    </property>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
+    <property name="Site Code" type="freetext">
+      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
     <property name="Sample Volume" type="float">
       <description>Volume (in litres) of the sample collected.</description>
@@ -1390,29 +1470,35 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- SPECIAL FIND -->
   <ArchaeologicalElement name="Special Find">
     <description/>
-    <property name="Device Code" type="enum">
-      <description/>
+    <property isIdentifier="true" name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
-        <term>0<description/></term>
-        <term>1<description/></term>
-        <term>2<description/></term>
-        <term>3<description/></term>
-        <term>4<description/></term>
-        <term>5<description/></term>
-        <term>6<description/></term>
-        <term>7<description/></term>
-        <term>8<description/></term>
-        <term>9<description/></term>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
       </lookup>
     </property>
-    <property name="Site Code" type="freetext">
-      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
-    </property>
-    <property name="Context ID" type="freetext">
+    <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for each Context.</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Special Find ID" type="freetext">
       <description>Unique number or code for the Small Find.</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Special Find Class" type="freetext">
       <description>Broad Artefact Class for each Artefact (eg Glass Ceramic Building Material).</description>
@@ -1526,6 +1612,24 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
       </lookup>
     </property>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
+    <property name="Site Code" type="freetext">
+      <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
+    </property>
     <property name="Special Find Name" type="freetext">
       <description>Brief name or description of the Small Find e.g. Ground Stone Pounder</description>
     </property>
@@ -1557,6 +1661,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- INVESTIGATOR -->
   <ArchaeologicalElement name="Investigator">
     <description>A team member not recording the data</description>
+    <!-- TODO: identifier format? -->
     <property name="Role" type="enum" isIdentifier="true">
       <description>Role of the associated Investigator.</description>
       <lookup>
@@ -1585,26 +1690,35 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
-    <property name="Device Code" type="enum">
-      <description/>
+    <property isIdentifier="true" name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
-        <term>0<description/></term>
-        <term>1<description/></term>
-        <term>2<description/></term>
-        <term>3<description/></term>
-        <term>4<description/></term>
-        <term>5<description/></term>
-        <term>6<description/></term>
-        <term>7<description/></term>
-        <term>8<description/></term>
-        <term>9<description/></term>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
       </lookup>
     </property>
-    <property name="Context ID" type="freetext">
+    <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for each Context</description>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
-    <property name="Photograph Reference ID" isIdentifier="true" type="freetext">
+    <property isIdentifier="true" name="Photograph Reference ID" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
+      <formatString><![CDATA[$2]]></formatString>
     </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. </description>
