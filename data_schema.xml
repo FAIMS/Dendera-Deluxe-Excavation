@@ -74,6 +74,37 @@
     </description>
   </RelationshipElement>
   <!-- CONTEXT -->
+  <ArchaeologicalElement name="Diary">
+    <description></description>
+    <property name="Timestamp" type="freetext" isIdentifier="true">
+      <description></description>
+    </property>
+    <property name="CreatedBy" type="freetext" isIdentifier="true" >
+      <description></description>
+    </property>
+    <property name="Title" type="freetext">
+      <description></description>
+    </property>
+    <property name="Trench" type="enum">
+      <description></description>
+    </property>
+    <property name="Text" type="freetext">
+      <description></description>
+    </property>
+    <property name="Audio" type="file">
+      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+    </property>
+    <property name="Video" type="file">
+      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+    </property>
+    <property name="Photo" type="file">
+      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+    </property>
+    <property name="FileAttach" type="file">
+      <description></description>
+    </property>
+  </ArchaeologicalElement>
+
   <ArchaeologicalElement name="Context">
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
     <property name="Site Code" type="freetext">
