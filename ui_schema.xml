@@ -236,7 +236,6 @@
               <Mudbrick_Shape/>
               <Component_Finish/>
               <Update/>
-              <Delete/>
               <Deposit/>
             </Context_Structures>
             <Context_Deposits>
@@ -458,7 +457,6 @@
               <deletePhotoLog/>
               <Update/>
               <SaveAndNew/>
-              <Delete/>
             </Context_Attachments>
             <Texture_Helper>
               <Soil_Texture/>
@@ -595,7 +593,6 @@
               <Update/>
               <SaveAndNew/>
               <SaveAndClose/>
-              <Delete/>
             </ContextGroup_Attachments>
           </ContextGroup>
 
@@ -644,7 +641,6 @@
               <attachVideo/>
               <viewattached/>
               <Update/>
-              <Delete/>
               <SaveAndNew/>
             </Artefact_Group_GeneralInformation>
           </Artefact_Group>
@@ -685,7 +681,6 @@
                 </child2>
               </container3>
               <Update/>
-              <Delete/>
               <SaveAndNew/>
             </Sample_GeneralInformation>
             <Sample_Attachments>
@@ -699,7 +694,6 @@
               <attachVideo/>
               <viewattached/>
               <Update/>
-              <Delete/>
               <SaveAndNew/>
             </Sample_Attachments>
           </Sample>
@@ -717,7 +711,6 @@
               </container1>
               <Shape/>
               <Update/>
-              <Delete/>
               <SaveAndNew/>
             </Matrix>
           </Matrix>
@@ -759,7 +752,6 @@
               <attachVideo/>
               <viewattached/>
               <Update/>
-              <Delete/>
               <SaveAndNew/>
             </Special_Find_GeneralInformation>
           </Special_Find>
@@ -2046,9 +2038,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New {Context}</label>
         </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Context}</label>
-        </trigger>
       </group>
       <group ref="Texture_Helper" faims_hidden="true">
         <label>Material Helper</label>
@@ -2398,9 +2387,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndClose">
           <label>Save and Close {Context_Group}</label>
         </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Context_Group}</label>
-        </trigger>
       </group>
     </group>
 
@@ -2526,9 +2512,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New {Artefact_Group}</label>
         </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Artefact_Group}</label>
-        </trigger>
       </group>
     </group>
 
@@ -2614,9 +2597,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New Sample</label>
         </trigger>
-        <trigger ref="Delete">
-          <label>Delete Sample</label>
-        </trigger>
       </group>
       <group ref="Sample_Attachments">
         <label>ADD</label>
@@ -2669,9 +2649,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="SaveAndNew">
           <label>Save and New Sample</label>
         </trigger>
-        <trigger ref="Delete">
-          <label>Delete Sample</label>
-        </trigger>
       </group>
     </group>
 
@@ -2712,9 +2689,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="SaveAndNew">
           <label>Save and New {Matrix}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Matrix}</label>
         </trigger>
       </group>
     </group>
@@ -2820,9 +2794,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="SaveAndNew">
           <label>Save and New {Special_Find}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Special_Find}</label>
         </trigger>
       </group>
     </group>
