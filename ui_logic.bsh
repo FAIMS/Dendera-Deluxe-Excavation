@@ -10,6 +10,11 @@ Boolean isContext;
 Boolean newContextGroupRel;
 Boolean menu = true;
 
+// date = fetchOne("select date('now');");
+// String moduleSiteCode = "BK" + date.get(0).charAt(2) + date.get(0).charAt(3);
+String moduleYear = new java.text.SimpleDateFormat("yy").format(new Date());
+String moduleSiteCode = "BK" + moduleYear;
+
 makeLocalID(){
     fetchOne("CREATE TABLE IF NOT EXISTS localSettings (key text primary key, value text);", null);
     fetchOne("DROP VIEW IF EXISTS parentchild;", null);
@@ -566,16 +571,12 @@ newContext(){
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
     setFieldValue("Context/Context_GeneralInformation/Trench", areaCode);
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
-    setFieldValue("Context/Context_GeneralInformation/Excavator", username);
     // todo: should excavator be copied as in PAZC?
-    // setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
+    // setFieldValue("Context/Context_GeneralInformation/Excavator", username);
+    setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
     keepTabGroupChanges("Context");
 
     incField("control/data/ContextIncrement");
-
-    // todo: (brian) is this replaced with static string for site code?
-    // date = fetchOne("select date('now');");
-    // setFieldValue("Context/Context_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
     // todo: replace with set timestamp
     // datetime = fetchOne("select datetime('now', 'localtime');");
     // setFieldValue("Context/Context_GeneralInformation/CreatingDate", datetime.get(0));
@@ -607,8 +608,7 @@ loadContextFrom(contextid) {
 saveContext(String callback) {
     Boolean enable_autosave = true;
     attributes = createAttributeList();
-    // todo: add attributes?
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Context", context_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             context_id = uuid;
@@ -1018,10 +1018,9 @@ newContextGroup(menu){
     }
     newTabGroup("ContextGroup");
     context_group_id = null;
-    // todo: same as others
+    // todo: replace?
     // date = fetchOne("select datetime('now', 'localtime');");
     // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", date.get(0));
-    // setFieldValue("ContextGroup/ContextGroup_Details/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
     setFieldValue("ContextGroup/ContextGroup_Details/Device_Code", getFieldValue("user/usertab/Device_Code"));
     setFieldValue("ContextGroup/ContextGroup_Details/Trench", areaCode);
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
@@ -1061,8 +1060,7 @@ loadContextGroupFromContext() {
 saveContextGroup(){
     Boolean enable_autosave = true;
     attributes = createAttributeList();
-    // todo: add attributes?
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("ContextGroup", context_group_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             context_group_id = uuid;
@@ -1275,9 +1273,6 @@ newArtefactGroup(){
     setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
     setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID", getFieldValue("control/data/Artefact_Group_Starting_ID"));
     incField("control/data/Artefact_Group_Starting_ID", 1);
-    // todo: same as others
-    // date = fetchOne("select date('now');");
-    // setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
 }
 
 loadArtefactGroup() {
@@ -1295,9 +1290,8 @@ loadArtefactGroupFrom(String id) {
 saveArtefactGroup(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    // TODO: add attributes?
-    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Artefact_Group", artefact_group_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             artefact_group_id = uuid;
@@ -1372,9 +1366,6 @@ newSample(){
     setFieldValue("Sample/Sample_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
     setFieldValue("Sample/Sample_GeneralInformation/Sample_ID", getFieldValue("control/data/Sample_Starting_ID"));
     incField("control/data/Sample_Starting_ID", 1);
-    // todo: same as in others
-    // date = fetchOne("select date('now');");
-    // setFieldValue("Sample/Sample_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
 }
 
 loadSample() {
@@ -1392,9 +1383,8 @@ loadSampleFrom(String id) {
 saveSample(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    // todo: add attributes?
-    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Sample", sample_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             sample_id = uuid;
@@ -1478,8 +1468,7 @@ loadMatrixFrom(String id) {
 saveMatrix(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    // todo: add attributes?
-    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
     saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             matrix_id = uuid;
@@ -1558,9 +1547,6 @@ newSpecialFind(){
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID"));
     incField("control/data/SpecialFind_Starting_ID", 1);
-    // todo: same as in others
-    // date = fetchOne("select date('now');");
-    // setFieldValue("Special_Find/Special_Find_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
 }
 
 loadSpecialFind() {
@@ -1673,9 +1659,8 @@ loadPhotoLogAttributes(){
 savePhotoLog(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    // TODO: does this photolog have area code and site code attributes/properties?
-    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Photograph_Log", photolog_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             photolog_id = uuid;

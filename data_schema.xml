@@ -118,6 +118,21 @@
 	  Burial context codes begin with the letter Z, followed by the trench letter. Hence burial ZHA is the first burial context from trench H.
 
 	  Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.</description>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     </property>
     <property isIdentifier="true" name="Context Name" type="freetext">
       <description>Brief name for the Context eg 'House A - west wall'</description>
@@ -878,6 +893,21 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--CONTEXT GROUP-->
   <ArchaeologicalElement name="Context Group" type="container">
     <description>A group of contexts.</description>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
@@ -1044,6 +1074,21 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- ARTEFACT GROUP-->
   <ArchaeologicalElement name="Artefact Group">
     <description>The total group or assemblage of objects recovered from a single Context. These are sometimes referred to as 'Bulk Finds'.</description>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
@@ -1199,6 +1244,21 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--SAMPLE-->
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
@@ -1330,6 +1390,21 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- SPECIAL FIND -->
   <ArchaeologicalElement name="Special Find">
     <description/>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
@@ -1510,13 +1585,30 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
+    <property name="Device Code" type="enum">
+      <description/>
+      <lookup>
+        <term>0<description/></term>
+        <term>1<description/></term>
+        <term>2<description/></term>
+        <term>3<description/></term>
+        <term>4<description/></term>
+        <term>5<description/></term>
+        <term>6<description/></term>
+        <term>7<description/></term>
+        <term>8<description/></term>
+        <term>9<description/></term>
+      </lookup>
+    </property>
     <property name="Context ID" type="freetext">
       <description>Unique number or code for each Context</description>
     </property>
     <property name="Photograph Reference ID" isIdentifier="true" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
     </property>
-    <!-- TODO: copy over area code / site code identifiers from PAZC? -->
+    <property name="Site Code" type="freetext">
+      <description>Short code to signify the excavation site and often the year of excavation. </description>
+    </property>
     <property name="Device Code" type="enum">
       <description/>
       <lookup>
