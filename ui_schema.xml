@@ -137,7 +137,6 @@
                 </child2>
               </container4>
               <Context_Type/>
-              <Update/>
               <Details/>
 
               <container5>
@@ -195,7 +194,6 @@
                   <CreatingDate/>
                 </child2>
               </container10>
-              <Update2/> 
             </Context_GeneralInformation>
             <Context_Cuts>
               <Your_Interpretation/>
@@ -220,7 +218,6 @@
               <Cut_Function/>
               <Orientation/>
               <Inclination_of_axis/>
-              <Update/>
             </Context_Cuts>
             <Context_Structures>
               <Your_Interpretation/>
@@ -235,8 +232,6 @@
               <Structure_Shape/>
               <Mudbrick_Shape/>
               <Component_Finish/>
-              <Update/>
-              <Delete/>
               <Deposit/>
             </Context_Structures>
             <Context_Deposits>
@@ -279,7 +274,6 @@
                   <loadMatrix/>
                 </child2>
               </container4>
-              <Update/>
             </Context_Deposits>
             <Context_Skeletons>
               <container0>
@@ -360,12 +354,10 @@
                 </child2>
               </container8>
               <Skeleton_Notes/>
-              <Update/>
             </Context_Skeletons>
             <Context_Interpretation>
               <Your_description/>
               <Your_Discussion/>
-              <Update/>
             </Context_Interpretation>
             <Context_Feature>
               <guide1/>
@@ -391,7 +383,6 @@
                 </child3>
               </container3>
               <relate/>
-              <Update/>
               <listRelns/>
               <container4>
                 <child1>
@@ -424,7 +415,6 @@
                   <loadSpecialFind/>
                 </child1>
               </container2>
-              <Update/>
             </Context_Artefacts>
             <Context_Samples>
               <newSample/>
@@ -437,7 +427,6 @@
                   <loadSample/>
                 </child1>
               </container1>
-              <Update/>
               <listOfSamples/>
             </Context_Samples>
             <Context_Attachments>
@@ -456,10 +445,6 @@
               <PhotoLogList/>
               <loadPhotoLog/>
               <deletePhotoLog/>
-              <Update/>
-              <SaveAndNew/>
-              <Duplicate/>
-              <Delete/>
             </Context_Attachments>
             <Texture_Helper>
               <Soil_Texture/>
@@ -533,8 +518,7 @@
                 <child2>
                   <DateRecorded/>
                 </child2>
-              </container6>   
-              <Update/>
+              </container6>
             </ContextGroup_Details>
             <ContextGroup_Contexts>
               <AddContextList/>
@@ -548,7 +532,6 @@
                   <ShowContext/>
                 </child1>
               </container1>
-              <Update/>
               <listOfContexts/>
             </ContextGroup_Contexts>
             <Feature_Relationships_to_Other_Features>
@@ -574,7 +557,6 @@
                   <showReln/>
                 </child2>
               </container4>
-              <Update/>
               <listOfRelns/>
             </Feature_Relationships_to_Other_Features>
             <ContextGroup_Attachments>
@@ -593,11 +575,6 @@
               <PhotoLogList/>
               <loadPhotoLog/>
               <deletePhotoLog/>
-              <Update/>
-              <SaveAndNew/>
-              <SaveAndClose/>
-              <Duplicate/>
-              <Delete/>
             </ContextGroup_Attachments>
           </ContextGroup>
 
@@ -645,10 +622,6 @@
               <Video/>
               <attachVideo/>
               <viewattached/>
-              <Update/>
-              <Delete/>
-              <SaveAndNew/>
-              <Duplicate/>
             </Artefact_Group_GeneralInformation>
           </Artefact_Group>
 
@@ -687,10 +660,6 @@
                   <Sample_Comments/>
                 </child2>
               </container3>
-              <Update/>
-              <Delete/>
-              <SaveAndNew/>
-              <Duplicate/>
             </Sample_GeneralInformation>
             <Sample_Attachments>
               <Sketch/>
@@ -702,10 +671,6 @@
               <Video/>
               <attachVideo/>
               <viewattached/>
-              <Update/>
-              <Delete/>
-              <SaveAndNew/>
-              <Duplicate/>
             </Sample_Attachments>
           </Sample>
 
@@ -721,9 +686,6 @@
                 </child2>
               </container1>
               <Shape/>
-              <Update/>
-              <Delete/>
-              <SaveAndNew/>
             </Matrix>
           </Matrix>
 
@@ -763,10 +725,6 @@
               <Video/>
               <attachVideo/>
               <viewattached/>
-              <Update/>
-              <Delete/>
-              <SaveAndNew/>
-              <Duplicate/>
             </Special_Find_GeneralInformation>
           </Special_Find>
 
@@ -1194,9 +1152,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <value>placeholder</value>
           </item>
         </select1>
-        <trigger ref="Update">
-          <label>Save Context</label>
-        </trigger>
         <trigger ref="Details">
           <label>Fill in Context Type Details</label>
         </trigger>
@@ -1310,9 +1265,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             </input>
           </group>
         </group>
-        <trigger ref="Update2">
-          <label>Save Context</label>
-        </trigger>
       </group>
 
       <group faims_hidden="true" ref="Context_Cuts">
@@ -1402,9 +1354,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <value>placeholder</value>
           </item>
         </select1>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
       </group>
       <group faims_hidden="true" ref="Context_Structures">
         <label>{Structures}</label>
@@ -1464,9 +1413,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <value>placeholder</value>
           </item>
         </select1>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
         <trigger ref="Deposit">
           <label>Enter Sediment Description</label>
         </trigger>
@@ -1589,9 +1535,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             </trigger>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save Context</label>
-        </trigger>
       </group>
       <group ref="Context_Skeletons" faims_hidden="true">
         <label>{Skeleton}</label>
@@ -1748,9 +1691,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         <input ref="Skeleton_Notes" faims_attribute_name="Skeleton Notes" faims_attribute_type="freetext" faims_certainty="true" faims_annotation="false" faims_read_only="false">
               <label>{Skeleton_Notes}</label>
             </input>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
       </group>
       <group ref="Context_Interpretation"> <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
         <label>Int</label>
@@ -1760,9 +1700,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         <input faims_attribute_name="Your Discussion" faims_attribute_type="freetext" faims_certainty="true" faims_read_only="false" ref="Your_Discussion">
           <label>{Your_Discussion}</label>
         </input>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
       </group>
       <group ref="Context_Feature" faims_scrollable="false"> <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
         <label>{Context_Group}</label>
@@ -1845,9 +1782,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         </group>
         <trigger ref="relate">
           <label>Relate {Contexts}</label>
-        </trigger>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
         </trigger>
         <select1 faims_certainty="false" faims_read_only="false" ref="listRelns">
           <label>Select to Delete or Load the other {Context}</label>
@@ -1932,9 +1866,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             </trigger>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
       </group>
       <group ref="Context_Samples" faims_scrollable="false">
         <label>{Samples}</label>
@@ -1963,9 +1894,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             </trigger>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
         <select1 appearance="compact" ref="listOfSamples" faims_certainty="false" faims_annotation="false">
           <label>{Samples}:</label>
           <item>
@@ -2045,18 +1973,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="deletePhotoLog">
           <label>Delete {Photograph_Log}</label>
-        </trigger>
-        <trigger ref="Update">
-          <label>Save {Context}</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New {Context}</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Context} (will not duplicate relationships, samples, or artefacts).</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Context}</label>
         </trigger>
       </group>
       <group ref="Texture_Helper" faims_hidden="true">
@@ -2206,9 +2122,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save {Context_Group}</label>
-        </trigger>
       </group>
       <group ref="ContextGroup_Contexts" faims_scrollable="false">
         <label>{Contexts}</label>
@@ -2244,9 +2157,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
               </trigger>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save {Context_Group}</label>
-        </trigger>
         <select1 appearance="compact" ref="listOfContexts" faims_certainty="false" faims_annotation="false">
           <label>{Contexts}:</label>
           <item>
@@ -2315,9 +2225,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </trigger>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save {Context_Group}</label>
-        </trigger>
         <select1 faims_certainty="false" ref="listOfRelns" appearance="compact">
           <label>Associated Relationships:</label>
           <item>
@@ -2397,21 +2304,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="deletePhotoLog">
           <label>Delete {Photograph_Log}</label>
-        </trigger>
-        <trigger ref="Update">
-          <label>Save {Context_Group}</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New {Context_Group}</label>
-        </trigger>
-        <trigger ref="SaveAndClose">
-          <label>Save and Close {Context_Group}</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Context_Group}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Context_Group}</label>
         </trigger>
       </group>
     </group>
@@ -2532,18 +2424,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="viewattached">
           <label>View Attached Files</label>
         </trigger>
-        <trigger ref="Update">
-          <label>Save {Artefact_Group}</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New {Artefact_Group}</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Artefact_Group}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Artefact_Group}</label>
-        </trigger>
       </group>
     </group>
 
@@ -2623,18 +2503,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <trigger ref="Update">
-          <label>Save Sample</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New Sample</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate Sample</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete Sample</label>
-        </trigger>
       </group>
       <group ref="Sample_Attachments">
         <label>ADD</label>
@@ -2681,18 +2549,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="viewattached">
           <label>View Attached Files</label>
         </trigger>
-        <trigger ref="Update">
-          <label>Save Sample</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New Sample</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate Sample</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete Sample</label>
-        </trigger>
       </group>
     </group>
 
@@ -2728,15 +2584,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <value>placeholder</value>
           </item>
         </select1>
-        <trigger ref="Update">
-          <label>Save and Close</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New {Matrix}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Matrix}</label>
-        </trigger>
       </group>
     </group>
 
@@ -2835,18 +2682,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="viewattached">
           <label>View Attached Files</label>
-        </trigger>
-        <trigger ref="Update">
-          <label>Save {Special_Find}</label>
-        </trigger>
-        <trigger ref="SaveAndNew">
-          <label>Save and New {Special_Find}</label>
-        </trigger>
-        <trigger ref="Duplicate">
-          <label>Save and Duplicate {Special_Find}</label>
-        </trigger>
-        <trigger ref="Delete">
-          <label>Delete {Special_Find}</label>
         </trigger>
       </group>
     </group>
