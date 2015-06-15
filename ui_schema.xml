@@ -55,6 +55,25 @@
               <Sample_Starting_ID/>
               <GPS_Diagnostics/>
             </data>
+            <search>
+              <container1>
+                <child1>
+                  <Search/>
+                </child1>
+                <child2>
+                  <searchButton/>
+                </child2>
+              </container1>
+              <container2>
+                <child1>
+                  <entityTypes/>
+                </child1>
+                <child2>
+                  <Area_Code/>
+                </child2>
+              </container2>
+              <entityList/>
+            </search>
             <sample>
               <container1>
                 <child1>
@@ -71,15 +90,6 @@
               <newContextGroup/>
               <GroupList/>
             </contextGroup>
-            <gps>
-              <connectexternal/>
-              <connectinternal/>
-              <startsync/>
-              <stopsync/>
-              <startTimeLog/>
-              <startDistanceLog/>
-              <stopTrackLog/>
-            </gps>
           </control>
           <!--list of tabgroups for entities-->
           <!--ArchEnt / Record Type: CONTEXT-->
@@ -964,7 +974,54 @@ Help can be found for individual entries by pressing the ? buttons throughout th
           <label>{GPS_Diagnostics}</label>
         </input>
       </group>
-      
+      <group ref="search" faims_scrollable="false">
+        <label>{Search}</label>
+        <group faims_style="orientation" ref="container1">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <input faims_certainty="false" faims_read_only="false" ref="Search">
+              <label>{Search_Term}</label>
+            </input>
+          </group>
+          <group faims_style="large" ref="child2">
+            <label/>
+            <trigger ref="searchButton">
+              <label>{Search}</label>
+            </trigger>
+          </group>
+        </group>
+        <group faims_style="orientation" ref="container2">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <select1 ref="entityTypes" faims_attribute_type="vocab">
+              <label>{EntityTypes}</label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <select1 ref="Area_Code">
+              <label>{Select_Area_Code}</label>
+              <item>
+                <label>{placeholder}</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+        </group>
+        <select1 appearance="compact" ref="entityList" faims_style_class="menu-list">
+          <label>{EntityList}</label>
+          <item>
+            <label>placeholder</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
+      </group>
       <group faims_scrollable="false" ref="contextGroup">
         <label>{Context_Groups}</label>
         <trigger ref="newContextGroup">
@@ -1009,21 +1066,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <value>placeholder</value>
           </item>
         </select1>
-      </group>
-      <group ref="gps">
-        <label>Control</label>
-        <trigger ref="connectexternal">
-          <label>Connect To External GPS</label>
-        </trigger>
-        <trigger ref="connectinternal">
-          <label>Connect To Internal GPS</label>
-        </trigger>
-        <trigger ref="startsync">
-          <label>Start Synching</label>
-        </trigger>
-        <trigger ref="stopsync">
-          <label>Stop Synching</label>
-        </trigger>
       </group>
     </group>
 
