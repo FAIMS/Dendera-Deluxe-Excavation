@@ -253,7 +253,7 @@ onEvent("control/search"              , "show"  , "search();");
 onEvent("control/search/Search"       , "click" , "clearSearch()");
 onEvent("control/search/searchButton" , "click" , "search()");
 onEvent("control/search/entityTypes"  , "click" , "search()");
-onEvent("control/search/Trench"    , "click" , "search()");
+onEvent("control/search/Trench"       , "click" , "search()");
 onEvent("control/search/entityList"   , "click" , "loadEntity();");
 
 setSearchTrench() {
@@ -342,156 +342,6 @@ loadEntityFrom(String entityID) {
     Log.e("PAZC Module", "Cannot load an entity with a null ID.");
   }
 }
-
-/* todo: determine if any of the following are still required
-onEvent("control/data", "show", "refreshContexts()");
-onEvent("control/data/ContextList", "click", "loadContext()");
-onEvent("control/data/newContext", "click", "newContext();");
-onEvent("control/data/Search", "click", "clearSearchContext()");
-onEvent("control/data/searchButton", "click", "searchContext()");
-onEvent("control/data/searchMyContext", "click", "searchMyContext()");
-
-onEvent("control/sample", "show", "refreshSamples()");
-onEvent("control/sample/Search", "click", "clearSearchSample()");
-onEvent("control/sample/searchButton", "click", "searchSample()");
-onEvent("control/sample/SampleList", "click", "loadSample(); menu = true");
-
-onEvent("control/contextGroup", "show", "reloadGroupList()");
-onEvent("control/contextGroup/newContextGroup", "click", "newContextGroup(true);newContextGroupRel = false;");
-onEvent("control/contextGroup/GroupList", "click", "loadContextGroup();newContextGroupRel=false;");
-
-refreshContexts() {
-    context_id = null;
-    context_group_id = null;
-    menu = false;
-    searchOrderedByTimestamp();
-}
-
-refreshSamples() {
-    sample_id = null;
-    menu = false;
-    searchSample();
-}
-
-
-clearSearchContext(){
-    setFieldValue("control/data/Search","");
-}
-*/
-
-searchOrderedByTimestamp(){
-    // TODO: this query can be simplified
-
-    // populateList("control/data/ContextList", fetchAll(""+
-    //     "SELECT uuid, group_concat(coalesce(measure   || ' '  || vocabname || '('  ||  freetext ||'; '|| (certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure   || ' (' || freetext  || '; ' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' || freetext  || '; ' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure   || ' '  || vocabname || ' (' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' || freetext  || ')',  "+
-    //     "                                     measure   || ' (' || freetext  || ')',  "+
-    //     "                                     measure   || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     freetext  || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure,  "+
-    //     "                                     vocabname,  "+
-    //     "                                     freetext), ' ') as response, valuetimestamp  "+
-    //     "FROM (select * from latestNonDeletedArchentIdentifiers order by attributename) "+
-    //     "WHERE aenttypename = 'Context' "+        
-    //     "GROUP BY uuid "+
-    //     "order by valuetimestamp desc limit 10;"));
-}
-
-
-searchContext(){
-    // Todo: replace with pazc search query
-
-    // populateList("control/data/ContextList", fetchAll(""+
-    //     "SELECT uuid, group_concat(coalesce(measure   || ' '  || vocabname || '('  ||  freetext ||'; '|| (certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure   || ' (' || freetext  || '; ' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' || freetext  || '; ' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure   || ' '  || vocabname || ' (' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' || freetext  || ')',  "+
-    //     "                                     measure   || ' (' || freetext  || ')',  "+
-    //     "                                     measure   || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     freetext  || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure,  "+
-    //     "                                     vocabname,  "+
-    //     "                                     freetext), ' ') as response  "+
-    //     "FROM (select * from latestNonDeletedArchentIdentifiers order by attributename) "+
-    //     "WHERE aenttypename = 'Context' "+
-    //     "and uuid in (select uuid from latestnondeletedaentvalue left outer join vocabulary using (vocabid) where freetext like '%"+getFieldValue("control/data/Search")+"%' or vocabname like '%"+getFieldValue("control/data/Search")+"%' or measure like '%"+getFieldValue("control/data/Search")+"%') "+
-    //     "GROUP BY uuid "+
-    //     "order by response;"));
-}
-
-searchMyContext() {
-    // Todo: (Brian) pazc search query with modification to only find records created by current user
-
-    // populateList("control/data/ContextList", fetchAll(""+
-    //     "SELECT uuid, group_concat(coalesce(measure   || ' '  || vocabname || '('  ||  freetext ||'; '|| (certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure   || ' (' || freetext  || '; ' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' || freetext  || '; ' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure   || ' '  || vocabname || ' (' || (certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' || freetext  || ')',  "+
-    //     "                                     measure   || ' (' || freetext  || ')',  "+
-    //     "                                     measure   || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     vocabname || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     freetext  || ' (' ||(certainty * 100.0) || '% certain)',  "+
-    //     "                                     measure,  "+
-    //     "                                     vocabname,  "+
-    //     "                                     freetext), ' ') as response  "+
-    //     "FROM (select * from latestNonDeletedArchentIdentifiers where userid = "+userid+" order by attributename) "+
-    //     "WHERE aenttypename = 'Context' "+
-    //     "and uuid in (select uuid from latestnondeletedaentvalue left outer join vocabulary using (vocabid) where freetext like '%"+getFieldValue("control/data/Search")+"%' or vocabname like '%"+getFieldValue("control/data/Search")+"%' or measure like '%"+getFieldValue("control/data/Search")+"%') "+
-    //     "GROUP BY uuid "+
-    //     "order by response;"));    
-}
-
-clearSearchSample(){
-    setFieldValue("control/sample/Search","");
-}
-
-searchSample(){
-    String searchType;
-    if(!getFieldValue("control/sample/SearchType").equals("All")) {
-        searchType = fetchOne("select vocabName from vocabulary where vocabid = '"+getFieldValue("control/sample/SearchType")+"';").get(0);    
-    }
-    
-    // Todo: replace from pazc
-
-    // populateList("control/sample/SampleList", fetchAll("select uuid, aenttypename || ': ' || group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' | ') as response " +
-    //     "FROM (select * from latestNonDeletedArchentIdentifiers order by case attributename when 'Sample ID' then 1 when 'Sample Type' then 2 else attributename end ) " +
-    //     "WHERE aenttypename = 'Sample'  " +
-    //     "and uuid in (select uuid  " +
-    //         "from  latestnondeletedarchent join aenttype using (aenttypeid) join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid) left outer join vocabulary using (vocabid)  " +
-    //         "where ('" + getFieldValue("control/sample/SearchType") + "' = 'All'  " +
-    //             "AND (freetext like '%"+getFieldValue("control/sample/Search")+"%'  " +
-    //                 "or vocabname like '%"+getFieldValue("control/sample/Search")+"%'  " +
-    //                 "or measure like '%"+getFieldValue("control/sample/Search")+"%' )) " +
-    //         "OR ('" + getFieldValue("control/sample/SearchType") + "' != 'All'  " +
-    //             "AND coalesce(vocabname, freetext) = '" + searchType + "' " +
-    //             "AND attributename = 'Sample Type' " +
-    //             "AND (freetext like '%"+getFieldValue("control/sample/Search")+"%' " +
-    //             "or vocabname like '%"+getFieldValue("control/sample/Search")+"%' " +
-    //             "or measure like '%"+getFieldValue("control/sample/Search")+"%' ))) " +
-    //     "GROUP BY uuid  " +
-    //     "order by response; "));
-}
-
-reloadGroupList(){
-    populateList("control/contextGroup/GroupList", fetchEntityList("Context Group"));
-}
-
-loadSearchAttributes() {
-    Object sampleTypes = makeVocab("Sample Type");
-    ArrayList all = new ArrayList();
-    all.add("All");
-    all.add("All");
-    sampleTypes.add(0,all);
-    populateDropDown("control/sample/SearchType", sampleTypes);
-}
-
 
 /*** ArchEnt: Context **/
 onEvent("Context", "show", "addNavigationButtons(\"Context\"); openContextTabs(); keepTabGroupChanges(\"Context\"); saveContext(\"\");refreshTabgroupCSS(\"Context\");");
@@ -2685,7 +2535,6 @@ initialiseModule() {
     makeVocab("DropDown", "user/usertab/Trench", "Trench");
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
     makeVocab("DropDown", "control/search/Trench", "Trench");
-    // loadSearchAttributes();
     // loadContextAttributes();
     // loadContextGroupAttributes();
     // loadArtefactGroupAttributes();

@@ -74,22 +74,6 @@
               </container2>
               <entityList/>
             </search>
-            <sample>
-              <container1>
-                <child1>
-                  <Search/>
-                </child1>
-                <child2>
-                  <searchButton/>
-                </child2>
-              </container1>
-              <SearchType/>
-              <SampleList/>
-            </sample>
-            <contextGroup>
-              <newContextGroup/>
-              <GroupList/>
-            </contextGroup>
           </control>
           <!--list of tabgroups for entities-->
           <!--ArchEnt / Record Type: CONTEXT-->
@@ -992,51 +976,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         </group>
         <select1 appearance="compact" ref="entityList" faims_style_class="menu-list">
           <label>{EntityList}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-      </group>
-      <group faims_scrollable="false" ref="contextGroup">
-        <label>{Context_Groups}</label>
-        <trigger ref="newContextGroup">
-          <label>New Feature</label>
-        </trigger>
-        <select1 appearance="compact" faims_annotation="false" faims_certainty="false" ref="GroupList">
-          <label>Tap Feature in list below to load it.</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-      </group>
-      <group faims_scrollable="false" ref="sample">
-        <label>{Samples}</label>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="SearchHelp" faims_certainty="false" faims_read_only="false" ref="Search">
-              <label>Search Term</label>
-            </input>
-          </group>
-          <group faims_style="large" ref="child2">
-            <label/>
-            <trigger ref="searchButton">
-              <label>Search</label>
-            </trigger>
-          </group>
-        </group>
-        <select1 faims_annotation="false" faims_certainty="false" ref="SearchType">
-          <label>Search Type:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <select1 appearance="compact" faims_annotation="false" faims_certainty="false" ref="SampleList">
-          <label>Tap Sample in list below to load it.</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
