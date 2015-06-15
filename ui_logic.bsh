@@ -38,7 +38,7 @@ makeLocalID();
  *
  *  Returns a field pair (really just an ArrayList).
  */
-conditionalFieldPair(String ref, String name, String cond) {
+fieldPair(String ref, String name, String cond) {
     List fp = new ArrayList();
     fp.add(ref);
     fp.add(name);
@@ -48,7 +48,7 @@ conditionalFieldPair(String ref, String name, String cond) {
 
 fieldPair(String ref, String name) {
     String t = "true";
-    return conditionalFieldPair(ref, name, t);
+    return fieldPair(ref, name, t);
 }
 
 /* Returns true if field specified by `ref` is valid. False otherwise.
