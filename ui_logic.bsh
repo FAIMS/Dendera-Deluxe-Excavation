@@ -119,8 +119,6 @@ loadEntityFrom(String entityID) {
           loadMatrixFrom(entityID);
         } else if (name.equals("Special Find")) {
           loadSpecialFindFrom(entityID);
-        } else if (name.equals("Special Find Location")) {
-          loadSpecialFindLocationFrom(entityID);
         } else if (name.equals("Photograph Log")) {
           loadPhotoLogFrom(entityID);
         }
@@ -142,7 +140,7 @@ onEvent("control/data/searchMyContext", "click", "searchMyContext()");
 onEvent("control/sample", "show", "refreshSamples()");
 onEvent("control/sample/Search", "click", "clearSearchSample()");
 onEvent("control/sample/searchButton", "click", "searchSample()");
-onEvent("control/sample/SampleList", "click", "loadSampleFromList(); menu = true");
+onEvent("control/sample/SampleList", "click", "loadSample(); menu = true");
 
 onEvent("control/contextGroup", "show", "reloadGroupList()");
 onEvent("control/contextGroup/newContextGroup", "click", "newContextGroup(true);newContextGroupRel = false;");
@@ -486,20 +484,25 @@ newContextFromControl() {
 
 loadContext() {
     context_id = getListItemValue();
-    loadContextFrom(context_id);
-    // todo: replace with context data schema property for creating user and creating date?
-
-    // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)");
-    // setFieldValue("Context/Context_GeneralInformation/CreatingUser", foo.get(0));
-    // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_id+"' group by uuid having min(aenttimestamp);");
-    // setFieldValue("Context/Context_GeneralInformation/CreatingDate", bar.get(0));   
+    loadContextFrom(context_id);    
 }
 
 loadContextFrom(contextid) {
     context_id = contextid;
     if (isNull(context_id)) return;
     
-    showTabGroup("Context", context_id);
+    showTabGroup("Context", context_id, new FetchCallback() {
+      onFetch(result) {
+        openContextTabs(true);
+      }
+    });
+
+    // todo: replace with context data schema property for creating user and creating date?
+
+    // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)");
+    // setFieldValue("Context/Context_GeneralInformation/CreatingUser", foo.get(0));
+    // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_id+"' group by uuid having min(aenttimestamp);");
+    // setFieldValue("Context/Context_GeneralInformation/CreatingDate", bar.get(0));  
 }
 
 saveContext(String callback) {
@@ -939,6 +942,11 @@ newContextGroup(menu){
 
 loadContextGroup(){
     context_group_id = getListItemValue();
+    loadContextGroupFrom(context_group_id);
+}
+
+loadContextGroupFrom(String id){
+  context_group_id = id;
     showTabGroup("ContextGroup", context_group_id);
     populateContextGroup();
     // todo: replace with tabgroup data schema properties?
@@ -946,9 +954,6 @@ loadContextGroup(){
     // setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", foo.get(0));
     // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);");
     // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", bar.get(0));
-    updateRelns();
-
-    
 }
 
 loadContextGroupFromContext() {
@@ -1199,8 +1204,14 @@ newArtefactGroup(){
 }
 
 loadArtefactGroup() {
-    artefact_group_id = getFieldValue("Context/Context_Artefacts/artefactGroupList");
+    artefact_group_id = getListItemValue();
+    loadArtefactGroupFrom(artefact_group_id);
+}
+
+loadArtefactGroupFrom(String id) {
+    artefact_group_id = id;
     if (isNull(artefact_group_id)) return;
+    loadArtefactGroupAttributes();
     showTabGroup("Artefact_Group", artefact_group_id);
 }
 
@@ -1353,15 +1364,15 @@ newSample(){
     // setFieldValue("Sample/Sample_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
 }
 
-loadSampleFromList() {
+loadSample() {
     sample_id = getListItemValue();
-    if (isNull(sample_id)) return;
-    showTabGroup("Sample", sample_id);
+    loadSampleFrom(sample_id);
 }
 
-loadSample() {
-    sample_id = getFieldValue("Context/Context_Samples/sampleList");
+loadSampleFrom(String id) {
+    sample_id = id;
     if (isNull(sample_id)) return;
+    loadSampleAttributes();
     showTabGroup("Sample", sample_id);
 }
 
@@ -1471,7 +1482,13 @@ newMatrix(){
 
 loadMatrix() {
     matrix_id = getFieldValue("Context/Context_Deposits/matrixList");
+    loadMatrixFrom(matrix_id);
+}
+
+loadMatrixFrom(String id) {
+    matrix_id = id;
     if (isNull(matrix_id)) return;
+    loadMatrixAttributes();
     showTabGroup("Matrix", matrix_id);
 }
 
@@ -1588,8 +1605,14 @@ newSpecialFind(){
 }
 
 loadSpecialFind() {
-    special_find_id = getFieldValue("Context/Context_Artefacts/specialFindList");
+    special_find_id = getListItemValue();
+    loadSpecialFindFrom(special_find_id);
+}
+
+loadSpecialFindFrom(String id) {
+    special_find_id = id;
     if (isNull(special_find_id)) return;
+    loadSpecialFindAttributes();
     showTabGroup("Special_Find", special_find_id);
 }
 
