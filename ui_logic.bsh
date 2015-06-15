@@ -900,37 +900,43 @@ loadContextAttributes(){
     // populateDropDown("Context/Context_Relationships_to_Other_Contexts/reln", relnList);
 }
 
-openContextTabs(){
-    Object name = fetchOne("select vocabName from vocabulary where vocabid = '"+getFieldValue("Context/Context_GeneralInformation/Context_Type")+"';");
-    if (!isNull(name)){
-        String vocab = name.get(0);
-        if ((vocab.equals("{Deposit}")) || (vocab.equals("{Natural}"))){
-            cancelTab("Context/Context_Cuts", false);
-            cancelTab("Context/Context_Structures", false);
-            cancelTab("Context/Context_Skeletons", false);
-            showTab("Context/Context_Deposits");
-        } else if (vocab.equals("{Cut}")){
-            cancelTab("Context/Context_Deposits", false);
-            cancelTab("Context/Context_Structures", false);
-            cancelTab("Context/Context_Skeletons", false);
-            showTab("Context/Context_Cuts");
-        } else if (vocab.equals("{Structure}")){
-            cancelTab("Context/Context_Cuts", false);
-            cancelTab("Context/Context_Skeletons", false);
-            showTab("Context/Context_Deposits");
-            showTab("Context/Context_Structures");
-        } else if (vocab.equals("{Skeleton}")){
-            cancelTab("Context/Context_Deposits", false);
-            cancelTab("Context/Context_Cuts", false);
-            cancelTab("Context/Context_Structures", false);
-            showTab("Context/Context_Skeletons");
+openContextTabs() {
+  openContextTabs(false);
+}
+
+openContextTabs(Boolean showGeneralInformationTab){
+    fetchOne("SELECT vocabName FROM vocabulary WHERE vocabid = '"+getFieldValue("Context/Context_GeneralInformation/Context_Type")+"';",
+        new FetchCallback() {
+          onFetch(name) {
+            if (!isNull(name)){
+                String vocab = name.get(0);
+                if ((vocab.equals("{Deposit}")) || (vocab.equals("{Natural}"))){
+                    cancelTab("Context/Context_Cuts", false);
+                    cancelTab("Context/Context_Structures", false);
+                    showTab("Context/Context_Deposits");
+                } else if (vocab.equals("{Cut}")){
+                    cancelTab("Context/Context_Deposits", false);
+                    cancelTab("Context/Context_Structures", false);
+                    showTab("Context/Context_Cuts");
+                } else if (vocab.equals("{Structure}")){
+                    cancelTab("Context/Context_Deposits", false);
+                    cancelTab("Context/Context_Cuts", false);
+                    showTab("Context/Context_Structures");
+                } else {
+                    cancelTab("Context/Context_Cuts", false);
+                    cancelTab("Context/Context_Deposits", false);
+                    cancelTab("Context/Context_Structures", false);
+                }
+            } else {
+                cancelTab("Context/Context_Cuts", false);
+                cancelTab("Context/Context_Deposits", false);
+                cancelTab("Context/Context_Structures", false);
+            }
+            if(showGeneralInformationTab) {
+              showTab("Context/Context_GeneralInformation");
+            }
         }
-    } else {
-        cancelTab("Context/Context_Cuts", false);
-        cancelTab("Context/Context_Deposits", false);
-        cancelTab("Context/Context_Structures", false);
-        cancelTab("Context/Context_Skeletons", false);
-    }
+    });    
 }
 
 helpSetTextureActual(){
