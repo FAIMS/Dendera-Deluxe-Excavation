@@ -114,6 +114,34 @@ validateContextTabGroup(Boolean showWarning) {
 
     validateFields(fields, "Context/Context_Validation/validationResults", showWarning);
 }
+
+/*
+ * If value of field specified by `ref` is null, sets the field to `defaultVal`,
+ * otherwise increments its value.
+ *
+ * Returns the value the field was updated to.
+ */
+incField(String ref, Integer defaultVal) {
+    String val = getFieldValue(ref);
+
+    if (isNull(val)) {
+        setFieldValue(ref, defaultVal);
+        return defaultVal;
+    }
+
+    Integer inc = Integer.parseInt(val) + 1;
+    setFieldValue(ref, inc);
+    insertIntoLocalSettings(ref, inc.toString());
+
+    return inc;
+}
+
+/* Increments the field at `ref` or returns null if it does not contain a
+ * number.
+ */
+incField(String ref) {
+    return incField(ref, null);
+}
  
 /*** control ***/
 onEvent("control"                     , "show"  , "removeNavigationButtons(); setSearchTrench();");
@@ -217,7 +245,7 @@ loadEntityFrom(String entityID) {
 /* todo: determine if any of the following are still required
 onEvent("control/data", "show", "refreshContexts()");
 onEvent("control/data/ContextList", "click", "loadContext()");
-onEvent("control/data/newContext", "click", "newContextFromControl();");
+onEvent("control/data/newContext", "click", "newContext();");
 onEvent("control/data/Search", "click", "clearSearchContext()");
 onEvent("control/data/searchButton", "click", "searchContext()");
 onEvent("control/data/searchMyContext", "click", "searchMyContext()");
@@ -523,34 +551,34 @@ showContextFromList(){
 }
 
 newContext(){
+    String contextIncrement = getFieldValue("control/data/ContextIncrement");
+    if (isNull(contextIncrement)) {
+        showWarning("{Alert}","{No_starting_ID_is_entered_please_enter_one}");
+        return;
+    }
+
     context_id = null;
     newTabGroup("Context");
+
+    fetchOne("REPLACE INTO localSettings(key, value) VALUES('contextIncrement', '" + contextIncrement + "');", null);
+
+    setFieldValue("Context/Context_GeneralInformation/Context_ID", contextIncrement);
+    setTimestamp("Context/Context_GeneralInformation/Date_Opened");
+    setFieldValue("Context/Context_GeneralInformation/Trench", areaCode);
+    setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
+    setFieldValue("Context/Context_GeneralInformation/Excavator", username);
+    // todo: should excavator be copied as in PAZC?
+    // setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
+    keepTabGroupChanges("Context");
+
+    incField("control/data/ContextIncrement");
+
     // todo: (brian) is this replaced with static string for site code?
     // date = fetchOne("select date('now');");
-    setFieldValue("Context/Context_GeneralInformation/Trench", areaCode);
     // setFieldValue("Context/Context_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
-    setFieldValue("Context/Context_GeneralInformation/Context_ID", getFieldValue("control/data/ContextIncrement"));
-    setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
-    String date2 = new java.text.SimpleDateFormat("d-MMM-yy").format(new Date());
-    setFieldValue("Context/Context_GeneralInformation/Date_Opened", date2);
     // todo: replace with set timestamp
     // datetime = fetchOne("select datetime('now', 'localtime');");
     // setFieldValue("Context/Context_GeneralInformation/CreatingDate", datetime.get(0));
-}
-
-newContextFromControl() {
-    if(isNull(getFieldValue("control/data/ContextIncrement"))) {
-        showWarning("Validation Error", "You must enter a Context ID to create a Context record.");
-        return;
-    }
-    // todo: replace with dumb autonumbering
-    // String query = "select count(distinct uuid) from latestnondeletedaentvalue where freetext = '"+getFieldValue("control/data/ContextIncrement")+"';";
-    Object obj = fetchOne(query);
-    if(obj.get(0).equals("0")) {
-        newContext();
-    } else {
-        showWarning("Validation Error", "That Context ID has been used for another Context. Please enter another one.");
-    }
 }
 
 loadContext() {
@@ -607,12 +635,6 @@ reallyDeleteContext(){
 
 doNotDelete(){
     showToast("{Delete_Cancelled}");
-}
-
-getCounterFromDB(){
-    // todo: replace with dumb autonumbering
-    // Object counter = fetchOne("select vocabname || letters as foo from countingIsHard, (select vocabname from localsettings join vocabulary on (value=vocabid) where key = 'Area') where foo not in (select freetext from latestNonDeletedArchEntIdentifiers where attributename = 'Context ID') order by letters limit 1 ;");
-    // setFieldValue("control/data/ContextIncrement", counter.get(0));
 }
 
 loadContextFromReln(){
@@ -991,7 +1013,7 @@ String context_group_id = null;
 
 newContextGroup(menu){
     if (!menu && isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
         return;
     }
     newTabGroup("ContextGroup");
@@ -1000,9 +1022,9 @@ newContextGroup(menu){
     // date = fetchOne("select datetime('now', 'localtime');");
     // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", date.get(0));
     // setFieldValue("ContextGroup/ContextGroup_Details/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
+    setFieldValue("ContextGroup/ContextGroup_Details/Device_Code", getFieldValue("user/usertab/Device_Code"));
     setFieldValue("ContextGroup/ContextGroup_Details/Trench", areaCode);
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
-    autoNumFeature();
     populateContextGroup();
 }
 
@@ -1186,25 +1208,6 @@ deletePhotoLogFromContextGroup(){
     }
 }
 
-autoNumFeature(){
-    // todo:  dumb autonumbering
-    // Object counter = fetchOne("select 'F' ||foo as foo " +
-    //   "from (select max(cast(substr(freetext,2) as integer))+1 as foo " +
-    //          "from latestnondeletedaentvalue join attributekey using (attributeid) " +
-    //         "where uuid in (select uuid " +
-    //                          "from latestnondeletedaentvalue ae " +
-    //                          "join latestnondeletedarchent using (uuid) join aenttype using (aenttypeid) " +
-    //                         "where aenttypename = 'Context Group') " +
-    //           "and attributename = 'Context Group ID');");
-    // print(counter);
-    // if(isNull(counter.get(0))) {
-    //     setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", "F1");
-    // } else {
-    //     setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", counter.get(0));    
-    // }
-    
-}
-
 updateContextGroupRelationships(){
     // todo: refactored?
     // setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature_id", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
@@ -1259,20 +1262,22 @@ String artefact_group_id = null;
 
 newArtefactGroup(){
     if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
         return;
     }
     if (isNull(context_id)){
-        showToast("You must save a context first.");
+        showToast("{You_must_save_a_context_first}");
         return;
     }
     artefact_group_id = null;
     newTabGroup("Artefact_Group");
     setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
+    setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
+    setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID", getFieldValue("control/data/Artefact_Group_Starting_ID"));
+    incField("control/data/Artefact_Group_Starting_ID", 1);
     // todo: same as others
     // date = fetchOne("select date('now');");
     // setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
-    autoNumArtefactGroup();
 }
 
 loadArtefactGroup() {
@@ -1285,38 +1290,6 @@ loadArtefactGroupFrom(String id) {
     if (isNull(artefact_group_id)) return;
     loadArtefactGroupAttributes();
     showTabGroup("Artefact_Group", artefact_group_id);
-}
-
-autoNumArtefactGroup(){
-    // todo: dumb autonumbering
-    // Object autoNum = fetchOne(""+
-    //     "select freetext||'-A'||foo as response, foo  "+
-    //     "  from (select substr(freetext,6)+1 as foo  "+
-    //     "          from latestnondeletedarchentidentifiers  "+
-    //     "         where uuid in (select uuid  "+
-    //     "                          from latestnondeletedaentreln  "+
-    //     "                         where relationshipid in (select distinct relationshipid  "+
-    //     "                                                   from latestnondeletedaentreln join latestnondeletedrelationship using (relationshipid)  "+
-    //     "                                                   join relntype using (relntypeid) "+
-    //     "                                                  where uuid = "+context_id+"  "+
-    //     "                                                    and relntypename = 'ContextArtefactGroup')   "+
-    //     "                           and uuid != "+context_id+")),  "+
-    //     "       (select freetext  "+
-    //     "          from latestnondeletedarchentidentifiers  "+
-    //     "         where uuid = "+context_id+"  "+
-    //     "           and attributename = 'Context ID') as contexta "+
-    //     " where response not in (select freetext  "+
-    //     "                          from latestnondeletedarchentidentifiers  "+
-    //     "                         where freetext is not null) "+
-    //     " union select freetext||'-A1', -1 from "+ 
-    //     "       (select freetext  "+
-    //     "          from latestnondeletedarchentidentifiers  "+
-    //     "         where uuid = "+context_id+"  "+
-    //     "           and attributename = 'Context ID') as contextb "+
-    //     " order by foo desc "+
-    //     " limit 1; ");
-
-    // setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID", autoNum.get(0));
 }
 
 saveArtefactGroup(String callback) {
@@ -1385,9 +1358,20 @@ onEvent("Sample/Sample_Attachments/viewattached", "click", "viewArchEntAttachedF
 String sample_id = null;
 
 newSample(){
+    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
+        return;
+    }
+    if (isNull(context_id)){
+        showToast("{You_must_save_a_context_first}");
+        return;
+    }
     sample_id = null;
     newTabGroup("Sample");
     setFieldValue("Sample/Sample_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
+    setFieldValue("Sample/Sample_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
+    setFieldValue("Sample/Sample_GeneralInformation/Sample_ID", getFieldValue("control/data/Sample_Starting_ID"));
+    incField("control/data/Sample_Starting_ID", 1);
     // todo: same as in others
     // date = fetchOne("select date('now');");
     // setFieldValue("Sample/Sample_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
@@ -1561,20 +1545,22 @@ String special_find_id = null;
 
 newSpecialFind(){
     if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
         return;
     }
     if (isNull(context_id)){
-        showToast("You must save a context first.");
+        showToast("{You_must_save_a_context_first}");
         return;
     }
     special_find_id = null;
     newTabGroup("Special_Find");
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
+    setFieldValue("Special_Find/Special_Find_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
+    setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID"));
+    incField("control/data/SpecialFind_Starting_ID", 1);
     // todo: same as in others
     // date = fetchOne("select date('now');");
     // setFieldValue("Special_Find/Special_Find_GeneralInformation/Site_Code","BK" + date.get(0).charAt(2) + date.get(0).charAt(3));
-    specialFindAutoNum();
 }
 
 loadSpecialFind() {
@@ -1587,37 +1573,6 @@ loadSpecialFindFrom(String id) {
     if (isNull(special_find_id)) return;
     loadSpecialFindAttributes();
     showTabGroup("Special_Find", special_find_id);
-}
-
-specialFindAutoNum(){
-    // todo: dumb autonumbering
-    // Object autoNum = fetchOne(""+
-    //     "select freetext||'-SF'||foo as response, foo  "+
-    //     "  from (select substr(freetext,7)+1 as foo  "+
-    //     "          from latestnondeletedarchentidentifiers  "+
-    //     "         where uuid in (select uuid  "+
-    //     "                          from latestnondeletedaentreln  "+
-    //     "                         where relationshipid in (select distinct relationshipid  "+
-    //     "                                                   from latestnondeletedaentreln join latestnondeletedrelationship using (relationshipid)  "+
-    //     "                                                   join relntype using (relntypeid) "+
-    //     "                                                  where uuid = "+context_id+"  "+
-    //     "                                                    and relntypename = 'ContextSpecialFind')   "+
-    //     "                           and uuid != "+context_id+")),  "+
-    //     "       (select freetext  "+
-    //     "          from latestnondeletedarchentidentifiers  "+
-    //     "         where uuid = "+context_id+"  "+
-    //     "           and attributename = 'Context ID') as contexta "+
-    //     " where response not in (select freetext  "+
-    //     "                          from latestnondeletedarchentidentifiers  "+
-    //     "                         where freetext is not null) "+
-    //     " union select freetext||'-SF1', -1 from "+ 
-    //     "       (select freetext  "+
-    //     "          from latestnondeletedarchentidentifiers  "+
-    //     "         where uuid = "+context_id+"  "+
-    //     "           and attributename = 'Context ID') as contextb "+
-    //     " order by foo desc "+
-    //     " limit 1; ");
-    // setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", autoNum.get(0));
 }
 
 saveSpecialFind(String callback) {
