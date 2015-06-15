@@ -288,19 +288,8 @@ onEvent("Context", "load", "showTab(\"Context/Context_Structures\");");
 onEvent("Context/Context_GeneralInformation/Details","click","openContextTabs()");
 onEvent("Context/Context_GeneralInformation/Add_Date_Closed", "click", "addCloseDate()");
 
-onEvent("Context/Context_Attachments/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_GeneralInformation/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_GeneralInformation/Update2", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Deposits/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Structures/Update", "delayclick", "saveContext(\"\")");
 onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
 onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
-onEvent("Context/Context_Cuts/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Skeletons/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Interpretation/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Artefacts/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Relationships_to_Other_Contexts/Update", "delayclick", "saveContext(\"\")");
-onEvent("Context/Context_Samples/Update", "delayclick", "saveContext(\"\")");
 
 onEvent("Context/Context_Deposits/newMatrix", "click", "saveContext(\"newMatrix();\")");
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
@@ -320,7 +309,6 @@ onEvent("Context/Context_Attachments/attachAudio", "click", "attachAudioTo(\"Con
 onEvent("Context/Context_Attachments/attachVideo", "click", "attachVideoTo(\"Context/Context_Attachments/Video\")");
 onEvent("Context/Context_Attachments/attachSketch", "click", "attachFileTo(\"Context/Context_Attachments/Sketch\")");
 onEvent("Context/Context_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_id)");
-onEvent("Context/Context_Attachments/SaveAndNew", "delayclick", "saveContext(\"newContext();\")");
 
 onEvent("Context/Context_Artefacts/newArtefactGroup", "delayclick", "saveContext(\"newArtefactGroup();\")");
 onEvent("Context/Context_Artefacts/loadArtefactGroup", "click", "loadArtefactGroup()");
@@ -893,17 +881,13 @@ addCloseDate() {
 }
 
 /*** RelnEnt: Context Group***/
-onEvent("ContextGroup/ContextGroup_Details/Update", "delayclick", "saveContextGroup(\"\")");
-
 onEvent("ContextGroup/ContextGroup_Contexts/AddContext", "click", "addToContextGroup()");
 onEvent("ContextGroup/ContextGroup_Contexts/ShowContext", "click", "loadContextFromContextGroup()");
 onEvent("ContextGroup/ContextGroup_Contexts/RemoveContext", "click", "removeFromContextGroup()");
-onEvent("ContextGroup/ContextGroup_Contexts/Update", "delayclick", "saveContextGroup(\"\")");
 onEvent("ContextGroup/ContextGroup_Contexts/listOfContexts", "click", "showContextFromList()");
 
 onEvent("ContextGroup/Feature_Relationships_to_Other_Features/relate", "delayclick", "makeHierRelnCG()");
 onEvent("ContextGroup/Feature_Relationships_to_Other_Features", "show", "updateContextGroupRelationships()");
-onEvent("ContextGroup/Feature_Relationships_to_Other_Features/Update", "delayclick", "saveContextGroup(\"\")");
 onEvent("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", "click", "showCGRelnFromList()");
 onEvent("ContextGroup/Feature_Relationships_to_Other_Features/deleteReln", "click", "deleteRelnCG()");
 
@@ -913,9 +897,6 @@ onEvent("ContextGroup/ContextGroup_Attachments/attachAudio", "click", "attachAud
 onEvent("ContextGroup/ContextGroup_Attachments/attachVideo", "click", "attachVideoTo(\"ContextGroup/ContextGroup_Attachments/Video\")");
 onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFileTo(\"ContextGroup/ContextGroup_Attachments/Sketch\")");
 onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
-onEvent("ContextGroup/ContextGroup_Attachments/Update", "delayclick", "saveContextGroup(\"\")");
-onEvent("ContextGroup/ContextGroup_Attachments/SaveAndNew", "delayclick", "saveContextGroup(\"newContextGroup(true);\")");
-onEvent("ContextGroup/ContextGroup_Attachments/SaveAndClose", "delayclick", "saveContextGroup(\"cancelTabGroup(\\\"ContextGroup\\\",false);\")");
 onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "saveContextGroup(\"isContext=false;newPhotoLog();verb=\\\"ContextGroupPhotographLog\\\";archent_id=context_group_id;\");");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadContextGroupPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
 onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
@@ -1186,8 +1167,6 @@ onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachAudio", "click",
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachVideo", "click", "attachVideoTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Video\")");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachSketch", "click", "attachFileTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Sketch\")");
 onEvent("Artefact_Group/Artefact_Group_GeneralInformation/viewattached", "click", "viewArchEntAttachedFiles(artefact_group_id)");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/Update", "delayclick", "saveArtefactGroup()");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/SaveAndNew", "delayclick", "saveAndNewArtefactGroup()");
 
 String artefact_group_id = null;
 
@@ -1314,10 +1293,6 @@ onEvent("Sample/Sample_Attachments/attachAudio", "click", "attachAudioTo(\"Sampl
 onEvent("Sample/Sample_Attachments/attachVideo", "click", "attachVideoTo(\"Sample/Sample_Attachments/Video\")");
 onEvent("Sample/Sample_Attachments/attachSketch", "click", "attachFileTo(\"Sample/Sample_Attachments/Sketch\")");
 onEvent("Sample/Sample_Attachments/viewattached", "click", "viewArchEntAttachedFiles(sample_id)");
-onEvent("Sample/Sample_Attachments/Update", "delayclick", "saveSample()");
-onEvent("Sample/Sample_Attachments/SaveAndNew", "delayclick", "saveAndNewSample()");
-onEvent("Sample/Sample_GeneralInformation/Update", "delayclick", "saveSample()");
-onEvent("Sample/Sample_GeneralInformation/SaveAndNew", "delayclick", "saveAndNewSample()");
 
 String sample_id = null;
 
@@ -1399,9 +1374,6 @@ loadSampleAttributes(){
 }
 
 /*** Matrix ***/
-onEvent("Matrix/Matrix/Update", "delayclick", "saveMatrix()");
-onEvent("Matrix/Matrix/SaveAndNew", "delayclick", "saveAndNewMatrix()");
-
 String matrix_id = null;
 
 newMatrix(){
@@ -1493,8 +1465,6 @@ loadMatrixAttributes(){
 onEvent("Special_Find/Special_Find_GeneralInformation/attachPhoto", "click", "attachPictureTo(\"Special_Find/Special_Find_GeneralInformation/Photo\")");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachAudio", "click", "attachAudioTo(\"Special_Find/Special_Find_GeneralInformation/Audio\")");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachVideo", "click", "attachVideoTo(\"Special_Find/Special_Find_GeneralInformation/Video\")");
-onEvent("Special_Find/Special_Find_GeneralInformation/Update", "delayclick", "saveSpecialFind()");
-onEvent("Special_Find/Special_Find_GeneralInformation/SaveAndNew", "delayclick", "saveAndNewSpecialFind()");
 
 String special_find_id = null;
 
