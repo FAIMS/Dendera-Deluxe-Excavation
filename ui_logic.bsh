@@ -110,11 +110,108 @@ validateContextTabGroup() {
 validateContextTabGroup(Boolean showWarning) {
     List f = new ArrayList(); // fields to be validated
 
-    "ref", "{Name}", "true"
+    f.add(fieldPair("Context/Context_GeneralInformation/Trench"                , "{Trench}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Context_ID"            , "{Context_ID}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Location_Note"         , "{Location_Note}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Excavation_Method"     , "{Excavation_Method}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Context_Type"          , "{Context_Type}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Context_Highest_Level" , "{Context_Highest_Level}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Length"                , "{Length}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Width"                 , "{Width}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Depth"                 , "{Depth}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Volume"                , "{Volume}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Plans"                 , "{Plans}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Section_Numbers"       , "{Section_Numbers}"));
 
-    validateFields(fields, "Context/Context_Validation/validationResults", showWarning);
+    // TODO: implement non-trivial conditions
+    String condCut        = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Cut}\")";
+    String condDeposit    = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Deposit}\")";
+    String condSkeleton   = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Skeleton}\")";
+    String condStructures = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Structure}\")";
+    // Cut
+    f.add(fieldPair("Context/Context_GeneralInformation/Your_Interpretation" , "{Your_Interpretation}"   , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Shape_of_Cut"                      , "{Shape_of_Cut}"          , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Shape_of_Corners"                  , "{Shape_of_Corners}"      , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Shape_of_Base"                     , "{Shape_of_Base}"         , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Break_of_Slope_Top"                , "{Break_of_Slope_Top}"    , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Sides_of_Cut"                      , "{Sides_of_Cut}"          , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Cut_Function"                      , "{Cut_Function}"          , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Orientation"                       , "{Orientation}"           , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Inclination_of_axis"               , "{Inclination_of_axis}"   , condCut));
+    // Deposit
+    f.add(fieldPair("Context/Context_Deposits/Your_Interpretation"           , "{Your_Interpretation}"   , condDeposit));
+    f.add(fieldPair("Context/Context_Deposits/Soil_Compaction_Type"          , "{Soil_Compaction_Type}"  , condDeposit));
+    f.add(fieldPair("Context/Context_Deposits/Soil_Texture"                  , "{Soil_Texture}"          , condDeposit));
+    f.add(fieldPair("Context/Context_Deposits/Composition_Type"              , "{Composition_Type}"      , condDeposit));
+    f.add(fieldPair("Context/Context_Deposits/Deposit_Bedding"               , "{Deposit_Bedding}"       , condDeposit));
+    f.add(fieldPair("Context/Context_Deposits/Deposit_Inclusions"            , "{Deposit_Inclusions}"    , condDeposit));
+    // Skeleton
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Head"                , "{Skeleton_Head}"         , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Body"                , "{Skeleton_Body}"         , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Left_Arm"            , "{Skeleton_Left_Arm}"     , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Right_Arm"           , "{Skeleton_Right_Arm}"    , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Left_Leg"            , "{Skeleton_Left_Leg}"     , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Right_Leg"           , "{Skeleton_Right_Leg}"    , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Condition"           , "{Skeleton_Condition}"    , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Days_Exposed"        , "{Skeleton_Days_Exposed}" , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Target_A_X"                   , "{Target_A_X}"            , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/Target_A_Y"                   , "{Target_A_Y}"            , condSkeleton));
+    // Structures
+    f.add(fieldPair("Context/Context_Structures/Your_Interpretation"         , "{Your_Interpretation}"   , condStructures));
+    f.add(fieldPair("Context/Context_Structures/Structure_Description"       , "{Structure_Description}" , condStructures));
+
+    // Interpretation
+    f.add(fieldPair("Context/Context_Interpretation/Your_description" , "{Your_description}"));
+    f.add(fieldPair("Context/Context_Interpretation/Your_Discussion"  , "{Your_Discussion}"));
+
+    // TODO
+    // iv. Relationships
+        // 1. A relationship should be specified 
+    // v. Artefacts
+        // 2. Any artefact should have description and X Y Z recorded
+
+    validateFields(fields , "Context/Context_Validation/validationResults" , showWarning);
 }
- 
+
+validateFeatureTabGroup() {
+    Boolean showWarning = true;
+    validateFeatureTabGroup(showWarning);
+}
+
+validateFeatureTabGroup() {
+    List f = new ArrayList();
+
+    // TODO? "GEN"
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Trench", "{Trench}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID", "{Context_Group_ID}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Title", "{Title}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type", "{Context_Type}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_description", "{CG_Your_description}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_Interpretation", "{CG_Your_Interpretation}"));
+
+    validateFields(fields , "ContextGroup/ContextGroup_Details/validationResults" , showWarning);
+}
+
+validateSamplesTabGroup() {
+    Boolean showWarning = true;
+    validateFeatureTabGroup(showWarning);
+}
+
+validateSamplesTabGroup() {
+    List f = new ArrayList();
+
+    f.add(fieldPair("Sample/GeneralInformation/Context_ID", "{Context_ID}"));
+    f.add(fieldPair("Sample/GeneralInformation/Sample_ID", "{Sample_ID}"));
+    f.add(fieldPair("Sample/GeneralInformation/Sample_Type", "{Sample_Type}"));
+    f.add(fieldPair("Sample/GeneralInformation/X", "X"));
+    f.add(fieldPair("Sample/GeneralInformation/Y", "Y"));
+    f.add(fieldPair("Sample/GeneralInformation/Z", "Z"));
+
+    validateFields(fields , "Feature/Feature_Validation/validationResults" , showWarning);
+}
+
+
 /*** control ***/
 onEvent("control"                     , "show"  , "removeNavigationButtons(); setSearchTrench();");
 onEvent("control/data"                , "show"  , "refreshEntities(); updateGPSDiagnostics();");

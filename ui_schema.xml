@@ -23,7 +23,7 @@
           </style>
           <user>
             <usertab>
-              <Area_Code/>
+              <Trench/>
               <users/>
               <Device_Code/>
               <login/>
@@ -69,7 +69,7 @@
                   <entityTypes/>
                 </child1>
                 <child2>
-                  <Area_Code/>
+                  <Trench/>
                 </child2>
               </container2>
               <entityList/>
@@ -478,7 +478,7 @@
                   <Site_Code/>
                 </child1>
                 <child2>
-                  <Area_Code/>
+                  <Trench/>
                 </child2>
                 <child3>
                   <Context_Group_ID/>
@@ -889,7 +889,7 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 appearance="full" ref="Area_Code">
+        <select1 appearance="full" ref="Trench">
           <label>Area Code:</label>
           <item>
             <label>placeholder</label>
@@ -1021,8 +1021,8 @@ Help can be found for individual entries by pressing the ? buttons throughout th
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 ref="Area_Code">
-              <label>{Select_Area_Code}</label>
+            <select1 ref="Trench">
+              <label>{Select_Trench}</label>
               <item>
                 <label>{placeholder}</label>
                 <value>placeholder</value>
@@ -2089,8 +2089,8 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Area Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Area_Code">
-              <label>{Area_Code}</label>
+            <input faims_attribute_name="Area Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Trench">
+              <label>{Trench}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
