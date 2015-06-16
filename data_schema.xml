@@ -1104,6 +1104,26 @@ When you have selected a context type you can proceed to open the "Fill in conte
       </lookup>
     </property>
   </ArchaeologicalElement>
+  <!--HEIGHT-->
+  <ArchaeologicalElement name="Height">
+    <description></description>
+    <property isIdentifier="true" name="Number" type="freetext">
+      <description/>
+      <formatString><![CDATA[$2]]></formatString>
+    </property>
+    <property name="X" type="freetext">
+      <description/>
+    </property>
+    <property name="Y" type="freetext">
+      <description/>
+    </property>
+    <property name="Z" type="freetext">
+      <description/>
+    </property>
+    <property name="Notes" type="freetext">
+      <description/>
+    </property>
+  </ArchaeologicalElement>
   <!--SAMPLE-->
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
