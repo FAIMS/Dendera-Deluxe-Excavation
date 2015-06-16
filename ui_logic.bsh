@@ -479,7 +479,7 @@ loadContextFrom(contextid) {
     // todo: (Brian) createdAtModifiedBy queries
     // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)");
     String contextCreatingUserQuery = "fetch the creating user";
-    fetchOne(contextCreatingUserQuery new FetchCallback() {
+    fetchOne(contextCreatingUserQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("Context/Context_GeneralInformation/CreatingUser", result.get(0));
         }
