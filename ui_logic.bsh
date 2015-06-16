@@ -813,7 +813,7 @@ loadContextAttributes(){
     makeVocab("DropDown", "Context/Context_Deposits/Deposit_Bedding", "Deposit Bedding");
     makeVocab("RadioGroup", "Context/Context_Deposits/Sterile", "Sterile");
 
-    makeVocab("DropDown", "Context/Context_Cuts/Shape_of_Cut", ("Shape of Cut");
+    makeVocab("DropDown", "Context/Context_Cuts/Shape_of_Cut", "Shape of Cut");
     makeVocab("RadioGroup", "Context/Context_Cuts/Shape_of_Corners", "Shape of Corners");
     makeVocab("RadioGroup", "Context/Context_Cuts/Break_of_Slope_Top", "Break of Slope - Top");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Shape_of_Base", "Shape of Base");
@@ -1004,7 +1004,7 @@ loadContextGroupFrom(String id){
     // todo: (Brian) createdAtModifiedBy queries
     // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)");
     String cgCreatingUserQuery = "fetch the creating user";
-    fetchOne(cgCreatingUserQuery new FetchCallback() {
+    fetchOne(cgCreatingUserQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
         }
@@ -1026,7 +1026,7 @@ loadContextGroupFromContext() {
     // todo: (Brian) createdAtModifiedBy queries
     // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)");
     String cgCreatingUserQuery = "fetch the creating user";
-    fetchOne(cgCreatingUserQuery new FetchCallback() {
+    fetchOne(cgCreatingUserQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
         }
