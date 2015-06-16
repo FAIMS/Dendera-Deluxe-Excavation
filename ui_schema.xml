@@ -216,6 +216,7 @@
                 </child3>
               </container3>
               <Volume/>
+              <Add_Height/>
             </Context_Measure>
             <Context_Cuts>
               <Your_Interpretation/>
@@ -1289,6 +1290,9 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume" faims_style_class="required">
           <label>{Volume}</label>
         </input>
+        <trigger ref="Add_Height">
+          <label>Add_Height</label>
+        </trigger>
       </group>
       <group faims_hidden="true" ref="Context_Cuts">
         <label>{Cut}</label>
