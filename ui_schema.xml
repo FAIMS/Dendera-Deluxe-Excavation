@@ -739,15 +739,12 @@
         </faims>
       </instance>
       <!--list of numeric and blocktext(memo) attributes(fields)-->
-      <bind nodeset="/faims/user/help/guide" type="string"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child2/Context_Lowest_Level" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child1/Length" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child2/Width" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child3/Depth" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container7/child1/Volume" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Deposits/container3/child2/Deposit_Inclusions" type="string"/>
-      <bind nodeset="/faims/Context/Context_Structures/Structure_Description" type="string"/>
       <bind nodeset="/faims/Context/Context_Skeletons/container1/child1/Mid_X" type="decimal"/>
       <bind nodeset="/faims/Context/Context_Skeletons/container1/child2/Mid_Y" type="decimal"/>
       <bind nodeset="/faims/Context/Context_Skeletons/Skeleton_Days_Exposed" type="decimal"/>
@@ -759,27 +756,18 @@
       <bind nodeset="/faims/Context/Context_Skeletons/container7/child2/Target_C_Y" type="decimal"/>
       <bind nodeset="/faims/Context/Context_Skeletons/container8/child1/Target_D_X" type="decimal"/>
       <bind nodeset="/faims/Context/Context_Skeletons/container8/child2/Target_D_Y" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/Skeleton_Notes" type="string"/>
-      <bind nodeset="/faims/Context/Context_Interpretation/Your_Discussion" type="string"/>
-      <bind nodeset="/faims/Context/Context_Interpretation/Your_description" type="string"/>
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child1/Length" type="decimal"/>
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child2/Width" type="decimal"/>
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child3/Depth" type="decimal"/>
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container4/child1/Mid_X" type="decimal"/>
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container4/child2/Mid_Y" type="decimal"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/CG_Your_description" type="string"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/Your_Discussion" type="string"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/CG_Your_Interpretation" type="string"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/Sample_Volume" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child1/X" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child2/Y" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child3/Z" type="decimal"/>
-      <bind nodeset="/faims/Sample/Sample_GeneralInformation/container3/child2/Sample_Comments" type="string"/>
       <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child1/X" type="decimal"/>
       <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child2/Y" type="decimal"/>
       <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child3/Z" type="decimal"/>
-      <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/Special_Find_Description" type="string"/>
-      <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/Special_Find_Comment" type="string"/>
       <bind nodeset="/faims/Matrix/Matrix/container1/child2/Percentage" type="decimal"/>
     </model>
   </h:head>
