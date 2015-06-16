@@ -355,13 +355,13 @@ onEvent("Context/Context_GeneralInformation/Add_Date_Closed", "click", "addClose
 onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
 onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
 
-onEvent("Context/Context_Deposits/newMatrix", "click", "saveContext(\"newMatrix();\")");
+onEvent("Context/Context_Deposits/newMatrix", "click", "newMatrix()");
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
 onEvent("Context/Context_Deposits/deleteMatrix", "click", "deleteMatrixFromContext()");
 
 onEvent("Context/Context_Structures/Deposit", "click", "showTab(\"Context/Context_Deposits\")");
 
-onEvent("Context/Context_Feature/AddContextGroup", "click", "saveContext(\"newContextGroup(false)\");newContextGroupRel = true;");
+onEvent("Context/Context_Feature/AddContextGroup", "click", "newContextGroup(false);newContextGroupRel = true;");
 onEvent("Context/Context_Feature/ShowContextGroup", "click", "loadContextGroupFromContext();newContextGroupRel = false;");
 onEvent("Context/Context_Feature/RemoveFromContextGroup", "click", "removeContextGroupReln()");
 onEvent("Context/Context_Feature/AddContextGroupRel", "delayclick", "addContextGroupRel()");
@@ -374,19 +374,19 @@ onEvent("Context/Context_Attachments/attachVideo", "click", "attachVideoTo(\"Con
 onEvent("Context/Context_Attachments/attachSketch", "click", "attachFileTo(\"Context/Context_Attachments/Sketch\")");
 onEvent("Context/Context_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_id)");
 
-onEvent("Context/Context_Artefacts/newArtefactGroup", "delayclick", "saveContext(\"newArtefactGroup();\")");
+onEvent("Context/Context_Artefacts/newArtefactGroup", "delayclick", "newArtefactGroup();");
 onEvent("Context/Context_Artefacts/loadArtefactGroup", "click", "loadArtefactGroup()");
 onEvent("Context/Context_Artefacts/deleteArtefactGroup", "delayclick", "deleteArtefactGroupFromContext()");
-onEvent("Context/Context_Artefacts/newSpecialFind", "delayclick", "saveContext(\"newSpecialFind();\")");
+onEvent("Context/Context_Artefacts/newSpecialFind", "delayclick", "newSpecialFind();");
 onEvent("Context/Context_Artefacts/loadSpecialFind", "click", "loadSpecialFind()");
 onEvent("Context/Context_Artefacts/deleteSpecialFind", "delayclick", "deleteSpecialFindFromContext()");
 
-onEvent("Context/Context_Samples/newSample", "click", "saveContext(\"newSample();\")");
+onEvent("Context/Context_Samples/newSample", "click", "newSample()");
 onEvent("Context/Context_Samples/loadSample", "click", "loadSample();");
 onEvent("Context/Context_Samples/deleteSample", "click", "deleteSampleFromContext()");
 onEvent("Context/Context_Samples/listOfSamples", "click", "showSampleFromList()");
 
-onEvent("Context/Context_Attachments/newPhotoLog", "click", "saveContext(\"isContext=true;newPhotoLog();verb=\\\"ContextPhotographLog\\\";archent_id=context_id;\");");
+onEvent("Context/Context_Attachments/newPhotoLog", "click", "isContext=true;newPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;");
 onEvent("Context/Context_Attachments/loadPhotoLog", "click", "loadPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true");
 onEvent("Context/Context_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContext()");
 
@@ -957,7 +957,7 @@ onEvent("ContextGroup/ContextGroup_Attachments/attachAudio", "click", "attachAud
 onEvent("ContextGroup/ContextGroup_Attachments/attachVideo", "click", "attachVideoTo(\"ContextGroup/ContextGroup_Attachments/Video\")");
 onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFileTo(\"ContextGroup/ContextGroup_Attachments/Sketch\")");
 onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
-onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "saveContextGroup(\"isContext=false;newPhotoLog();verb=\\\"ContextGroupPhotographLog\\\";archent_id=context_group_id;\");");
+onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadContextGroupPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
 onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
 
