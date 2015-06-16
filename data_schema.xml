@@ -1054,7 +1054,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{0No_Observation}
         <description>data not collected</description></term>
-        <term>{1.Grit} 
+        <term>{Grit} 
         <description>Size up to 5 mm.</description></term>
         <term>{2.Small_Stones} 
         <description>Size up to 10 mm.</description></term>
