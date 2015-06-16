@@ -523,9 +523,7 @@ newContext(){
     keepTabGroupChanges("Context");
 
     incField("control/data/ContextIncrement");
-    // todo: replace with set timestamp
-    // datetime = fetchOne("select datetime('now', 'localtime');");
-    // setFieldValue("Context/Context_GeneralInformation/CreatingDate", datetime.get(0));
+    setTimestamp("Context/Context_GeneralInformation/CreatingDate");
 }
 
 loadContext() {
@@ -542,13 +540,21 @@ loadContextFrom(contextid) {
         openContextTabs(true);
       }
     });
-
-    // todo: replace with context data schema property for creating user and creating date?
-
+    // todo: (Brian) createdAtModifiedBy queries
     // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)");
-    // setFieldValue("Context/Context_GeneralInformation/CreatingUser", foo.get(0));
+    String contextCreatingUserQuery = "fetch the creating user";
+    fetchOne(contextCreatingUserQuery new FetchCallback() {
+        onFetch(result) {
+            setFieldValue("Context/Context_GeneralInformation/CreatingUser", result.get(0));
+        }
+    });
     // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_id+"' group by uuid having min(aenttimestamp);");
-    // setFieldValue("Context/Context_GeneralInformation/CreatingDate", bar.get(0));  
+    String contextDateRecordedQuery = "fetch the date recorded";
+    fetchOne(contextDateRecordedQuery, new FetchCallback() {
+        onFetch(result) {
+            setFieldValue("Context/Context_GeneralInformation/CreatingDate", result.get(0));
+        }
+    });
 }
 
 saveContext(String callback) {
@@ -810,36 +816,37 @@ updateRelns(){
 }
 
 loadContextAttributes(){
-    populatePictureGallery("Context/Context_GeneralInformation/Context_Type", makePictureGallery("Context Type"));
-    populateCheckBoxGroup("Context/Context_GeneralInformation/Excavation_Method", makeVocab("Excavation Method"));
-    populateDropDown("Context/Context_GeneralInformation/Horizon_Boundary", makeVocab("Horizon Boundary"));
-    populateDropDown("Context/Context_GeneralInformation/Contamination", makeVocab("Contamination"));
+    makeVocab("PictureGallery", "Context/Context_GeneralInformation/Context_Type", "Context Type");
+    makeVocab("CheckBoxGroup", "Context/Context_GeneralInformation/Excavation_Method", "Excavation Method");
+    makeVocab("DropDown", "Context/Context_GeneralInformation/Horizon_Boundary", "Horizon Boundary");
+    makeVocab("DropDown", "Context/Context_GeneralInformation/Contamination", "Contamination");
+    makeVocab("DropDown", "Context/Context_GeneralInformation/Device_Code", "Device Code");
 
-    populateHierarchicalDropDown("Context/Context_Deposits/Soil_Compaction_Type", "Soil Compaction Type");
-    populateDropDown("Context/Context_Deposits/Soil_Texture", makeVocab("Soil Texture"));
-    populateRadioGroup("Context/Context_Deposits/Sterile", makeVocab("Sterile"));
-    populateHierarchicalPictureGallery("Context/Context_Deposits/Soil_Particle_Sorting", "Soil Particle Sorting");
-    populateDropDown("Context/Context_Deposits/Your_Interpretation", makeVocab("Deposit Your Interpretation"));
-    populateDropDown("Context/Context_Deposits/Composition_Type", makeVocab("Composition Type"));
-    populateDropDown("Context/Context_Deposits/Deposit_Bedding", makeVocab("Deposit Bedding"));
-    populateRadioGroup("Context/Context_Deposits/Sterile", makeVocab("Sterile"));
+    makeVocab("HierarchicalDropDown", "Context/Context_Deposits/Soil_Compaction_Type", "Soil Compaction Type");
+    makeVocab("DropDown", "Context/Context_Deposits/Soil_Texture", "Soil Texture");
+    makeVocab("RadioGroup", "Context/Context_Deposits/Sterile", "Sterile");
+    makeVocab("HierarchicalPictureGallery", "Context/Context_Deposits/Soil_Particle_Sorting", "Soil Particle Sorting");
+    makeVocab("DropDown", "Context/Context_Deposits/Your_Interpretation", "Deposit Your Interpretation");
+    makeVocab("DropDown", "Context/Context_Deposits/Composition_Type", "Composition Type");
+    makeVocab("DropDown", "Context/Context_Deposits/Deposit_Bedding", "Deposit Bedding");
+    makeVocab("RadioGroup", "Context/Context_Deposits/Sterile", "Sterile");
 
-    populateDropDown("Context/Context_Cuts/Shape_of_Cut", makeVocab("Shape of Cut"));
-    populateRadioGroup("Context/Context_Cuts/Shape_of_Corners", makeVocab("Shape of Corners"));
-    populateRadioGroup("Context/Context_Cuts/Break_of_Slope_Top", makeVocab("Break of Slope - Top"));
-    populateHierarchicalDropDown("Context/Context_Cuts/Shape_of_Base", "Shape of Base");
-    populateRadioGroup("Context/Context_Cuts/Orientation", makeVocab("Orientation"));
-    populateDropDown("Context/Context_Cuts/Your_Interpretation", makeVocab("Cut Your Interpretation"));
-    populateHierarchicalDropDown("Context/Context_Cuts/Sides_of_Cut", "Sides of Cut");
-    populateDropDown("Context/Context_Cuts/Inclination_of_axis", makeVocab("Inclination of axis"));
+    makeVocab("DropDown", "Context/Context_Cuts/Shape_of_Cut", ("Shape of Cut");
+    makeVocab("RadioGroup", "Context/Context_Cuts/Shape_of_Corners", "Shape of Corners");
+    makeVocab("RadioGroup", "Context/Context_Cuts/Break_of_Slope_Top", "Break of Slope - Top");
+    makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Shape_of_Base", "Shape of Base");
+    makeVocab("RadioGroup", "Context/Context_Cuts/Orientation", "Orientation");
+    makeVocab("DropDown", "Context/Context_Cuts/Your_Interpretation", "Cut Your Interpretation");
+    makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Sides_of_Cut", "Sides of Cut");
+    makeVocab("DropDown", "Context/Context_Cuts/Inclination_of_axis", "Inclination of axis");
 
-    populateDropDown("Context/Context_Structures/Structure_Shape", makeVocab("Structure Shape"));
-    populateDropDown("Context/Context_Structures/Structural_Components", makeVocab("Structural Components"));
-    populateDropDown("Context/Context_Structures/Bonding", makeVocab("Bonding"));
-    populateDropDown("Context/Context_Structures/Mudbrick_Shape", makeVocab("Mudbrick Shape"));
-    populateDropDown("Context/Context_Structures/Your_Interpretation", makeVocab("Structure Your Interpretation"));
+    makeVocab("DropDown", "Context/Context_Structures/Structure_Shape", "Structure Shape");
+    makeVocab("DropDown", "Context/Context_Structures/Structural_Components", "Structural Components");
+    makeVocab("DropDown", "Context/Context_Structures/Bonding", "Bonding");
+    makeVocab("DropDown", "Context/Context_Structures/Mudbrick_Shape", "Mudbrick Shape");
+    makeVocab("DropDown", "Context/Context_Structures/Your_Interpretation", "Structure Your Interpretation");
 
-    populateHierarchicalDropDown("Context/Texture_Helper/Soil_Texture", "Soil Texture Helper");
+    makeVocab("HierarchicalDropDown", "Context/Texture_Helper/Soil_Texture", "Soil Texture Helper");
 
     // todo: replace with pazc relation list query
     // relnList = fetchAll("select relntypename||'~!~'||coalesce(nullif(parent||'~!~'||child,'~!~'),relntypename||'~!~'||relntypename) as relntypeid, coalesce(nullif(parent,''), relntypename) as name, relntypeid from relntype where relntypename not like '%Context%' and relntypename not like 'Rebuilt%' union select relntypename||'~!~'||coalesce(nullif(child||'~!~'||parent,'~!~'),relntypename||'~!~'||relntypename), coalesce(nullif(child,''), relntypename) as name, relntypeid from relntype where relntypename not like '%Context%' and relntypename not like 'Rebuilt%' order by relntypeid, name;");
@@ -970,9 +977,7 @@ newContextGroup(menu){
     }
     newTabGroup("ContextGroup");
     context_group_id = null;
-    // todo: replace?
-    // date = fetchOne("select datetime('now', 'localtime');");
-    // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", date.get(0));
+    setTimestamp("ContextGroup/ContextGroup_Details/DateRecorded");
     setFieldValue("ContextGroup/ContextGroup_Details/Device_Code", getFieldValue("user/usertab/Device_Code"));
     setFieldValue("ContextGroup/ContextGroup_Details/Trench", areaCode);
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
@@ -988,11 +993,21 @@ loadContextGroupFrom(String id){
   context_group_id = id;
     showTabGroup("ContextGroup", context_group_id);
     populateContextGroup();
-    // todo: replace with tabgroup data schema properties?
+    // todo: (Brian) createdAtModifiedBy queries
     // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)");
-    // setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", foo.get(0));
+    String cgCreatingUserQuery = "fetch the creating user";
+    fetchOne(cgCreatingUserQuery new FetchCallback() {
+        onFetch(result) {
+            setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
+        }
+    });
     // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);");
-    // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", bar.get(0));
+    String cgDateRecordedQuery = "fetch the date recorded";
+    fetchOne(cgDateRecordedQuery, new FetchCallback() {
+        onFetch(result) {
+            setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(0));
+        }
+    });
 }
 
 loadContextGroupFromContext() {
@@ -1000,11 +1015,21 @@ loadContextGroupFromContext() {
     if (isNull(context_group_id)) return;
     showTabGroup("ContextGroup", context_group_id);
     populateContextGroup();
-    // todo: replace with data schema properties
+    // todo: (Brian) createdAtModifiedBy queries
     // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)");
-    // setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", foo.get(0));
+    String cgCreatingUserQuery = "fetch the creating user";
+    fetchOne(cgCreatingUserQuery new FetchCallback() {
+        onFetch(result) {
+            setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
+        }
+    });
     // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);");
-    // setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", bar.get(0));
+    String cgDateRecordedQuery = "fetch the date recorded";
+    fetchOne(cgDateRecordedQuery, new FetchCallback() {
+        onFetch(result) {
+            setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(0));
+        }
+    });
     updateRelns();
 
 }
@@ -1082,8 +1107,9 @@ populateContextGroup() {
 }
 
 loadContextGroupAttributes(){
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Device_Code", "Device Code");
     // todo: pazcify
-    // populateDropDown("ContextGroup/ContextGroup_Details/Context_Type", makeVocab("CG Context Type"));
     // relnList = fetchAll("select relntypename||'~!~'||coalesce(nullif(parent||'~!~'||child,'~!~'),relntypename||'~!~'||relntypename) as relntypeid, coalesce(nullif(parent,''), relntypename) as name, relntypeid from relntype where relntypename not like '%Context%' and relntypename not like 'Rebuilt%' union select relntypename||'~!~'||coalesce(nullif(child||'~!~'||parent,'~!~'),relntypename||'~!~'||relntypename), coalesce(nullif(child,''), relntypename) as name, relntypeid from relntype where relntypename not like '%Context%' and relntypename not like 'Rebuilt%' order by relntypeid, name;");
     // populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/reln", relnList);
 }
@@ -2538,13 +2564,13 @@ initialiseModule() {
     makeVocab("DropDown", "user/usertab/Trench", "Trench");
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
     makeVocab("DropDown", "control/search/Trench", "Trench");
-    // loadContextAttributes();
-    // loadContextGroupAttributes();
-    // loadArtefactGroupAttributes();
-    // loadSampleAttributes();
-    // loadMatrixAttributes();
-    // loadSpecialFindAttributes();
-    // loadPhotoLogAttributes();
+    loadContextAttributes();
+    loadContextGroupAttributes();
+    loadArtefactGroupAttributes();
+    loadSampleAttributes();
+    loadMatrixAttributes();
+    loadSpecialFindAttributes();
+    loadPhotoLogAttributes();
 }
 
 initialiseModule();
