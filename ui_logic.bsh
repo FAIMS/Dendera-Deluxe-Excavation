@@ -221,6 +221,7 @@ validateSpecialFindTabGroup() {
 validateSpecialFindTabGroup(showWarning) {
     List f = new ArrayList();p
 
+    f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Special_Find_ID"          , "{Special_Find} ID"));
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Special_Find_Description" , "{Special_Find} Description"));
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/X"                        , "X"));
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Y"                        , "Y"));
