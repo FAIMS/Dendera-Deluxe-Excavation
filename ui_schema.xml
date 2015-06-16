@@ -180,6 +180,45 @@
                 </child2>
               </container10>
             </Context_GeneralInformation>
+            <Context_Measure>
+              <container1>
+                <child1>
+                  <Context_Highest_Level/>
+                </child1>
+                <child2>
+                  <Context_Lowest_Level/>
+                </child2>
+              </container1>
+              <Datum/>
+              <container2>
+                <child1>
+                  <Context_Highest_Level_NW/>
+                  <Context_Highest_Level_NE/>
+                  <Context_Highest_Level_SE/>
+                  <Context_Highest_Level_SW/>
+                  <Context_Highest_Level_Ctr/>
+                </child1>
+                <child2>
+                 <Context_Lowest_Level_NW/>
+                 <Context_Lowest_Level_NE/>
+                 <Context_Lowest_Level_Ctr/>
+                 <Context_Lowest_Level_SE/>
+                 <Context_Lowest_Level_SW/>
+                </child2>
+              </container2> 
+              <container3>
+                <child1>
+                  <Length/>
+                </child1>
+                <child2>
+                  <Width/>
+                </child2>
+                <child3>
+                  <Depth/>
+                </child3>
+              </container3>
+              <Volume/>
+            </Context_Measure>
             <Context_Cuts>
               <Your_Interpretation/>
               <container1>
@@ -1175,6 +1214,91 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             </input>
           </group>
         </group>
+      </group>
+
+      <group ref="Context_Measure">
+        <label>{Measure}</label>
+        <group faims_style="orientation" ref="container1">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level" faims_style_class="required">
+              <label>{Context_Highest_Level}</label>
+            </input>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level" faims_style_class="required">
+              <label>{Context_Lowest_Level}</label>
+            </input>
+          </group>
+        </group>
+        <input faims_attribute_name="Datum" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Datum">
+          <label>{Datum}</label>
+        </input>
+        <group faims_style="orientation" ref="container2">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label></label>
+            <input faims_attribute_name="Highest Level NW" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level_NW" faims_style_class="required">
+              <label>{Highest_Level_NW}</label>
+            </input>
+            <input faims_attribute_name="Highest Level NE" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level_NE" faims_style_class="required">
+              <label>{Highest_Level_NE}</label>
+            </input>
+            <input faims_attribute_name="Highest Level SE" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level_SE" faims_style_class="required">
+              <label>{Highest_Level_SE}</label>
+            </input>
+            <input faims_attribute_name="Highest Level SW" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level_SW" faims_style_class="required">
+              <label>{Highest_Level_SW}</label>
+            </input>
+            <input faims_attribute_name="Highest Level Ctr" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level_Ctr" faims_style_class="required">
+              <label>{Highest_Level_Ctr}</label>
+            </input>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <input faims_attribute_name="Lowest Level NW" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level_NW" faims_style_class="required">
+              <label>{Lowest_Level_NW}</label>
+            </input>
+            <input faims_attribute_name="Lowest Level NE" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level_NE" faims_style_class="required">
+              <label>{Lowest_Level_NE}</label>
+            </input>
+            <input faims_attribute_name="Lowest Level SE" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level_SE" faims_style_class="required">
+              <label>{Lowest_Level_SE}</label>
+            </input>
+            <input faims_attribute_name="Lowest Level SW" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level_SW" faims_style_class="required">
+              <label>{Lowest_Level_SW}</label>
+            </input>
+             <input faims_attribute_name="Lowest Level Ctr" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level_Ctr" faims_style_class="required">
+              <label>{Lowest_Level_Ctr}</label>
+            </input>
+          </group>
+        </group>
+        <group faims_style="orientation" ref="container3">
+          <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Length" faims_style_class="required">
+              <label>{Length}</label>
+            </input>
+          </group>
+          <group faims_style="even" ref="child2">
+            <label/>
+            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Width" faims_style_class="required">
+              <label>{Width}</label>
+            </input>
+          </group>
+          <group faims_style="even" ref="child3">
+            <label/>
+            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Depth" faims_style_class="required">
+              <label>{Depth}</label>
+            </input>
+          </group>
+        </group>
+    <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume" faims_style_class="required">
+         <label>{Volume}</label>
+        </input>
       </group>
 
       <group faims_hidden="true" ref="Context_Cuts">
