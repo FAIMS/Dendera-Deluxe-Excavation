@@ -1027,8 +1027,8 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <select1 appearance="compact" ref="blank" faims_annotation="false" faims_certainty="false">
               <label/>
               <item>
-                <label/>
-                <value/>
+                <label>{placeholder}</label>
+                <value>placeholder</value>
               </item>
             </select1>
           </group>
@@ -1140,8 +1140,8 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <select1 appearance="compact" ref="blank" faims_annotation="false" faims_certainty="false">
               <label/>
               <item>
-                <label/>
-                <value/>
+                <label>{placeholder}</label>
+                <value>placeholder</value>
               </item>
             </select1>
           </group>
@@ -1150,8 +1150,8 @@ Help can be found for individual entries by pressing the ? buttons throughout th
             <select1 appearance="compact" ref="blank" faims_annotation="false" faims_certainty="false">
               <label/>
               <item>
-                <label/>
-                <value/>
+                <label>{placeholder}</label>
+                <value>placeholder</value>
               </item>
             </select1>
           </group>
