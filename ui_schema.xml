@@ -393,6 +393,18 @@
               <RelatedContextGroups/>
             </Context_Feature>
             <Context_Relationships_to_Other_Contexts>
+              <colgroup>
+                <left>
+                  <Target_Area/>
+                </left>
+                <mid>
+                  <Target_Context_ID/>
+                </mid>
+                <right>
+                  <createLegacy/>
+                  <Populate_Target_Context/>
+                </right>
+              </colgroup>
               <spacer/>
               <container3>
                 <child0>
@@ -406,51 +418,33 @@
                 </child3>
               </container3>
               <relate/>
-              <listRelns/>
               <container4>
                 <child1>
-                  <deleteReln/>
+                  <listOfRelns/>
                 </child1>
                 <child2>
+                  <selectedEnt/>
+                  <help/>
+                  <deleteReln/>
                   <showReln/>
                 </child2>
               </container4>
-              <listOfRelns/>
             </Context_Relationships_to_Other_Contexts>
             <Context_Artefacts>
-              <newArtefactGroup/>
-              <artefactGroupList/>
-              <container1>
-                <child0>
-                  <deleteArtefactGroup/>
-                </child0>
-                <child1>
-                  <loadArtefactGroup/>
-                </child1>
-              </container1>
-              <newSpecialFind/>
-              <specialFindList/>
-              <container2>
-                <child0>
-                  <deleteSpecialFind/>
-                </child0>
-                <child1>
-                  <loadSpecialFind/>
-                </child1>
-              </container2>
+              <colgroup>
+                <left>
+                  <newArtefactGroup/>
+                  <artefactGroupList/>
+                </left>
+                <right>
+                  <newSpecialFind/>
+                  <specialFindList/>
+                </right>
+              </colgroup>
             </Context_Artefacts>
             <Context_Samples>
               <newSample/>
               <sampleList/>
-              <container1>
-                <child0>
-                  <deleteSample/>
-                </child0>
-                <child1>
-                  <loadSample/>
-                </child1>
-              </container1>
-              <listOfSamples/>
             </Context_Samples>
             <Context_Attachments>
               <Recorded_By/>
@@ -1774,102 +1768,107 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         </select1>
       </group>
       <group ref="Context_Relationships_to_Other_Contexts" faims_scrollable="false">
-        <label>Rel</label>
+        <label>Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.</label>
+        <group ref="colgroup" faims_style="orientation">
+          <label/>
+          <group ref="left" faims_style="even">
+            <label/>
+            <select1 ref="Target_Area" faims_style_class="doubleheight">
+              <label>{Area_Trench}</label>
+              <item>
+                <label>{placeholder}</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
+          <group ref="mid" faims_style="even">
+            <label/>
+            <input ref="Target_Context_ID" faims_style_class="doubleheight">
+              <label>{Context_ID}</label>
+            </input>
+          </group>
+          <group ref="right" faims_style="even">
+            <label/>
+            <trigger ref="createLegacy">
+              <label>{Create_Legacy}</label>
+            </trigger>
+            <trigger ref="Populate_Target_Context">
+              <label>{Populate_Target_Context}</label>
+            </trigger>
+          </group>
+        </group>
         <!-- Brian todo, figure out how to model this -->
-        <input faims_certainty="false" faims_read_only="true" ref="spacer">
-          <label>Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.</label>
+        <input faims_certainty="false" faims_read_only="true" ref="spacer" faims_web="true">
+          <label></label>
         </input>
         <group faims_style="orientation" ref="container3">
           <label/>
           <group faims_style="even" ref="child0">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="context_id">
-              <label>This {Context}:</label>
+            <input faims_certainty="false" faims_read_only="true" ref="context_id" faims_style_class="sharedwithvocab">
+              <label>{This_Context}</label>
             </input>
           </group>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_certainty="false" faims_read_only="false" ref="reln">
-              <label>Relationship</label>
+            <select1 faims_certainty="false" faims_read_only="false" ref="reln" faims_style_class="sharedwithvocab">
+              <label>{Relationship}</label>
               <item>
-                <label>placeholder</label>
+                <label>{placeholder}</label>
                 <value>placeholder</value>
               </item>
             </select1>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <select1 faims_certainty="false" faims_read_only="false" ref="context">
-              <label>to {Context}</label>
+            <select1 faims_certainty="false" faims_read_only="false" ref="context" faims_style_class="sharedwithvocab">
+              <label>{to_Context}</label>
               <item>
-                <label>placeholder</label>
+                <label>{placeholder}</label>
                 <value>placeholder</value>
               </item>
             </select1>
           </group>
         </group>
         <trigger ref="relate">
-          <label>Relate {Contexts}</label>
+          <label>{Relate_Contexts}</label>
         </trigger>
-        <select1 faims_certainty="false" faims_read_only="false" ref="listRelns">
-          <label>Select to Delete or Load the other {Context}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
         <group faims_style="orientation" ref="container4">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <trigger ref="deleteReln">
-              <label>Remove Reln</label>
-            </trigger>
+            <select1 ref="listOfRelns" appearance="compact" faims_style_class="record-list">
+              <label></label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
+            <input ref="selectedEnt" faims_web="true">
+              <label>{Selected_Entity}</label>
+            </input>
+            <input ref="help" faims_web="true">
+              <label/>
+            </input>
+            <trigger ref="deleteReln">
+              <label>{Remove_Reln}</label>
+            </trigger>
             <trigger ref="showReln">
-              <label>Load {Context}</label>
+              <label>{Load_Context}</label>
             </trigger>
           </group>
         </group>
-        <select1 faims_certainty="false" ref="listOfRelns" appearance="compact">
-          <label>Associated Relationships:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
       </group>
       <group ref="Context_Samples" faims_scrollable="false">
         <label>{Samples}</label>
         <trigger ref="newSample">
           <label>Add {Sample}</label>
         </trigger>
-        <select1 faims_certainty="false" faims_read_only="false" ref="sampleList">
+        <select1 appearance="compact" faims_certainty="false" faims_read_only="false" ref="sampleList" faims_style_class="double-record-list">
           <label>Select a {Sample}:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child0">
-            <label/>
-            <trigger ref="deleteSample">
-              <label>Delete {Sample}</label>
-            </trigger>
-          </group>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <trigger ref="loadSample">
-              <label>Load {Sample}</label>
-            </trigger>
-          </group>
-        </group>
-        <select1 appearance="compact" ref="listOfSamples" faims_certainty="false" faims_annotation="false">
-          <label>{Samples}:</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
