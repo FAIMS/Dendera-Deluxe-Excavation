@@ -576,6 +576,7 @@
                   <Artefact_Group_ID/>
                 </child3>
               </container1>
+              <Device_Code/>
               <Artefact_Class/>
               <container2>
                 <child1>
@@ -623,6 +624,7 @@
                   <Sample_ID/>
                 </child3>
               </container1>
+              <Device_Code/>
               <Sample_Type/>
               <Sample_Volume/>
               <container2>
@@ -687,6 +689,7 @@
                   <Special_Find_ID/>
                 </child3>
               </container1>
+              <Device_Code/>
               <Source/>
               <Groundstone/>
               <Special_Find_Class/>
@@ -2275,6 +2278,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
+        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
+          <label>{Select_Device_Code}</label>
+          <item>
+            <label>{placeholder}</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
         <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Artefact Class" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Artefact_Class">
           <label>{Artefact_Class}</label>
@@ -2394,6 +2404,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
+        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
+          <label>{Select_Device_Code}</label>
+          <item>
+            <label>{placeholder}</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
         <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type">
           <label>{Sample_Type}</label>
           <item>
@@ -2554,6 +2571,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
+        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
+          <label>{Select_Device_Code}</label>
+          <item>
+            <label>{placeholder}</label>
+            <value>placeholder</value>
+          </item>
+        </select1>
         <select1 faims_attribute_name="Source" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Source">
           <label>{Source}</label>
           <item>

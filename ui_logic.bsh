@@ -1289,7 +1289,8 @@ doNotDelete(){
 }
 
 loadArtefactGroupAttributes(){
-    populateHierarchicalDropDown("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Class", "Artefact Class");
+    makeVocab("HierarchicalDropDown", "Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Class", "Artefact Class");
+    makeVocab("DropDown", "Artefact_Group/Artefact_Group_GeneralInformation/Device_Code", "Device Code");
 }
 
 
@@ -1383,8 +1384,9 @@ doNotDelete(){
 }
 
 loadSampleAttributes(){
-    populateDropDown("Sample/Sample_GeneralInformation/Sample_Type", makeVocab("Sample Type"));
-    populateDropDown("Sample/Sample_GeneralInformation/Sample_Location", makeVocab("Sample Location"));
+    makeVocab("DropDown", "Sample/Sample_GeneralInformation/Sample_Type", "Sample Type");
+    makeVocab("DropDown", "Sample/Sample_GeneralInformation/Sample_Location", "Sample Location");
+    makeVocab("DropDown", "Sample/Sample_GeneralInformation/Device_Code", "Device Code");
 }
 
 /*** Matrix ***/
@@ -1472,8 +1474,8 @@ doNotDelete(){
 }
 
 loadMatrixAttributes(){
-    populateDropDown("Matrix/Matrix/Component", makeVocab("Component"));
-    populateHierarchicalPictureGallery("Matrix/Matrix/Shape", "Shape");
+    makeVocab("DropDown", "Matrix/Matrix/Component", "Component");
+    makeVocab("HierarchicalPictureGallery", "Matrix/Matrix/Shape", "Shape");
 }
 
 /*** Special Find ***/
@@ -1563,7 +1565,8 @@ doNotDelete(){
 }
 
 loadSpecialFindAttributes(){
-    populateHierarchicalDropDown("Special_Find/Special_Find_GeneralInformation/Special_Find_Class", "Special Find Class");
+    makeVocab("HierarchicalDropDown", "Special_Find/Special_Find_GeneralInformation/Special_Find_Class", "Special Find Class");
+    makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Device_Code", "Device Code");
 }
 
 /*** Arch Ent: PhotoLog ***/
