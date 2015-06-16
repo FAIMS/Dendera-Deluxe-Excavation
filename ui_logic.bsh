@@ -327,7 +327,6 @@ entityTypes = new ArrayList();
 entityTypes.add(0, new NameValuePair("{All}", "All"));
 entityTypes.add(new NameValuePair("{Context}", "Context"));
 entityTypes.add(new NameValuePair("{Context_Group}", "Context Group"));
-entityTypes.add(new NameValuePair("{Artefact_Group}", "Artefact Group"));
 entityTypes.add(new NameValuePair("{Sample}", "Sample"));
 entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
 entityTypes.add(new NameValuePair("{Special_Find}", "Special Find"));
@@ -1269,100 +1268,6 @@ removeFromContextGroup() {
     // populateList("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", featureRelnList);
 //}
 
-/*** Artefact Group ***/
-onEvent("Artefact_Group", "show", "addNavigationButtons(\"Artefact_Group\"); keepTabGroupChanges(\"Artefact_Group\"); saveArtefactGroup(\"\");");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachPhoto", "click", "attachPictureTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Photo\")");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachAudio", "click", "attachAudioTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Audio\")");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachVideo", "click", "attachVideoTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Video\")");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/attachSketch", "click", "attachFileTo(\"Artefact_Group/Artefact_Group_GeneralInformation/Sketch\")");
-onEvent("Artefact_Group/Artefact_Group_GeneralInformation/viewattached", "click", "viewArchEntAttachedFiles(artefact_group_id)");
-
-String artefact_group_id = null;
-
-newArtefactGroup(){
-    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
-        showWarning("{Error}", "{Cannot_save_record_without_id}");
-        return;
-    }
-    if (isNull(context_id)){
-        showToast("{You_must_save_a_context_first}");
-        return;
-    }
-    artefact_group_id = null;
-    newTabGroup("Artefact_Group");
-    setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
-    setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
-    setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID", getFieldValue("control/data/Artefact_Group_Starting_ID"));
-    incField("control/data/Artefact_Group_Starting_ID", 1);
-}
-
-loadArtefactGroup() {
-    artefact_group_id = getListItemValue();
-    loadArtefactGroupFrom(artefact_group_id);
-}
-
-loadArtefactGroupFrom(String id) {
-    artefact_group_id = id;
-    if (isNull(artefact_group_id)) return;
-    loadArtefactGroupAttributes();
-    showTabGroup("Artefact_Group", artefact_group_id);
-}
-
-saveArtefactGroup(String callback) {
-    Boolean enable_autosave = true;
-    List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
-    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
-    saveTabGroup("Artefact_Group", artefact_group_id, null, attributes, new SaveCallback() {
-        onSave(uuid, newRecord) {
-            artefact_group_id = uuid;
-            if (newRecord) {
-              onArtefactGroupSaved();
-            }            
-            execute(callback);
-        }
-        onError(message) {
-            showToast(message);
-        }
-    }, enable_autosave);
-}
-
-onArtefactGroupSaved(){
-    saveEntitiesToRel("ContextArtefactGroup", context_id, artefact_group_id);
-    showToast("{Associated_with_Context}");
-}
-
-deleteArtefactGroupFromContext(){
-    artefact_group_id = getFieldValue("Context/Context_Artefacts/artefactGroupList");
-    if (!isNull(artefact_group_id)) {
-        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Artefact_Group}", "reallyDeleteArtefactGroup()", "doNotDelete()");
-    }
-}
-
-deleteArtefactGroup(){
-    if (!isNull(artefact_group_id)) {
-        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Artefact_Group}", "reallyDeleteArtefactGroup()", "doNotDelete()");
-    } else {
-        cancelTabGroup("Artefact_Group", true);
-    }
-}
-
-reallyDeleteArtefactGroup(){
-    deleteArchEnt(artefact_group_id);
-    showTabGroup("Artefact_Group");
-    cancelTabGroup("Artefact_Group", false);
-}
-
-doNotDelete(){
-    showToast("{Delete_Cancelled}");
-}
-
-loadArtefactGroupAttributes(){
-    makeVocab("HierarchicalDropDown", "Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Class", "Artefact Class");
-    makeVocab("DropDown", "Artefact_Group/Artefact_Group_GeneralInformation/Device_Code", "Device Code");
-}
-
-
 /*** Sample ***/
 onEvent("Sample", "show", "addNavigationButtons(\"Sample\"); keepTabGroupChanges(\"Sample\"); saveSample(\"\");");
 onEvent("Sample/Sample_Attachments/attachPhoto", "click", "attachPictureTo(\"Sample/Sample_Attachments/Photo\")");
@@ -1858,8 +1763,6 @@ getRecordId(String tabgroup) {
     return context_id;
   } else if (tabgroup.equals("ContextGroup")) {
     return context_group_id;
-  } else if (tabgroup.equals("Artefact_Group")) {
-    return artefact_group_id;
   } else if (tabgroup.equals("Sample")) {
     return sample_id;
   } else if (tabgroup.equals("Matrix")) {
@@ -1882,9 +1785,6 @@ newRecord(String tabgroup) {
   } else if (tabgroup.equals("ContextGroup")) {
     cancelTabGroup(tabgroup, false);
     newContextGroup(true);
-  } else if (tabgroup.equals("Artefact_Group")) {
-    cancelTabGroup(tabgroup, false);
-    newArtefactGroup();
   } else if (tabgroup.equals("Sample")) {
     cancelTabGroup(tabgroup, false);
     newSample();
@@ -1909,8 +1809,6 @@ deleteRecord(String tabgroup, String id) {
     deleteContext();
   } else if (tabgroup.equals("ContextGroup")) {
     deleteContextGroup();
-  } else if (tabgroup.equals("Artefact_Group")) {
-    deleteArtefactGroup();
   } else if (tabgroup.equals("Sample")) {
     deleteSample();
   } else if (tabgroup.equals("Matrix")) {
@@ -1934,8 +1832,6 @@ duplicateRecord(String tabgroup) {
     duplicateContext();
   } else if (tabgroup.equals("ContextGroup")) {
     duplicateContextGroup();
-  } else if (tabgroup.equals("Artefact_Group")) {
-    duplicateArtefactGroup();
   } else if (tabgroup.equals("Sample")) {
     duplicateSample();
   } else if (tabgroup.equals("Matrix")) {
@@ -2050,48 +1946,6 @@ duplicateContextGroup() {
   
 }
 
-duplicateArtefactGroup() {
-  disableAutoSave("Artefact_Group");
-
-  populateCameraPictureGallery("Artefact_Group/Artefact_Group_GeneralInformation/Photo", new ArrayList());
-  populateFileList("Artefact_Group/Artefact_Group_GeneralInformation/Sketch", new ArrayList());
-  setFieldValue("Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_ID", getFieldValue("control/data/Artefact_Group_Starting_ID")); 
-  incField("control/data/Artefact_Group_Starting_ID", 1);
-
-  String oldArtefact_ID = artefact_group_id;
-
-  saveCallback = new SaveCallback() {
-    onSave(uuid, newRecord) {
-      artefact_group_id = uuid;
-      Boolean enable_autosave = true;
-      fetchAll(getDuplicateRelnQuery(oldArtefact_ID), new FetchCallback(){
-        onFetch(result) {
-            makeDuplicateRelationships(result, artefact_group_id);
-            dialog.dismiss();
-            showToast("{Duplicated_record}"); 
-        }
-      });
-   
-
-      saveTabGroup("Artefact_Group", artefact_group_id, null, null, new SaveCallback(){
-        onSave(autosaveUuid, autosaveNewRecord) {
-          artefact_group_id = autosaveUuid;       
-        }
-      }, enable_autosave);
-    }
-  };
-
-  fetchAll(getDuplicateAttributeQuery(artefact_group_id), new FetchCallback(){
-    onFetch(result) {
-      excludeAttributes = new ArrayList();
-      //excludeAttributes.add("Trench");
-      //excludeAttributes.add("Site Code");
-      excludeAttributes.add("Photo");
-      excludeAttributes.add("Sketch");
-      duplicateTabGroup("Artefact_Group", null, getExtraAttributes(result), excludeAttributes, saveCallback);
-    }
-  });
-}
 
 duplicateSample() {
   String oldSample_ID = sample_id;
@@ -2418,7 +2272,6 @@ loadLoginDetails() {
 
 loadStartingIds() {
     List l = new ArrayList();
-    l.add("control/data/Artefact_Group_Starting_ID");
     l.add("control/data/SpecialFind_Starting_ID");
     l.add("control/data/ContextIncrement");
     l.add("control/data/Sample_Starting_ID");

@@ -50,7 +50,6 @@
                   <searchMyContext/>
                 </child2>
               </container1>
-              <Artefact_Group_Starting_ID/>
               <SpecialFind_Starting_ID/>
               <Sample_Starting_ID/>
               <GPS_Diagnostics/>
@@ -902,9 +901,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
         </select1>
         <input faims_certainty="false" faims_read_only="false" ref="ContextIncrement">
           <label>{Context_Starting_ID}</label>
-        </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Artefact_Group_Starting_ID">
-          <label>{Artefact_Group_Starting_ID}</label>
         </input>
         <input faims_certainty="false" faims_read_only="false" ref="SpecialFind_Starting_ID">
           <label>{SpecialFind_Starting_ID}</label>
