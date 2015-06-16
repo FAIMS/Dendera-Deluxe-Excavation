@@ -564,54 +564,6 @@
             </ContextGroup_Attachments>
           </ContextGroup>
 
-          <!--ArchEnt / Record Type: ARTEFACT_GROUP-->
-          <Artefact_Group>
-            <Artefact_Group_GeneralInformation>
-              <container1>
-                <child1>
-                  <Site_Code/>
-                </child1>
-                <child2>
-                  <Context_ID/>
-                </child2>
-                <child3>
-                  <Artefact_Group_ID/>
-                </child3>
-              </container1>
-              <Device_Code/>
-              <Artefact_Class/>
-              <container2>
-                <child1>
-                  <Artefact_Quantity/>
-                </child1>
-                <child2>
-                  <Artefact_Weight/>
-                </child2>
-              </container2>
-              <container3>
-                <child1>
-                  <X/>
-                </child1>
-                <child2>
-                  <Y/>
-                </child2>
-                <child3>
-                  <Z/>
-                </child3>
-              </container3>
-              <Artefact_Group_Comment/>
-              <Sketch/>
-              <attachSketch/>
-              <Photo/>
-              <attachPhoto/>
-              <Audio/>
-              <attachAudio/>
-              <Video/>
-              <attachVideo/>
-              <viewattached/>
-            </Artefact_Group_GeneralInformation>
-          </Artefact_Group>
-
           <!--ArchEnt / Record Type: SAMPLE-->
           <Sample>
             <Sample_GeneralInformation>
@@ -781,12 +733,6 @@
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/CG_Your_description" type="string"/> 
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/Your_Discussion" type="string"/>
       <bind nodeset="/faims/ContextGroup/ContextGroup_Details/CG_Your_Interpretation" type="string"/>
-      <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container2/child1/Artefact_Quantity" type="decimal"/>
-      <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container2/child2/Artefact_Weight" type="decimal"/>
-      <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/Artefact_Group_Comment" type="string"/>
-      <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container3/child1/X" type="decimal"/>
-      <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container3/child2/Y" type="decimal"/>
-      <bind nodeset="/faims/Artefact_Group/Artefact_Group_GeneralInformation/container3/child3/Z" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/Sample_Volume" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child1/X" type="decimal"/>
       <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child2/Y" type="decimal"/>
@@ -1767,59 +1713,6 @@ Help can be found for individual entries by pressing the ? buttons throughout th
           </item>
         </select1>
       </group>
-      <group ref="Context_Artefacts">
-        <label>{Artefacts}</label>
-        <trigger ref="newArtefactGroup">
-          <label>Add {Artefact_Group}</label>
-        </trigger>
-        <select1 faims_certainty="false" faims_annotation="false" faims_read_only="false" ref="artefactGroupList">
-          <label>Select an {Artefact_Group}:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child0">
-            <label/>
-            <trigger ref="deleteArtefactGroup">
-              <label>Delete {Artefact_Group}</label>
-            </trigger>
-          </group>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <trigger ref="loadArtefactGroup">
-              <label>Load {Artefact_Group}</label>
-            </trigger>
-          </group>
-        </group>
-        <trigger ref="newSpecialFind">
-          <label>Add {Special_Find}</label>
-        </trigger>
-        <select1 faims_certainty="false" faims_annotation="false" faims_read_only="false" ref="specialFindList">
-          <label>Select a {Special_Find}:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container2">
-          <label/>
-          <group faims_style="even" ref="child0">
-            <label/>
-            <trigger ref="deleteSpecialFind">
-              <label>Delete {Special_Find}</label>
-            </trigger>
-          </group>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <trigger ref="loadSpecialFind">
-              <label>Load {Special_Find}</label>
-            </trigger>
-          </group>
-        </group>
-      </group>
       <group ref="Context_Samples" faims_scrollable="false">
         <label>{Samples}</label>
         <trigger ref="newSample">
@@ -2264,132 +2157,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <trigger ref="deletePhotoLog">
           <label>Delete {Photograph_Log}</label>
-        </trigger>
-      </group>
-    </group>
-
-    <!-- ArchEnt: ARTEFACT_GROUP-->
-    <group faims_archent_type="Artefact Group" ref="Artefact_Group">
-      <label>{Artefact_Group}</label>
-      <group ref="Artefact_Group_GeneralInformation">
-        <label>{Artefact_Group}</label>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Site Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Site_Code">
-              <label>{Site_Code}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Context_ID">
-              <label>{Context_ID}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <input faims_attribute_name="Artefact Group ID" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="false" ref="Artefact_Group_ID">
-              <label>{Artefact_Group_ID}</label>
-            </input>
-          </group>
-        </group>
-        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Select_Device_Code}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <!--We would like to see Dropdown-->
-        <select1 faims_attribute_name="Artefact Class" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Artefact_Class">
-          <label>{Artefact_Class}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container2">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Artefact Quantity" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Artefact_Quantity">
-              <label>{Artefact_Quantity}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Artefact Weight" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Artefact_Weight">
-              <label>{Artefact_Weight}</label>
-            </input>
-          </group>
-        </group>
-        <group faims_style="orientation" ref="container3">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Artefact X" faims_attribute_type="measure" faims_read_only="false" ref="X">
-              <label>X</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Artefact Y" faims_attribute_type="measure" faims_read_only="false" ref="Y">
-              <label>Y</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <input faims_attribute_name="Artefact Z" faims_attribute_type="measure" faims_read_only="false" ref="Z">
-              <label>Z</label>
-            </input>
-          </group>
-        </group>
-        <input faims_attribute_name="Artefact Group Comment" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="false" ref="Artefact_Group_Comment">
-          <label>{Artefact_Group_Comment}</label>
-        </input>
-        <select faims_annotation="false" faims_attribute_name="Sketch" faims_attribute_type="freetext" faims_certainty="false" ref="Sketch" type="file">
-          <label>{Sketch}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select>
-        <trigger ref="attachSketch">
-          <label>Attach Sketch</label>
-        </trigger>
-        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="freetext" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
-          <label>{Photo}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select>
-        <trigger ref="attachPhoto">
-          <label>Take Picture</label>
-        </trigger>
-        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="freetext" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
-            <label>{Attached_Audio_Files}</label>
-            <item>
-                <label>placeholder</label>
-                <value>placeholder</value>
-            </item>
-        </select>
-        <trigger ref="attachAudio">
-          <label>{Record_Audio}</label>
-        </trigger>
-        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="freetext" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
-          <label>{Attached_Videos}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select>
-        <trigger ref="attachVideo">
-          <label>{Record_Video}</label>
-        </trigger>
-        <trigger ref="viewattached">
-          <label>View Attached Files</label>
         </trigger>
       </group>
     </group>
