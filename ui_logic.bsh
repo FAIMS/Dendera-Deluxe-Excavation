@@ -162,6 +162,7 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_Skeletons/Skeleton_Days_Exposed"        , "{Skeleton_Days_Exposed}" , condSkeleton));
     f.add(fieldPair("Context/Context_Skeletons/Target_A_X"                   , "{Target_A_X}"            , condSkeleton));
     f.add(fieldPair("Context/Context_Skeletons/Target_A_Y"                   , "{Target_A_Y}"            , condSkeleton));
+    f.add(fieldPair("Context/Context_Skeletons/reln"                         , "Relationship"            , condSkeleton));
     // Structures
     f.add(fieldPair("Context/Context_Structures/Your_Interpretation"         , "{Your_Interpretation}"   , condStructures));
     f.add(fieldPair("Context/Context_Structures/Structure_Description"       , "{Structure_Description}" , condStructures));
@@ -169,12 +170,6 @@ validateContextTabGroup(Boolean showWarning) {
     // Interpretation
     f.add(fieldPair("Context/Context_Interpretation/Your_description" , "{Your_description}"));
     f.add(fieldPair("Context/Context_Interpretation/Your_Discussion"  , "{Your_Discussion}"));
-
-    // TODO
-    // iv. Relationships
-        // 1. A relationship should be specified 
-    // v. Artefacts
-        // 2. Any artefact should have description and X Y Z recorded
 
     validateFields(fields , "Context/Context_Validation/validationResults" , showWarning);
 }
@@ -188,14 +183,15 @@ validateFeatureTabGroup() {
     List f = new ArrayList();
 
     // TODO? "GEN"
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Trench", "{Trench}"));
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID", "{Context_Group_ID}"));
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Title", "{Title}"));
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type", "{Context_Type}"));
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_description", "{CG_Your_description}"));
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_Interpretation", "{CG_Your_Interpretation}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Trench"                  , "{Trench}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID"        , "{Context_Group_ID}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Title"                   , "{Title}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type"            , "{Context_Type}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_description"     , "{CG_Your_description}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_Interpretation"  , "{CG_Your_Interpretation}"));
+    f.add(fieldPair("ContextGroup/Feature_Relationships_to_Other_Features/reln" , "Relationship"));
 
-    validateFields(fields , "ContextGroup/ContextGroup_Details/validationResults" , showWarning);
+    validateFields(fields , "ContextGroup/ContextGroup_Validation/validationResults" , showWarning);
 }
 
 validateSamplesTabGroup() {
@@ -213,7 +209,24 @@ validateSamplesTabGroup() {
     f.add(fieldPair("Sample/GeneralInformation/Y", "Y"));
     f.add(fieldPair("Sample/GeneralInformation/Z", "Z"));
 
-    validateFields(fields , "Feature/Feature_Validation/validationResults" , showWarning);
+    validateFields(fields , "Sample/Sample_Validation/validationResults" , showWarning);
+}
+
+
+validateSpecialFindTabGroup() {
+    Boolean showWarning = true;
+    validateSpecialFindTabGroup(showWarning);
+}
+
+validateSpecialFindTabGroup(showWarning) {
+    List f = new ArrayList();p
+
+    f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Special_Find_Description" , "{Special_Find} Description"));
+    f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/X"                        , "X"));
+    f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Y"                        , "Y"));
+    f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Z"                        , "Z"));
+
+    validateFields(fields , "Special_Find/Special_Find_Validation/validationResults" , showWarning);
 }
 
 /*
