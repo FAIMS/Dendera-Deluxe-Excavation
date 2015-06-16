@@ -200,7 +200,7 @@
       <description>Describe the context type by selecting an icon as defined below.
 When you have selected a context type you can proceed to open the "Fill in context type details" page. Note this page will not open unless you have selected a context type.</description>
       <lookup>
-        <term pictureURL="files/data/gallery/Blanks/Trail.png">{0No_Observation}
+        <term pictureURL="files/data/gallery/Blanks/Trail.png">{No_Observation}
         <description>data not collected</description></term>
         <term pictureURL="files/data/gallery/ContextType/Orange/Cut.png">{Cut} 
         <description>Any Context which represents the removal of earlier deposit and thus forms a negative interface (cut) with another context, such as a cut for a pit, burial, ditch, wall foundation or robber trench.</description></term>
@@ -257,18 +257,18 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Soil Compaction Type" type="enum">
       <description>Describe the compaction of the sediments in the Context.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
-        <term>{1.Loose} 
+        <term>{No_Observation}<description/></term>
+        <term>{Loose} 
         <description>Soft and uncemented/bonded</description></term>
-        <term>{5.Compact} 
+        <term>{Compact} 
         <description>Firm and relatively hard</description></term>
-        <term>{4.Medium_Compact} 
+        <term>{Medium_Compact} 
         <description>Somewhere between loose and compact.</description></term>
-        <term>{6.Concrete} 
+        <term>{Concrete} 
         <description>Rock hard resistant to trowelling.</description></term>
-        <term>{2.Friable} 
+        <term>{Friable} 
         <description>Deposit disintegrates into small particles under pressure.</description></term>
-        <term>{3.Crumbly} 
+        <term>{Crumbly} 
         <description>Deposit disintegrates into lumps under pressure.</description></term>
       </lookup>
     </property>
@@ -361,50 +361,50 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Soil Texture" type="enum">
       <description>The type of sediment, eg clay, silt, sand and loam. Use the {Texture_Helper} or a Soil Sediment diagram for assisance.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>No Observation. Use the Texture helper to prefil this.</description></term>
-        <term>{1.Sand} 
+        <term>{Sand} 
         <description>A sand has a loose gritty feel and does not stick together. Individual sand grains can be seen or felt. (VDEPI 2009: AG0058)</description></term>
-        <term>{1.Loamy_Sand} 
+        <term>{Loamy_Sand} 
         <description>In a loamy sand particles barely stick together and a moulded piece of soil just holds its shape. (VDEPI 2009: AG0058)</description></term>
-        <term>{2.Silty_Clay_Loam} 
+        <term>{Silty_Clay_Loam} 
         <description>A silty clay loam is like a clay loam but silty as well and smooth to the touch. (VDEPI 2009: AG0058)</description></term>
-        <term>{2.Clay_Loam} 
+        <term>{Clay_Loam} 
         <description>More easily moulded into a shape than a loam a clay loam rolls out to a thin ribbon between the palms while a loam will break-up. When dry a clay loam will form a lump but is not as tough to break as a clay.(VDEPI 2009: AG0058)</description></term>
-        <term>{2.Sandy_Clay_Loam} 
+        <term>{Sandy_Clay_Loam} 
         <description>A sandy clay loam is like a clay loam but sand grains can be felt (and heard - see Sandy Loam) (VDEPI 2009: AG0058)</description></term>
-        <term>{2.Silt_Loam} 
+        <term>{Silt_Loam} 
         <description>A silty loam is like a loam but has a smooth silky feel when a moist sample is pushed between the index finger and thumb. On drying a sample can form a hard lump but this may be broken by hand. (VDEPI 2009: AG0058)</description></term>
-        <term>{2.Loam} 
+        <term>{Loam} 
         <description>A loam breaks into crumbs but will tend to stick together. Sand grains cannot be felt in a moist sample which when squeezed will retain its shape when handled freely. Loams are usually soft to the feel. (VDEPI 2009: AG0058)</description></term>
-        <term>{2.Sandy_Loam} 
+        <term>{Sandy_Loam} 
         <description>A sandy loam sticks together more than a loamy sand but can be easily broken. Individual sand grains can be felt and heard if a wet sample is rubbed between the index finger and thumb and held close to the ear. (VDEPI 2009: AG0058)</description></term>
-        <term>{3.Silty_Clay} 
+        <term>{Silty_Clay} 
         <description>A silty clay is like a clay but smoother. (VDEPI 2009: AG0058)</description></term>
-        <term>{3.Clay} 
+        <term>{Clay} 
         <description>Clays are tough and can be moulded into shapes when moist. Clays form a long flexible ribbon when rubbed between the palms and the ribbon can often be bent into a U shape without breaking. Clays dry into very hard clods. (VDEPI 2009: AG0058)</description></term>
-        <term>{3.Sandy_Clay} 
+        <term>{Sandy_Clay} 
         <description>A sandy clay is like a clay but sand grains can be felt (and heard - see Sandy Loam). (VDEPI 2009: AG0058)</description></term>
-        <term>{4.Silt} 
+        <term>{Silt} 
         <description>Silt.</description></term>
-        <term>{4.Sandy_Silt} 
+        <term>{Sandy_Silt} 
         <description>Sandy silt.</description></term>
-        <term>{5.Other} 
+        <term>{Other} 
         <description>Other: describe in Annotation.</description></term>
       </lookup>
     </property>
     <property name="Soil Particle Sorting" type="enum">
       <description>Assessment of the frequency with which particles of the same size occur.</description>
       <lookup>
-        <term pictureURL="files/data/gallery/Other/NA.png">{0No_Observation}
+        <term pictureURL="files/data/gallery/Other/NA.png">{No_Observation}
         <description>data not collected</description></term>
-        <term pictureURL="files/data/gallery/Sorting/ModeratelySorted.png">{3.Moderately_sorted} 
+        <term pictureURL="files/data/gallery/Sorting/ModeratelySorted.png">{Moderately_sorted} 
         <description>Particles are mostly the same size and evenly distributed but there are some larger particles.</description></term>
-        <term pictureURL="files/data/gallery/Sorting/PoorlySorted.png">{2.Poorly_sorted} 
+        <term pictureURL="files/data/gallery/Sorting/PoorlySorted.png">{Poorly_sorted} 
         <description>Particles are different sizes and unevenly distributed.</description></term>
-        <term pictureURL="files/data/gallery/Sorting/VeryPoorlySorted.png">{1.Very_poorly_sorted} 
+        <term pictureURL="files/data/gallery/Sorting/VeryPoorlySorted.png">{Very_poorly_sorted} 
         <description>Particles are very different sizes and very unevenly distributed.</description></term>
-        <term pictureURL="files/data/gallery/Sorting/WellSorted.png">{4.Well_sorted} 
+        <term pictureURL="files/data/gallery/Sorting/WellSorted.png">{Well_sorted} 
         <description>Particles are roughly the same size and evenly distributed.</description></term>
       </lookup>
     </property>
@@ -430,24 +430,24 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Contamination" type="enum">
       <description>The extent to which the context has been contaminated.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
-        <term>{5.Contaminated} 
+        <term>{No_Observation}<description/></term>
+        <term>{Contaminated} 
         <description>Contaminated by later material eg by unidentified cut at time of initial excavation by large scale animal or root activity which were not isolated by excavation by excavation processes some annoying person mixed the material or stuff fell into deposit from the section.</description></term>
-        <term>{3.Possibly_Contaminated} 
+        <term>{Possibly_Contaminated} 
         <description>At Boncuklu as at many sites there is significant animal activity represented by burrows. We aim to remove most animal burrow fill. This is easier in contexts with clear and compact sediment characteristics like plaster floors walls building fills more difficult in loose middens. In one sense at Boncuklu as at many sites every context is possibly contaminated but there would be little point in indicating that since it is something we generally understand. Therefore this option is to be
         used to indicate those situations where one may have tried to remove animal introduced or other contamination but are unsure this has been successful and there is a likely but not definitive chance of some later contamination beyond. This option also applies where there may have been later cuts not recognised but we are not sure.</description></term>
-        <term>{4.High_Likely_Contaminated} 
+        <term>{High_Likely_Contaminated} 
         <description>It is very likely that significant amounts of earlier artifact and ecofact material has become incorporated in the deposit. For example; is this context a mud brick wall or other structure or building or structural debris or a deposit which has seen the redeposition of material excavated from cuts. These are all situations in which earlier material is likely to have been dug up and re-used (in the mud brick) or re-deposited (when digging out pits).</description></term>
-        <term>{2.Low_Likely_Contaminated} 
+        <term>{Low_Likely_Contaminated} 
         <description>You think there is little chance that very much earlier material has made it's way into this deposit.</description></term>
-        <term>{1.Primary_Deposit} 
+        <term>{Primary_Deposit} 
         <description>You are very sure that the deposit and all finds therein directly relate to activity within a specific period of time and there is thus minimal amounts of derived material and no contamination.</description></term>
       </lookup>
     </property>
     <property name="Horizon Boundary" type="enum">
       <description>Describe the boundary between this and the next context.</description>
       <lookup>
-        <term>{0No_Observation}<description>data not collected</description></term>
+        <term>{No_Observation}<description>data not collected</description></term>
         <term>{Doubtful}<description>You are uncertain of whether you accurately excavated a boundary between deposits. </description> </term>
         <term>{Ambiguous}<description>You are uncertain as to whether there was a boundary between contexts.</description> </term>
         <term>{Merging}<description>There is a distinction between the excavated context and earlier context(s) but the excavated contexts and the earlier contexts grade into each other. </description> </term>
@@ -458,7 +458,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Shape of Cut" type="enum">
       <description>Describe the shape of the negative element/cut viewed from above.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Circular} 
         <description>Round</description></term>
@@ -508,7 +508,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Sides of Cut" type="enum">
       <description>Describe the shape of the cut as seen in cross section.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{Vertical} 
         <description/></term>
         <term>{Convex} 
@@ -528,7 +528,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Shape of Base" type="enum">
       <description>The shape of the base of the cut in profile.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Concave} 
         <description/></term>
@@ -554,7 +554,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Orientation" type="enum">
       <description>Orientation of linear cuts eg N-S.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{E-W} 
         <description>Oriented East to West.</description></term>
@@ -569,7 +569,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Inclination of axis" type="enum">
       <description>Inclination of the axis of post- and stakeholes.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{aVertical} 
         <description/></term>
@@ -584,7 +584,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Structure Your Interpretation" type="freetext">
       <description>Your interpretation of the likely function of the structure.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{Your_Interpretation_Structure_Indeterminate} 
         <description/></term>
         <term>{Floor_or_Surface} 
@@ -610,7 +610,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Cut Your Interpretation" type="freetext">
       <description>Your interpretation of the likely function of the Context using standardised definitions.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{aYour_Interpretation_Cut_Indeterminate} 
         <description/></term>
         <term>{Animal_or_Plant_hole} 
@@ -638,7 +638,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Deposit Your Interpretation" type="freetext">
       <description>Your interpretation of the likely function of the context.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{Indeterminate} 
         <description>You are unable to make an assessment of possible function.</description></term>
         <term>{Packing} 
@@ -694,7 +694,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Structural Components" type="enum">
       <description>Describe what the structure is made from.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Stone} 
         <description>Worked or unworked stone used in masonry walls.</description></term>
@@ -709,7 +709,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Bonding" type="enum">
       <description>Additional details of the bonding/packing material.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Mortar} 
         <description>Paste used to bind masonry blocks together.</description>
@@ -731,7 +731,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Bond Type" type="enum">
       <description>The type of bonding course eg 'English bond'</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Brick} 
         <description/>
@@ -774,7 +774,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Structure Shape" type="enum">
       <description>The shape of the structural element, in plan.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Circular} 
         <description>Round</description></term>
@@ -797,7 +797,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Mudbrick Shape" type="enum">
       <description>The shape of mudbrick(s).</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{Rectangular}
         <description>With straight edges, upper and lower surfaces.</description></term>
         <term>{Elongated_oval} 
@@ -816,7 +816,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Composition Type" type="enum">
       <description>Describe the structure of the Context sediment. The components making up the structure are added below as aggregates.</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{Homogenous} 
         <description>Uniform throughout.</description></term>
         <term>{Heterogeneous} 
@@ -830,7 +830,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Deposit Bedding" type="enum">
       <description>Describes the base of the deposit</description>
       <lookup>
-        <term>{0No_Observation}<description/></term>
+        <term>{No_Observation}<description/></term>
         <term>{Horizontal} 
         <description>Horizontal.</description></term>
         <term>{Oblique_steep} 
@@ -962,7 +962,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="CG Context Type" type="enum">
       <description>Enter the type of feature you are describing.</description>
       <lookup>
-        <term pictureURL="files/data/gallery/ContextType/Other/NA.png">{0No_Observation}
+        <term pictureURL="files/data/gallery/ContextType/Other/NA.png">{No_Observation}
         <description>data not collected</description></term>
         <term pictureURL="files/data/gallery/ContextType/Orange/Cut.png">{Cut} 
         <description>Any Context which forms a negative interface (cut) with another context, such as a cut for a pit, burial, ditch, wall foundation or robber trench.</description></term>
@@ -1052,17 +1052,17 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Describe the components which make up 10% or more of the deposit.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Grit} 
         <description>Size up to 5 mm.</description></term>
-        <term>{2.Small_Stones} 
+        <term>{Small_Stones} 
         <description>Size up to 10 mm.</description></term>
-        <term>{3.Large_stones} 
+        <term>{Large_stones} 
         <description>Size over 10 mm.</description></term>
-        <term>{4.Tauf} 
+        <term>{Tauf} 
         <description>Mud building material including mortar.</description></term>
-        <term>{5.Midden} 
+        <term>{Midden} 
         <description>Organic debris e.g. bones carbonised material phytoliths etc</description></term>
         <term>{Plaster} 
         <description>Fragments of plaster.</description></term>
@@ -1077,7 +1077,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Shape" type="enum">
       <description>Shape and roundness of stones and pebbles in the deposit.</description>
       <lookup>
-        <term pictureURL="files/data/gallery/Other/NA.png">{0No_Observation}
+        <term pictureURL="files/data/gallery/Other/NA.png">{No_Observation}
         <description>data not collected</description></term>
         <term pictureURL="files/data/gallery/Pebbles/Angular.png">{Angular} 
         <description>Sharp pebbles or stones.</description>
@@ -1160,7 +1160,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property isIdentifier="true" name="Sample Type" type="enum">
       <description>The type of Sample collected eg Soil Wood Pollen.</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{Building_Materials} 
         <description>Sample of bricks or worked stone collected from this Context.</description></term>
@@ -1213,7 +1213,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Sample Location" type="blocktext">
       <description>The location of the sample at the time of entry.</description>
       <lookup>
-        <term>{0No_Observation}<description>data not collected</description></term>
+        <term>{No_Observation}<description>data not collected</description></term>
         <term>{Site_depot}<description/> </term>
         <term>{Export_Liverpool}<description/> </term>
         <term>{Export_Turkey}<description/> </term>
@@ -1330,7 +1330,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property isIdentifier="true" name="Special Find Class" type="freetext">
       <description>Broad Artefact Class for each Artefact (eg Glass Ceramic Building Material).</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term>{aChipped_Stone} 
         <description/>
@@ -1588,7 +1588,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Scene Type" type="enum">
       <description>The type of scene captured, eg opening or closing view of the Context. (Vocab: Open, Close, Other)</description>
       <lookup>
-        <term>{0No_Observation}
+        <term>{No_Observation}
         <description>data not collected</description></term>
         <term> Open
           <description>Photograph taken on opening the Context.</description>

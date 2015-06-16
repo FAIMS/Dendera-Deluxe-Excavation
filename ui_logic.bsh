@@ -755,7 +755,7 @@ updateRelns(){
     //             "where attributename in ('Context Group ID', 'Area Code', 'Site Code', 'Title', 'CG Your Interpretation', 'CG Your description', 'Your Discussion') " +
     //             "or attributename like '%Your Interpretation%' " +
     //             "and coalesce(vocabname, freetext) is not null " +
-    //             "and coalesce(vocabname, freetext) != '{0No_Observation}' " +
+    //             "and coalesce(vocabname, freetext) != '{No_Observation}' " +
     //         "group by uuid, attributename " +
     //   "order by case attributename when 'Context Group ID' then 1 when 'Area Code' then 2 when 'Site Code' then 3 when 'Title'then 4 when 'CG Your Interpretation' then 5 when 'CG Your description' then 6 when 'Your Discussion' then 7 end); ");
     // if (!isNull(foo)){
@@ -774,7 +774,7 @@ updateRelns(){
    //          "join latestnondeletedaentvalue using (uuid) join attributekey using (attributeid) left outer join vocabulary using (attributeid, vocabid) " +
    //             "where attributename in ('Context Group ID', 'Area Code', 'Site Code', 'Title', 'CG Your Interpretation', 'CG Your description', 'Your Discussion') " +
    //             "and coalesce(vocabname, freetext) is not null " +
-   //             "and coalesce(vocabname, freetext) != '{0No_Observation}' " +
+   //             "and coalesce(vocabname, freetext) != '{No_Observation}' " +
    //         "group by uuid, attributename " +
    //    "order by case attributename when 'Context Group ID' then 1 when 'Area Code' then 2 when 'Site Code' then 3 when 'Title'then 4 when 'CG Your Interpretation' then 5 when 'CG Your description' then 6 when 'Your Discussion' then 7 end); ");
    //  if (!isNull(foo)){
