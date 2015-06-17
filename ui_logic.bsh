@@ -287,7 +287,7 @@ onEvent("control"                     , "show"      , "removeNavigationButtons()
 onEvent("control/data"                , "show"      , "refreshEntities(); updateGPSDiagnostics();");
 onEvent("control/data/newContext"     , "delayclick", "newContext();");
 onEvent("control/data/newContextGroup", "delayclick", "newContextGroup(true);");
-onEvent("control/data/newDiary"       , "delayclick", "showToast(\"implement newDiary() and other diary code\")");
+onEvent("control/data/newDiary"       , "delayclick", "newDiary()");
 onEvent("control/search"              , "show"      , "search();");
 onEvent("control/search/Search"       , "click"     , "clearSearch()");
 onEvent("control/search/searchButton" , "click"     , "search()");
@@ -377,6 +377,82 @@ loadEntityFrom(String entityID) {
   } else {
     Log.e("PAZC Module", "Cannot load an entity with a null ID.");
   }
+}
+
+/*** ArchEnt: Diary **/
+onEvent("Diary", "show", "addNavigationButtons(\"Diary\"); keepTabGroupChanges(\"Diary\"); saveDiary(); refreshTabgroupCSS(\"Diary\");");
+onEvent("Diary/Diary/attachPhoto", "click", "attachPictureTo(\"Diary/Diary/Photo\")");
+onEvent("Diary/Diary/attachAudio", "click", "attachAudioTo(\"Diary/Diary/Audio\")");
+onEvent("Diary/Diary/attachVideo", "click", "attachVideoTo(\"Diary/Diary/Video\")");
+onEvent("Diary/Diary/attachSketch", "click", "attachFileTo(\"Diary/Diary/Sketch\")");
+onEvent("Diary/Diary/viewattached", "click", "viewArchEntAttachedFiles(diary_id)");
+
+String diary_id = null;
+
+newDiary() {
+    diary_id = null;
+    newTabGroup("Diary");
+    setTimestamp("Diary/Diary/Timestamp");
+    setFieldValue("Diary/Diary/CreatedBy", username);
+    keepTabGroupChanges("Diary");
+}
+
+loadDiary() {
+    diary_id = getListItemValue();
+    loadContextFrom(diary_id);  
+}
+
+loadDiaryFrom(String diaryID) {
+    diary_id = diaryID;
+    if (isNull(diary_id)) return;
+    
+    showTabGroup("Diary", diary_id, new FetchCallback() {
+      onFetch(result) {
+        // Nothing specific to do
+      }
+    });
+}
+
+saveDiary() {
+    saveDiary(null);
+}
+
+saveDiary(String callback) {
+    Boolean enable_autosave = true;
+    attributes = createAttributeList();
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Diary", diary_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            diary_id = uuid;
+            if (!isNull(callback)) {
+                execute(callback);
+            }
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
+}
+
+deleteDiary(){
+    if (!isNull(diary_id)) {
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Diary}", "reallyDeleteDiary()", "doNotDelete()");
+    } else {
+        cancelTabGroup("Diary", true);
+    }
+}
+
+reallyDeleteDiary(){
+    deleteArchEnt(diary_id);
+    cancelTabGroup("Diary", false);
+}
+
+doNotDelete(){
+  showToast("{Delete_Cancelled}");
+}
+
+loadDiaryAttributes() {
+    makeVocab("DropDown", "Diary/Diary/Area_Code", "AreaCode");
 }
 
 /*** ArchEnt: Context **/
@@ -2466,6 +2542,7 @@ initialiseModule() {
     makeVocab("DropDown", "control/search/Area_Code", "AreaCode");
     loadContextAttributes();
     loadContextGroupAttributes();
+    loadDiaryAttributes();
     loadSampleAttributes();
     loadMatrixAttributes();
     loadSpecialFindAttributes();
