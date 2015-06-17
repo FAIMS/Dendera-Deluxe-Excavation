@@ -1527,35 +1527,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
-  <!-- INVESTIGATOR -->
-  <ArchaeologicalElement name="Investigator">
-    <description>A team member not recording the data</description>
-    <!-- TODO: identifier format? -->
-    <property name="Role" type="enum" isIdentifier="true">
-      <description>Role of the associated Investigator.</description>
-      <lookup>
-        <term>Excavator
-        <description>Excavator</description></term>
-        <term>Trench Supervisor
-        <description>Trench Supervisor</description></term>
-        <term>Trench Assistant
-        <description>Trench Assistant</description></term>
-        <term>Draftsperson
-        <description>Draftsperson</description></term>
-        <term>Other
-        <description>Other</description></term>
-      </lookup>
-    </property>
-    <property name="Initials" type="freetext" isIdentifier="true">
-      <description>Associated Investigator's Iniitals</description>
-    </property>
-    <property name="First Name" type="freetext" isIdentifier="true">
-      <description>Associated Investigator's First Name</description>
-    </property>
-    <property name="Last Name" type="freetext" isIdentifier="true">
-      <description>Associated Investigator's Last Name</description>
-    </property>
-  </ArchaeologicalElement>
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
