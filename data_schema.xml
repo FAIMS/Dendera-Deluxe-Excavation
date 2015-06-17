@@ -921,9 +921,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <ArchaeologicalElement name="Context Group" type="container">
     <description>A group of contexts.</description>
     <!-- TODO: identifier format? -->
+    <property isIdentifier="true" name="AreaCode" type="freetext">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
+    </property>
     <property isIdentifier="true" name="Context Group ID" type="freetext">
       <description>Feature number taken from the appropriate running list.</description>
-      <formatString><![CDATA[$2]]></formatString>
+      <formatString><![CDATA[$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Title" type="freetext">
       <description>Enter the Feature name e.g. Hearth in Building 2.</description>
@@ -946,10 +950,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
-    </property>
-    <property name="AreaCode" type="freetext">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
-    </property>
+    </property>    
     <property name="Location Note CG" type="freetext">
       <description>Record where the feature is within a space / building/area if relevant and in particular its relationship to other features or key contexts.</description>
     </property>
