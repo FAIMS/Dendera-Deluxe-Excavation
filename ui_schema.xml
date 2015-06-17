@@ -69,9 +69,6 @@
           <Context>
             <Context_GeneralInformation>
               <container1>
-                <child1>
-                  <Site_Code/>
-                </child1>
                 <child2>
                   <Trench/>
                 </child2>
@@ -457,9 +454,6 @@
           <ContextGroup>
             <ContextGroup_Details>
               <container1>
-                <child1>
-                  <Site_Code/>
-                </child1>
                 <child2>
                   <Trench/>
                 </child2>
@@ -592,9 +586,6 @@
           <Sample>
             <Sample_GeneralInformation>
               <container1>
-                <child1>
-                  <Site_Code/>
-                </child1>
                 <child2>
                   <Context_ID/>
                 </child2>
@@ -665,9 +656,6 @@
           <Special_Find>
             <Special_Find_GeneralInformation>
               <container1>
-                <child1>
-                  <Site_Code/>
-                </child1>
                 <child2>
                   <Context_ID/>
                 </child2>
@@ -915,12 +903,6 @@
         <label>General</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Site Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Site_Code">
-              <label>{Site_Code}</label>
-            </input>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_annotation="false" faims_attribute_name="Trench" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="Trench">
@@ -1924,12 +1906,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>GEN</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Site Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Site_Code">
-              <label>{Site_Code}</label>
-            </input>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Area Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Trench">
@@ -2270,12 +2246,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>Deposit Samples</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Site Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Site_Code">
-              <label>{Site_Code}</label>
-            </input>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Context_ID">
@@ -2456,12 +2426,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>{Special_Find}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Site Code" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Site_Code">
-              <label>{Site_Code}</label>
-            </input>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="freetext" faims_certainty="false" faims_read_only="true" ref="Context_ID">
