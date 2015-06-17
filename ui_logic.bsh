@@ -15,7 +15,20 @@ Boolean menu = true;
 String moduleYear = new java.text.SimpleDateFormat("yy").format(new Date());
 String moduleSiteCode = "BK" + moduleYear;
 
-String WEB_GUIDE = "{webGuide}";
+String WEB_GUIDE = "" +
+"<p>The Boncuklu Excavation Module was prepared in 2014 for Dr Andrew Fairbairn, University of Queensland, to record data about the contexts and features excavated at Boncuklu in Turkey.</p>" + 
+"<p>It is an adaptation of the standard FAIMS Excavation Module, and allows for the single context recording of deposits, which can be grouped into Features.</p>" + 
+"<p>To login:" +
+"<br>" +
+"<ol>" +
+"<li>Choose your user name from the dropdown USERS list. If you do not have a user name see the system administrator;</li>" +
+"<li>Select the excavation area you wish to record by checking one of circles (radio boxes) on the screen next to the trench you are excavating, denoted by a letter (e.g. H, N, M etc);</li>" +
+"<li>Press the LOGIN bar. You will now be taken to the context page.</li>" +
+"</ol>" +
+"</p>" + 
+"<p>WARNING! If two individuals login as the same user on two different devices, and hit &#x2018;Save&#x2019; at the same millisecond, there is risk that the records will be merged during synchronisation. ALWAYS login under the correct username.</p>" +
+"<p>For more information, see the Boncuklu Excavation Module Guide. It provides an overview of the features and navigation of the Module.</p>" +
+"<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
 String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
@@ -23,7 +36,8 @@ String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
 populateWebViewHtml("user/help/guide", WEB_GUIDE);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WEB_REL_1);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_REL_2);
-populateWebViewHtml("ContextGroup/ContextGroup_Contexts/help", WEB_REL_2);
+// Todo: add view into ui schema is required
+// populateWebViewHtml("ContextGroup/ContextGroup_Contexts/help", WEB_REL_2);
 
 makeLocalID(){
     fetchOne("CREATE TABLE IF NOT EXISTS localSettings (key text primary key, value text);", null);
@@ -272,7 +286,8 @@ incField(String ref) {
 onEvent("control"                     , "show"  , "removeNavigationButtons(); setSearchTrench();");
 onEvent("control/data"                , "show"  , "refreshEntities(); updateGPSDiagnostics();");
 onEvent("control/data/newContext"     , "click" , "newContext();");
-onEvent("control/data/newContextGroup", "click" , "newContextGroup(true);");
+// TODO: add in button to ui schema
+// onEvent("control/data/newContextGroup", "click" , "newContextGroup(true);");
 onEvent("control/search"              , "show"  , "search();");
 onEvent("control/search/Search"       , "click" , "clearSearch()");
 onEvent("control/search/searchButton" , "click" , "search()");
@@ -401,9 +416,8 @@ onEvent("Context/Context_Attachments/attachSketch", "click", "attachFileTo(\"Con
 onEvent("Context/Context_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_id)");
 
 onEvent("Context/Context_Artefacts", "show", "updateAllContextArtefacts()");
-onEvent("Context/Context_Artefacts/newArtefactGroup", "delayclick", "newArtefactGroup();");
-onEvent("Context/Context_Artefacts/newSpecialFind", "delayclick", "newSpecialFind();");
-onEvent("Context/Context_Artefacts/loadSpecialFind", "click", "loadSpecialFind()");
+onEvent("Context/Context_Artefacts/newSpecialFind"    , "delayclick" , "newSpecialFind();");
+onEvent("Context/Context_Artefacts/specialFindList"   , "click"      , "loadSpecialFind()");
 
 onEvent("Context/Context_Samples", "show", "updateAllContextSamples()");
 onEvent("Context/Context_Samples/newSample", "delayclick", "newSample()");
@@ -639,7 +653,6 @@ updateAllContextGroups() {
 }
 
 updateAllContextArtefacts(){
-    updateContextRelationshipBasedCursorList("Context/Context_Artefacts/artefactGroupList", "ContextArtefactGroup", context_id);
     updateContextRelationshipBasedCursorList("Context/Context_Artefacts/specialFindList", "ContextSpecialFind", context_id);
 }
 
@@ -1139,7 +1152,7 @@ populateContextGroup() {
 }
 
 loadContextGroupAttributes(){
-    makeVocab("PictureGallery", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Device_Code", "Device Code");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Contexts/Target_Area", "AreaCode");    
     // todo: determine if is still needed
