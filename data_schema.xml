@@ -1563,6 +1563,10 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Unique number or code for each Context</description>
       <formatString><![CDATA[$2-]]></formatString>
     </property>
+    <property isIdentifier="true" name="Context Group ID" type="freetext">
+      <description>Unique number or code for each Context Group</description>
+      <formatString><![CDATA[$2-]]></formatString>
+    </property>
     <property isIdentifier="true" name="Photograph Reference ID" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
       <formatString><![CDATA[$2]]></formatString>

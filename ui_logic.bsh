@@ -980,7 +980,7 @@ onEvent("ContextGroup/ContextGroup_Attachments/attachAudio", "click", "attachAud
 onEvent("ContextGroup/ContextGroup_Attachments/attachVideo", "click", "attachVideoTo(\"ContextGroup/ContextGroup_Attachments/Video\")");
 onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFileTo(\"ContextGroup/ContextGroup_Attachments/Sketch\")");
 onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
-onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
+onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLogFromContextGroup();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadPhotoLogFrom(getFieldValue(\"ContextGroup/ContextGroup_Attachments/PhotoLogList\"));verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
 onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
 
@@ -1550,6 +1550,21 @@ newPhotoLog(){
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
+}
+
+newPhotoLogFromContextGroup(){
+    if (isNull(getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"))) {
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
+        return;
+    }
+    if (isNull(context_group_id)){
+        showToast("{You_must_save_a_context_group_first}");
+        return;
+    }
+    photolog_id = null;
+    newTabGroup("Photograph_Log");
+    setFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
+    setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("ContextGroup/ContextGroup_Details/Device_Code"));
 }
 
 loadPhotoLog() {
