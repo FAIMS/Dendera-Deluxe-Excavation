@@ -36,20 +36,10 @@
           <!--control tabgroup that contains button to manipulate entities: load, list, create-->
           <control>
             <data>
-              <ContextIncrement/>
               <newContext/>
-              <ContextFilter/>
-              <ContextList/>
-              <ContextLoad/>
-              <container1>
-                <child1>
-                  <Search/>
-                </child1>
-                <child2>
-                  <searchButton/>
-                  <searchMyContext/>
-                </child2>
-              </container1>
+              <newContextGroup/>
+              <newDiary/>
+              <ContextIncrement/>
               <SpecialFind_Starting_ID/>
               <Sample_Starting_ID/>
               <GPS_Diagnostics/>
@@ -743,6 +733,9 @@
         </faims>
       </instance>
       <!--list of numeric and blocktext(memo) attributes(fields)-->
+      <bind nodeset="/faims/control/data/ContextIncrement" type="decimal"/>
+      <bind nodeset="/faims/control/data/SpecialFind_Starting_ID" type="decimal"/>
+      <bind nodeset="/faims/control/data/Sample_Starting_ID" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child2/Context_Lowest_Level" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child1/Length" type="decimal"/>
@@ -837,38 +830,19 @@
         </input>
       </group>
     </group>
-    <group ref="control" faims_archent_type="Context">
+    <group ref="control">
       <label/>
-      <group faims_scrollable="false" ref="data">
+      <group faims_scrollable="true" ref="data">
         <label>{Contexts}</label>
         <trigger ref="newContext">
-          <label>Create New Context</label>
+          <label>{Create_New_Context}</label>
         </trigger>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="SearchHelp" faims_certainty="false" faims_read_only="false" ref="Search">
-              <label>Search Term</label>
-            </input>
-          </group>
-          <group faims_style="large" ref="child2">
-            <label/>
-            <trigger ref="searchButton">
-              <label>Search</label>
-            </trigger>
-            <trigger ref="searchMyContext">
-              <label>My Contexts</label>
-            </trigger>
-          </group>
-        </group>
-        <select1 appearance="compact" faims_annotation="false" faims_certainty="false" ref="ContextList">
-          <label>Tap Context ID in list below to load it.</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
+        <trigger ref="newContextGroup">
+          <label>{New_Context_Group}</label>
+        </trigger>
+        <trigger ref="newDiary">
+          <label>{New_Diary}</label>
+        </trigger>
         <input faims_certainty="false" faims_read_only="false" ref="ContextIncrement">
           <label>{Context_Starting_ID}</label>
         </input>

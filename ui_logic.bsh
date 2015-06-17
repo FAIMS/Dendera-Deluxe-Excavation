@@ -283,17 +283,17 @@ incField(String ref) {
 }
 
 /*** control ***/
-onEvent("control"                     , "show"  , "removeNavigationButtons(); setSearchTrench();");
-onEvent("control/data"                , "show"  , "refreshEntities(); updateGPSDiagnostics();");
-onEvent("control/data/newContext"     , "click" , "newContext();");
-// TODO: add in button to ui schema
-// onEvent("control/data/newContextGroup", "click" , "newContextGroup(true);");
-onEvent("control/search"              , "show"  , "search();");
-onEvent("control/search/Search"       , "click" , "clearSearch()");
-onEvent("control/search/searchButton" , "click" , "search()");
-onEvent("control/search/entityTypes"  , "click" , "search()");
-onEvent("control/search/Trench"       , "click" , "search()");
-onEvent("control/search/entityList"   , "click" , "loadEntity();");
+onEvent("control"                     , "show"      , "removeNavigationButtons(); setSearchTrench();");
+onEvent("control/data"                , "show"      , "refreshEntities(); updateGPSDiagnostics();");
+onEvent("control/data/newContext"     , "delayclick", "newContext();");
+onEvent("control/data/newContextGroup", "delayclick", "newContextGroup(true);");
+onEvent("control/data/newDiary"       , "delayclick", "showToast(\"implement newDiary() and other diary code\")");
+onEvent("control/search"              , "show"      , "search();");
+onEvent("control/search/Search"       , "click"     , "clearSearch()");
+onEvent("control/search/searchButton" , "click"     , "search()");
+onEvent("control/search/entityTypes"  , "click"     , "search()");
+onEvent("control/search/Trench"       , "click"     , "search()");
+onEvent("control/search/entityList"   , "click"     , "loadEntity();");
 
 setSearchTrench() {
     setFieldValue("control/search/Trench", getFieldValue("user/usertab/Trench"));
@@ -464,7 +464,7 @@ newContext(){
     setFieldValue("Context/Context_GeneralInformation/Trench", areaCode);
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
     // todo: should excavator be copied as in PAZC?
-    // setFieldValue("Context/Context_GeneralInformation/Excavator", username);
+    // setFieldValue("Context/Context_GeneralInformation/Excavators", username);
     setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
     keepTabGroupChanges("Context");
 
@@ -624,7 +624,7 @@ updateContextRelationshipBasedDropdown(path, relntypename, uuid){
 }
 
 updateNonContextRelationshipBasedDropdown(path, relntypename, parentaenttypename, uuid){
-    if (!isNull(context_id)){
+    if (!isNull(uuid)){
         fetchAll("SELECT childuuid, response "+
                  "  FROM parentchild JOIN latestNonDeletedArchEntFormattedIdentifiers on (childuuid = uuid) "+
                  "  JOIN createdmodifiedatby USING (uuid) "+
@@ -755,7 +755,7 @@ updateRelns(){
     refreshTabgroupCSS("Context");
 }
 
-// todo: remove old methods if not needed after migration
+// todo: figure out if is still required and remove old methods if not needed after migration
 // showCGRelnFromList(){
     // todo: as above
 
@@ -968,22 +968,21 @@ onEvent("ContextGroup/ContextGroup_Contexts/ShowContext"            , "click"   
 onEvent("ContextGroup/ContextGroup_Contexts/RemoveContext"          , "click"       , "removeFromContextGroup()");
 onEvent("ContextGroup/ContextGroup_Contexts/ContextList"            , "click"       , "selectAssociatedEntityContextGroup()");
 
-// todo: determine if is still needed
-// onEvent("ContextGroup/Feature_Relationships_to_Other_Features/relate", "delayclick", "makeHierRelnCG()");
-// onEvent("ContextGroup/Feature_Relationships_to_Other_Features", "show", "updateContextGroupRelationships()");
-// onEvent("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", "click", "showCGRelnFromList()");
-// onEvent("ContextGroup/Feature_Relationships_to_Other_Features/deleteReln", "click", "deleteRelnCG()");
+// todo: update the code in the following functions (seems similar to Context_Relationships_to_Other_Contexts in pazc?)
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/relate", "delayclick", "makeHierRelnCG()");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features", "show", "updateContextGroupRelationships()");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", "click", "showCGRelnFromList()");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/deleteReln", "click", "deleteRelnCG()");
 
-// determine if is still needed
-// onEvent("ContextGroup/ContextGroup_Attachments", "show", "updateAllContextGroupPhotologs()");
-// onEvent("ContextGroup/ContextGroup_Attachments/attachPhoto", "click", "attachPictureTo(\"ContextGroup/ContextGroup_Attachments/Photo\")");
-// onEvent("ContextGroup/ContextGroup_Attachments/attachAudio", "click", "attachAudioTo(\"ContextGroup/ContextGroup_Attachments/Audio\")");
-// onEvent("ContextGroup/ContextGroup_Attachments/attachVideo", "click", "attachVideoTo(\"ContextGroup/ContextGroup_Attachments/Video\")");
-// onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFileTo(\"ContextGroup/ContextGroup_Attachments/Sketch\")");
-// onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
-// onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
-// onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadPhotoLogFrom(getFieldValue(\"ContextGroup/ContextGroup_Attachments/PhotoLogList\"));verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
-// onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
+onEvent("ContextGroup/ContextGroup_Attachments", "show", "updateAllContextGroupPhotologs()");
+onEvent("ContextGroup/ContextGroup_Attachments/attachPhoto", "click", "attachPictureTo(\"ContextGroup/ContextGroup_Attachments/Photo\")");
+onEvent("ContextGroup/ContextGroup_Attachments/attachAudio", "click", "attachAudioTo(\"ContextGroup/ContextGroup_Attachments/Audio\")");
+onEvent("ContextGroup/ContextGroup_Attachments/attachVideo", "click", "attachVideoTo(\"ContextGroup/ContextGroup_Attachments/Video\")");
+onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFileTo(\"ContextGroup/ContextGroup_Attachments/Sketch\")");
+onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
+onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLog();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
+onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadPhotoLogFrom(getFieldValue(\"ContextGroup/ContextGroup_Attachments/PhotoLogList\"));verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
+onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
 
 String context_group_id = null;
 
@@ -1203,69 +1202,49 @@ removeFromContextGroup() {
   }
 }
 
-// updateAllContextGroupPhotologs() {
-    //// todo: determine if is still required
-    // Object contextGroupPhotologs = new ArrayList();
-    // if (!isNull(context_group_id)){
-    //     contextGroupPhotologs = fetchAll("select uuid, group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' | ') as response, valuetimestamp\n"+
-    //         "  FROM (  SELECT uuid, attributeid, vocabid, attributename, vocabname, measure, freetext, certainty, attributetype, valuetimestamp, aenttypename\n"+
-    //         "            FROM latestNonDeletedArchentIdentifiers\n"+
-    //         "           WHERE aenttypename = 'Photograph Log'\n"+
-    //         "             AND uuid in (select uuid\n"+
-    //         "                            FROM latestNonDeletedAentReln\n"+
-    //         "                           where relationshipid in (select relationshipid\n"+
-    //         "                                                      FROM latestNonDeletedAentReln\n"+
-    //         "                                                      JOIN relationship using (relationshipid)\n"+
-    //         "                                                      JOIN relntype using (relntypeid)\n"+
-    //         "                                                     where uuid = "+context_group_id+"\n"+
-    //         "                                                       and relntypeName = 'ContextGroupPhotographLog')\n"+
-    //         "                             and uuid != "+context_group_id+")\n"+
-    //         "        ORDER BY uuid, attributename ASC)\n"+
-    //         "group by uuid\n"+
-    //         "order by valuetimestamp desc, uuid, attributename;");
-    // }
-    // populateDropDown("ContextGroup/ContextGroup_Attachments/PhotoLogList",  contextGroupPhotologs);
-// }
+updateAllContextGroupPhotologs() {
+    updateNonContextRelationshipBasedDropdown("ContextGroup/ContextGroup_Attachments/PhotoLogList", "ContextGroupPhotographLog", "Photograph Log", context_group_id);
+}
 
-// deletePhotoLogFromContextGroup(){
-    //// todo: determine if is still required
-//     photolog_id = getFieldValue("ContextGroup/ContextGroup_Attachments/PhotoLogList");
-//     if (!isNull(photolog_id)) {
-//         showAlert("Confirm Deletion", "Press OK to Delete this Photograph Log!", "reallyDeletePhotoLog()", "doNotDelete()");
-//     }
-// }
+deletePhotoLogFromContextGroup(){
+    photolog_id = getFieldValue("ContextGroup/ContextGroup_Attachments/PhotoLogList");
+    if (!isNull(photolog_id)) {
+        showAlert("Confirm Deletion", "Press OK to Delete this Photograph Log!", "reallyDeletePhotoLog()", "doNotDelete()");
+    }
+}
 
-// updateContextGroupRelationships(){
-    //// todo: determine if is still required
-    // setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature_id", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
+updateContextGroupRelationships(){
+    setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature_id", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
+    // todo: update to match context relationships to other contexts
+    showToast("Todo: update updateContextGroupRelationships() method");
     // featureList = fetchAll("select uuid, group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' ') " +
     //     "as response from latestNonDeletedArchEntIdentifiers " +
     //         "where aenttypename = 'Context Group' and uuid != '"+context_group_id+"' group by uuid;");
     // populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/feature", featureList);
     // updateRelnsCG();
-// }
+}
 
-// makeHierRelnCG(){
-    //// todo: determine if is still required
-//     if (isNull(getFieldValue("ContextGroup/ContextGroup_Details/Title"))) {
-//         showWarning("Logic Error", "Cannot save record without title");
-//         return;
-//     }
+makeHierRelnCG(){
+    if (isNull(getFieldValue("ContextGroup/ContextGroup_Details/Title"))) {
+        showWarning("Logic Error", "Cannot save record without title");
+        return;
+    }
 
-//     if (isNull(context_group_id)){
-//         showToast("You must have saved your entity.");
-//         return;
-//     }
-//     String[] arguments = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/reln").split("~!~");
-//     String dest = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature");
+    if (isNull(context_group_id)){
+        showToast("You must have saved your entity.");
+        return;
+    }
+    String[] arguments = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/reln").split("~!~");
+    String dest = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature");
 
-//     saveEntitiesToHierRel(arguments[0], context_group_id, dest, arguments[1], arguments[2]);
-//     updateRelnsCG();
+    saveEntitiesToHierRel(arguments[0], context_group_id, dest, arguments[1], arguments[2]);
+    updateRelnsCG();
+}
 
-// }
 
-//updateRelnsCG(){
-    //// todo: determine if is still required
+updateRelnsCG(){
+    // todo: update to match context relationships to other contexts
+    showToast("Todo: update updateRelnsCG() method");
     // Object featureRelnList = fetchAll("select parent.relationshipid, parent.participatesverb || ' ' || child.response "+
     //     "from (latestNonDeletedAentReln) parent  "+
     //     "join (latestNonDeletedAentReln join identifierAsSpreadsheet using (uuid)) child on (parent.relationshipid = child.relationshipid and parent.uuid != child.uuid) "+
@@ -1276,7 +1255,7 @@ removeFromContextGroup() {
     
     // populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/listRelns", featureRelnList);
     // populateList("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", featureRelnList);
-//}
+}
 
 /*** Sample ***/
 onEvent("Sample", "show", "addNavigationButtons(\"Sample\"); keepTabGroupChanges(\"Sample\"); saveSample(\"\");");
