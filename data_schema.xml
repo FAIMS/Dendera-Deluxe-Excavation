@@ -947,7 +947,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
-    <property name="Area Code" type="freetext">
+    <property name="AreaCode" type="freetext">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
     </property>
     <property name="Location Note CG" type="freetext">
