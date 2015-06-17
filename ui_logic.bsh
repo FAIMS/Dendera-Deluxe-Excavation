@@ -461,7 +461,7 @@ newContext(){
 
     setFieldValue("Context/Context_GeneralInformation/Context_ID", contextIncrement);
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
-    setFieldValue("Context/Context_GeneralInformation/Area_Code", areaCode);
+    setFieldValue("Context/Context_GeneralInformation/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
     // todo: should excavator be copied as in PAZC?
     // setFieldValue("Context/Context_GeneralInformation/Excavators", username);
@@ -812,6 +812,7 @@ loadContextAttributes(){
     makeVocab("DropDown", "Context/Context_GeneralInformation/Horizon_Boundary", "Horizon Boundary");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Contamination", "Contamination");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Device_Code", "Device Code");
+    makeVocab("DropDown", "Context/Context_GeneralInformation/Area_Code", "AreaCode");
 
     makeVocab("HierarchicalDropDown", "Context/Context_Deposits/Soil_Compaction_Type", "Soil Compaction Type");
     makeVocab("DropDown", "Context/Context_Deposits/Soil_Texture", "Soil Texture");
@@ -995,7 +996,7 @@ newContextGroup(menu){
     context_group_id = null;
     setTimestamp("ContextGroup/ContextGroup_Details/DateRecorded");
     setFieldValue("ContextGroup/ContextGroup_Details/Device_Code", getFieldValue("user/usertab/Device_Code"));
-    setFieldValue("ContextGroup/ContextGroup_Details/Area_Code", areaCode);
+    setFieldValue("ContextGroup/ContextGroup_Details/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
     populateContextGroup();
 }
@@ -1151,6 +1152,7 @@ populateContextGroup() {
 }
 
 loadContextGroupAttributes(){
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Area_Code", "AreaCode");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Device_Code", "Device Code");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Contexts/Target_Area", "AreaCode");    
