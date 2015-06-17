@@ -40,6 +40,7 @@
               <newContextGroup/>
               <newDiary/>
               <ContextIncrement/>
+              <ContextGroup_Starting_ID/>
               <SpecialFind_Starting_ID/>
               <Sample_Starting_ID/>
               <GPS_Diagnostics/>
@@ -708,6 +709,7 @@
       </instance>
       <!--list of numeric and blocktext(memo) attributes(fields)-->
       <bind nodeset="/faims/control/data/ContextIncrement" type="decimal"/>
+      <bind nodeset="/faims/control/data/ContextGroup_Starting_ID" type="decimal"/>
       <bind nodeset="/faims/control/data/SpecialFind_Starting_ID" type="decimal"/>
       <bind nodeset="/faims/control/data/Sample_Starting_ID" type="decimal"/>
       <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level" type="decimal"/>
@@ -819,6 +821,9 @@
         </trigger>
         <input faims_certainty="false" faims_read_only="false" ref="ContextIncrement">
           <label>{Context_Starting_ID}</label>
+        </input>
+        <input faims_certainty="false" faims_read_only="false" ref="ContextGroup_Starting_ID">
+          <label>{ContextGroup_Starting_ID}</label>
         </input>
         <input faims_certainty="false" faims_read_only="false" ref="SpecialFind_Starting_ID">
           <label>{SpecialFind_Starting_ID}</label>
