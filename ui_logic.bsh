@@ -139,7 +139,7 @@ validateContextTabGroup() {
 validateContextTabGroup(Boolean showWarning) {
     List f = new ArrayList(); // fields to be validated
 
-    f.add(fieldPair("Context/Context_GeneralInformation/Trench"                , "{Trench}"));
+    f.add(fieldPair("Context/Context_GeneralInformation/Area_Code"             , "{Trench}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_ID"            , "{Context_ID}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Location_Note"         , "{Location_Note}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Excavation_Method"     , "{Excavation_Method}"));
@@ -207,7 +207,7 @@ validateFeatureTabGroup() {
     List f = new ArrayList();
 
     // TODO? "GEN"
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Trench"                  , "{Trench}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Area_Code"               , "{Trench}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID"        , "{Context_Group_ID}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Title"                   , "{Title}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type"            , "{Context_Type}"));
@@ -283,7 +283,7 @@ incField(String ref) {
 }
 
 /*** control ***/
-onEvent("control"                     , "show"      , "removeNavigationButtons(); setSearchTrench();");
+onEvent("control"                     , "show"      , "removeNavigationButtons(); setSearchAreaCode();");
 onEvent("control/data"                , "show"      , "refreshEntities(); updateGPSDiagnostics();");
 onEvent("control/data/newContext"     , "delayclick", "newContext();");
 onEvent("control/data/newContextGroup", "delayclick", "newContextGroup(true);");
@@ -292,11 +292,11 @@ onEvent("control/search"              , "show"      , "search();");
 onEvent("control/search/Search"       , "click"     , "clearSearch()");
 onEvent("control/search/searchButton" , "click"     , "search()");
 onEvent("control/search/entityTypes"  , "click"     , "search()");
-onEvent("control/search/Trench"       , "click"     , "search()");
+onEvent("control/search/Area_Code"    , "click"     , "search()");
 onEvent("control/search/entityList"   , "click"     , "loadEntity();");
 
-setSearchTrench() {
-    setFieldValue("control/search/Trench", getFieldValue("user/usertab/Trench"));
+setSearchAreaCode() {
+    setFieldValue("control/search/Area_Code", getFieldValue("user/usertab/Area_Code"));
 }
 
 clearSearch(){
@@ -311,7 +311,7 @@ refreshEntities() {
 
 search(){
     String type = getFieldValue("control/search/entityTypes");
-    String areaCode = getFieldValue("control/search/Trench");
+    String areaCode = getFieldValue("control/search/Area_Code");
     String term = getFieldValue("control/search/Search");
     String searchQuery = "SELECT uuid, response "+
                          "  FROM latestNonDeletedArchEntFormattedIdentifiers  "+
@@ -325,7 +325,7 @@ search(){
                          "        OR uuid in (SELECT uuid "+
                          "                     FROM latestnondeletedaentvalue  "+
                          "                     JOIN attributekey using (attributeid) "+
-                         "                    WHERE attributename = 'Trench' "+
+                         "                    WHERE attributename = 'AreaCode' "+
                          "                      AND vocabid = '"+areaCode+"') "+
                          "       ) "+
                          " ORDER BY response "+
@@ -461,7 +461,7 @@ newContext(){
 
     setFieldValue("Context/Context_GeneralInformation/Context_ID", contextIncrement);
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
-    setFieldValue("Context/Context_GeneralInformation/Trench", areaCode);
+    setFieldValue("Context/Context_GeneralInformation/Area_Code", areaCode);
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
     // todo: should excavator be copied as in PAZC?
     // setFieldValue("Context/Context_GeneralInformation/Excavators", username);
@@ -566,7 +566,7 @@ deleteReln(){
 }
 
 updateContextRelationshipTargetArea() {
-    setFieldValue("Context/Context_Relationships_to_Other_Contexts/Target_Area", getFieldValue("Context/Context_GeneralInformation/AreaCode"));
+    setFieldValue("Context/Context_Relationships_to_Other_Contexts/Target_Area", getFieldValue("Context/Context_GeneralInformation/Area_Code"));
     populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/selectedEnt", WEB_REL_SELECTED_NONE);
 
 }
@@ -995,7 +995,7 @@ newContextGroup(menu){
     context_group_id = null;
     setTimestamp("ContextGroup/ContextGroup_Details/DateRecorded");
     setFieldValue("ContextGroup/ContextGroup_Details/Device_Code", getFieldValue("user/usertab/Device_Code"));
-    setFieldValue("ContextGroup/ContextGroup_Details/Trench", areaCode);
+    setFieldValue("ContextGroup/ContextGroup_Details/Area_Code", areaCode);
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
     populateContextGroup();
 }
@@ -1299,7 +1299,7 @@ loadSampleFrom(String id) {
 saveSample(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Sample", sample_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
@@ -1385,7 +1385,7 @@ loadMatrixFrom(String id) {
 saveMatrix(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             matrix_id = uuid;
@@ -1481,7 +1481,7 @@ loadSpecialFindFrom(String id) {
 saveSpecialFind(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Special_Find", special_find_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
@@ -1585,7 +1585,7 @@ loadPhotoLogAttributes(){
 savePhotoLog(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/AreaCode"), null, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     saveTabGroup("Photograph_Log", photolog_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
@@ -1855,7 +1855,7 @@ duplicateRecord(String tabgroup) {
 getDuplicateAttributeQuery(String originalRecordID) {
   String duplicateQuery = "SELECT attributename, freetext, vocabid, measure, certainty " +
     " FROM latestnondeletedaentvalue JOIN attributekey USING (attributeid) " +
-    " WHERE attributename IN ('Trench', 'Site Code') " + 
+    " WHERE attributename IN ('AreaCode', 'Site Code') " + 
     " AND uuid = '"+originalRecordID+"'; ";
   return duplicateQuery;
 }
@@ -1985,7 +1985,7 @@ duplicateSample() {
   fetchAll(getDuplicateAttributeQuery(sample_id), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("Trench");
+      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
       excludeAttributes.add("Sketch");
@@ -2020,7 +2020,7 @@ duplicateMatrix() {
   fetchAll(getDuplicateAttributeQuery(matrix_id), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("Trench");
+      //excludeAttributes.add("AreaCode");
       duplicateTabGroup("Matrix", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
@@ -2060,7 +2060,7 @@ duplicateSpecialFind() {
   fetchAll(getDuplicateAttributeQuery(special_find_id), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("Trench");
+      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
       duplicateTabGroup("Special_Find", null, getExtraAttributes(result), excludeAttributes, saveCallback);
@@ -2095,7 +2095,7 @@ duplicatePhotoLog() {
   fetchAll(getDuplicateAttributeQuery(photolog_id), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("Trench");
+      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       duplicateTabGroup("Photograph_Log", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
@@ -2204,7 +2204,7 @@ String device = "";
 String areaCode = "";
 
 login(){
-    if(isNull(getFieldValue("user/usertab/Trench")) || isNull(getFieldValue("user/usertab/users")) || isNull(getFieldValue("user/usertab/Device_Code"))){
+    if(isNull(getFieldValue("user/usertab/Area_Code")) || isNull(getFieldValue("user/usertab/users")) || isNull(getFieldValue("user/usertab/Device_Code"))){
         showWarning("{Warning}", "{Please_select_a_User_and_an_Trench_and_a_Device_Code_before_logging_in}");
         return;
     } else {
@@ -2222,7 +2222,7 @@ login(){
         });
 
         // store the user and area code into local settings, and set the globals
-        areaCode = getFieldValue("user/usertab/Trench");
+        areaCode = getFieldValue("user/usertab/Area_Code");
         device = getFieldValue("user/usertab/Device_Code");
         saveLoginDetails();
     }
@@ -2230,9 +2230,9 @@ login(){
 
 saveLoginDetails() {
   fetchOne("REPLACE INTO localSettings(key, value) VALUES('User_VocabID', '"+getFieldValue("user/usertab/users")+"');");
-  fetchOne("REPLACE INTO localSettings(key, value) VALUES('Trench_VocabID', '"+getFieldValue("user/usertab/Trench")+"');");
+  fetchOne("REPLACE INTO localSettings(key, value) VALUES('AreaCode_VocabID', '"+getFieldValue("user/usertab/Area_Code")+"');");
   fetchOne("REPLACE INTO localSettings(key, value) VALUES('DeviceCode_VocabID', '"+getFieldValue("user/usertab/Device_Code")+"');");
-  fetchOne("REPLACE INTO localsettings(key, value) SELECT 'Trench_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Trench")+";");
+  fetchOne("REPLACE INTO localsettings(key, value) SELECT 'AreaCode_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Area_Code")+";");
   fetchOne("REPLACE INTO localsettings(key, value) SELECT 'DeviceCode_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Device_Code")+";");
 }
 
@@ -2249,7 +2249,7 @@ insertIntoLocalSettings(String key, Integer val) {
 
 loadLoginDetails() {
   String userQ = localSettingsQuery("User_VocabID");
-  String areaCodeQ = localSettingsQuery("Trench_VocabID");
+  String areaCodeQ = localSettingsQuery("AreaCode_VocabID");
   String deviceCodeQ = localSettingsQuery("DeviceCode_VocabID");
   fetchOne(userQ, new FetchCallback() {
     onFetch(result) {
@@ -2261,7 +2261,7 @@ loadLoginDetails() {
   fetchOne(areaCodeQ, new FetchCallback() {
     onFetch(result) {
       if (!isNull(result)) {
-        setFieldValue("user/usertab/Trench", result.get(0));
+        setFieldValue("user/usertab/Area_Code", result.get(0));
       }
     }  
   });
@@ -2454,9 +2454,9 @@ setTimestamp(String path) {
 
 // Stuff that needs to happen after everything.
 initialiseModule() {
-    makeVocab("DropDown", "user/usertab/Trench", "Trench");
+    makeVocab("DropDown", "user/usertab/Area_Code", "AreaCode");
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
-    makeVocab("DropDown", "control/search/Trench", "Trench");
+    makeVocab("DropDown", "control/search/Area_Code", "AreaCode");
     loadContextAttributes();
     loadContextGroupAttributes();
     loadSampleAttributes();

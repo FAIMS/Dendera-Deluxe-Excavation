@@ -23,7 +23,7 @@
           </style>
           <user>
             <usertab>
-              <Trench/>
+              <Area_Code/>
               <users/>
               <Device_Code/>
               <login/>
@@ -58,7 +58,7 @@
                   <entityTypes/>
                 </child1>
                 <child2>
-                  <Trench/>
+                  <Area_Code/>
                 </child2>
               </container2>
               <entityList/>
@@ -70,7 +70,7 @@
             <Context_GeneralInformation>
               <container1>
                 <child2>
-                  <Trench/>
+                  <Area_Code/>
                 </child2>
                 <child3>
                   <Context_ID/>
@@ -438,7 +438,7 @@
             <ContextGroup_Details>
               <container1>
                 <child2>
-                  <Trench/>
+                  <Area_Code/>
                 </child2>
                 <child3>
                   <Context_Group_ID/>
@@ -696,7 +696,7 @@
               <Timestamp/>
               <CreatedBy/>
               <Title/>
-              <Trench/>
+              <Area_Code/>
               <Text/>
               <Audio/>
               <Video/>
@@ -776,7 +776,7 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 ref="Trench" faims_style_class="required">
+        <select1 ref="Area_Code" faims_style_class="required">
           <label>Area Code:</label>
           <item>
             <label>placeholder</label>
@@ -861,7 +861,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 ref="Trench">
+            <select1 ref="Area_Code">
               <label>{Select_Trench}</label>
               <item>
                 <label>{placeholder}</label>
@@ -888,7 +888,7 @@
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_annotation="false" faims_attribute_name="Trench" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="Trench">
+            <input faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="true" ref="Area_Code">
               <label>Area Code:</label>
             </input>
           </group>
@@ -1849,7 +1849,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Area Code" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Trench">
+            <input faims_attribute_name="Area Code" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Area_Code">
               <label>{Trench}</label>
             </input>
           </group>
@@ -2529,7 +2529,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <input faims_attribute_name="Title" faims_attribute_type="measure" faims_read_only="true" ref="Title" faims_certainty="false">
           <label>{Title}</label>
         </input>
-        <select1 faims_attribute_name="Trench" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Trench">
+        <select1 faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code">
           <label>{Trench}</label>
           <item>
             <label>placeholder</label>

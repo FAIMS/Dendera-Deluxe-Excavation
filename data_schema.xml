@@ -88,7 +88,7 @@
     <property name="Title" type="freetext">
       <description></description>
     </property>
-    <property name="Trench" type="enum">
+    <property name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -129,7 +129,7 @@
   <!-- CONTEXT -->
   <ArchaeologicalElement name="Context">
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
-    <property isIdentifier="true" name="Trench" type="enum">
+    <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1127,7 +1127,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--SAMPLE-->
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
-    <property isIdentifier="true" name="Trench" type="enum">
+    <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1297,7 +1297,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- SPECIAL FIND -->
   <ArchaeologicalElement name="Special Find">
     <description/>
-    <property isIdentifier="true" name="Trench" type="enum">
+    <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
@@ -1537,7 +1537,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
-    <property isIdentifier="true" name="Trench" type="enum">
+    <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
