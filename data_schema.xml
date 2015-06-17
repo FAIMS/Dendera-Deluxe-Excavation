@@ -1074,6 +1074,28 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>Human manufactured materials including lithics, beads, ground stone etc.</description></term>
       </lookup>
     </property>
+    <property name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <formatString><![CDATA[$1]]></formatString>
+      <lookup>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
+      </lookup>
+    </property>
     <property name="Shape" type="enum">
       <description>Shape and roundness of stones and pebbles in the deposit.</description>
       <lookup>
