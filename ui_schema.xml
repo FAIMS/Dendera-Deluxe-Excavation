@@ -357,13 +357,10 @@
             </Context_Interpretation>
             <Context_Feature>
               <guide1/>
-              <ContextGroupListUnrelated/>
-              <AddContextGroupRel/>
               <AddContextGroup/>
               <ContextGroupList/>
               <ShowContextGroup/>
               <RemoveFromContextGroup/>
-              <RelatedContextGroups/>
             </Context_Feature>
             <Context_Relationships_to_Other_Contexts>
               <colgroup>
@@ -1632,47 +1629,29 @@
       <group ref="Context_Feature" faims_scrollable="false">
         <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
         <label>{Context_Group}</label>
-        <select1 appearance="compact" ref="guide1">
+        <!-- <select1 appearance="compact" ref="guide1">
           <label/>
           <item>
-            <!-- I'm using fancy spaces here. Be careful of copying -->
             <label>Here you can group Contexts into a single {Context_Group}.</label>
             <value>Help</value>
           </item>
-        </select1>
-        <select1 faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" faims_annotation="false" ref="ContextGroupListUnrelated">
-          <label>Select an existing {Context_Group}:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <trigger ref="AddContextGroupRel">
-          <label>Add Context to {Context_Group}</label>
-        </trigger>
+        </select1> -->
         <trigger ref="AddContextGroup">
-          <label>Create New {Context_Group}</label>
+          <label>{Add_New_Context_Group}</label>
         </trigger>
-        <select1 faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" faims_annotation="false" ref="ContextGroupList">
-          <label>Select the {Context_Group} to which this Context belongs:</label>
+        <select1 faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="ContextGroupList">
+          <label>{List_of_Related_Context_Groups}</label>
           <item>
-            <label>placeholder</label>
+            <label>{placeholder}</label>
             <value>placeholder</value>
           </item>
         </select1>
         <trigger ref="ShowContextGroup">
-          <label>Load {Context_Group} and Exit Context</label>
+          <label>{Load_Context_Group}</label>
         </trigger>
         <trigger ref="RemoveFromContextGroup">
-          <label>Remove From {Context_Group}</label>
+          <label>{Remove_From_Context_Group}</label>
         </trigger>
-        <select1 faims_certainty="false" ref="RelatedContextGroups" appearance="compact">
-          <label>Related {Context_Groups}:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
       </group>
       <group ref="Context_Relationships_to_Other_Contexts" faims_scrollable="false">
         <label>Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.</label>

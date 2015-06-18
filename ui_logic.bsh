@@ -720,7 +720,7 @@ updateAllContextMatrices() {
 }
 
 updateAllContextGroups() {
-    updateContextRelationshipBasedDropdown("Context/Context_Interpretation/ContextGroupList", "ContextContextGroup", context_id);
+    updateContextRelationshipBasedDropdown("Context/Context_Feature/ContextGroupList", "ContextContextGroup", context_id);
 }
 
 updateAllContextArtefacts(){
