@@ -1187,7 +1187,7 @@
         <trigger ref="Add_Height">
           <label>{Add_Height}</label>
         </trigger>
-        <select1 ref="Height_List" faims_certainty="false" faims_read_only="false">
+        <select1 ref="Height_List" faims_certainty="false" faims_read_only="false" appearance="compact">
           <label>{Height_List}</label>
           <item>
             <label>placeholder</label>
