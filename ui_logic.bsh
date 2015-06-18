@@ -4,6 +4,7 @@ import android.util.Log;
 User user; // don't touch
 String userid;
 
+Object dialog;
 String verb;
 String archent_id;
 Boolean isContext;
@@ -342,6 +343,7 @@ entityTypes = new ArrayList();
 entityTypes.add(0, new NameValuePair("{All}", "All"));
 entityTypes.add(new NameValuePair("{Context}", "Context"));
 entityTypes.add(new NameValuePair("{Context_Group}", "Context Group"));
+entityTypes.add(new NameValuePair("{Diary}", "Diary"));
 entityTypes.add(new NameValuePair("{Sample}", "Sample"));
 entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
 entityTypes.add(new NameValuePair("{Special_Find}", "Special Find"));
@@ -363,6 +365,8 @@ loadEntityFrom(String entityID) {
           showWarning("{Alert}", "{This_is_a_legacy_identifier_and_is_not_viewable_on_the_device}");
         } else if (name.equals("Context Group")) {
           loadContextGroupFrom(entityID);
+        } else if (name.equals("Diary")) {
+            loadDiaryFrom(entityID);
         } else if (name.equals("Sample")) {
           loadSampleFrom(entityID);
         } else if (name.equals("Matrix")) {
@@ -394,6 +398,7 @@ newDiary() {
     newTabGroup("Diary");
     setTimestamp("Diary/Diary/Timestamp");
     setFieldValue("Diary/Diary/CreatedBy", username);
+    setFieldValue("Diary/Diary/Area_Code", getFieldValue("user/usertab/Area_Code"));
     keepTabGroupChanges("Diary");
 }
 
@@ -405,12 +410,7 @@ loadDiary() {
 loadDiaryFrom(String diaryID) {
     diary_id = diaryID;
     if (isNull(diary_id)) return;
-    
-    showTabGroup("Diary", diary_id, new FetchCallback() {
-      onFetch(result) {
-        // Nothing specific to do
-      }
-    });
+    showTabGroup("Diary", diary_id);
 }
 
 saveDiary() {
@@ -1847,6 +1847,8 @@ getRecordId(String tabgroup) {
     return context_id;
   } else if (tabgroup.equals("ContextGroup")) {
     return context_group_id;
+  } else if (tabgroup.equals("Diary")) {
+    return diary_id;
   } else if (tabgroup.equals("Sample")) {
     return sample_id;
   } else if (tabgroup.equals("Matrix")) {
@@ -1869,6 +1871,9 @@ newRecord(String tabgroup) {
   } else if (tabgroup.equals("ContextGroup")) {
     cancelTabGroup(tabgroup, false);
     newContextGroup(true);
+  } else if (tabgroup.equals("Diary")) {
+    cancelTabGroup(tabgroup, false);
+    newDiary();
   } else if (tabgroup.equals("Sample")) {
     cancelTabGroup(tabgroup, false);
     newSample();
@@ -1893,6 +1898,8 @@ deleteRecord(String tabgroup, String id) {
     deleteContext();
   } else if (tabgroup.equals("ContextGroup")) {
     deleteContextGroup();
+  } else if (tabgroup.equals("Diary")) {
+    deleteDiary();
   } else if (tabgroup.equals("Sample")) {
     deleteSample();
   } else if (tabgroup.equals("Matrix")) {
@@ -1916,6 +1923,8 @@ duplicateRecord(String tabgroup) {
     duplicateContext();
   } else if (tabgroup.equals("ContextGroup")) {
     duplicateContextGroup();
+  } else if (tabgroup.equals("Diary")) {
+    duplicateDiary();
   } else if (tabgroup.equals("Sample")) {
     duplicateSample();
   } else if (tabgroup.equals("Matrix")) {
@@ -1975,6 +1984,8 @@ duplicateContext() {
   disableAutoSave("Context");
   populateCameraPictureGallery("Context/Context_Attachments/Photo", new ArrayList());
   populateFileList("Context/Context_Attachments/Sketch", new ArrayList());
+  populateFileList("Context/Context_Attachments/Audio", new ArrayList());
+  populateVideoGallery("Context/Context_Attachments/Video", new ArrayList());
   setFieldValue("Context/Context_GeneralInformation/Context_ID", getFieldValue("control/data/ContextIncrement")); 
   incField("control/data/ContextIncrement", 1);
 
@@ -1998,6 +2009,8 @@ duplicateContext() {
   excludeAttributes = new ArrayList();
   excludeAttributes.add("Photo");
   excludeAttributes.add("Sketch");
+  excludeAttributes.add("Audio");
+  excludeAttributes.add("Video");
   duplicateTabGroup("Context", null, extraAttributes, excludeAttributes, saveCallback);
     
 }
@@ -2006,6 +2019,10 @@ duplicateContextGroup() {
 
   disableAutoSave("ContextGroup");
   //setFieldValue("ContextGroup/ContextGroup_Details/Title", null);
+  populateCameraPictureGallery("ContextGroup/ContextGroup_Attachments/Photo", new ArrayList());
+  populateFileList("ContextGroup/ContextGroup_Attachments/Sketch", new ArrayList());
+  populateFileList("ContextGroup/ContextGroup_Attachments/Audio", new ArrayList());
+  populateVideoGallery("ContextGroup/ContextGroup_Attachments/Video", new ArrayList());
   setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", getFieldValue("control/data/ContextGroup_Starting_ID"));
   incField("control/data/ContextGroup_Starting_ID", 1);
 
@@ -2028,17 +2045,69 @@ duplicateContextGroup() {
     }
   };
 
-  duplicateTabGroup("ContextGroup", null, extraAttributes, null, saveCallback);
+  excludeAttributes = new ArrayList();
+  excludeAttributes.add("Photo");
+  excludeAttributes.add("Sketch");
+  excludeAttributes.add("Audio");
+  excludeAttributes.add("Video");
+  duplicateTabGroup("ContextGroup", null, extraAttributes, excludeAttributes, saveCallback);
   
 }
 
+duplicateDiary() {
+    String oldDiary_ID = diary_id;
+    disableAutoSave("Diary");
+    setTimestamp("Diary/Diary/Timestamp");
+    setFieldValue("Diary/Diary/CreatedBy", username);
+    populateFileList("Diary/Diary/Sketch", new ArrayList());
+    populateCameraPictureGallery("Diary/Diary/Photo", new ArrayList());
+    // populateAudioList("Diary/Diary/Audio", new ArrayList());
+    populateFileList("Diary/Diary/Audio", new ArrayList());
+    populateVideoGallery("Diary/Diary/Video", new ArrayList());  
+
+    saveCallback = new SaveCallback() {
+    onSave(uuid, newRecord) {
+      diary_id = uuid;
+      Boolean enable_autosave = true;
+
+      fetchAll(getDuplicateRelnQuery(diary_id), new FetchCallback(){
+        onFetch(result) {
+          makeDuplicateRelationships(result, diary_id);
+          showToast("{Duplicated_record}");
+          dialog.dismiss();          
+        }
+      });
+
+      saveTabGroup("Diary", diary_id, null, null, new SaveCallback(){
+        onSave(autosaveUuid, autosaveNewRecord) {
+          diary_id = autosaveUuid;
+        }
+      }, enable_autosave);
+    }
+  };
+
+  fetchAll(getDuplicateAttributeQuery(diary_id), new FetchCallback(){
+    onFetch(result) {
+      excludeAttributes = new ArrayList();
+      //excludeAttributes.add("AreaCode");
+      //excludeAttributes.add("Site Code");
+      excludeAttributes.add("FileAttach");
+      excludeAttributes.add("Photo");
+      excludeAttributes.add("Audio");
+      excludeAttributes.add("Video");
+      duplicateTabGroup("Diary", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+    }
+  });
+}
 
 duplicateSample() {
   String oldSample_ID = sample_id;
 
   disableAutoSave("Sample");
   populateCameraPictureGallery("Sample/Sample_GeneralInformation/Photo", new ArrayList());
-  populateFileList("Sample/Sample_GeneralInformation/Sketch", new ArrayList());      
+  populateFileList("Sample/Sample_GeneralInformation/Sketch", new ArrayList());
+  populateFileList("Sample/Sample_GeneralInformation/Audio", new ArrayList());
+  populateVideoGallery("Sample/Sample_GeneralInformation/Video", new ArrayList());
   setFieldValue("Sample/Sample_GeneralInformation/Sample_ID", getFieldValue("control/data/Sample_Starting_ID")); 
   incField("control/data/Sample_Starting_ID", 1);
 
@@ -2071,6 +2140,8 @@ duplicateSample() {
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
       excludeAttributes.add("Sketch");
+      excludeAttributes.add("Audio");
+      excludeAttributes.add("Video");
       duplicateTabGroup("Sample", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
@@ -2112,6 +2183,8 @@ duplicateSpecialFind() {
   disableAutoSave("Special_Find");
 
   populateCameraPictureGallery("Special_Find/Special_Find_GeneralInformation/Photo", new ArrayList());
+  populateFileList("Special_Find/Special_Find_GeneralInformation/Audio", new ArrayList());
+  populateVideoGallery("Special_Find/Special_Find_GeneralInformation/Video", new ArrayList());
   setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID")); 
   incField("control/data/SpecialFind_Starting_ID", 1);
 
@@ -2145,6 +2218,8 @@ duplicateSpecialFind() {
       //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
+      excludeAttributes.add("Audio");
+      excludeAttributes.add("Video");
       duplicateTabGroup("Special_Find", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
