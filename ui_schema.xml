@@ -76,8 +76,10 @@
                 <child3>
                   <Context_ID/>
                 </child3>
+                <child4>
+                  <Context_Name/>
+                </child4>
               </container1>
-              <Context_Name/>
               <Device_Code/>
               <container2>
                 <child1>
@@ -444,9 +446,11 @@
                 <child3>
                   <Context_Group_ID/>
                 </child3>
+                <child4>
+                  <Title/>
+                </child4>
               </container1>
               <Device_Code/>
-              <Title/>
               <container2>
                 <child1>
                   <Building/>
@@ -570,15 +574,20 @@
           <Sample>
             <Sample_GeneralInformation>
               <container1>
+                <child1>
+                  <Area_Code/>
+                </child1>
                 <child2>
                   <Context_ID/>
                 </child2>
                 <child3>
                   <Sample_ID/>
                 </child3>
+                <child4>
+                  <Sample_Type/>
+                </child4>
               </container1>
               <Device_Code/>
-              <Sample_Type/>
               <Sample_Volume/>
               <container2>
                 <child1>
@@ -640,17 +649,22 @@
           <Special_Find>
             <Special_Find_GeneralInformation>
               <container1>
+                <child1>
+                  <Area_Code/>
+                </child1>
                 <child2>
                   <Context_ID/>
                 </child2>
                 <child3>
                   <Special_Find_ID/>
                 </child3>
+                <child4>
+                  <Special_Find_Class/>
+                </child4>
               </container1>
               <Device_Code/>
               <Source/>
               <Groundstone/>
-              <Special_Find_Class/>
               <Special_Find_Name/>
               <Special_Find_Description/>
               <container2>
@@ -678,6 +692,9 @@
           <Photograph_Log>
             <Photograph_Log>
               <container1>
+                <child0>
+                  <Area_Code/>
+                </child0>
                 <child1>
                   <Context_ID/>
                 </child1>
@@ -694,8 +711,14 @@
           </Photograph_Log>
           <Diary>
             <Diary>
-              <Timestamp/>
-              <CreatedBy/>
+              <colgroup>
+                <left>
+                  <Timestamp/>
+                </left>
+                <right>
+                  <CreatedBy/>
+                </right>
+              </colgroup>
               <Title/>
               <Area_Code/>
               <Text/>
@@ -713,40 +736,40 @@
         </faims>
       </instance>
       <!--list of numeric and blocktext(memo) attributes(fields)-->
-      <bind nodeset="/faims/control/data/ContextIncrement" type="decimal"/>
-      <bind nodeset="/faims/control/data/ContextGroup_Starting_ID" type="decimal"/>
-      <bind nodeset="/faims/control/data/SpecialFind_Starting_ID" type="decimal"/>
-      <bind nodeset="/faims/control/data/Sample_Starting_ID" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_GeneralInformation/container5/child2/Context_Lowest_Level" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child1/Length" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child2/Width" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_GeneralInformation/container6/child3/Depth" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_GeneralInformation/container7/child1/Volume" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container1/child1/Mid_X" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container1/child2/Mid_Y" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/Skeleton_Days_Exposed" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container5/child1/Target_A_X" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container5/child2/Target_A_Y" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container6/child1/Target_B_X" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container6/child2/Target_B_Y" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container7/child1/Target_C_X" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container7/child2/Target_C_Y" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container8/child1/Target_D_X" type="decimal"/>
-      <bind nodeset="/faims/Context/Context_Skeletons/container8/child2/Target_D_Y" type="decimal"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child1/Length" type="decimal"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child2/Width" type="decimal"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child3/Depth" type="decimal"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container4/child1/Mid_X" type="decimal"/>
-      <bind nodeset="/faims/ContextGroup/ContextGroup_Details/container4/child2/Mid_Y" type="decimal"/>
-      <bind nodeset="/faims/Sample/Sample_GeneralInformation/Sample_Volume" type="decimal"/>
-      <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child1/X" type="decimal"/>
-      <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child2/Y" type="decimal"/>
-      <bind nodeset="/faims/Sample/Sample_GeneralInformation/container2/child3/Z" type="decimal"/>
-      <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child1/X" type="decimal"/>
-      <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child2/Y" type="decimal"/>
-      <bind nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child3/Z" type="decimal"/>
-      <bind nodeset="/faims/Matrix/Matrix/container1/child2/Percentage" type="decimal"/>
+      <bind type="decimal" nodeset="/faims/control/data/ContextIncrement"/>
+      <bind type="decimal" nodeset="/faims/control/data/ContextGroup_Starting_ID"/>
+      <bind type="decimal" nodeset="/faims/control/data/SpecialFind_Starting_ID"/>
+      <bind type="decimal" nodeset="/faims/control/data/Sample_Starting_ID"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container5/child2/Context_Lowest_Level"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child1/Length"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child2/Width"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child3/Depth"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container7/child1/Volume"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child1/Mid_X"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child2/Mid_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/Skeleton_Days_Exposed"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container5/child1/Target_A_X"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container5/child2/Target_A_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container6/child1/Target_B_X"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container6/child2/Target_B_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container7/child1/Target_C_X"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container7/child2/Target_C_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container8/child1/Target_D_X"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container8/child2/Target_D_Y"/>
+      <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child1/Length"/>
+      <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child2/Width"/>
+      <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child3/Depth"/>
+      <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container4/child1/Mid_X"/>
+      <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container4/child2/Mid_Y"/>
+      <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/Sample_Volume"/>
+      <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/container2/child1/X"/>
+      <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/container2/child2/Y"/>
+      <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/container2/child3/Z"/>
+      <bind type="decimal" nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child1/X"/>
+      <bind type="decimal" nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child2/Y"/>
+      <bind type="decimal" nodeset="/faims/Special_Find/Special_Find_GeneralInformation/container2/child3/Z"/>
+      <bind type="decimal" nodeset="/faims/Matrix/Matrix/container1/child2/Percentage"/>
     </model>
   </h:head>
   <h:body>
@@ -912,10 +935,13 @@
               <label>{Context_Number}</label>
             </input>
           </group>
+          <group faims_style="even" ref="child4">
+            <label/>
+            <input faims_attribute_name="Context Name" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Name">
+              <label>{Context_Name}</label>
+            </input>
+          </group>
         </group>
-        <input faims_attribute_name="Context Name" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Name">
-          <label>{Context_Name}</label>
-        </input>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
           <label>{Select_Device_Code}</label>
           <item>
@@ -1877,6 +1903,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
               <label>{Context_Group_ID}</label>
             </input>
           </group>
+          <group faims_style="even" ref="child4">
+            <label/>
+            <input faims_attribute_name="Title" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Title">
+              <label>{Context_Group} Title</label>
+            </input>
+          </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
           <label>{Select_Device_Code}</label>
@@ -1885,9 +1917,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="Title" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Title">
-          <label>{Context_Group} Title</label>
-        </input>
         <group faims_style="orientation" ref="container2">
           <label/>
           <group faims_style="even" ref="child1">
@@ -2205,6 +2234,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>Deposit Samples</label>
         <group faims_style="orientation" ref="container1">
           <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <input faims_attribute_name="AreaCode" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Area_Code">
+              <label>{Area_Code}</label>
+            </input>
+          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
@@ -2217,18 +2252,21 @@ Here you can enter filenames or unique reference numbers for image stored on ano
               <label>{Sample_ID}</label>
             </input>
           </group>
+          <group faims_style="even" ref="child4">
+            <label/>
+            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type">
+              <label>{Sample_Type}</label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
+          </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
           <label>{Select_Device_Code}</label>
           <item>
             <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type">
-          <label>{Sample_Type}</label>
-          <item>
-            <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
@@ -2385,6 +2423,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>{Special_Find}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
+          <group faims_style="even" ref="child1">
+            <label/>
+            <input faims_attribute_name="AreaCode" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Area_Code">
+              <label>{Area_Code}</label>
+            </input>
+          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
@@ -2396,6 +2440,16 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <input faims_attribute_name="Special Find ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_ID">
               <label>{Special_Find} ID</label>
             </input>
+          </group>
+          <group faims_style="even" ref="child4">
+            <label/>
+            <select1 faims_attribute_name="Special Find Class" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Special_Find_Class">
+              <label>Artefact Class</label>
+              <item>
+                <label>placeholder</label>
+                <value>placeholder</value>
+              </item>
+            </select1>
           </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
@@ -2414,13 +2468,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </select1>
         <select1 faims_attribute_name="Groundstone" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Groundstone">
           <label>{Groundstone}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <select1 faims_attribute_name="Special Find Class" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Special_Find_Class">
-          <label>Artefact Class</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
@@ -2498,6 +2545,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>{Photograph_Log}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
+          <group faims_style="even" ref="child0">
+            <label/>
+            <input faims_attribute_name="AreaCode" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Area_Code">
+              <label>{Area_Code}</label>
+            </input>
+          </group>
           <group faims_style="even" ref="child1">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_read_only="true" ref="Context_ID">
@@ -2538,12 +2591,21 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       <label>{Diary}</label>
       <group ref="Diary">
         <label>{Diary}</label>
-        <input faims_attribute_name="Timestamp" faims_attribute_type="measure" faims_read_only="true" ref="Timestamp" faims_certainty="false">
-          <label>{Timestamp}</label>
-        </input>
-        <input faims_attribute_name="CreatedBy" faims_attribute_type="measure" faims_read_only="true" ref="CreatedBy" faims_certainty="false">
-          <label>{CreatedBy}</label>
-        </input>
+        <group ref="colgroup" faims_style="orientation">
+          <label/>
+          <group ref="left" faims_style="even">
+            <label/>
+            <input faims_attribute_name="Timestamp" faims_attribute_type="measure" faims_read_only="true" ref="Timestamp" faims_certainty="false">
+              <label>{Timestamp}</label>
+            </input>
+          </group>
+          <group ref="right" faims_style="even">
+            <label/>
+            <input faims_attribute_name="CreatedBy" faims_attribute_type="measure" faims_read_only="true" ref="CreatedBy" faims_certainty="false">
+              <label>{CreatedBy}</label>
+            </input>
+          </group>
+        </group>
         <input faims_attribute_name="Title" faims_attribute_type="measure" faims_read_only="true" ref="Title" faims_certainty="false">
           <label>{Title}</label>
         </input>
