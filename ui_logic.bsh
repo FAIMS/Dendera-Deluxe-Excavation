@@ -539,7 +539,7 @@ newContext(){
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
     setFieldValue("Context/Context_GeneralInformation/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
-    // todo: should excavator be copied as in PAZC?
+    // todo: should excavator be copied as in PAZC? (answer was no, instead use the team members. see gdocs for more info.)
     // setFieldValue("Context/Context_GeneralInformation/Excavators", username);
     setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
     keepTabGroupChanges("Context");
@@ -563,15 +563,13 @@ loadContextFrom(contextid) {
       }
     });
     // todo: (Brian) createdAtModifiedBy queries
-    // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)");
-    String contextCreatingUserQuery = "fetch the creating user";
+    String contextCreatingUserQuery = "select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)";
     fetchOne(contextCreatingUserQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("Context/Context_GeneralInformation/CreatingUser", result.get(0));
         }
     });
-    // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_id+"' group by uuid having min(aenttimestamp);");
-    String contextDateRecordedQuery = "fetch the date recorded";
+    String contextDateRecordedQuery = "select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_id+"' group by uuid having min(aenttimestamp);";
     fetchOne(contextDateRecordedQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("Context/Context_GeneralInformation/CreatingDate", result.get(0));
@@ -1089,15 +1087,13 @@ loadContextGroupFrom(String id){
     showTabGroup("ContextGroup", context_group_id);
     populateContextGroup();
     // todo: (Brian) createdAtModifiedBy queries
-    // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)");
-    String cgCreatingUserQuery = "fetch the creating user";
+    String cgCreatingUserQuery = "select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)";
     fetchOne(cgCreatingUserQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
         }
     });
-    // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);");
-    String cgDateRecordedQuery = "fetch the date recorded";
+    String cgDateRecordedQuery = "select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);";
     fetchOne(cgDateRecordedQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(0));
@@ -1111,15 +1107,13 @@ loadContextGroupFromContext() {
     showTabGroup("ContextGroup", context_group_id);
     populateContextGroup();
     // todo: (Brian) createdAtModifiedBy queries
-    // Object foo = fetchOne("select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)");
-    String cgCreatingUserQuery = "fetch the creating user";
+    String cgCreatingUserQuery = "select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)";
     fetchOne(cgCreatingUserQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
         }
     });
-    // Object bar = fetchOne("select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);");
-    String cgDateRecordedQuery = "fetch the date recorded";
+    String cgDateRecordedQuery = "select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);";
     fetchOne(cgDateRecordedQuery, new FetchCallback() {
         onFetch(result) {
             setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(0));
