@@ -453,7 +453,7 @@ loadDiaryAttributes() {
 }
 
 /*** ArchEnt: Context **/
-onEvent("Context", "show", "addNavigationButtons(\"Context\"); openContextTabs(); keepTabGroupChanges(\"Context\"); saveContext(\"\");refreshTabgroupCSS(\"Context\");");
+onEvent("Context", "show", "setContextCreatingDateUser(); addNavigationButtons(\"Context\"); openContextTabs(); keepTabGroupChanges(\"Context\"); saveContext(\"\");refreshTabgroupCSS(\"Context\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Deposits\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Cuts\");");
 onEvent("Context", "load", "showTab(\"Context/Context_Structures\");");
@@ -512,10 +512,23 @@ legacyTextInput() {
   saveArchEnt(null, "Legacy", null, attributes, new SaveCallback() {
     onSave(uuid, newRecord){
       if (newRecord) {
+        setContextCreatingDateUser();
         showToast("Created legacy with identifier: " + legacyID);
       }
     }
   });
+}
+
+setContextCreatingDateUser() {
+    if (isNull(context_id)) return;
+    String creatingUserDateQuery = "select createdBy, createdAt from createdModifiedAtBy where uuid = '"+context_id+"';";
+    fetchOne(creatingUserDateQuery, new FetchCallback() {
+        onFetch(result) {
+            Log.d("Boncuklu Module", "Results for Created at, Modified by: " + result.toString());
+            setFieldValue("Context/Context_GeneralInformation/CreatingUser", result.get(0));
+            setFieldValue("Context/Context_GeneralInformation/CreatingDate", result.get(1));
+        }
+    });
 }
 
 String context_id = null;
@@ -558,19 +571,6 @@ loadContextFrom(contextid) {
       onFetch(result) {
         openContextTabs(true);
       }
-    });
-    // todo: (Brian) createdAtModifiedBy queries
-    String contextCreatingUserQuery = "select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_id+"' group by uuid having min(aenttimestamp)";
-    fetchOne(contextCreatingUserQuery, new FetchCallback() {
-        onFetch(result) {
-            setFieldValue("Context/Context_GeneralInformation/CreatingUser", result.get(0));
-        }
-    });
-    String contextDateRecordedQuery = "select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_id+"' group by uuid having min(aenttimestamp);";
-    fetchOne(contextDateRecordedQuery, new FetchCallback() {
-        onFetch(result) {
-            setFieldValue("Context/Context_GeneralInformation/CreatingDate", result.get(0));
-        }
     });
 }
 
@@ -1034,7 +1034,7 @@ addCloseDate() {
 }
 
 /*** RelnEnt: Context Group***/
-onEvent("ContextGroup", "show", "addNavigationButtons(\"ContextGroup\"); keepTabGroupChanges(\"ContextGroup\"); saveContextGroup();refreshTabgroupCSS(\"ContextGroup\");");
+onEvent("ContextGroup", "show", "setContextGroupCreatingDateUser(); addNavigationButtons(\"ContextGroup\"); keepTabGroupChanges(\"ContextGroup\"); saveContextGroup();refreshTabgroupCSS(\"ContextGroup\");");
 onEvent("ContextGroup/ContextGroup_Contexts"                        , "show"        , "populateContextGroupContextsArea();populateContextGroupRelatedContexts();");
 onEvent("ContextGroup/ContextGroup_Contexts/Populate_Target_Context", "delayclick"  , "populateWebViewHtml(\"ContextGroup/ContextGroup_Contexts/selectedEnt\", WEB_REL_SELECTED_NONE); populateContextGroup();");
 onEvent("ContextGroup/ContextGroup_Contexts/AddContext"             , "delayclick"  , "addToContextGroup()");
@@ -1057,6 +1057,18 @@ onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArch
 onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLogFromContextGroup();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadPhotoLogFrom(getFieldValue(\"ContextGroup/ContextGroup_Attachments/PhotoLogList\"));verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
 onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
+
+setContextGroupCreatingDateUser() {
+    if (isNull(context_group_id)) return;
+    String cgCreatingUserDateQuery = "select createdBy, createdAt from createdModifiedAtBy where uuid = '"+context_group_id+"';";
+    fetchOne(cgCreatingUserDateQuery, new FetchCallback() {
+        onFetch(result) {
+            Log.d("Boncuklu Module", "Results for Created at, Modified by: " + result.toString());
+            setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
+            setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(1));
+        }
+    });
+}
 
 String context_group_id = null;
 
@@ -1085,41 +1097,13 @@ loadContextGroupFrom(String id){
   context_group_id = id;
     showTabGroup("ContextGroup", context_group_id);
     populateContextGroup();
-    // todo: (Brian) createdAtModifiedBy queries
-    String cgCreatingUserQuery = "select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)";
-    fetchOne(cgCreatingUserQuery, new FetchCallback() {
-        onFetch(result) {
-            setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
-        }
-    });
-    String cgDateRecordedQuery = "select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);";
-    fetchOne(cgDateRecordedQuery, new FetchCallback() {
-        onFetch(result) {
-            setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(0));
-        }
-    });
 }
 
 loadContextGroupFromContext() {
     context_group_id = getFieldValue("Context/Context_Feature/ContextGroupList");
     if (isNull(context_group_id)) return;
-    showTabGroup("ContextGroup", context_group_id);
-    populateContextGroup();
-    // todo: (Brian) createdAtModifiedBy queries
-    String cgCreatingUserQuery = "select fname || ' ' || lname from user join archentity using (userid) where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp)";
-    fetchOne(cgCreatingUserQuery, new FetchCallback() {
-        onFetch(result) {
-            setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", result.get(0));
-        }
-    });
-    String cgDateRecordedQuery = "select datetime(aentTimestamp, 'localtime')  from archentity where uuid = '"+context_group_id+"' group by uuid having min(aenttimestamp);";
-    fetchOne(cgDateRecordedQuery, new FetchCallback() {
-        onFetch(result) {
-            setFieldValue("ContextGroup/ContextGroup_Details/DateRecorded", result.get(0));
-        }
-    });
+    loadContextGroupFrom(context_group_id);
     updateRelns();
-
 }
 
 saveContextGroup(){
@@ -1130,6 +1114,7 @@ saveContextGroup(){
         onSave(uuid, newRecord) {
             context_group_id = uuid;
             if (newRecord) {
+                setContextGroupCreatingDateUser();
               onContextGroupSaved();
             }
             populateContextGroup();
