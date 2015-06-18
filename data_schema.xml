@@ -1603,4 +1603,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
       </lookup>
     </property>
   </ArchaeologicalElement>
+    <ArchaeologicalElement name="Legacy">
+    <description></description>
+    <property name="LegacyIdentifier" isIdentifier="true" type="freetext">
+      <description></description>
+      <formatString><![CDATA[$2]]></formatString>
+    </property>
+  </ArchaeologicalElement>
 </dataSchema>
