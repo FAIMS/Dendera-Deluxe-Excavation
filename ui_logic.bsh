@@ -1976,8 +1976,6 @@ makeDuplicateRelationships(fetchedAttributes, String newuuid){
     }
 }
 
-// todo: check that all the attachements are reset for each tabgroup. Some might have more attachements (e.g. audio) than were in PAZC.
-
 duplicateContext() {
 
   List extraAttributes = createAttributeList();
@@ -1986,6 +1984,8 @@ duplicateContext() {
   disableAutoSave("Context");
   populateCameraPictureGallery("Context/Context_Attachments/Photo", new ArrayList());
   populateFileList("Context/Context_Attachments/Sketch", new ArrayList());
+  populateFileList("Context/Context_Attachments/Audio", new ArrayList());
+  populateVideoGallery("Context/Context_Attachments/Video", new ArrayList());
   setFieldValue("Context/Context_GeneralInformation/Context_ID", getFieldValue("control/data/ContextIncrement")); 
   incField("control/data/ContextIncrement", 1);
 
@@ -2009,6 +2009,8 @@ duplicateContext() {
   excludeAttributes = new ArrayList();
   excludeAttributes.add("Photo");
   excludeAttributes.add("Sketch");
+  excludeAttributes.add("Audio");
+  excludeAttributes.add("Video");
   duplicateTabGroup("Context", null, extraAttributes, excludeAttributes, saveCallback);
     
 }
@@ -2017,10 +2019,12 @@ duplicateContextGroup() {
 
   disableAutoSave("ContextGroup");
   //setFieldValue("ContextGroup/ContextGroup_Details/Title", null);
+  populateCameraPictureGallery("ContextGroup/ContextGroup_Attachments/Photo", new ArrayList());
+  populateFileList("ContextGroup/ContextGroup_Attachments/Sketch", new ArrayList());
+  populateFileList("ContextGroup/ContextGroup_Attachments/Audio", new ArrayList());
+  populateVideoGallery("ContextGroup/ContextGroup_Attachments/Video", new ArrayList());
   setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", getFieldValue("control/data/ContextGroup_Starting_ID"));
   incField("control/data/ContextGroup_Starting_ID", 1);
-  
-  // Todo: empty the context group attachements as is done for the other entities
 
   List extraAttributes = createAttributeList();
   extraAttributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
@@ -2041,7 +2045,12 @@ duplicateContextGroup() {
     }
   };
 
-  duplicateTabGroup("ContextGroup", null, extraAttributes, null, saveCallback);
+  excludeAttributes = new ArrayList();
+  excludeAttributes.add("Photo");
+  excludeAttributes.add("Sketch");
+  excludeAttributes.add("Audio");
+  excludeAttributes.add("Video");
+  duplicateTabGroup("ContextGroup", null, extraAttributes, excludeAttributes, saveCallback);
   
 }
 
@@ -2096,7 +2105,9 @@ duplicateSample() {
 
   disableAutoSave("Sample");
   populateCameraPictureGallery("Sample/Sample_GeneralInformation/Photo", new ArrayList());
-  populateFileList("Sample/Sample_GeneralInformation/Sketch", new ArrayList());      
+  populateFileList("Sample/Sample_GeneralInformation/Sketch", new ArrayList());
+  populateFileList("Sample/Sample_GeneralInformation/Audio", new ArrayList());
+  populateVideoGallery("Sample/Sample_GeneralInformation/Video", new ArrayList());
   setFieldValue("Sample/Sample_GeneralInformation/Sample_ID", getFieldValue("control/data/Sample_Starting_ID")); 
   incField("control/data/Sample_Starting_ID", 1);
 
@@ -2129,6 +2140,8 @@ duplicateSample() {
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
       excludeAttributes.add("Sketch");
+      excludeAttributes.add("Audio");
+      excludeAttributes.add("Video");
       duplicateTabGroup("Sample", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
@@ -2170,6 +2183,8 @@ duplicateSpecialFind() {
   disableAutoSave("Special_Find");
 
   populateCameraPictureGallery("Special_Find/Special_Find_GeneralInformation/Photo", new ArrayList());
+  populateFileList("Special_Find/Special_Find_GeneralInformation/Audio", new ArrayList());
+  populateVideoGallery("Special_Find/Special_Find_GeneralInformation/Video", new ArrayList());
   setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID")); 
   incField("control/data/SpecialFind_Starting_ID", 1);
 
@@ -2203,6 +2218,8 @@ duplicateSpecialFind() {
       //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
+      excludeAttributes.add("Audio");
+      excludeAttributes.add("Video");
       duplicateTabGroup("Special_Find", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
