@@ -188,8 +188,8 @@
                 </child3>
               </container3>
               <Volume/>
-              <Height_List/>
               <Add_Height/>
+              <Height_List/>
             </Context_Measure>
             <Context_Cuts>
               <Your_Interpretation/>
@@ -1184,6 +1184,9 @@
         <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume" faims_style_class="required">
           <label>{Volume}</label>
         </input>
+        <trigger ref="Add_Height">
+          <label>{Add_Height}</label>
+        </trigger>
         <select1 ref="Height_List" faims_certainty="false" faims_read_only="false">
           <label>{Height_List}</label>
           <item>
@@ -1191,9 +1194,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <trigger ref="Add_Height">
-          <label>{Add_Height}</label>
-        </trigger>
       </group>
       <group faims_hidden="true" ref="Context_Cuts">
         <label>{Cut}</label>
