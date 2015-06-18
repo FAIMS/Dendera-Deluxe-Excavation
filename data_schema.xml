@@ -113,16 +113,16 @@
     <property name="Text" type="freetext">
       <description></description>
     </property>
-    <property name="Audio" type="file">
+    <property name="Audio" type="file" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file">
+    <property name="Video" type="file" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
-    <property name="Photo" type="file">
+    <property name="Photo" type="file" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="FileAttach" type="file">
+    <property name="FileAttach" type="file" thumbnail="true">
       <description></description>
     </property>
   </ArchaeologicalElement>
@@ -679,16 +679,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Your description" type="blocktext">
       <description>Enter a verbal description of the Context, including its form, contexts, relationship to other Contexts and any other relevant information. This is the main place to record all other descriptive information that may be treated briefly or not covered elsewhere, including signs of disturbance  by burrowing animals etc.</description>
     </property>
-    <property name="Sketch" type="file">
+    <property name="Sketch" type="file" thumbnail="true">
       <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
     </property>
-    <property name="Photo" type="file">
+    <property name="Photo" type="file" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file">
+    <property name="Audio" type="file" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file">
+    <property name="Video" type="file" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
     <property name="Structural Components" type="enum">
@@ -1028,16 +1028,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="CG Section Numbers" type="freetext">
       <description>Reference numbers to section drawings of this Context</description>
     </property>
-    <property name="Sketch" type="file">
+    <property name="Sketch" type="file" thumbnail="true">
       <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
     </property>
-    <property name="Photo" type="file">
+    <property name="Photo" type="file" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file">
+    <property name="Audio" type="file" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file">
+    <property name="Video" type="file" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
@@ -1304,16 +1304,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Structure Description" type="blocktext">
       <description>Other description about structural elements eg slate dry-proofing.</description>
     </property>
-    <property name="Sketch" type="file">
+    <property name="Sketch" type="file" thumbnail="true">
       <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
     </property>
-    <property name="Photo" type="file">
+    <property name="Photo" type="file" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file">
+    <property name="Audio" type="file" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file">
+    <property name="Video" type="file" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
@@ -1518,13 +1518,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Special Find Comment" type="freetext">
       <description/>
     </property>
-    <property name="Photo" type="file">
+    <property name="Photo" type="file" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file">
+    <property name="Audio" type="file" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file">
+    <property name="Video" type="file" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>

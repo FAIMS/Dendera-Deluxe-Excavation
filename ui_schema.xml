@@ -1797,7 +1797,7 @@
       </group>
       <group ref="Context_Attachments">
         <label>ADD</label>
-        <select faims_annotation="false" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="false" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -1807,7 +1807,7 @@
         <trigger ref="attachSketch">
           <label>{Attach_Sketch}</label>
         </trigger>
-        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
           <label>{Attached_Photos}</label>
           <item>
             <label>placeholder</label>
@@ -1817,7 +1817,7 @@
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -1827,7 +1827,7 @@
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2157,7 +2157,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       </group>
       <group ref="ContextGroup_Attachments">
         <label>ADD</label>
-        <select faims_annotation="false" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="false" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -2170,7 +2170,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="viewattached">
           <label>{View_Attached_Sketches}</label>
         </trigger>
-        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
           <label>{Photo}</label>
           <item>
             <label>placeholder</label>
@@ -2180,7 +2180,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2190,7 +2190,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2316,7 +2316,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       </group>
       <group ref="Sample_Attachments">
         <label>ADD</label>
-        <select faims_annotation="false" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="false" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -2326,7 +2326,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachSketch">
           <label>Attach Sketch</label>
         </trigger>
-        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
           <label>{Photo}</label>
           <item>
             <label>placeholder</label>
@@ -2336,7 +2336,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2346,7 +2346,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2503,7 +2503,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <input faims_attribute_name="Special Find Comment" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_Comment">
           <label>{Special_Find} Comment</label>
         </input>
-        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
           <label>{Photo}</label>
           <item>
             <label>placeholder</label>
@@ -2513,7 +2513,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2523,7 +2523,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2619,7 +2619,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <input faims_attribute_name="Text" faims_attribute_type="measure" faims_read_only="false" ref="Text" faims_certainty="false">
           <label>{Text}</label>
         </input>
-        <select faims_annotation="false" faims_attribute_name="FileAttach" faims_attribute_type="measure" faims_certainty="false" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="FileAttach" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -2629,7 +2629,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachSketch">
           <label>{Attach_Sketch}</label>
         </trigger>
-        <select faims_annotation="false" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="false" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
           <label>{Attached_Photos}</label>
           <item>
             <label>placeholder</label>
@@ -2639,7 +2639,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select ref="Audio" faims_attribute_name="Audio" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2649,7 +2649,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select ref="Video" faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="false" faims_certainty="false" faims_sync="true" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
