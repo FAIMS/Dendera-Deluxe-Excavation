@@ -285,17 +285,59 @@ incField(String ref) {
 }
 
 /*** control ***/
+onEvent("control"                     , "load"      , "loadControlSettings()");
 onEvent("control"                     , "show"      , "removeNavigationButtons(); setSearchAreaCode();");
 onEvent("control/data"                , "show"      , "refreshEntities(); updateGPSDiagnostics();");
 onEvent("control/data/newContext"     , "delayclick", "newContext();");
 onEvent("control/data/newContextGroup", "delayclick", "newContextGroup(true);");
 onEvent("control/data/newDiary"       , "delayclick", "newDiary()");
+onFocus("control/data/teamMembers"    , null        , "insertIntoLocalSettings(\"teamMembers\", getFieldValue(\"control/data/teamMembers\"))");
 onEvent("control/search"              , "show"      , "search();");
 onEvent("control/search/Search"       , "click"     , "clearSearch()");
 onEvent("control/search/searchButton" , "click"     , "search()");
 onEvent("control/search/entityTypes"  , "click"     , "search()");
 onEvent("control/search/Area_Code"    , "click"     , "search()");
 onEvent("control/search/entityList"   , "click"     , "loadEntity();");
+
+loadControlSettings() {
+    fetchOne("SELECT value FROM localSettings WHERE key = 'teamMembers';", new FetchCallback() {
+        onFetch(result) {
+            if (!isNull(result)) {
+                setFieldValue("control/data/teamMembers", result.get(0));
+            }
+        }
+    });
+    loadStartingIds();
+}
+
+loadStartingIds() {
+    // This function should only be called once since it creates event handlers, otherwise multiple copies of the same handler will trigger with the event.
+    List l = new ArrayList();
+    l.add("control/data/SpecialFind_Starting_ID");
+    l.add("control/data/ContextIncrement");
+    l.add("control/data/ContextGroup_Starting_ID");
+    l.add("control/data/Sample_Starting_ID");
+
+    for (ref : l) {
+        loadStartingId(ref);
+    }
+    for (ref : l) {
+        onFocus(ref, null,  "insertIntoLocalSettings(\"" + ref + "\", getFieldValue(\"" + ref + "\"));");
+    }
+}
+
+loadStartingId(String ref) {
+    String idQ = "SELECT value FROM localSettings WHERE key = '" + ref + "';";
+    fetchOne(idQ, new FetchCallback() {
+        onFetch(result) {
+            if (!isNull(result)) {
+                setFieldValue(ref, result.get(0));
+            } else {
+                setFieldValue(ref, "1");
+            }
+        }
+    });
+}
 
 setSearchAreaCode() {
     setFieldValue("control/search/Area_Code", getFieldValue("user/usertab/Area_Code"));
@@ -553,8 +595,7 @@ newContext(){
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
     setFieldValue("Context/Context_GeneralInformation/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
-    // todo: should excavator be copied as in PAZC? (answer was no, instead use the team members. see gdocs for more info.)
-    // setFieldValue("Context/Context_GeneralInformation/Excavators", username);
+    setFieldValue("Context/Context_GeneralInformation/Excavators", getFieldValue("control/data/teamMembers"));
     setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
     keepTabGroupChanges("Context");
 
@@ -2428,7 +2469,6 @@ login(){
                 username = result.get(1) + " " + result.get(2);
 
                 showTabGroup("control");
-                loadStartingIds();
             }
 
         });
@@ -2484,34 +2524,6 @@ loadLoginDetails() {
       }
     }  
   });
-}
-
-loadStartingIds() {
-    List l = new ArrayList();
-    l.add("control/data/SpecialFind_Starting_ID");
-    l.add("control/data/ContextIncrement");
-    l.add("control/data/ContextGroup_Starting_ID");
-    l.add("control/data/Sample_Starting_ID");
-
-    for (ref : l) {
-        loadStartingId(ref);
-    }
-    for (ref : l) {
-        onFocus(ref, null,  "insertIntoLocalSettings(\"" + ref + "\", getFieldValue(\"" + ref + "\"));");
-    }
-}
-
-loadStartingId(String ref) {
-    String idQ = "SELECT value FROM localSettings WHERE key = '" + ref + "';";
-    fetchOne(idQ, new FetchCallback() {
-        onFetch(result) {
-            if (!isNull(result)) {
-                setFieldValue(ref, result.get(0));
-            } else {
-                setFieldValue(ref, "1");
-            }
-        }
-    });
 }
 
 onEvent("user", "load", "loadLoginDetails()");
