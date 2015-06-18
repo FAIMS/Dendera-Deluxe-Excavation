@@ -10,9 +10,6 @@ String archent_id;
 Boolean isContext;
 Boolean newContextGroupRel;
 Boolean menu = true;
-
-// date = fetchOne("select date('now');");
-// String moduleSiteCode = "BK" + date.get(0).charAt(2) + date.get(0).charAt(3);
 String moduleYear = new java.text.SimpleDateFormat("yy").format(new Date());
 String moduleSiteCode = "BK" + moduleYear;
 
