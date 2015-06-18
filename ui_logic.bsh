@@ -1716,13 +1716,12 @@ loadPhotoLogFrom(String id) {
 
 loadPhotoLogAttributes(){
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Device_Code", "Device Code");
+    makeVocab("DropDown", "Photograph_Log/Photograph_Log/Scene_Type", "Scene Type");
 }
 
 savePhotoLog(String callback) {
     Boolean enable_autosave = true;
-    List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    List attributes = null;
     saveTabGroup("Photograph_Log", photolog_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             photolog_id = uuid;

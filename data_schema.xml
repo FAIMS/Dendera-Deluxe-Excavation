@@ -1534,7 +1534,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1-]]></formatString>
-	  <appendCharacterString><![CDATA[-]]></appendCharacterString>
+      <appendCharacterString><![CDATA[-]]></appendCharacterString>
       <lookup>
         <term>H
         <description/></term>
@@ -1557,12 +1557,12 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for each Context</description>
       <formatString><![CDATA[ {{if $2 then "$2-"}} ]]></formatString>
-	  <appendCharacterString><![CDATA[-]]></appendCharacterString>
+      <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property isIdentifier="true" name="Context Group ID" type="freetext">
       <description>Unique number or code for each Context Group</description>
       <formatString><![CDATA[ {{if $2 then "$2-"}} ]]></formatString>
-	  <appendCharacterString><![CDATA[-]]></appendCharacterString>
+      <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property isIdentifier="true" name="Photograph Reference ID" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
