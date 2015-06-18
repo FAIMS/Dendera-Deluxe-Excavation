@@ -29,11 +29,15 @@ String WEB_GUIDE = "" +
 "<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
 String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
+String WEB_REL_3 = "{useToRelate} {ContextGroups}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
+String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
 
 populateWebViewHtml("user/help/guide", WEB_GUIDE);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WEB_REL_1);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_REL_2);
+populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/spacer", WEB_REL_3);
+populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/help", WEB_REL_4);
 // Todo: add view into ui schema is required
 // populateWebViewHtml("ContextGroup/ContextGroup_Contexts/help", WEB_REL_2);
 
@@ -803,6 +807,11 @@ selectAssociatedEntityContextGroup() {
     populateWebViewHtml("ContextGroup/ContextGroup_Contexts/selectedEnt", selectedEntityIdentifer);
 }
 
+selectAssociatedEntityContextGroupCG() {
+    selectedEntityIdentifer = getListItemValue();
+    populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt", selectedEntityIdentifer);
+}
+
 updateRelns(){
     selectedEntityIdentifer = null;
     if (!isNull(context_id)){        
@@ -826,25 +835,14 @@ updateRelns(){
     refreshTabgroupCSS("Context");
 }
 
-// todo: figure out if is still required and remove old methods if not needed after migration
-// showCGRelnFromList(){
-    // todo: as above
-
-    // listID = getListItemValue();
-    
-    // foo = fetchOne("select group_concat(response, '\n') from ( select attributename || ': ' || coalesce(vocabname, freetext) as response from ( " +
-    //     "select uuid from latestnondeletedarchent join latestnondeletedaentreln using (uuid) " +
-    //         "where uuid != "+context_group_id+" and relationshipid = "+listID+" ) " +
-    //         "join latestnondeletedaentvalue using (uuid) join attributekey using (attributeid) left outer join vocabulary using (attributeid, vocabid) " +
-    //             "where attributename in ('Context Group ID', 'Area Code', 'Site Code', 'Title', 'CG Your Interpretation', 'CG Your description', 'Your Discussion') " +
-    //             "or attributename like '%Your Interpretation%' " +
-    //             "and coalesce(vocabname, freetext) is not null " +
-    //             "and coalesce(vocabname, freetext) != '{No_Observation}' " +
-    //         "group by uuid, attributename " +
-    //   "order by case attributename when 'Context Group ID' then 1 when 'Area Code' then 2 when 'Site Code' then 3 when 'Title'then 4 when 'CG Your Interpretation' then 5 when 'CG Your description' then 6 when 'Your Discussion' then 7 end); ");
-    // if (!isNull(foo)){
-    //     showToast(foo.get(0));
-    // }
+// todo: determine if is still needed
+// addContextGroupRel(){
+//     if (isNull(context_id)) {
+//         saveContext("saveEntitiesToRel(\"ContextContextGroup\", getFieldValue(\"Context/Context_Feature/ContextGroupListUnrelated\"), context_group_id);updateAllContextGroups();");
+//     } else {
+//         saveEntitiesToRel("ContextContextGroup", getFieldValue("Context/Context_Feature/ContextGroupListUnrelated"), context_id);
+//         updateAllContextGroups();
+//     }
 // }
 
 // showCGFromList(){
@@ -864,17 +862,6 @@ updateRelns(){
    //  if (!isNull(foo)){
    //      showToast(foo.get(0));
    //  }
-// }
-
-// deleteRelnCG(){
-    // todo: as above
-    // relnid = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/listRelns");
-    
-    // String query = "insert into aentreln (uuid, relationshipid, deleted, participatesverb, userid) select uuid, relationshipid, 'true', participatesverb, '"+userid+"' from latestnondeletedaentreln where relationshipid = '"+relnid+"';";
-    
-    // fetchOne(query);
-    // deleteRel(relnid);
-    // updateRelns();
 // }
 
 loadContextAttributes(){
@@ -1000,16 +987,6 @@ setTextureActual(){
     });
 }
 
-// todo: determine if is still needed
-// addContextGroupRel(){
-//     if (isNull(context_id)) {
-//         saveContext("saveEntitiesToRel(\"ContextContextGroup\", getFieldValue(\"Context/Context_Feature/ContextGroupListUnrelated\"), context_group_id);updateAllContextGroups();");
-//     } else {
-//         saveEntitiesToRel("ContextContextGroup", getFieldValue("Context/Context_Feature/ContextGroupListUnrelated"), context_id);
-//         updateAllContextGroups();
-//     }
-// }
-
 removeContextGroupReln() {
     context_group_id = getFieldValue("Context/Context_Feature/ContextGroupList");
     if(!isNull(context_id) && !isNull(context_group_id)) {
@@ -1042,11 +1019,13 @@ onEvent("ContextGroup/ContextGroup_Contexts/ShowContext"            , "click"   
 onEvent("ContextGroup/ContextGroup_Contexts/RemoveContext"          , "click"       , "removeFromContextGroup()");
 onEvent("ContextGroup/ContextGroup_Contexts/ContextList"            , "click"       , "selectAssociatedEntityContextGroup()");
 
-// todo: update the code in the following functions (seems similar to Context_Relationships_to_Other_Contexts in pazc?)
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features", "show", "updateContextGroupIdentifier(); updateContextGroupRelationshipTargetArea(); updateRelnsCG();");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/Populate_Target_ContextGroup", "delayclick", "updateAllContextGroupRelationships(); populateWebViewHtml(\"ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt\", WEB_REL_SELECTED_NONE);");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/createLegacy", "delayclick", "showTextAlert(\"Alert\", \"Legacy identifier:\", \"legacyTextInput()\",  null)");
 onEvent("ContextGroup/Feature_Relationships_to_Other_Features/relate", "delayclick", "makeHierRelnCG()");
-onEvent("ContextGroup/Feature_Relationships_to_Other_Features", "show", "updateContextGroupRelationships()");
-onEvent("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", "click", "showCGRelnFromList()");
-onEvent("ContextGroup/Feature_Relationships_to_Other_Features/deleteReln", "click", "deleteRelnCG()");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/showReln", "click", "loadContextGroupFromReln()");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/deleteReln", "delayclick", "deleteRelnCG()");
+onEvent("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", "click", "selectAssociatedEntityContextGroupCG()");
 
 onEvent("ContextGroup/ContextGroup_Attachments", "show", "updateAllContextGroupPhotologs()");
 onEvent("ContextGroup/ContextGroup_Attachments/attachPhoto", "click", "attachPictureTo(\"ContextGroup/ContextGroup_Attachments/Photo\")");
@@ -1104,6 +1083,15 @@ loadContextGroupFromContext() {
     if (isNull(context_group_id)) return;
     loadContextGroupFrom(context_group_id);
     updateRelns();
+}
+
+loadContextGroupFromReln(){
+    String childuuid = selectedEntityIdentifer;
+    if (!isNull(childuuid)){
+        loadEntityFrom(childuuid);
+    } else {
+        showWarning("{Nothing_Selected}", "{Please_select_a_child_entity_in_the_list}");
+    }
 }
 
 saveContextGroup(){
@@ -1207,16 +1195,6 @@ populateContextGroup() {
     });
 }
 
-loadContextGroupAttributes(){
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Area_Code", "AreaCode");
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Device_Code", "Device Code");
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Contexts/Target_Area", "AreaCode");    
-    // todo: determine if is still needed
-    // relnList = fetchAll("select relntypename||'~!~'||coalesce(nullif(parent||'~!~'||child,'~!~'),relntypename||'~!~'||relntypename) as relntypeid, coalesce(nullif(parent,''), relntypename) as name, relntypeid from relntype where relntypename not like '%Context%' and relntypename not like 'Rebuilt%' union select relntypename||'~!~'||coalesce(nullif(child||'~!~'||parent,'~!~'),relntypename||'~!~'||relntypename), coalesce(nullif(child,''), relntypename) as name, relntypeid from relntype where relntypename not like '%Context%' and relntypename not like 'Rebuilt%' order by relntypeid, name;");
-    // populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/reln", relnList);
-}
-
 deleteContextGroup(){
     if (!isNull(context_group_id)) {
         showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Context_Group}", "reallyDeleteContextGroup()", "doNotDelete()");
@@ -1271,17 +1249,6 @@ deletePhotoLogFromContextGroup(){
     }
 }
 
-updateContextGroupRelationships(){
-    setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature_id", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
-    // todo: update to match context relationships to other contexts
-    showToast("Todo: update updateContextGroupRelationships() method");
-    // featureList = fetchAll("select uuid, group_concat(coalesce(measure || ' ' || vocabname || '(' ||freetext||')',  measure || ' (' || freetext ||')',  vocabname || ' (' || freetext ||')',  measure || ' ' || vocabname ,  vocabname || ' (' || freetext || ')',  measure || ' (' || freetext || ')',  measure,  vocabname,  freetext,  measure,  vocabname,  freetext), ' ') " +
-    //     "as response from latestNonDeletedArchEntIdentifiers " +
-    //         "where aenttypename = 'Context Group' and uuid != '"+context_group_id+"' group by uuid;");
-    // populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/feature", featureList);
-    // updateRelnsCG();
-}
-
 makeHierRelnCG(){
     if (isNull(getFieldValue("ContextGroup/ContextGroup_Details/Title"))) {
         showWarning("Logic Error", "Cannot save record without title");
@@ -1293,26 +1260,137 @@ makeHierRelnCG(){
         return;
     }
     String[] arguments = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/reln").split("~!~");
-    String dest = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/feature");
+    String dest = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/ContextGroup");
+    String relSaveCallback = "updateRelnsCG();";
+    saveEntitiesToHierRel(arguments[0], context_group_id, dest, arguments[1], arguments[2], relSaveCallback);
+}
 
-    saveEntitiesToHierRel(arguments[0], context_group_id, dest, arguments[1], arguments[2]);
+updateContextGroupIdentifier(){
+    if (!isNull(context_group_id)){
+        fetchOne("select response from latestNonDeletedArchEntFormattedIdentifiers where uuid = '"+context_group_id+"';", new FetchCallback() {
+          onFetch(result) {
+            if (!isNull(result)){
+                setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/ContextGroup_id", result.get(0));
+            }
+          }
+        });    
+    } else {
+        showToast("{pleaseSave} {ContextGroup} {beforeThisTab}.");
+    }
+}
+
+updateContextGroupRelationshipTargetArea() {
+    setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/Target_Area", getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"));
+    populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt", WEB_REL_SELECTED_NONE);
+}
+
+updateRelnsCG(){
+    // todo figure whether context group needs a separate version of selectedEntityIdentifer from context
+    selectedEntityIdentifer = null;
+    if (!isNull(context_group_id)){        
+        populateCursorList(
+                "ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns",
+                "SELECT childuuid, parentparticipatesverb||' '||response "+
+                "  FROM parentchild JOIN latestNonDeletedArchEntFormattedIdentifiers on (childuuid = uuid) "+
+                "  JOIN createdmodifiedatby USING (uuid) "+
+                " WHERE relationshipid in (SELECT relationshipid  "+
+                "                            FROM latestnondeletedrelationship JOIN relntype USING (relntypeid)  "+
+                "                           WHERE relntypename not like 'Context%') "+
+                "   and parentuuid = '"+context_group_id+"' "+
+                "   and parentaenttypename = 'Context Group' "+
+                " ORDER BY createdat desc "+
+                " limit ? offset ? ;",
+                25
+        );
+    } else {
+        showToast("{NoContextGroupId}!");
+    }
+    refreshTabgroupCSS("ContextGroup");
+}
+
+updateAllContextGroupRelationships(){
+    Object contextGroupList = new ArrayList();
+    String targetContextGroupAreaCode = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/Target_Area");
+    String targetContextGroupID = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/Target_ContextGroup_ID");
+    String targetContextGroupQuery = "SELECT uuid, response "+
+                                "  FROM latestnondeletedarchentformattedidentifiers "+
+                                " WHERE (aenttypename='Legacy' "+
+                                "    OR (aenttypename = 'Context Group' "+
+                                "        AND ('null' = '"+targetContextGroupAreaCode+"' "+
+                                "             OR uuid IN (SELECT uuid "+
+                                "                            FROM latestnondeletedaentvalue  "+
+                                "                            JOIN attributekey USING (attributeid) "+
+                                "                           WHERE attributename = 'AreaCode' "+
+                                "                             AND vocabid = '"+targetContextGroupAreaCode+"') "+
+                                "                ) "+
+                                "        )) "+
+                                "   AND uuid IN (SELECT uuid "+
+                                "                  FROM latestnondeletedaentvalue  "+
+                                "                  JOIN attributekey USING (attributeid) "+
+                                "                 WHERE attributename IN ('Context Group ID', 'LegacyIdentifier') "+
+                                "                   AND measure like '"+targetContextGroupID+"'||'%' "+
+                                "                )         "+
+                                " ORDER BY CAST(response as integer); ";
+    if (!isNull(context_group_id)){
+        fetchAll(
+            targetContextGroupQuery,
+            new FetchCallback() {
+                onFetch(result) {
+                    Log.d("PAZC Module", "Fetched target contexts: " + result.toString());
+                    populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/ContextGroup", result);
+                }
+            }
+        );
+    }
+    else {
+      showToast("{You_must_save_a_context_group_first}");
+    }
     updateRelnsCG();
 }
 
+deleteRelnCG(){
+    String childuuid = selectedEntityIdentifer;
+    if (!isNull(childuuid)){
+        String relationshipidQuery = "select relationshipid from parentchild where parentuuid = '"+context_group_id+"' and childuuid = '"+childuuid+"';";
+        fetchOne(relationshipidQuery, new FetchCallback() {
+          onFetch(result) {
+            String deletequery = "insert into aentreln (uuid, relationshipid, deleted, participatesverb, userid) SELECT uuid, relationshipid, 'true', participatesverb, '"+userid+"' FROM latestnondeletedaentreln WHERE relationshipid = '"+result.get(0)+"';";
+            fetchOne(deletequery, null);
+            deleteRel(result.get(0));
+            populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt", WEB_REL_SELECTED_NONE);
+            selectedEntityIdentifer = null;
+            updateRelnsCG();
+          }
+        });        
+    } else {
+      showWarning("{Nothing_Selected}", "{Please_select_a_child_entity_in_the_list}");
+    }
+}
 
-updateRelnsCG(){
-    // todo: update to match context relationships to other contexts
-    showToast("Todo: update updateRelnsCG() method");
-    // Object featureRelnList = fetchAll("select parent.relationshipid, parent.participatesverb || ' ' || child.response "+
-    //     "from (latestNonDeletedAentReln) parent  "+
-    //     "join (latestNonDeletedAentReln join identifierAsSpreadsheet using (uuid)) child on (parent.relationshipid = child.relationshipid and parent.uuid != child.uuid) "+
-    //     "join latestNonDeletedRelationship using (relationshipid) join relntype using (relntypeid) "+
-    //     "where relntypename not like 'Context%' "+
-    //     "and parent.uuid = '"+context_group_id+"'  "+
-    //     "order by relntimestamp desc");
-    
-    // populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/listRelns", featureRelnList);
-    // populateList("ContextGroup/Feature_Relationships_to_Other_Features/listOfRelns", featureRelnList);
+loadContextGroupAttributes(){
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Area_Code", "AreaCode");
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Device_Code", "Device Code");
+    makeVocab("DropDown", "ContextGroup/ContextGroup_Contexts/Target_Area", "AreaCode");
+    makeVocab("DropDown", "ContextGroup/Feature_Relationships_to_Other_Features/Target_Area", "AreaCode");
+
+    String relnListQuery = "SELECT relntypename||'~!~'||coalesce(nullif(parent||'~!~'||child,'~!~'),relntypename||'~!~'||relntypename) as relntypeid, coalesce(nullif(parent,''), relntypename) as name, relntypeid "+
+                           "  FROM relntype "+
+                           " WHERE relntypename not like '%Context%' "+
+                           "   AND relntypename not like '%SpecialFind%' "+
+                           " UNION "+
+                           " SELECT relntypename||'~!~'||coalesce(nullif(child||'~!~'||parent,'~!~'),relntypename||'~!~'||relntypename), coalesce(nullif(child,''), relntypename) as name, relntypeid "+
+                           "  FROM relntype "+
+                           " WHERE relntypename not like '%Context%' "+
+                           "   AND relntypename not like '%SpecialFind%' "+
+                           " ORDER BY relntypeid, name;";
+
+    fetchAll(relnListQuery, new FetchCallback() {
+        onFetch(result) {
+            print(result);
+            populateDropDown("ContextGroup/Feature_Relationships_to_Other_Features/reln", result);
+        }
+    });
 }
 
 /*** Sample ***/
