@@ -1686,6 +1686,9 @@ newPhotoLog(){
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
+    setFieldValue("Photograph_Log/Photograph_Log/Area_Code", getFieldValue("Context/Context_GeneralInformation/Area_Code"));
+
+    
 }
 
 newPhotoLogFromContextGroup(){
@@ -1701,6 +1704,8 @@ newPhotoLogFromContextGroup(){
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("ContextGroup/ContextGroup_Details/Device_Code"));
+    setFieldValue("Photograph_Log/Photograph_Log/Area_Code", getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"));
+
 }
 
 loadPhotoLog() {
@@ -1717,6 +1722,8 @@ loadPhotoLogFrom(String id) {
 loadPhotoLogAttributes(){
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Device_Code", "Device Code");
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Scene_Type", "Scene Type");
+    makeVocab("DropDown", "Photograph_Log/Photograph_Log/Area_Code", "AreaCode");
+
 }
 
 savePhotoLog(String callback) {

@@ -218,7 +218,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Date on which the Context was first excavated. This will automatically be set to the date on which the context is recorded but can be edited using the keyboard.</description>
     </property>
     <property name="Date Closed" type="date">
-      <description>The date excavation of the Context ended and it was closed. Press the 'Add Date Closed' button to insert today’s date.</description>
+      <description>The date excavation of the Context ended and it was closed. Press the 'Add Date Closed' button to insert today's date.</description>
     </property>
     <property name="Location Note" type="freetext">
       <description>For Approx location in area provide information on rough location eg centre of Area A or NW corner area A but also in relation to other archaeological contexts or features e.g. between walls x and y.</description>
@@ -1554,14 +1554,14 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
       </lookup>
     </property>
-    <property isIdentifier="true" name="Context ID" type="freetext">
+    <property isIdentifier="true" name="Photo Context ID" type="freetext">
       <description>Unique number or code for each Context</description>
-      <formatString><![CDATA[ {{if $2 then "$2-"}} ]]></formatString>
+      <formatString><![CDATA[ {{if $2 then "$2-" else ""}} ]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
-    <property isIdentifier="true" name="Context Group ID" type="freetext">
+    <property isIdentifier="true" name="Photo Context Group ID" type="freetext">
       <description>Unique number or code for each Context Group</description>
-      <formatString><![CDATA[ {{if $2 then "$2-"}} ]]></formatString>
+      <formatString><![CDATA[ {{if $2 then "$2-" else ""}} ]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property isIdentifier="true" name="Photograph Reference ID" type="freetext">
