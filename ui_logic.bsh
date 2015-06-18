@@ -909,6 +909,8 @@ loadContextAttributes(){
     makeVocab("DropDown", "Context/Context_Structures/Mudbrick_Shape", "Mudbrick Shape");
     makeVocab("DropDown", "Context/Context_Structures/Your_Interpretation", "Structure Your Interpretation");
 
+    makeVocab("DropDown", "Context/Context_Relationships_to_Other_Contexts/Target_Area", "AreaCode");
+
     makeVocab("HierarchicalDropDown", "Context/Texture_Helper/Soil_Texture", "Soil Texture Helper");
 
     String relnListQuery = "SELECT relntypename||'~!~'||coalesce(nullif(parent||'~!~'||child,'~!~'),relntypename||'~!~'||relntypename) as relntypeid, coalesce(nullif(parent,''), relntypename) as name, relntypeid "+
