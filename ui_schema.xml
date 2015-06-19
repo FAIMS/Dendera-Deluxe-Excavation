@@ -2305,13 +2305,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID" faims_style_class="required">
+            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
               <label>{Context_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Special Find ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_ID" faims_style_class="required">
+            <input faims_attribute_name="Special Find ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_ID">
               <label>{Special_Find} ID</label>
             </input>
           </group>
@@ -2357,19 +2357,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Special Find X" faims_attribute_type="measure" faims_read_only="false" ref="X">
+            <input faims_attribute_name="Special Find X" faims_attribute_type="measure" faims_read_only="false" ref="X" faims_style_class="required">
               <label>X</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Special Find Y" faims_attribute_type="measure" faims_read_only="false" ref="Y">
+            <input faims_attribute_name="Special Find Y" faims_attribute_type="measure" faims_read_only="false" ref="Y" faims_style_class="required">
               <label>Y</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Special Find Z" faims_attribute_type="measure" faims_read_only="false" ref="Z">
+            <input faims_attribute_name="Special Find Z" faims_attribute_type="measure" faims_read_only="false" ref="Z" faims_style_class="required">
               <label>Z</label>
             </input>
           </group>
