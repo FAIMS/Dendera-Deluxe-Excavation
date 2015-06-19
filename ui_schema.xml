@@ -1612,7 +1612,7 @@
         </trigger>
       </group>
       <group ref="Context_Relationships_to_Other_Contexts" faims_scrollable="false">
-        <label>Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.</label>
+        <label>{Context} {Relationships}</label>
         <group ref="colgroup" faims_style="orientation">
           <label/>
           <group ref="left" faims_style="even">

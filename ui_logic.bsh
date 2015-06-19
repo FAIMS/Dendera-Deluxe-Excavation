@@ -27,7 +27,8 @@ String WEB_GUIDE = "" +
 "<p>WARNING! If two individuals login as the same user on two different devices, and hit &#x2018;Save&#x2019; at the same millisecond, there is risk that the records will be merged during synchronisation. ALWAYS login under the correct username.</p>" +
 "<p>For more information, see the Boncuklu Excavation Module Guide. It provides an overview of the features and navigation of the Module.</p>" +
 "<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
-String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
+// String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
+String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
 String WEB_REL_3 = "{useToRelate} {ContextGroups}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
 String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
