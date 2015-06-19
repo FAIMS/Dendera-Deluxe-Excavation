@@ -2461,7 +2461,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Photo Context Group ID" faims_attribute_type="measure" faims_read_only="true" ref="Context_Group_ID">
-              <label>{ContextGroupID}</label>
+              <label>{ContextGroup_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">

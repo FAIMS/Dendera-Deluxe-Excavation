@@ -508,9 +508,8 @@ saveHeight() {
 saveHeight(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    // TODO: Fix saving
-    //attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    //attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
     print(context_id);
     print(height_id);
     saveTabGroup("Height", height_id, null, attributes, new SaveCallback() {
@@ -964,25 +963,36 @@ makeHierReln(){
     saveEntitiesToHierRel(arguments[0], context_id, dest, arguments[1], arguments[2], relSaveCallback);
 }
 
+selectedEntityIdentiferToName(String destRef, String uuid) {
+    String q = "SELECT uuid, response FROM latestnondeletedarchentformattedidentifiers WHERE uuid = " + uuid;
+    fetchOne(q,
+        new FetchCallback() {
+            onFetch(name) {
+                populateWebViewHtml(destRef, name.get(1));
+            }
+        }
+    );
+}
+
 String selectedEntityIdentifer = null;
 selectAssociatedEntityContext() {
     selectedEntityIdentifer = getListItemValue();
-    populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/selectedEnt", selectedEntityIdentifer);
+    selectedEntityIdentiferToName("Context/Context_Relationships_to_Other_Contexts/selectedEnt", selectedEntityIdentifer);
 }
 
 selectAssociatedEntityContextGroup() {
     selectedEntityIdentifer = getListItemValue();
-    populateWebViewHtml("ContextGroup/ContextGroup_Contexts/selectedEnt", selectedEntityIdentifer);
+    selectedEntityIdentiferToName("ContextGroup/ContextGroup_Contexts/selectedEnt", selectedEntityIdentifer);
 }
 
 selectAssociatedEntityContextGroupCG() {
     selectedEntityIdentifer = getListItemValue();
-    populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt", selectedEntityIdentifer);
+    selectedEntityIdentiferToName("ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt", selectedEntityIdentifer);
 }
 
 updateRelns(){
     selectedEntityIdentifer = null;
-    if (!isNull(context_id)){        
+    if (!isNull(context_id)){
         populateCursorList(
                 "Context/Context_Relationships_to_Other_Contexts/listOfRelns",
                 "SELECT childuuid, parentparticipatesverb||' '||response "+
