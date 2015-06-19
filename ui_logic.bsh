@@ -27,11 +27,13 @@ String WEB_GUIDE = "" +
 "<p>WARNING! If two individuals login as the same user on two different devices, and hit &#x2018;Save&#x2019; at the same millisecond, there is risk that the records will be merged during synchronisation. ALWAYS login under the correct username.</p>" +
 "<p>For more information, see the Boncuklu Excavation Module Guide. It provides an overview of the features and navigation of the Module.</p>" +
 "<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
+// TODO: determine what the intended text is for these web views, as they still use old text or text copied from PAZC.
 // String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
 String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
 String WEB_REL_3 = "{useToRelate} {ContextGroups}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
 String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
+String WEB_REL_5 = "Use this tab to add a {Context} to the {ContextGroup}.";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
 
 populateWebViewHtml("user/help/guide", WEB_GUIDE);
@@ -39,8 +41,7 @@ populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WE
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_REL_2);
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/spacer", WEB_REL_3);
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/help", WEB_REL_4);
-// Todo: add view into ui schema is required
-// populateWebViewHtml("ContextGroup/ContextGroup_Contexts/help", WEB_REL_2);
+populateWebViewHtml("ContextGroup/ContextGroup_Contexts/spacer", WEB_REL_5);
 
 makeLocalID(){
     fetchOne("CREATE TABLE IF NOT EXISTS localSettings (key text primary key, value text);", null);
@@ -521,9 +522,6 @@ onEvent("Context/Context_Feature", "show", "updateAllContextGroups()");
 onEvent("Context/Context_Feature/AddContextGroup", "click", "newContextGroup(false);newContextGroupRel = true;");
 onEvent("Context/Context_Feature/ShowContextGroup", "click", "loadContextGroupFromContext();newContextGroupRel = false;");
 onEvent("Context/Context_Feature/RemoveFromContextGroup", "click", "removeContextGroupReln()");
-// todo: determine if still required
-// onEvent("Context/Context_Feature/AddContextGroupRel", "delayclick", "addContextGroupRel()");
-// onEvent("Context/Context_Feature/RelatedContextGroups", "click", "showCGFromList()");
 
 onEvent("Context/Context_Attachments", "show", "updateAllContextPhotologs()");
 onEvent("Context/Context_Attachments/newPhotoLog", "click", "newPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true;");
@@ -876,35 +874,6 @@ updateRelns(){
     }
     refreshTabgroupCSS("Context");
 }
-
-// todo: determine if is still needed
-// addContextGroupRel(){
-//     if (isNull(context_id)) {
-//         saveContext("saveEntitiesToRel(\"ContextContextGroup\", getFieldValue(\"Context/Context_Feature/ContextGroupListUnrelated\"), context_group_id);updateAllContextGroups();");
-//     } else {
-//         saveEntitiesToRel("ContextContextGroup", getFieldValue("Context/Context_Feature/ContextGroupListUnrelated"), context_id);
-//         updateAllContextGroups();
-//     }
-// }
-
-// showCGFromList(){
-    // todo: as above
-
-   //  listID = getListItemValue();
-    
-   // foo = fetchOne("select group_concat(response, '\n') from ( select attributename || ': ' || coalesce(vocabname, freetext) as response from ( " +
-   //      "select uuid from latestnondeletedarchent join latestnondeletedaentreln using (uuid) " +
-   //          "where uuid = "+listID+" ) " +
-   //          "join latestnondeletedaentvalue using (uuid) join attributekey using (attributeid) left outer join vocabulary using (attributeid, vocabid) " +
-   //             "where attributename in ('Context Group ID', 'Area Code', 'Site Code', 'Title', 'CG Your Interpretation', 'CG Your description', 'Your Discussion') " +
-   //             "and coalesce(vocabname, freetext) is not null " +
-   //             "and coalesce(vocabname, freetext) != '{No_Observation}' " +
-   //         "group by uuid, attributename " +
-   //    "order by case attributename when 'Context Group ID' then 1 when 'Area Code' then 2 when 'Site Code' then 3 when 'Title'then 4 when 'CG Your Interpretation' then 5 when 'CG Your description' then 6 when 'Your Discussion' then 7 end); ");
-   //  if (!isNull(foo)){
-   //      showToast(foo.get(0));
-   //  }
-// }
 
 loadContextAttributes(){
     makeVocab("PictureGallery", "Context/Context_GeneralInformation/Context_Type", "Context Type");
@@ -1327,7 +1296,6 @@ updateContextGroupRelationshipTargetArea() {
 }
 
 updateRelnsCG(){
-    // todo figure whether context group needs a separate version of selectedEntityIdentifer from context
     selectedEntityIdentifer = null;
     if (!isNull(context_group_id)){        
         populateCursorList(

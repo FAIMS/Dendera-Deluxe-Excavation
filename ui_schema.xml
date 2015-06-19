@@ -498,6 +498,7 @@
                   <Populate_Target_Context/>
                 </right>
               </colgroup>
+              <spacer/>
               <AddContextList/>
               <AddContext/>
               <colgroup1>
@@ -1641,7 +1642,6 @@
             </trigger>
           </group>
         </group>
-        <!-- Brian todo, figure out how to model this -->
         <input faims_certainty="false" faims_read_only="true" ref="spacer" faims_web="true">
           <label></label>
         </input>
@@ -1982,6 +1982,9 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </trigger>
           </group>
         </group>
+        <input faims_certainty="false" faims_read_only="true" ref="spacer" faims_web="true">
+          <label></label>
+        </input>
         <select1 faims_certainty="false" faims_read_only="false" ref="AddContextList">
           <label>{Add_Additional_Context}</label>
           <item>
