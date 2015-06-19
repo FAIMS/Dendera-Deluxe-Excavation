@@ -662,8 +662,8 @@
           </Height>
           <!--ArchEnt / Record Type: SPECIAL_FIND-->
           <Special_Find>
-            <validate/>
             <Special_Find_GeneralInformation>
+              <validate/>
               <container1>
                 <child2>
                   <Context_ID/>

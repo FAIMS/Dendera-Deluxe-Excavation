@@ -90,7 +90,6 @@ isValidField(String ref) {
 /* `format` can either be HTML or PLAINTEXT
  */
 validateFields(List fields, String format) {
-    Interpreter condEvaluator = new Interpreter();
     Integer numInvalid = 0;
 
     /* Build validation message string (and count how many invalid fields exist) */
@@ -101,7 +100,7 @@ validateFields(List fields, String format) {
         String cond = f.get(2); // Validation condition
 
         // Only validate a field whose validation condition evaluates to `true`
-        Boolean doValidateField = (Boolean) condEvaluator.eval(cond);
+        Boolean doValidateField = (Boolean) eval(cond);
         if (!doValidateField)
             continue;
 
@@ -138,6 +137,35 @@ validateContextTabGroup() {
     validateContextTabGroup(showWarning);
 }
 
+/** Fetches the contents of a specifed vocabulary and stores it in the given list. **/
+fetchVocabulary(String vocabName, List storageList) {
+    fetchAll("select vocabid, vocabname from vocabulary left join attributekey using (attributeid) where attributename = '" + vocabName + "';", new FetchCallback() {
+        onFetch(result) {
+            storageList.addAll(result);
+        }
+    });
+}
+
+vocabNameToVocabId(List vocab, String name) {
+    for (v : vocab) {
+        String vocabId   = v.get(0);
+        String vocabName = v.get(1);
+        if (vocabName.equals(name))
+            return vocabId;
+    }
+    return null;
+}
+
+/* Returns true if `vocabName` is the value selected in the <select1> at `ref`.
+ */
+isSelected(String ref, List vocab, String vocabName) {
+    String vocabId       = vocabNameToVocabId(vocab, vocabName);
+    String vocabIdActual = getFieldValue(ref);
+    if (isNull(vocabIdActual))
+        return isNull(vocabId);
+    return vocabIdActual.equals(vocabId);
+}
+
 validateContextTabGroup(Boolean showWarning) {
     List f = new ArrayList(); // fields to be validated
 
@@ -155,13 +183,12 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_GeneralInformation/Plans"                 , "{Plans}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Section_Numbers"       , "{Section_Numbers}"));
 
-    // TODO: implement non-trivial conditions
-    String condCut        = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Cut}\")";
-    String condDeposit    = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Deposit}\")";
-    String condSkeleton   = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Skeleton}\")";
-    String condStructures = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Structure}\")";
+    String condCut        = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Cut}\")";
+    String condDeposit    = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Deposit}\")";
+    String condSkeleton   = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Skeleton}\")";
+    String condStructures = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Structure}\")";
     // Cut
-    f.add(fieldPair("Context/Context_GeneralInformation/Your_Interpretation" , "{Your_Interpretation}"   , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Your_Interpretation"               , "{Your_Interpretation}"   , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Cut"                      , "{Shape_of_Cut}"          , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Corners"                  , "{Shape_of_Corners}"      , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Base"                     , "{Shape_of_Base}"         , condCut));
@@ -188,7 +215,6 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_Skeletons/Skeleton_Days_Exposed"        , "{Skeleton_Days_Exposed}" , condSkeleton));
     f.add(fieldPair("Context/Context_Skeletons/Target_A_X"                   , "{Target_A_X}"            , condSkeleton));
     f.add(fieldPair("Context/Context_Skeletons/Target_A_Y"                   , "{Target_A_Y}"            , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/reln"                         , "Relationship"            , condSkeleton));
     // Structures
     f.add(fieldPair("Context/Context_Structures/Your_Interpretation"         , "{Your_Interpretation}"   , condStructures));
     f.add(fieldPair("Context/Context_Structures/Structure_Description"       , "{Structure_Description}" , condStructures));
@@ -197,19 +223,19 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_Interpretation/Your_description" , "{Your_description}"));
     f.add(fieldPair("Context/Context_Interpretation/Your_Discussion"  , "{Your_Discussion}"));
 
-    validateFields(fields , "Context/Context_Validation/validationResults" , showWarning);
+    validateFields(f, "Context/Context_Validation/validationResults" , showWarning);
 }
 
 onEvent("Context/Context_GeneralInformation/validate" , "delayclick" , "showTab(\"Context/Context_Validation\")");
-onEvent("Context/Context_Validation"                  , "show"       , "validateContextFields(false)");
-onEvent("Context"                                     , "show"       , "validateContextFields(false)");
+onEvent("Context/Context_Validation"                  , "show"       , "validateContextTabGroup(false)");
+onEvent("Context"                                     , "show"       , "validateContextTabGroup(false)");
 
-validateFeatureTabGroup() {
+validateContextGroupTabGroup() {
     Boolean showWarning = true;
     validateFeatureTabGroup(showWarning);
 }
 
-validateFeatureTabGroup() {
+validateContextGroupTabGroup(showWarning) {
     List f = new ArrayList();
 
     // TODO? "GEN"
@@ -221,30 +247,34 @@ validateFeatureTabGroup() {
     f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_Interpretation"  , "{CG_Your_Interpretation}"));
     f.add(fieldPair("ContextGroup/Feature_Relationships_to_Other_Features/reln" , "Relationship"));
 
-    validateFields(fields , "ContextGroup/ContextGroup_Validation/validationResults" , showWarning);
+    validateFields(f , "ContextGroup/ContextGroup_Validation/validationResults" , showWarning);
 }
+
+onEvent("ContextGroup/ContextGroup_Details/validate" , "delayclick" , "showTab(\"ContextGroup/ContextGroup_Validation\")");
+onEvent("ContextGroup/ContextGroup_Validation"       , "show"       , "validateContextGroupTabGroup(false)");
+onEvent("ContextGroup"                               , "show"       , "validateContextGroupTabGroup(false)");
 
 validateSamplesTabGroup() {
     Boolean showWarning = true;
     validateFeatureTabGroup(showWarning);
 }
 
-validateSamplesTabGroup() {
+validateSamplesTabGroup(showWarning) {
     List f = new ArrayList();
 
-    f.add(fieldPair("Sample/GeneralInformation/Context_ID",  "{Context_ID}"));
-    f.add(fieldPair("Sample/GeneralInformation/Sample_ID",   "{Sample_ID}"));
-    f.add(fieldPair("Sample/GeneralInformation/Sample_Type", "{Sample_Type}"));
-    f.add(fieldPair("Sample/GeneralInformation/X", "X"));
-    f.add(fieldPair("Sample/GeneralInformation/Y", "Y"));
-    f.add(fieldPair("Sample/GeneralInformation/Z", "Z"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Context_ID",  "{Context_ID}"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Sample_ID",   "{Sample_ID}"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Sample_Type", "{Sample_Type}"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/X", "X"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Y", "Y"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Z", "Z"));
 
-    validateFields(fields , "Sample/Sample_Validation/validationResults" , showWarning);
+    validateFields(f , "Sample/Sample_Validation/validationResults" , showWarning);
 }
 
-onEvent("Sample/Sample_Details/validate" , "delayclick" , "showTab(\"Sample/Sample_Validation\")");
-onEvent("Sample/Sample_Validation"       , "show"       , "validateSamplesTabGroup(false)");
-onEvent("Sample"                         , "show"       , "validateSamplesTabGroup(false)");
+onEvent("Sample/Sample_GeneralInformation/validate" , "delayclick" , "showTab(\"Sample/Sample_Validation\")");
+onEvent("Sample/Sample_Validation"                  , "show"       , "validateSamplesTabGroup(false)");
+onEvent("Sample"                                    , "show"       , "validateSamplesTabGroup(false)");
 
 validateSpecialFindTabGroup() {
     Boolean showWarning = true;
@@ -260,10 +290,10 @@ validateSpecialFindTabGroup(showWarning) {
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Y"                        , "Y"));
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Z"                        , "Z"));
 
-    validateFields(fields , "Special_Find/Special_Find_Validation/validationResults" , showWarning);
+    validateFields(f , "Special_Find/Special_Find_Validation/validationResults" , showWarning);
 }
 
-onEvent("Special_Find/Special_Find_Details/validate" , "delayclick" , "showTab(\"Special_Find/Special_Find_Validation\")");
+onEvent("Special_Find/Special_Find_GeneralInformation/validate" , "delayclick" , "showTab(\"Special_Find/Special_Find_Validation\")");
 onEvent("Special_Find/Special_Find_Validation"       , "show"       , "validateSpecialFindTabGroup(false)");
 onEvent("Special_Find"                               , "show"       , "validateSpecialFindTabGroup(false)");
 
@@ -2709,3 +2739,5 @@ initialiseModule() {
 }
 
 initialiseModule();
+    CONTEXT_TYPE_VOCAB = new ArrayList();
+    fetchVocabulary("Context Type", CONTEXT_TYPE_VOCAB);
