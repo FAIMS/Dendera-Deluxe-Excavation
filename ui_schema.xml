@@ -585,9 +585,6 @@
           <Sample>
             <Sample_GeneralInformation>
               <container1>
-                <child1>
-                  <Area_Code/>
-                </child1>
                 <child2>
                   <Context_ID/>
                 </child2>
@@ -660,9 +657,6 @@
           <Special_Find>
             <Special_Find_GeneralInformation>
               <container1>
-                <child1>
-                  <Area_Code/>
-                </child1>
                 <child2>
                   <Context_ID/>
                 </child2>
@@ -703,9 +697,6 @@
           <Photograph_Log>
             <Photograph_Log>
               <container1>
-                <child0>
-                  <Area_Code/>
-                </child0>
                 <child1>
                   <Context_ID/>
                 </child1>
@@ -2256,12 +2247,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>Deposit Samples</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="AreaCode" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Area_Code">
-              <label>{Area_Code}</label>
-            </input>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
@@ -2445,12 +2430,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>{Special_Find}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="AreaCode" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Area_Code">
-              <label>{Area_Code}</label>
-            </input>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
@@ -2567,17 +2546,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <label>{Photograph_Log}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
-         <group faims_style="even" ref="child0">
-
-          <label/>
-          <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="sharedwithvocab">
-          <label>{AreaCode}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-      </group>
           <group faims_style="even" ref="child1">
             <label/>
             <input faims_attribute_name="Photo Context ID" faims_attribute_type="measure" faims_read_only="true" ref="Context_ID">

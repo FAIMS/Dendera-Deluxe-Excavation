@@ -1713,6 +1713,7 @@ loadSpecialFindAttributes(){
 onEvent("Photograph_Log", "show", "addNavigationButtons(\"Photograph_Log\"); keepTabGroupChanges(\"Photograph_Log\"); savePhotoLog(\"\");");
 
 String photolog_id = null;
+List photologAttributes = null;
 
 newPhotoLog(){
     if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
@@ -1724,12 +1725,12 @@ newPhotoLog(){
         return;
     }
     photolog_id = null;
+    photologAttributes = null;
+    photologAttributes = createAttributeList();
+    photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
-    setFieldValue("Photograph_Log/Photograph_Log/Area_Code", getFieldValue("Context/Context_GeneralInformation/Area_Code"));
-
-    
 }
 
 newPhotoLogFromContextGroup(){
@@ -1742,11 +1743,12 @@ newPhotoLogFromContextGroup(){
         return;
     }
     photolog_id = null;
+    photologAttributes = null;
+    photologAttributes = createAttributeList();
+    photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("ContextGroup/ContextGroup_Details/Device_Code"));
-    setFieldValue("Photograph_Log/Photograph_Log/Area_Code", getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"));
-
 }
 
 loadPhotoLog() {
@@ -1757,20 +1759,18 @@ loadPhotoLog() {
 loadPhotoLogFrom(String id) {
     photolog_id = id;
     if (isNull(photolog_id)) return;
+    photologAttributes = null;
     showTabGroup("Photograph_Log", photolog_id);
 }
 
 loadPhotoLogAttributes(){
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Device_Code", "Device Code");
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Scene_Type", "Scene Type");
-    makeVocab("DropDown", "Photograph_Log/Photograph_Log/Area_Code", "AreaCode");
-
 }
 
 savePhotoLog(String callback) {
     Boolean enable_autosave = true;
-    List attributes = null;
-    saveTabGroup("Photograph_Log", photolog_id, null, attributes, new SaveCallback() {
+    saveTabGroup("Photograph_Log", photolog_id, null, photologAttributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             photolog_id = uuid;
             if (newRecord) {
