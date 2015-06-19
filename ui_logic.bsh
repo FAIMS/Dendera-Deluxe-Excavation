@@ -1488,7 +1488,6 @@ loadSample() {
 loadSampleFrom(String id) {
     sample_id = id;
     if (isNull(sample_id)) return;
-    loadSampleAttributes();
     showTabGroup("Sample", sample_id);
 }
 
@@ -1574,7 +1573,6 @@ loadMatrix() {
 loadMatrixFrom(String id) {
     matrix_id = id;
     if (isNull(matrix_id)) return;
-    loadMatrixAttributes();
     showTabGroup("Matrix", matrix_id);
 }
 
@@ -1670,7 +1668,6 @@ loadSpecialFind() {
 loadSpecialFindFrom(String id) {
     special_find_id = id;
     if (isNull(special_find_id)) return;
-    loadSpecialFindAttributes();
     showTabGroup("Special_Find", special_find_id);
 }
 
