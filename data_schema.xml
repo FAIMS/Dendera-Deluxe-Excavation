@@ -1466,7 +1466,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Source" type="enum">
       <description/>
       <lookup>
-        <term>{Null}                  <description/></term>
         <term>{No_Observation}        <description/></term>
         <term>{Excavation}            <description/></term>
         <term>{Flotation}             <description/></term>
