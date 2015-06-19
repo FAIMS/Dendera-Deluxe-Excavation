@@ -512,7 +512,6 @@ onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActua
 onEvent("Context/Context_Deposits", "show", "updateAllContextMatrices()");
 onEvent("Context/Context_Deposits/newMatrix", "click", "newMatrix()");
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
-onEvent("Context/Context_Deposits/deleteMatrix", "click", "deleteMatrixFromContext()");
 
 onEvent("Context/Context_Structures/Deposit", "click", "showTab(\"Context/Context_Deposits\")");
 
@@ -527,7 +526,6 @@ onEvent("Context/Context_Feature/RemoveFromContextGroup", "click", "removeContex
 onEvent("Context/Context_Attachments", "show", "updateAllContextPhotologs()");
 onEvent("Context/Context_Attachments/newPhotoLog", "click", "newPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true;");
 onEvent("Context/Context_Attachments/loadPhotoLog", "click", "loadPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true");
-onEvent("Context/Context_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContext()");
 onEvent("Context/Context_Attachments/attachPhoto", "click", "attachPictureTo(\"Context/Context_Attachments/Photo\")");
 onEvent("Context/Context_Attachments/attachAudio", "click", "attachAudioTo(\"Context/Context_Attachments/Audio\")");
 onEvent("Context/Context_Attachments/attachVideo", "click", "attachVideoTo(\"Context/Context_Attachments/Video\")");
@@ -1076,7 +1074,6 @@ onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFi
 onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
 onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLogFromContextGroup();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadPhotoLogFrom(getFieldValue(\"ContextGroup/ContextGroup_Attachments/PhotoLogList\"));verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
-onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
 
 setContextGroupCreatingDateUser() {
     if (isNull(context_group_id)) return;
