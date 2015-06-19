@@ -69,6 +69,10 @@
     <description>Implements a 1:N between context and its photograph logs
     </description>
   </RelationshipElement>
+  <RelationshipElement name="ContextHeight" type="bidirectional">
+    <description>Implements a 1:N between context and its heights
+    </description>
+  </RelationshipElement>
   <RelationshipElement name="ContextGroupPhotographLog" type="bidirectional">
     <description>Implements a 1:N between context group and its photograph logs
     </description>
@@ -1097,6 +1101,9 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
       </lookup>
     </property>
+    <property name="Context ID" type="freetext">
+      <description></description>
+    </property>
     <property name="Shape" type="enum">
       <description>Shape and roundness of stones and pebbles in the deposit.</description>
       <lookup>
@@ -1145,6 +1152,30 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property name="Notes" type="freetext">
       <description/>
+    </property>
+    <property name="AreaCode" type="enum">
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <lookup>
+        <term>H
+        <description/></term>
+        <term>K 
+        <description/></term>
+        <term>L 
+        <description/></term>
+        <term>M 
+        <description/></term>
+        <term>N 
+        <description/></term>
+        <term>P 
+        <description/></term>
+        <term>Q
+        <description/></term>
+        <term>X
+        <description/></term>
+      </lookup>
+    </property>
+    <property name="Context ID" type="freetext">
+      <description></description>
     </property>
   </ArchaeologicalElement>
   <!--SAMPLE-->

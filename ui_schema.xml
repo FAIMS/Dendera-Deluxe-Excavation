@@ -42,7 +42,6 @@
               <teamMembers/>
               <ContextIncrement/>
               <ContextGroup_Starting_ID/>
-              <SpecialFind_Starting_ID/>
               <Sample_Starting_ID/>
               <GPS_Diagnostics/>
             </data>
@@ -90,9 +89,6 @@
                 <child2>
                   <Grid_Y/>
                 </child2>
-                <child3>
-                  <blank/>
-                </child3>
               </container2>
               <Location_Note/>
               <container3>
@@ -114,36 +110,6 @@
               </container4>
               <Context_Type/>
               <Details/>
-              <container5>
-                <child1>
-                  <Context_Highest_Level/>
-                </child1>
-                <child2>
-                  <Context_Lowest_Level/>
-                </child2>
-              </container5>
-              <container6>
-                <child1>
-                  <Length/>
-                </child1>
-                <child2>
-                  <Width/>
-                </child2>
-                <child3>
-                  <Depth/>
-                </child3>
-              </container6>
-              <container7>
-                <child1>
-                  <Volume/>
-                </child1>
-                <child2>
-                  <blank0/>
-                </child2>
-                <child3>
-                  <blank1/>
-                </child3>
-              </container7>
               <container8>
                 <child1>
                   <Plans/>
@@ -512,6 +478,7 @@
                   <Populate_Target_Context/>
                 </right>
               </colgroup>
+              <spacer/>
               <AddContextList/>
               <AddContext/>
               <colgroup1>
@@ -650,7 +617,7 @@
               <Shape/>
             </Matrix>
           </Matrix>
-          <!-- Put in "measurements" (?i.e. "Context_Measure") tabgroup -->
+          <!--ArchEnt / Record Type: HEIGHT-->
           <Height>
             <Height>
               <Number/>
@@ -751,14 +718,13 @@
       <!--list of numeric and blocktext(memo) attributes(fields)-->
       <bind type="decimal" nodeset="/faims/control/data/ContextIncrement"/>
       <bind type="decimal" nodeset="/faims/control/data/ContextGroup_Starting_ID"/>
-      <bind type="decimal" nodeset="/faims/control/data/SpecialFind_Starting_ID"/>
       <bind type="decimal" nodeset="/faims/control/data/Sample_Starting_ID"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container5/child2/Context_Lowest_Level"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child1/Length"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child2/Width"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child3/Depth"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container7/child1/Volume"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container1/child1/Context_Highest_Level"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container1/child2/Context_Lowest_Level"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container3/child1/Length"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container3/child2/Width"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container3/child3/Depth"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/Volume"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child1/Mid_X"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child2/Mid_Y"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/Skeleton_Days_Exposed"/>
@@ -812,7 +778,7 @@
       <label>{User} {List}</label>
       <group ref="usertab">
         <label>{User} {List}</label>
-        <select1 ref="users">
+        <select1 ref="users" faims_style_class="required">
           <label>{Users}:</label>
           <item>
             <label>placeholder</label>
@@ -868,9 +834,6 @@
         </input>
         <input faims_certainty="false" faims_read_only="false" ref="ContextGroup_Starting_ID">
           <label>{ContextGroup_Starting_ID}</label>
-        </input>
-        <input faims_certainty="false" faims_read_only="false" ref="SpecialFind_Starting_ID">
-          <label>{SpecialFind_Starting_ID}</label>
         </input>
         <input faims_certainty="false" faims_read_only="false" ref="Sample_Starting_ID">
           <label>{Sample_Starting_ID}</label>
@@ -940,7 +903,7 @@
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="sharedwithvocab">
+            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="requiredsharedwithvocab">
               <label>{AreaCode}</label>
               <item>
                 <label>{placeholder}</label>
@@ -950,7 +913,7 @@
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_ID">
+            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_ID" faims_style_class="required">
               <label>{Context_Number}</label>
             </input>
           </group>
@@ -982,18 +945,8 @@
               <label>{Grid_Y}</label>
             </input>
           </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <select1 appearance="compact" ref="blank" faims_annotation="false" faims_certainty="false">
-              <label/>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
         </group>
-        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note">
+        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note" faims_style_class="required">
           <label>{Location_Note}</label>
         </input>
         <group faims_style="orientation" ref="container3">
@@ -1009,7 +962,7 @@
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <select faims_attribute_name="Excavation Method" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Excavation_Method">
+            <select faims_attribute_name="Excavation Method" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Excavation_Method" faims_style_class="required">
               <label>{Excavation_Method}</label>
               <item>
                 <label>placeholder</label>
@@ -1041,7 +994,7 @@
             </select1>
           </group>
         </group>
-        <select1 faims_attribute_name="Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" type="image">
+        <select1 faims_attribute_name="Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" type="image" faims_style_class="required">
           <label>{Context_Type}</label>
           <item>
             <label>placeholder</label>
@@ -1051,82 +1004,17 @@
         <trigger ref="Details">
           <label>Fill in Context Type Details</label>
         </trigger>
-        <group faims_style="orientation" ref="container5">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Highest_Level">
-              <label>{Highest_Level}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Lowest_Level">
-              <label>{Lowest_Level}</label>
-            </input>
-          </group>
-        </group>
-        <group faims_style="orientation" ref="container6">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Length">
-              <label>{Length}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Width">
-              <label>{Width}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Depth">
-              <label>{Depth}</label>
-            </input>
-          </group>
-        </group>
-        <group faims_style="orientation" ref="container7">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume">
-              <label>{Volume}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <select1 appearance="compact" ref="blank0" faims_annotation="false" faims_certainty="false">
-              <label/>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <select1 appearance="compact" ref="blank1" faims_annotation="false" faims_certainty="false">
-              <label/>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-        </group>
         <group faims_style="orientation" ref="container8">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans">
+            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans" faims_style_class="required">
               <label>{Plans}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers">
+            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers" faims_style_class="required">
               <label>{Section_Numbers}</label>
             </input>
           </group>
@@ -1162,7 +1050,7 @@
           </group>
         </group>
       </group>
-      <group ref="Context_Measure">
+      <group ref="Context_Measure" faims_scrollable="false">
         <label>{Measure}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
@@ -1206,7 +1094,7 @@
         <trigger ref="Add_Height">
           <label>{Add_Height}</label>
         </trigger>
-        <select1 ref="Height_List" faims_certainty="false" faims_read_only="false" appearance="compact">
+        <select1 ref="Height_List" faims_certainty="false" faims_read_only="false" appearance="compact" faims_style_class="double-record-list">
           <label>{Height_List}</label>
           <item>
             <label>placeholder</label>
@@ -1216,7 +1104,6 @@
       </group>
       <group faims_hidden="true" ref="Context_Cuts">
         <label>{Cut}</label>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Cut Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
           <label>Your Interpretation</label>
           <item>
@@ -1243,7 +1130,6 @@
             </input>
           </group>
         </group>
-        <!--We would like to see Radiogroup-->
         <select1 appearance="full" faims_attribute_name="Shape of Corners" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Shape_of_Corners">
           <label>{Shape_of_Corners}</label>
           <item>
@@ -1251,7 +1137,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Radiogroup-->
         <select1 appearance="full" faims_attribute_name="Break of Slope - Top" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Break_of_Slope_Top">
           <label>{Break_of_Slope_-_Top}</label>
           <item>
@@ -1273,7 +1158,6 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <!--We would like to see Dropdown-->
             <select1 faims_attribute_name="Shape of Base" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Shape_of_Base">
               <label>{Shape_of_Base}</label>
               <item>
@@ -1286,8 +1170,7 @@
         <input faims_attribute_name="Cut Function" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Cut_Function">
           <label>{Cut_Function}</label>
         </input>
-        <!--We would like to see Dropdown-->
-        <select1 appearance="full" faims_attribute_name="Orientation" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Orientation">
+        <select1 faims_attribute_name="Orientation" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Orientation">
           <label>{Orientation}</label>
           <item>
             <label>placeholder</label>
@@ -1304,7 +1187,6 @@
       </group>
       <group faims_hidden="true" ref="Context_Structures">
         <label>{Structures}</label>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Structure Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
           <label>Your Interpretation</label>
           <item>
@@ -1322,7 +1204,6 @@
         <input faims_attribute_name="Component Finish" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Component_Finish">
           <label>{Component_Finish}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Bonding" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Bonding">
           <label>{Bonding}</label>
           <item>
@@ -1333,7 +1214,6 @@
         <input faims_attribute_name="Bonding Details" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Bonding_Details">
           <label>{BondingPacking_Details}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <input faims_attribute_name="Distinguishing Marks" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Distinguishing_Marks">
           <label>{Distinguishing_Marks}</label>
         </input>
@@ -1366,7 +1246,6 @@
       </group>
       <group faims_hidden="true" ref="Context_Deposits">
         <label>Dep</label>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Deposit Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
           <label>Your Interpretation</label>
           <item>
@@ -1384,7 +1263,6 @@
         <input faims_attribute_name="Soil Compaction Description" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Soil_Compaction_Description">
           <label>{Soil_Compaction_Description}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Soil Particle Sorting" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Particle_Sorting" type="image">
           <label>{Soil_Particle_Sorting}</label>
           <item>
@@ -1633,25 +1511,16 @@
         </input>
       </group>
       <group ref="Context_Interpretation">
-        <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
         <label>Int</label>
-        <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description">
+        <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description" faims_style_class="required">
           <label>{Your_description}</label>
         </input>
-        <input faims_attribute_name="Your Discussion" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_Discussion">
+        <input faims_attribute_name="Your Discussion" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_Discussion" faims_style_class="required">
           <label>{Your_Discussion}</label>
         </input>
       </group>
       <group ref="Context_Feature" faims_scrollable="false">
-        <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
         <label>{Context_Group}</label>
-        <!-- <select1 appearance="compact" ref="guide1">
-          <label/>
-          <item>
-            <label>Here you can group Contexts into a single {Context_Group}.</label>
-            <value>Help</value>
-          </item>
-        </select1> -->
         <trigger ref="AddContextGroup">
           <label>{Add_New_Context_Group}</label>
         </trigger>
@@ -1670,7 +1539,7 @@
         </trigger>
       </group>
       <group ref="Context_Relationships_to_Other_Contexts" faims_scrollable="false">
-        <label>Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.</label>
+        <label>{Context} {Relationships}</label>
         <group ref="colgroup" faims_style="orientation">
           <label/>
           <group ref="left" faims_style="even">
@@ -1699,7 +1568,6 @@
             </trigger>
           </group>
         </group>
-        <!-- Brian todo, figure out how to model this -->
         <input faims_certainty="false" faims_read_only="true" ref="spacer" faims_web="true">
           <label></label>
         </input>
@@ -1707,7 +1575,7 @@
           <label/>
           <group faims_style="even" ref="child0">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="context_id" faims_style_class="sharedwithvocab">
+            <input faims_certainty="false" faims_read_only="true" ref="context_id"> <!-- faims_style_class="sharedwithvocab"> -->
               <label>{This_Context}</label>
             </input>
           </group>
@@ -1890,7 +1758,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="sharedwithvocab">
+            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="requiredsharedwithvocab">
               <label>{AreaCode}</label>
               <item>
                 <label>{placeholder}</label>
@@ -1900,13 +1768,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Context Group ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Group_ID">
+            <input faims_attribute_name="Context Group ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Group_ID" faims_style_class="required">
               <label>{Context_Group_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child4">
             <label/>
-            <input faims_attribute_name="Title" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Title">
+            <input faims_attribute_name="Title" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Title" faims_style_class="required">
               <label>{Context_Group} Title</label>
             </input>
           </group>
@@ -1943,10 +1811,10 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="CG Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_description">
+        <input faims_attribute_name="CG Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_description" faims_style_class="required">
           <label>{Your_description}</label>
         </input>
-        <input faims_attribute_name="CG Your Interpretation" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_Interpretation">
+        <input faims_attribute_name="CG Your Interpretation" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_Interpretation" faims_style_class="required">
           <label>Your Interpretation</label>
         </input>
         <input ref="Your_Discussion" faims_attribute_type="measure" faims_attribute_name="Your Discussion">
@@ -2049,6 +1917,9 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </trigger>
           </group>
         </group>
+        <input faims_certainty="false" faims_read_only="true" ref="spacer" faims_web="true">
+          <label></label>
+        </input>
         <select1 faims_certainty="false" faims_read_only="false" ref="AddContextList">
           <label>{Add_Additional_Context}</label>
           <item>
@@ -2125,7 +1996,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child0">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="ContextGroup_id" faims_style_class="sharedwithvocab">
+            <input faims_certainty="false" faims_read_only="true" ref="ContextGroup_id"> <!-- faims_style_class="sharedwithvocab"> -->
               <label>{This_ContextGroup}</label>
             </input>
           </group>
@@ -2269,19 +2140,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
+            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID" faims_style_class="required">
               <label>{Context_Feature_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Sample ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Sample_ID">
+            <input faims_attribute_name="Sample ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Sample_ID" faims_style_class="required">
               <label>{Sample_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child4">
             <label/>
-            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type">
+            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type" faims_style_class="required">
               <label>{Sample_Type}</label>
               <item>
                 <label>placeholder</label>
@@ -2304,19 +2175,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Sample X" faims_attribute_type="measure" faims_read_only="false" ref="X">
+            <input faims_attribute_name="Sample X" faims_attribute_type="measure" faims_read_only="false" ref="X" faims_style_class="required">
               <label>X</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Sample Y" faims_attribute_type="measure" faims_read_only="false" ref="Y">
+            <input faims_attribute_name="Sample Y" faims_attribute_type="measure" faims_read_only="false" ref="Y" faims_style_class="required">
               <label>Y</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Sample Z" faims_attribute_type="measure" faims_read_only="false" ref="Z">
+            <input faims_attribute_name="Sample Z" faims_attribute_type="measure" faims_read_only="false" ref="Z" faims_style_class="required">
               <label>Z</label>
             </input>
           </group>
@@ -2428,23 +2299,23 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       </group>
     </group>
     <!-- ArchEnt: Height -->
-    <group ref="Height" faims_archent_type="Height ">
+    <group ref="Height" faims_archent_type="Height">
       <label>{Height}</label>
       <group ref="Height">
         <label>{Height}</label>
-        <input faims_certainty="false" faims_read_only="false" ref="Number" faims_attribute_name="Number">
+        <input faims_certainty="false" faims_read_only="false" ref="Number" faims_attribute_name="Number" faims_attribute_type="measure" faims_style_class="required">
           <label>Number</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="X" faims_attribute_name="X">
+        <input faims_certainty="false" faims_read_only="false" ref="X" faims_attribute_name="X" faims_attribute_type="measure" faims_style_class="required">
           <label>X</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Y" faims_attribute_name="Y">
+        <input faims_certainty="false" faims_read_only="false" ref="Y" faims_attribute_name="Y" faims_attribute_type="measure" faims_style_class="required">
           <label>Y</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Z" faims_attribute_name="Z">
+        <input faims_certainty="false" faims_read_only="false" ref="Z" faims_attribute_name="Z" faims_attribute_type="measure" faims_style_class="required">
           <label>Z</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Notes" faims_attribute_name="Notes">
+        <input faims_certainty="false" faims_read_only="false" ref="Notes" faims_attribute_name="Notes" faims_attribute_type="measure" faims_style_class="required">
           <label>Notes</label>
         </input>
       </group>
@@ -2513,19 +2384,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Special Find X" faims_attribute_type="measure" faims_read_only="false" ref="X">
+            <input faims_attribute_name="Special Find X" faims_attribute_type="measure" faims_read_only="false" ref="X" faims_style_class="required">
               <label>X</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Special Find Y" faims_attribute_type="measure" faims_read_only="false" ref="Y">
+            <input faims_attribute_name="Special Find Y" faims_attribute_type="measure" faims_read_only="false" ref="Y" faims_style_class="required">
               <label>Y</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Special Find Z" faims_attribute_type="measure" faims_read_only="false" ref="Z">
+            <input faims_attribute_name="Special Find Z" faims_attribute_type="measure" faims_read_only="false" ref="Z" faims_style_class="required">
               <label>Z</label>
             </input>
           </group>

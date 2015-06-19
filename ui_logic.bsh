@@ -27,10 +27,13 @@ String WEB_GUIDE = "" +
 "<p>WARNING! If two individuals login as the same user on two different devices, and hit &#x2018;Save&#x2019; at the same millisecond, there is risk that the records will be merged during synchronisation. ALWAYS login under the correct username.</p>" +
 "<p>For more information, see the Boncuklu Excavation Module Guide. It provides an overview of the features and navigation of the Module.</p>" +
 "<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
-String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
+// TODO: determine what the intended text is for these web views, as they still use old text or text copied from PAZC.
+// String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
+String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship in the middle, the specified context on the right and click the button 'Relate Features' to record the relationship.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
-String WEB_REL_3 = "{useToRelate} {ContextGroups}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
+String WEB_REL_3 = "{useToRelate} {ContextGroups}. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
 String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
+String WEB_REL_5 = "Use this tab to add a {Context} to the {ContextGroup}.";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
 
 populateWebViewHtml("user/help/guide", WEB_GUIDE);
@@ -38,8 +41,7 @@ populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WE
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_REL_2);
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/spacer", WEB_REL_3);
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/help", WEB_REL_4);
-// Todo: add view into ui schema is required
-// populateWebViewHtml("ContextGroup/ContextGroup_Contexts/help", WEB_REL_2);
+populateWebViewHtml("ContextGroup/ContextGroup_Contexts/spacer", WEB_REL_5);
 
 makeLocalID(){
     fetchOne("CREATE TABLE IF NOT EXISTS localSettings (key text primary key, value text);", null);
@@ -169,19 +171,21 @@ isSelected(String ref, List vocab, String vocabName) {
 validateContextTabGroup(Boolean showWarning) {
     List f = new ArrayList(); // fields to be validated
 
+    // General information
     f.add(fieldPair("Context/Context_GeneralInformation/Area_Code"             , "{Trench}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_ID"            , "{Context_ID}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Location_Note"         , "{Location_Note}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Excavation_Method"     , "{Excavation_Method}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_Type"          , "{Context_Type}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Context_Highest_Level" , "{Context_Highest_Level}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Length"                , "{Length}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Width"                 , "{Width}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Depth"                 , "{Depth}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Volume"                , "{Volume}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Plans"                 , "{Plans}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Section_Numbers"       , "{Section_Numbers}"));
+    // Measure
+    f.add(fieldPair("Context/Context_Measure/Context_Highest_Level" , "{Context_Highest_Level}"));
+    f.add(fieldPair("Context/Context_Measure/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
+    f.add(fieldPair("Context/Context_Measure/Length"                , "{Length}"));
+    f.add(fieldPair("Context/Context_Measure/Width"                 , "{Width}"));
+    f.add(fieldPair("Context/Context_Measure/Depth"                 , "{Depth}"));
+    f.add(fieldPair("Context/Context_Measure/Volume"                , "{Volume}"));
 
     String condCut        = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Cut}\")";
     String condDeposit    = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Deposit}\")";
@@ -354,7 +358,6 @@ loadControlSettings() {
 loadStartingIds() {
     // This function should only be called once since it creates event handlers, otherwise multiple copies of the same handler will trigger with the event.
     List l = new ArrayList();
-    l.add("control/data/SpecialFind_Starting_ID");
     l.add("control/data/ContextIncrement");
     l.add("control/data/ContextGroup_Starting_ID");
     l.add("control/data/Sample_Starting_ID");
@@ -432,6 +435,7 @@ entityTypes.add(new NameValuePair("{Sample}", "Sample"));
 entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
 entityTypes.add(new NameValuePair("{Special_Find}", "Special Find"));
 entityTypes.add(new NameValuePair("{Photograph_Log}", "Photograph Log"));
+entityTypes.add(new NameValuePair("{Height}", "Height"));
 populateDropDown("control/search/entityTypes", entityTypes);
 
 loadEntity() {
@@ -459,12 +463,89 @@ loadEntityFrom(String entityID) {
           loadSpecialFindFrom(entityID);
         } else if (name.equals("Photograph Log")) {
           loadPhotoLogFrom(entityID);
+        } else if (name.equals("Height")) {
+          loadHeightFrom(entityID);
         }
       }
     });
   } else {
     Log.e("PAZC Module", "Cannot load an entity with a null ID.");
   }
+}
+
+/*** ArchEnt: Height ***/
+onEvent("Height", "show", "addNavigationButtons(\"Height\"); keepTabGroupChanges(\"Height\"); saveHeight(); refreshTabgroupCSS(\"Height\");");
+
+String height_id = null;
+
+newHeight() {
+    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
+        return;
+    }
+    if (isNull(context_id)){
+        showToast("{You_must_save_a_context_first}");
+        return;
+    }
+    height_id = null;
+    newTabGroup("Height");
+}
+
+loadHeight() {
+    height_id = getListItemValue();
+    loadHeightFrom(height_id); 
+}
+
+loadHeightFrom(String heightID) {
+    height_id = heightID;
+    if (isNull(height_id)) return;
+    showTabGroup("Height", height_id);
+}
+
+saveHeight() {
+    saveHeight(null);
+}
+
+saveHeight(String callback) {
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
+    saveTabGroup("Height", height_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            height_id = uuid;
+            if (newRecord) {
+                saveEntitiesToRel("ContextHeight", context_id, height_id);
+                showToast("{Associated_with} {Context}");
+            }
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
+}
+
+deleteHeight() {
+    if (!isNull(height_id)) {
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this} {Height}", "reallyDeleteHeight()", "doNotDelete()");
+    } else {
+        cancelTabGroup("Height", true);
+    }
+}
+
+reallyDeleteHeight() {
+    deleteArchEnt(height_id);
+    cancelTabGroup("Height", false);
+}
+
+doNotDelete(){
+  showToast("{Delete_Cancelled}");
+}
+
+loadHeightAttributes() {
+    
 }
 
 /*** ArchEnt: Diary **/
@@ -488,7 +569,7 @@ newDiary() {
 
 loadDiary() {
     diary_id = getListItemValue();
-    loadContextFrom(diary_id);  
+    loadDiaryFrom(diary_id);  
 }
 
 loadDiaryFrom(String diaryID) {
@@ -547,9 +628,14 @@ onEvent("Context", "load", "showTab(\"Context/Context_Structures\");");
 
 onEvent("Context/Context_GeneralInformation/Details","click","openContextTabs()");
 onEvent("Context/Context_GeneralInformation/Add_Date_Closed", "click", "addCloseDate()");
-onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
-onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
 
+onEvent("Context/Context_Measure", "show", "updateAllContextHeights()");
+onEvent("Context/Context_Measure/Add_Height", "delayclick", "newHeight()");
+onEvent("Context/Context_Measure/Height_List", "click", "loadHeight()");
+
+onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
+
+onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
 onEvent("Context/Context_Deposits", "show", "updateAllContextMatrices()");
 onEvent("Context/Context_Deposits/newMatrix", "click", "newMatrix()");
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
@@ -560,9 +646,6 @@ onEvent("Context/Context_Feature", "show", "updateAllContextGroups()");
 onEvent("Context/Context_Feature/AddContextGroup", "click", "newContextGroup(false);newContextGroupRel = true;");
 onEvent("Context/Context_Feature/ShowContextGroup", "click", "loadContextGroupFromContext();newContextGroupRel = false;");
 onEvent("Context/Context_Feature/RemoveFromContextGroup", "click", "removeContextGroupReln()");
-// todo: determine if still required
-// onEvent("Context/Context_Feature/AddContextGroupRel", "delayclick", "addContextGroupRel()");
-// onEvent("Context/Context_Feature/RelatedContextGroups", "click", "showCGFromList()");
 
 onEvent("Context/Context_Attachments", "show", "updateAllContextPhotologs()");
 onEvent("Context/Context_Attachments/newPhotoLog", "click", "newPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true;");
@@ -815,6 +898,10 @@ updateAllContextSamples(){
     updateContextRelationshipBasedCursorList("Context/Context_Samples/sampleList", "ContextSample", context_id);
 }
 
+updateAllContextHeights() {
+    updateContextRelationshipBasedCursorList("Context/Context_Measure/Height_List", "ContextHeight", context_id);   
+}
+
 updateAllContextRelationships(){
     Object contextList = new ArrayList();
     String targetContextAreaCode = getFieldValue("Context/Context_Relationships_to_Other_Contexts/Target_Area");
@@ -915,35 +1002,6 @@ updateRelns(){
     refreshTabgroupCSS("Context");
 }
 
-// todo: determine if is still needed
-// addContextGroupRel(){
-//     if (isNull(context_id)) {
-//         saveContext("saveEntitiesToRel(\"ContextContextGroup\", getFieldValue(\"Context/Context_Feature/ContextGroupListUnrelated\"), context_group_id);updateAllContextGroups();");
-//     } else {
-//         saveEntitiesToRel("ContextContextGroup", getFieldValue("Context/Context_Feature/ContextGroupListUnrelated"), context_id);
-//         updateAllContextGroups();
-//     }
-// }
-
-// showCGFromList(){
-    // todo: as above
-
-   //  listID = getListItemValue();
-    
-   // foo = fetchOne("select group_concat(response, '\n') from ( select attributename || ': ' || coalesce(vocabname, freetext) as response from ( " +
-   //      "select uuid from latestnondeletedarchent join latestnondeletedaentreln using (uuid) " +
-   //          "where uuid = "+listID+" ) " +
-   //          "join latestnondeletedaentvalue using (uuid) join attributekey using (attributeid) left outer join vocabulary using (attributeid, vocabid) " +
-   //             "where attributename in ('Context Group ID', 'Area Code', 'Site Code', 'Title', 'CG Your Interpretation', 'CG Your description', 'Your Discussion') " +
-   //             "and coalesce(vocabname, freetext) is not null " +
-   //             "and coalesce(vocabname, freetext) != '{No_Observation}' " +
-   //         "group by uuid, attributename " +
-   //    "order by case attributename when 'Context Group ID' then 1 when 'Area Code' then 2 when 'Site Code' then 3 when 'Title'then 4 when 'CG Your Interpretation' then 5 when 'CG Your description' then 6 when 'Your Discussion' then 7 end); ");
-   //  if (!isNull(foo)){
-   //      showToast(foo.get(0));
-   //  }
-// }
-
 loadContextAttributes(){
     makeVocab("PictureGallery", "Context/Context_GeneralInformation/Context_Type", "Context Type");
     makeVocab("CheckBoxGroup", "Context/Context_GeneralInformation/Excavation_Method", "Excavation Method");
@@ -965,7 +1023,7 @@ loadContextAttributes(){
     makeVocab("RadioGroup", "Context/Context_Cuts/Shape_of_Corners", "Shape of Corners");
     makeVocab("RadioGroup", "Context/Context_Cuts/Break_of_Slope_Top", "Break of Slope - Top");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Shape_of_Base", "Shape of Base");
-    makeVocab("RadioGroup", "Context/Context_Cuts/Orientation", "Orientation");
+    makeVocab("DropDown", "Context/Context_Cuts/Orientation", "Orientation");
     makeVocab("DropDown", "Context/Context_Cuts/Your_Interpretation", "Cut Your Interpretation");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Sides_of_Cut", "Sides of Cut");
     makeVocab("DropDown", "Context/Context_Cuts/Inclination_of_axis", "Inclination of axis");
@@ -1364,7 +1422,6 @@ updateContextGroupRelationshipTargetArea() {
 }
 
 updateRelnsCG(){
-    // todo figure whether context group needs a separate version of selectedEntityIdentifer from context
     selectedEntityIdentifer = null;
     if (!isNull(context_group_id)){        
         populateCursorList(
@@ -1507,7 +1564,6 @@ loadSample() {
 loadSampleFrom(String id) {
     sample_id = id;
     if (isNull(sample_id)) return;
-    loadSampleAttributes();
     showTabGroup("Sample", sample_id);
 }
 
@@ -1593,7 +1649,6 @@ loadMatrix() {
 loadMatrixFrom(String id) {
     matrix_id = id;
     if (isNull(matrix_id)) return;
-    loadMatrixAttributes();
     showTabGroup("Matrix", matrix_id);
 }
 
@@ -1601,6 +1656,7 @@ saveMatrix(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
     attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
     saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             matrix_id = uuid;
@@ -1677,8 +1733,6 @@ newSpecialFind(){
     newTabGroup("Special_Find");
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
-    setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID"));
-    incField("control/data/SpecialFind_Starting_ID", 1);
 }
 
 loadSpecialFind() {
@@ -1689,7 +1743,6 @@ loadSpecialFind() {
 loadSpecialFindFrom(String id) {
     special_find_id = id;
     if (isNull(special_find_id)) return;
-    loadSpecialFindAttributes();
     showTabGroup("Special_Find", special_find_id);
 }
 
@@ -2000,6 +2053,8 @@ getRecordId(String tabgroup) {
     return special_find_id;
   } else if (tabgroup.equals("Photograph_Log")) {
     return photolog_id;
+  } else if (tabgroup.equals("Height")) {
+    return height_id;
   } else {
     Log.e("PAZC Module", "Can't get the record id for the tabgroup '"+tabgroup+"'");
     return;
@@ -2029,6 +2084,9 @@ newRecord(String tabgroup) {
   } else if (tabgroup.equals("Photograph_Log")) {
     cancelTabGroup(tabgroup, false);
     newPhotoLog();
+  } else if (tabgroup.equals("Height")) {
+    cancelTabGroup(tabgroup, false);
+    newHeight();
   } else {
     Log.e("PAZC Module", "Can't make new record for the tabgroup '"+tabgroup+"'");
     return;
@@ -2051,6 +2109,8 @@ deleteRecord(String tabgroup, String id) {
     deleteSpecialFind();
   } else if (tabgroup.equals("Photograph_Log")) {
     deletePhotoLog();
+  } else if (tabgroup.equals("Height")) {
+    deleteHeight();
   } else {
     Log.e("PAZC Module", "Can't delete the record for the tabgroup '"+tabgroup+"' of id '"+id+"'");
     return;
@@ -2076,6 +2136,8 @@ duplicateRecord(String tabgroup) {
     duplicateSpecialFind();
   } else if (tabgroup.equals("Photograph_Log")) {
     duplicatePhotoLog();
+  } else if (tabgroup.equals("Height")) {
+    duplicateHeight();
   } else {
     Log.e("PAZC Module", "Can't make duplicate the record for the tabgroup '"+tabgroup+"'");
     dialog.dismiss();
@@ -2328,8 +2390,6 @@ duplicateSpecialFind() {
   populateCameraPictureGallery("Special_Find/Special_Find_GeneralInformation/Photo", new ArrayList());
   populateFileList("Special_Find/Special_Find_GeneralInformation/Audio", new ArrayList());
   populateVideoGallery("Special_Find/Special_Find_GeneralInformation/Video", new ArrayList());
-  setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID")); 
-  incField("control/data/SpecialFind_Starting_ID", 1);
 
   String oldSpecialFind_ID = special_find_id;
   saveCallback = new SaveCallback() {
@@ -2398,6 +2458,40 @@ duplicatePhotoLog() {
       //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       duplicateTabGroup("Photograph_Log", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+    }
+  });
+}
+
+duplicateHeight() {
+  disableAutoSave("Height");
+
+  String oldHeight_ID = height_id;
+  saveCallback = new SaveCallback() {
+    onSave(uuid, newRecord) {
+      height_id = uuid;
+      Boolean enable_autosave = true;
+      fetchAll(getDuplicateRelnQuery(oldHeight_ID), new FetchCallback(){
+          onFetch(result) {
+              makeDuplicateRelationships(result, height_id);
+              showToast("{Duplicated_record}");
+              dialog.dismiss();
+          }
+        }); 
+
+      saveTabGroup("Height", height_id, null, null, new SaveCallback(){
+        onSave(autosaveUuid, autosaveNewRecord) {
+          height_id = autosaveUuid;          
+        }
+      }, enable_autosave);
+    }
+  };
+
+  fetchAll(getDuplicateAttributeQuery(height_id), new FetchCallback(){
+    onFetch(result) {
+      excludeAttributes = new ArrayList();
+      //excludeAttributes.add("AreaCode");
+      //excludeAttributes.add("Site Code");
+      duplicateTabGroup("Height", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
 }
@@ -2730,6 +2824,7 @@ initialiseModule() {
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
     makeVocab("DropDown", "control/search/Area_Code", "AreaCode");
     loadContextAttributes();
+    loadHeightAttributes();
     loadContextGroupAttributes();
     loadDiaryAttributes();
     loadSampleAttributes();
