@@ -1504,10 +1504,10 @@
       <group ref="Context_Interpretation">
         <!--  PUT THIS f IN BEFORE SENDING TO PENNY -->
         <label>Int</label>
-        <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description">
+        <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description" faims_style_class="required">
           <label>{Your_description}</label>
         </input>
-        <input faims_attribute_name="Your Discussion" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_Discussion">
+        <input faims_attribute_name="Your Discussion" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_Discussion" faims_style_class="required">
           <label>{Your_Discussion}</label>
         </input>
       </group>
@@ -1749,7 +1749,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="sharedwithvocab">
+            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="requiredsharedwithvocab">
               <label>{AreaCode}</label>
               <item>
                 <label>{placeholder}</label>
@@ -1759,13 +1759,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Context Group ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Group_ID">
+            <input faims_attribute_name="Context Group ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Group_ID" faims_style_class="required">
               <label>{Context_Group_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child4">
             <label/>
-            <input faims_attribute_name="Title" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Title">
+            <input faims_attribute_name="Title" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Title" faims_style_class="required">
               <label>{Context_Group} Title</label>
             </input>
           </group>
@@ -1802,10 +1802,10 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="CG Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_description">
+        <input faims_attribute_name="CG Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_description" faims_style_class="required">
           <label>{Your_description}</label>
         </input>
-        <input faims_attribute_name="CG Your Interpretation" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_Interpretation">
+        <input faims_attribute_name="CG Your Interpretation" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_Interpretation" faims_style_class="required">
           <label>Your Interpretation</label>
         </input>
         <input ref="Your_Discussion" faims_attribute_type="measure" faims_attribute_name="Your Discussion">
@@ -2122,19 +2122,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
+            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID" faims_style_class="required">
               <label>{Context_Feature_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Sample ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Sample_ID">
+            <input faims_attribute_name="Sample ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Sample_ID" faims_style_class="required">
               <label>{Sample_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child4">
             <label/>
-            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type">
+            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type" faims_style_class="required">
               <label>{Sample_Type}</label>
               <item>
                 <label>placeholder</label>
@@ -2157,19 +2157,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Sample X" faims_attribute_type="measure" faims_read_only="false" ref="X">
+            <input faims_attribute_name="Sample X" faims_attribute_type="measure" faims_read_only="false" ref="X" faims_style_class="required">
               <label>X</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Sample Y" faims_attribute_type="measure" faims_read_only="false" ref="Y">
+            <input faims_attribute_name="Sample Y" faims_attribute_type="measure" faims_read_only="false" ref="Y" faims_style_class="required">
               <label>Y</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Sample Z" faims_attribute_type="measure" faims_read_only="false" ref="Z">
+            <input faims_attribute_name="Sample Z" faims_attribute_type="measure" faims_read_only="false" ref="Z" faims_style_class="required">
               <label>Z</label>
             </input>
           </group>
@@ -2279,19 +2279,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       <label>{Height}</label>
       <group ref="Height">
         <label>{Height}</label>
-        <input faims_certainty="false" faims_read_only="false" ref="Number" faims_attribute_name="Number" faims_attribute_type="measure">
+        <input faims_certainty="false" faims_read_only="false" ref="Number" faims_attribute_name="Number" faims_attribute_type="measure" faims_style_class="required">
           <label>Number</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="X" faims_attribute_name="X" faims_attribute_type="measure">
+        <input faims_certainty="false" faims_read_only="false" ref="X" faims_attribute_name="X" faims_attribute_type="measure" faims_style_class="required">
           <label>X</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Y" faims_attribute_name="Y" faims_attribute_type="measure">
+        <input faims_certainty="false" faims_read_only="false" ref="Y" faims_attribute_name="Y" faims_attribute_type="measure" faims_style_class="required">
           <label>Y</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Z" faims_attribute_name="Z" faims_attribute_type="measure">
+        <input faims_certainty="false" faims_read_only="false" ref="Z" faims_attribute_name="Z" faims_attribute_type="measure" faims_style_class="required">
           <label>Z</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Notes" faims_attribute_name="Notes" faims_attribute_type="measure">
+        <input faims_certainty="false" faims_read_only="false" ref="Notes" faims_attribute_name="Notes" faims_attribute_type="measure" faims_style_class="required">
           <label>Notes</label>
         </input>
       </group>
@@ -2305,13 +2305,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID">
+            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="true" ref="Context_ID" faims_style_class="required">
               <label>{Context_ID}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Special Find ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_ID">
+            <input faims_attribute_name="Special Find ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_ID" faims_style_class="required">
               <label>{Special_Find} ID</label>
             </input>
           </group>
