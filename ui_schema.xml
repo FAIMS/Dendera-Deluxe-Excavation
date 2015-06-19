@@ -109,30 +109,6 @@
               </container4>
               <Context_Type/>
               <Details/>
-              <container5>
-                <child1>
-                  <Context_Highest_Level/>
-                </child1>
-                <child2>
-                  <Context_Lowest_Level/>
-                </child2>
-              </container5>
-              <container6>
-                <child1>
-                  <Length/>
-                </child1>
-                <child2>
-                  <Width/>
-                </child2>
-                <child3>
-                  <Depth/>
-                </child3>
-              </container6>
-              <container7>
-                <child1>
-                  <Volume/>
-                </child1>
-              </container7>
               <container8>
                 <child1>
                   <Plans/>
@@ -727,12 +703,12 @@
       <bind type="decimal" nodeset="/faims/control/data/ContextIncrement"/>
       <bind type="decimal" nodeset="/faims/control/data/ContextGroup_Starting_ID"/>
       <bind type="decimal" nodeset="/faims/control/data/Sample_Starting_ID"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container5/child1/Context_Highest_Level"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container5/child2/Context_Lowest_Level"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child1/Length"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child2/Width"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container6/child3/Depth"/>
-      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/container7/child1/Volume"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container1/child1/Context_Highest_Level"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container1/child2/Context_Lowest_Level"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container3/child1/Length"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container3/child2/Width"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/container3/child3/Depth"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Measure/Volume"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child1/Mid_X"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child2/Mid_Y"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/Skeleton_Days_Exposed"/>
@@ -1009,51 +985,6 @@
         <trigger ref="Details">
           <label>Fill in Context Type Details</label>
         </trigger>
-        <group faims_style="orientation" ref="container5">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Highest_Level" faims_style_class="required">
-              <label>{Highest_Level}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Lowest_Level" faims_style_class="required">
-              <label>{Lowest_Level}</label>
-            </input>
-          </group>
-        </group>
-        <group faims_style="orientation" ref="container6">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Length" faims_style_class="required">
-              <label>{Length}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Width" faims_style_class="required">
-              <label>{Width}</label>
-            </input>
-          </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Depth" faims_style_class="required">
-              <label>{Depth}</label>
-            </input>
-          </group>
-        </group>
-        <group faims_style="orientation" ref="container7">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume" faims_style_class="required">
-              <label>{Volume}</label>
-            </input>
-          </group>
-        </group>
         <group faims_style="orientation" ref="container8">
           <label/>
           <group faims_style="even" ref="child1">

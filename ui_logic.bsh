@@ -148,12 +148,6 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_GeneralInformation/Location_Note"         , "{Location_Note}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Excavation_Method"     , "{Excavation_Method}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_Type"          , "{Context_Type}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Context_Highest_Level" , "{Context_Highest_Level}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Length"                , "{Length}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Width"                 , "{Width}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Depth"                 , "{Depth}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Volume"                , "{Volume}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Plans"                 , "{Plans}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Section_Numbers"       , "{Section_Numbers}"));
 
@@ -162,6 +156,13 @@ validateContextTabGroup(Boolean showWarning) {
     String condDeposit    = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Deposit}\")";
     String condSkeleton   = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Skeleton}\")";
     String condStructures = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Structure}\")";
+    // Measure
+    f.add(fieldPair("Context/Context_Measure/Context_Highest_Level" , "{Context_Highest_Level}"));
+    f.add(fieldPair("Context/Context_Measure/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
+    f.add(fieldPair("Context/Context_Measure/Length"                , "{Length}"));
+    f.add(fieldPair("Context/Context_Measure/Width"                 , "{Width}"));
+    f.add(fieldPair("Context/Context_Measure/Depth"                 , "{Depth}"));
+    f.add(fieldPair("Context/Context_Measure/Volume"                , "{Volume}"));
     // Cut
     f.add(fieldPair("Context/Context_GeneralInformation/Your_Interpretation" , "{Your_Interpretation}"   , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Cut"                      , "{Shape_of_Cut}"          , condCut));
@@ -2350,7 +2351,7 @@ duplicateSpecialFind() {
   populateCameraPictureGallery("Special_Find/Special_Find_GeneralInformation/Photo", new ArrayList());
   populateFileList("Special_Find/Special_Find_GeneralInformation/Audio", new ArrayList());
   populateVideoGallery("Special_Find/Special_Find_GeneralInformation/Video", new ArrayList());
-  
+
   String oldSpecialFind_ID = special_find_id;
   saveCallback = new SaveCallback() {
     onSave(uuid, newRecord) {
