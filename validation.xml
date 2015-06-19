@@ -65,84 +65,64 @@
 
 <property name='Deposit Your Interpretation'>
     <validator type='querychecker'>
-        <query><![CDATA[ select count(vocabname) in (0,2), 'Deposit Your Interpretation must not be blank when deposit is selected'
-                           from latestnondeletedaentvalue join attributekey using (attributeid)
-                           join vocabulary using (vocabid, attributeid)
-                           where uuid = ?
-                           and (    (attributename = 'Context Type' and vocabname = '{Deposit}')
-                                 OR (attributename = 'Deposit Your Interpretation')
-                               );
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Your Interepretation must not be blank when deposit is selected';
                                ]]></query>
-        <param type='query' value='select uuid from archentity where uuid = ? and aenttimestamp = ?' />
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
     </validator>
 </property>
 
+
+
+
 <property name='Soil Compaction Type'>
     <validator type='querychecker'>
-        <query><![CDATA[ select count(vocabname) in (0,2), 'Texture must not be blank when deposit is selected'
-                           from latestnondeletedaentvalue join attributekey using (attributeid)
-                           join vocabulary using (vocabid, attributeid)
-                           where uuid = ?
-                           and (    (attributename = 'Context Type' and vocabname = '{Deposit}')
-                                 OR (attributename = 'Soil Compaction Type')
-                               );
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Texture must not be blank when deposit is selected';
                                ]]></query>
-        <param type='query' value='select uuid from archentity where uuid = ? and aenttimestamp = ?' />
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
     </validator>
 </property>
 
 <property name='Soil Texture'>
     <validator type='querychecker'>
-        <query><![CDATA[ select count(vocabname) in (0,2), 'Material must not be blank when deposit is selected'
-                           from latestnondeletedaentvalue join attributekey using (attributeid)
-                           join vocabulary using (vocabid, attributeid)
-                           where uuid = ?
-                           and (    (attributename = 'Context Type' and vocabname = '{Deposit}')
-                                 OR (attributename = 'Soil Texture')
-                               );
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Material must not be blank when deposit is selected';
                                ]]></query>
-        <param type='query' value='select uuid from archentity where uuid = ? and aenttimestamp = ?' />
-    </validator>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>    
 </property>
 <property name='Composition Type'>
-    <validator type='querychecker'>
-        <query><![CDATA[ select count(vocabname) in (0,2), 'Deposit Structure must not be blank when deposit is selected'
-                           from latestnondeletedaentvalue join attributekey using (attributeid)
-                           join vocabulary using (vocabid, attributeid)
-                           where uuid = ?
-                           and (    (attributename = 'Context Type' and vocabname = '{Deposit}')
-                                 OR (attributename = 'Composition Type')
-                               );
+   <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Structure must not be blank when deposit is selected';
                                ]]></query>
-        <param type='query' value='select uuid from archentity where uuid = ? and aenttimestamp = ?' />
-    </validator>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>  
 </property>
 <property name='Deposit Bedding'>
     <validator type='querychecker'>
-        <query><![CDATA[ select count(vocabname) in (0,2), 'Bedding must not be blank when deposit is selected'
-                           from latestnondeletedaentvalue join attributekey using (attributeid)
-                           join vocabulary using (vocabid, attributeid)
-                           where uuid = ?
-                           and (    (attributename = 'Context Type' and vocabname = '{Deposit}')
-                                 OR (attributename = 'Deposit Bedding')
-                               );
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Bedding must not be blank when deposit is selected';
                                ]]></query>
-        <param type='query' value='select uuid from archentity where uuid = ? and aenttimestamp = ?' />
-    </validator>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>  
 </property>
 <property name='Deposit Inclusions'>
     <validator type='querychecker'>
-        <query><![CDATA[ select count(*) in (0,2), 'Deposit Inclusions must not be blank when deposit is selected'
-                           from latestnondeletedaentvalue join attributekey using (attributeid)
-                           left outer join vocabulary using (vocabid, attributeid)
-                           where uuid = ?
-                           and (    (attributename = 'Context Type' and vocabname = '{Deposit}')
-                                 OR (attributename = 'Composition Type')
-                               );
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Inclusions must not be blank when deposit is selected';
                                ]]></query>
-        <param type='query' value='select uuid from archentity where uuid = ? and aenttimestamp = ?' />
-    </validator>
+        <param type='field' value="measure" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>  
 </property>
+
 </ArchaeologicalElement>
 <!-- 
 <ArchaeologicalElement name='Context Group'>
