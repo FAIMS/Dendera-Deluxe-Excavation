@@ -70,6 +70,7 @@
           <!--ArchEnt / Record Type: CONTEXT-->
           <Context>
             <Context_GeneralInformation>
+              <validate/>
               <container1>
                 <child2>
                   <Area_Code/>
@@ -436,6 +437,7 @@
           <!--ArchEnt / Record Type: CONTEXT_GROUP-->
           <ContextGroup>
             <ContextGroup_Details>
+              <validate/>
               <container1>
                 <child2>
                   <Area_Code/>
@@ -585,6 +587,7 @@
           <!--ArchEnt / Record Type: SAMPLE-->
           <Sample>
             <Sample_GeneralInformation>
+              <validate/>
               <container1>
                 <child2>
                   <Context_ID/>
@@ -659,6 +662,7 @@
           </Height>
           <!--ArchEnt / Record Type: SPECIAL_FIND-->
           <Special_Find>
+            <validate/>
             <Special_Find_GeneralInformation>
               <container1>
                 <child2>
@@ -929,6 +933,9 @@
       <label>{Context}</label>
       <group ref="Context_GeneralInformation">
         <label>General</label>
+        <trigger ref="validate">
+          <label>{Validate}</label>
+        </trigger>
         <group faims_style="orientation" ref="container1">
           <label/>
           <group faims_style="even" ref="child2">
@@ -1876,6 +1883,9 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       <label>{Context_Group}</label>
       <group ref="ContextGroup_Details">
         <label>GEN</label>
+        <trigger ref="validate">
+          <label>{Validate}</label>
+        </trigger>
         <group faims_style="orientation" ref="container1">
           <label/>
           <group faims_style="even" ref="child2">
@@ -2252,6 +2262,9 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       <label>{Sample}</label>
       <group ref="Sample_GeneralInformation">
         <label>Deposit Samples</label>
+        <trigger ref="validate">
+          <label>{Validate}</label>
+        </trigger>
         <group faims_style="orientation" ref="container1">
           <label/>
           <group faims_style="even" ref="child2">
@@ -2441,6 +2454,9 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       <label>{Special_Find}</label>
       <group ref="Special_Find_GeneralInformation">
         <label>{Special_Find}</label>
+        <trigger ref="validate">
+          <label>{Validate}</label>
+        </trigger>
         <group faims_style="orientation" ref="container1">
           <label/>
           <group faims_style="even" ref="child2">
