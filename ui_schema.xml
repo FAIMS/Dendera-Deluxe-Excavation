@@ -786,7 +786,7 @@
       <label>{User} {List}</label>
       <group ref="usertab">
         <label>{User} {List}</label>
-        <select1 ref="users">
+        <select1 ref="users" faims_style_class="required">
           <label>{Users}:</label>
           <item>
             <label>placeholder</label>
@@ -908,7 +908,7 @@
           <label/>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="sharedwithvocab">
+            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="requiredsharedwithvocab">
               <label>{AreaCode}</label>
               <item>
                 <label>{placeholder}</label>
@@ -918,7 +918,7 @@
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_ID">
+            <input faims_attribute_name="Context ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_ID" faims_style_class="required">
               <label>{Context_Number}</label>
             </input>
           </group>
@@ -951,7 +951,7 @@
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note">
+        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note" faims_style_class="required">
           <label>{Location_Note}</label>
         </input>
         <group faims_style="orientation" ref="container3">
@@ -967,7 +967,7 @@
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <select faims_attribute_name="Excavation Method" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Excavation_Method">
+            <select faims_attribute_name="Excavation Method" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Excavation_Method" faims_style_class="required">
               <label>{Excavation_Method}</label>
               <item>
                 <label>placeholder</label>
@@ -999,7 +999,7 @@
             </select1>
           </group>
         </group>
-        <select1 faims_attribute_name="Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" type="image">
+        <select1 faims_attribute_name="Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" type="image" faims_style_class="required">
           <label>{Context_Type}</label>
           <item>
             <label>placeholder</label>
@@ -1013,13 +1013,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Highest_Level">
+            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Highest_Level" faims_style_class="required">
               <label>{Highest_Level}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Lowest_Level">
+            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Context_Lowest_Level" faims_style_class="required">
               <label>{Lowest_Level}</label>
             </input>
           </group>
@@ -1028,19 +1028,19 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Length">
+            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Length" faims_style_class="required">
               <label>{Length}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Width">
+            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Width" faims_style_class="required">
               <label>{Width}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Depth">
+            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Depth" faims_style_class="required">
               <label>{Depth}</label>
             </input>
           </group>
@@ -1049,7 +1049,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume">
+            <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume" faims_style_class="required">
               <label>{Volume}</label>
             </input>
           </group>
@@ -1058,13 +1058,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans">
+            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans" faims_style_class="required">
               <label>{Plans}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers">
+            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers" faims_style_class="required">
               <label>{Section_Numbers}</label>
             </input>
           </group>
