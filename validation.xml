@@ -1,0 +1,181 @@
+<ValidationSchema>
+ 
+<ArchaeologicalElement name='Context'>
+<property name='AreaCode'>
+    <validator type='blankchecker'>
+        <param type='field' value='vocab' />
+    </validator>
+</property>
+<property name='Context ID'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Context Name'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Location Note'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Context Type'>
+    <validator type='blankchecker'>
+        <param type='field' value='vocab' />
+    </validator>
+</property>
+<property name='Highest Level'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Lowest Level'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Length'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Width'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Depth'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Volume'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Section Numbers'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<!--deposit-->
+
+<property name='Deposit Your Interpretation'>
+    <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Your Interepretation must not be blank when deposit is selected';
+                               ]]></query>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>
+</property>
+
+
+
+
+<property name='Soil Compaction Type'>
+    <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Texture must not be blank when deposit is selected';
+                               ]]></query>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>
+</property>
+
+<property name='Soil Texture'>
+    <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Material must not be blank when deposit is selected';
+                               ]]></query>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>    
+</property>
+<property name='Composition Type'>
+   <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Structure must not be blank when deposit is selected';
+                               ]]></query>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>  
+</property>
+<property name='Deposit Bedding'>
+    <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Bedding must not be blank when deposit is selected';
+                               ]]></query>
+        <param type='field' value="vocab" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>  
+</property>
+<property name='Deposit Inclusions'>
+    <validator type='querychecker'>
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Inclusions must not be blank when deposit is selected';
+                               ]]></query>
+        <param type='field' value="measure" />
+        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        
+    </validator>  
+</property>
+
+</ArchaeologicalElement>
+<!-- 
+<ArchaeologicalElement name='Context Group'>
+
+ <property name='Description'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Length'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Width'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Depth'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Your Discussion'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='Start Date'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='End Date'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+<property name='CG Phase From'>
+    <validator type='blankchecker'>
+        <param type='field' value='vocab' />
+    </validator>
+</property>
+</ArchaeologicalElement>
+
+<ArchaeologicalElement name='Artefact'>
+    <property name='Photo'>
+    <validator type='blankchecker'>
+        <param type='field' value='measure' />
+    </validator>
+</property>
+</ArchaeologicalElement>
+-->
+
+</ValidationSchema>
