@@ -29,9 +29,9 @@ String WEB_GUIDE = "" +
 "<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
 // TODO: determine what the intended text is for these web views, as they still use old text or text copied from PAZC.
 // String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
-String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.";
+String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship in the middle, the specified context on the right and click the button 'Relate Features' to record the relationship.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
-String WEB_REL_3 = "{useToRelate} {ContextGroups}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
+String WEB_REL_3 = "{useToRelate} {ContextGroups}. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
 String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
 String WEB_REL_5 = "Use this tab to add a {Context} to the {ContextGroup}.";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
@@ -92,7 +92,6 @@ isValidField(String ref) {
 /* `format` can either be HTML or PLAINTEXT
  */
 validateFields(List fields, String format) {
-    Interpreter condEvaluator = new Interpreter();
     Integer numInvalid = 0;
 
     /* Build validation message string (and count how many invalid fields exist) */
@@ -103,7 +102,7 @@ validateFields(List fields, String format) {
         String cond = f.get(2); // Validation condition
 
         // Only validate a field whose validation condition evaluates to `true`
-        Boolean doValidateField = (Boolean) condEvaluator.eval(cond);
+        Boolean doValidateField = (Boolean) eval(cond);
         if (!doValidateField)
             continue;
 
@@ -140,9 +139,39 @@ validateContextTabGroup() {
     validateContextTabGroup(showWarning);
 }
 
+/** Fetches the contents of a specifed vocabulary and stores it in the given list. **/
+fetchVocabulary(String vocabName, List storageList) {
+    fetchAll("select vocabid, vocabname from vocabulary left join attributekey using (attributeid) where attributename = '" + vocabName + "';", new FetchCallback() {
+        onFetch(result) {
+            storageList.addAll(result);
+        }
+    });
+}
+
+vocabNameToVocabId(List vocab, String name) {
+    for (v : vocab) {
+        String vocabId   = v.get(0);
+        String vocabName = v.get(1);
+        if (vocabName.equals(name))
+            return vocabId;
+    }
+    return null;
+}
+
+/* Returns true if `vocabName` is the value selected in the <select1> at `ref`.
+ */
+isSelected(String ref, List vocab, String vocabName) {
+    String vocabId       = vocabNameToVocabId(vocab, vocabName);
+    String vocabIdActual = getFieldValue(ref);
+    if (isNull(vocabIdActual))
+        return isNull(vocabId);
+    return vocabIdActual.equals(vocabId);
+}
+
 validateContextTabGroup(Boolean showWarning) {
     List f = new ArrayList(); // fields to be validated
 
+    // General information
     f.add(fieldPair("Context/Context_GeneralInformation/Area_Code"             , "{Trench}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_ID"            , "{Context_ID}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Location_Note"         , "{Location_Note}"));
@@ -150,12 +179,6 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_GeneralInformation/Context_Type"          , "{Context_Type}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Plans"                 , "{Plans}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Section_Numbers"       , "{Section_Numbers}"));
-
-    // TODO: implement non-trivial conditions
-    String condCut        = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Cut}\")";
-    String condDeposit    = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Deposit}\")";
-    String condSkeleton   = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Skeleton}\")";
-    String condStructures = "getFieldValue(\"Context/Context_GeneralInformation/Context_Type\").equals(\"{Structure}\")";
     // Measure
     f.add(fieldPair("Context/Context_Measure/Context_Highest_Level" , "{Context_Highest_Level}"));
     f.add(fieldPair("Context/Context_Measure/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
@@ -163,8 +186,13 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_Measure/Width"                 , "{Width}"));
     f.add(fieldPair("Context/Context_Measure/Depth"                 , "{Depth}"));
     f.add(fieldPair("Context/Context_Measure/Volume"                , "{Volume}"));
+
+    String condCut        = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Cut}\")";
+    String condDeposit    = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Deposit}\")";
+    String condSkeleton   = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Skeleton}\")";
+    String condStructures = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Structure}\")";
     // Cut
-    f.add(fieldPair("Context/Context_GeneralInformation/Your_Interpretation" , "{Your_Interpretation}"   , condCut));
+    f.add(fieldPair("Context/Context_Cuts/Your_Interpretation"               , "{Your_Interpretation}"   , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Cut"                      , "{Shape_of_Cut}"          , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Corners"                  , "{Shape_of_Corners}"      , condCut));
     f.add(fieldPair("Context/Context_Cuts/Shape_of_Base"                     , "{Shape_of_Base}"         , condCut));
@@ -191,7 +219,6 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_Skeletons/Skeleton_Days_Exposed"        , "{Skeleton_Days_Exposed}" , condSkeleton));
     f.add(fieldPair("Context/Context_Skeletons/Target_A_X"                   , "{Target_A_X}"            , condSkeleton));
     f.add(fieldPair("Context/Context_Skeletons/Target_A_Y"                   , "{Target_A_Y}"            , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/reln"                         , "Relationship"            , condSkeleton));
     // Structures
     f.add(fieldPair("Context/Context_Structures/Your_Interpretation"         , "{Your_Interpretation}"   , condStructures));
     f.add(fieldPair("Context/Context_Structures/Structure_Description"       , "{Structure_Description}" , condStructures));
@@ -200,18 +227,21 @@ validateContextTabGroup(Boolean showWarning) {
     f.add(fieldPair("Context/Context_Interpretation/Your_description" , "{Your_description}"));
     f.add(fieldPair("Context/Context_Interpretation/Your_Discussion"  , "{Your_Discussion}"));
 
-    validateFields(fields , "Context/Context_Validation/validationResults" , showWarning);
+    validateFields(f, "Context/Context_Validation/validationResults" , showWarning);
 }
 
-validateFeatureTabGroup() {
+onEvent("Context/Context_GeneralInformation/validate" , "delayclick" , "showTab(\"Context/Context_Validation\")");
+onEvent("Context/Context_Validation"                  , "show"       , "validateContextTabGroup(false)");
+onEvent("Context"                                     , "show"       , "validateContextTabGroup(false)");
+
+validateContextGroupTabGroup() {
     Boolean showWarning = true;
     validateFeatureTabGroup(showWarning);
 }
 
-validateFeatureTabGroup() {
+validateContextGroupTabGroup(showWarning) {
     List f = new ArrayList();
 
-    // TODO? "GEN"
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Area_Code"               , "{Trench}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID"        , "{Context_Group_ID}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Title"                   , "{Title}"));
@@ -220,27 +250,34 @@ validateFeatureTabGroup() {
     f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_Interpretation"  , "{CG_Your_Interpretation}"));
     f.add(fieldPair("ContextGroup/Feature_Relationships_to_Other_Features/reln" , "Relationship"));
 
-    validateFields(fields , "ContextGroup/ContextGroup_Validation/validationResults" , showWarning);
+    validateFields(f , "ContextGroup/ContextGroup_Validation/validationResults" , showWarning);
 }
+
+onEvent("ContextGroup/ContextGroup_Details/validate" , "delayclick" , "showTab(\"ContextGroup/ContextGroup_Validation\")");
+onEvent("ContextGroup/ContextGroup_Validation"       , "show"       , "validateContextGroupTabGroup(false)");
+onEvent("ContextGroup"                               , "show"       , "validateContextGroupTabGroup(false)");
 
 validateSamplesTabGroup() {
     Boolean showWarning = true;
     validateFeatureTabGroup(showWarning);
 }
 
-validateSamplesTabGroup() {
+validateSamplesTabGroup(showWarning) {
     List f = new ArrayList();
 
-    f.add(fieldPair("Sample/GeneralInformation/Context_ID", "{Context_ID}"));
-    f.add(fieldPair("Sample/GeneralInformation/Sample_ID", "{Sample_ID}"));
-    f.add(fieldPair("Sample/GeneralInformation/Sample_Type", "{Sample_Type}"));
-    f.add(fieldPair("Sample/GeneralInformation/X", "X"));
-    f.add(fieldPair("Sample/GeneralInformation/Y", "Y"));
-    f.add(fieldPair("Sample/GeneralInformation/Z", "Z"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Context_ID",  "{Context_ID}"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Sample_ID",   "{Sample_ID}"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Sample_Type", "{Sample_Type}"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/X", "X"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Y", "Y"));
+    f.add(fieldPair("Sample/Sample_GeneralInformation/Z", "Z"));
 
-    validateFields(fields , "Sample/Sample_Validation/validationResults" , showWarning);
+    validateFields(f , "Sample/Sample_Validation/validationResults" , showWarning);
 }
 
+onEvent("Sample/Sample_GeneralInformation/validate" , "delayclick" , "showTab(\"Sample/Sample_Validation\")");
+onEvent("Sample/Sample_Validation"                  , "show"       , "validateSamplesTabGroup(false)");
+onEvent("Sample"                                    , "show"       , "validateSamplesTabGroup(false)");
 
 validateSpecialFindTabGroup() {
     Boolean showWarning = true;
@@ -256,8 +293,12 @@ validateSpecialFindTabGroup(showWarning) {
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Y"                        , "Y"));
     f.add(fieldPair("Special_Find/Special_Find_GeneralInformation/Z"                        , "Z"));
 
-    validateFields(fields , "Special_Find/Special_Find_Validation/validationResults" , showWarning);
+    validateFields(f , "Special_Find/Special_Find_Validation/validationResults" , showWarning);
 }
+
+onEvent("Special_Find/Special_Find_GeneralInformation/validate" , "delayclick" , "showTab(\"Special_Find/Special_Find_Validation\")");
+onEvent("Special_Find/Special_Find_Validation"       , "show"       , "validateSpecialFindTabGroup(false)");
+onEvent("Special_Find"                               , "show"       , "validateSpecialFindTabGroup(false)");
 
 /*
  * If value of field specified by `ref` is null, sets the field to `defaultVal`,
@@ -467,9 +508,11 @@ saveHeight() {
 saveHeight(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
-    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
+    // TODO: Fix saving
+    //attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    //attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
+    print(context_id);
+    print(height_id);
     saveTabGroup("Height", height_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             height_id = uuid;
@@ -597,7 +640,6 @@ onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActua
 onEvent("Context/Context_Deposits", "show", "updateAllContextMatrices()");
 onEvent("Context/Context_Deposits/newMatrix", "click", "newMatrix()");
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
-onEvent("Context/Context_Deposits/deleteMatrix", "click", "deleteMatrixFromContext()");
 
 onEvent("Context/Context_Structures/Deposit", "click", "showTab(\"Context/Context_Deposits\")");
 
@@ -609,7 +651,6 @@ onEvent("Context/Context_Feature/RemoveFromContextGroup", "click", "removeContex
 onEvent("Context/Context_Attachments", "show", "updateAllContextPhotologs()");
 onEvent("Context/Context_Attachments/newPhotoLog", "click", "newPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true;");
 onEvent("Context/Context_Attachments/loadPhotoLog", "click", "loadPhotoLog();verb=\"ContextPhotographLog\";archent_id=context_id;isContext=true");
-onEvent("Context/Context_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContext()");
 onEvent("Context/Context_Attachments/attachPhoto", "click", "attachPictureTo(\"Context/Context_Attachments/Photo\")");
 onEvent("Context/Context_Attachments/attachAudio", "click", "attachAudioTo(\"Context/Context_Attachments/Audio\")");
 onEvent("Context/Context_Attachments/attachVideo", "click", "attachVideoTo(\"Context/Context_Attachments/Video\")");
@@ -983,7 +1024,7 @@ loadContextAttributes(){
     makeVocab("RadioGroup", "Context/Context_Cuts/Shape_of_Corners", "Shape of Corners");
     makeVocab("RadioGroup", "Context/Context_Cuts/Break_of_Slope_Top", "Break of Slope - Top");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Shape_of_Base", "Shape of Base");
-    makeVocab("RadioGroup", "Context/Context_Cuts/Orientation", "Orientation");
+    makeVocab("DropDown", "Context/Context_Cuts/Orientation", "Orientation");
     makeVocab("DropDown", "Context/Context_Cuts/Your_Interpretation", "Cut Your Interpretation");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Sides_of_Cut", "Sides of Cut");
     makeVocab("DropDown", "Context/Context_Cuts/Inclination_of_axis", "Inclination of axis");
@@ -1133,7 +1174,6 @@ onEvent("ContextGroup/ContextGroup_Attachments/attachSketch", "click", "attachFi
 onEvent("ContextGroup/ContextGroup_Attachments/viewattached", "click", "viewArchEntAttachedFiles(context_group_id)");
 onEvent("ContextGroup/ContextGroup_Attachments/newPhotoLog", "delayclick", "isContext=false;newPhotoLogFromContextGroup();verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;");
 onEvent("ContextGroup/ContextGroup_Attachments/loadPhotoLog", "click", "loadPhotoLogFrom(getFieldValue(\"ContextGroup/ContextGroup_Attachments/PhotoLogList\"));verb=\"ContextGroupPhotographLog\";archent_id=context_group_id;isContext=false");
-onEvent("ContextGroup/ContextGroup_Attachments/deletePhotoLog", "click", "deletePhotoLogFromContextGroup()");
 
 setContextGroupCreatingDateUser() {
     if (isNull(context_group_id)) return;
@@ -2736,27 +2776,15 @@ makeVocab(String type, String path, String attrib, List vocabExclusions, String 
 /** Entity Relationship Saving **/
 /** Saves two entity id's as a relation. **/
 saveEntitiesToRel(String type, String entity1, String entity2) {
-    if (isNull(entity1) || isNull(entity2)) return;
-    saveRel(null, type, null, null, new SaveCallback() {
-        onSave(rel_id, newRecord) {
-            addReln(entity1, rel_id, null);
-            addReln(entity2, rel_id, null);
-        }
-    });
+    String callback = null;
+    saveEntitiesToRel(type, entity1, entity2, callback);
 }
 
 /** Saves two entity id's as a relation with some callback executed. **/
 saveEntitiesToRel(String type, String entity1, String entity2, String callback) {
-    if (isNull(entity1) || isNull(entity2)) return;
-    saveRel(null, type, null, null, new SaveCallback() {
-        onSave(rel_id, newRecord) {
-            addReln(entity1, rel_id, null);
-            addReln(entity2, rel_id, null);
-            if(!isNull(callback)) {
-               execute(callback);
-            }
-        }
-    });
+    String e1verb = null;
+    String e2verb = null;
+    saveEntitiesToHierRel(type, entity1, entity2, e1verb, e2verb, callback);
 }
 
 /** Saves two entity id's as a hierachical relation with some callback executed. **/
@@ -2769,6 +2797,10 @@ saveEntitiesToHierRel(String type, String entity1, String entity2, String e1verb
             if(!isNull(callback)) {
                execute(callback);
             }
+        }
+        onError(message) {
+            Log.e("saveEntitiesToHierRel", message);
+            showToast(message);
         }
     });
 }
@@ -2795,3 +2827,5 @@ initialiseModule() {
 }
 
 initialiseModule();
+    CONTEXT_TYPE_VOCAB = new ArrayList();
+    fetchVocabulary("Context Type", CONTEXT_TYPE_VOCAB);
