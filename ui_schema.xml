@@ -429,6 +429,9 @@
             <map>
               <map/>
             </map>
+            <Context_Validation>
+              <validationResults/>
+            </Context_Validation>
           </Context>
           <!--ArchEnt / Record Type: CONTEXT_GROUP-->
           <ContextGroup>
@@ -575,6 +578,9 @@
               <PhotoLogList/>
               <loadPhotoLog/>
             </ContextGroup_Attachments>
+            <ContextGroup_Validation>
+              <validationResults/>
+            </ContextGroup_Validation>
           </ContextGroup>
           <!--ArchEnt / Record Type: SAMPLE-->
           <Sample>
@@ -623,6 +629,9 @@
               <attachVideo/>
               <viewattached/>
             </Sample_Attachments>
+            <Sample_Validation>
+              <validationResults/>
+            </Sample_Validation>
           </Sample>
           <!--Matrix, a relationship on deposits -->
           <Matrix>
@@ -687,6 +696,9 @@
               <attachVideo/>
               <viewattached/>
             </Special_Find_GeneralInformation>
+            <Special_Find_Validation>
+              <validationResults/>
+            </Special_Find_Validation>
           </Special_Find>
           <!-- ArchEnt: Photograph Log -->
           <Photograph_Log>
@@ -1852,6 +1864,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label>Update Material</label>
         </trigger>
       </group>
+      <group ref="Context_Validation">
+        <label>{Validation}</label>
+        <input ref="validationResults" faims_web="true">
+          <label>{Validation_Results}</label>
+        </input>
+      </group>
     </group>
     <!-- ArchEnt: CONTEXT_GROUP -->
     <group faims_archent_type="Context Group" ref="ContextGroup">
@@ -2222,6 +2240,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label>Load {Photograph_Log}</label>
         </trigger>
       </group>
+      <group ref="ContextGroup_Validation">
+        <label>{Validation}</label>
+        <input ref="validationResults" faims_web="true">
+          <label>{Validation_Results}</label>
+        </input>
+      </group>
     </group>
     <!-- ArchEnt: SAMPLE -->
     <group faims_archent_type="Sample" ref="Sample">
@@ -2349,6 +2373,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="viewattached">
           <label>View Attached Files</label>
         </trigger>
+      </group>
+      <group ref="Sample_Validation">
+        <label>{Validation}</label>
+        <input ref="validationResults" faims_web="true">
+          <label>{Validation_Results}</label>
+        </input>
       </group>
     </group>
     <!-- Matrix, an archent on deposits -->
@@ -2520,6 +2550,12 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="viewattached">
           <label>View Attached Files</label>
         </trigger>
+      </group>
+      <group ref="Special_Find_Validation">
+        <label>{Validation}</label>
+        <input ref="validationResults" faims_web="true">
+          <label>{Validation_Results}</label>
+        </input>
       </group>
     </group>
     <!-- ArchEnt: Photograph Log -->

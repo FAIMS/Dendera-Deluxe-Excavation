@@ -228,8 +228,8 @@ validateSamplesTabGroup() {
 validateSamplesTabGroup() {
     List f = new ArrayList();
 
-    f.add(fieldPair("Sample/GeneralInformation/Context_ID", "{Context_ID}"));
-    f.add(fieldPair("Sample/GeneralInformation/Sample_ID", "{Sample_ID}"));
+    f.add(fieldPair("Sample/GeneralInformation/Context_ID",  "{Context_ID}"));
+    f.add(fieldPair("Sample/GeneralInformation/Sample_ID",   "{Sample_ID}"));
     f.add(fieldPair("Sample/GeneralInformation/Sample_Type", "{Sample_Type}"));
     f.add(fieldPair("Sample/GeneralInformation/X", "X"));
     f.add(fieldPair("Sample/GeneralInformation/Y", "Y"));
