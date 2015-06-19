@@ -449,7 +449,7 @@ newDiary() {
 
 loadDiary() {
     diary_id = getListItemValue();
-    loadContextFrom(diary_id);  
+    loadDiaryFrom(diary_id);  
 }
 
 loadDiaryFrom(String diaryID) {
