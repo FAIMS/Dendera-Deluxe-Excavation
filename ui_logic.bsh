@@ -1044,8 +1044,8 @@ removeContextGroupReln() {
 }
 
 addCloseDate() {
-    if(getFieldValue("Context/Context_GeneralInformation/Add_Date_Closed").equals("")){
-        setTimestamp("Context/Context_GeneralInformation/Add_Date_Closed");
+    if(isNull(getFieldValue("Context/Context_GeneralInformation/Date_Closed"))){
+        setTimestamp("Context/Context_GeneralInformation/Date_Closed");
     } else {
         showToast("{To_avoid_accidents_please_clear_the_Date_Closed_field_before_updating}");
     }
