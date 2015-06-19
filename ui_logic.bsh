@@ -200,6 +200,10 @@ validateContextTabGroup(Boolean showWarning) {
     validateFields(fields , "Context/Context_Validation/validationResults" , showWarning);
 }
 
+onEvent("Context/Context_GeneralInformation/validate" , "delayclick" , "showTab(\"Context/Context_Validation\")");
+onEvent("Context/Context_Validation"                  , "show"       , "validateContextFields(false)");
+onEvent("Context"                                     , "show"       , "validateContextFields(false)");
+
 validateFeatureTabGroup() {
     Boolean showWarning = true;
     validateFeatureTabGroup(showWarning);
@@ -238,6 +242,9 @@ validateSamplesTabGroup() {
     validateFields(fields , "Sample/Sample_Validation/validationResults" , showWarning);
 }
 
+onEvent("Sample/Sample_Details/validate" , "delayclick" , "showTab(\"Sample/Sample_Validation\")");
+onEvent("Sample/Sample_Validation"       , "show"       , "validateSamplesTabGroup(false)");
+onEvent("Sample"                         , "show"       , "validateSamplesTabGroup(false)");
 
 validateSpecialFindTabGroup() {
     Boolean showWarning = true;
@@ -255,6 +262,10 @@ validateSpecialFindTabGroup(showWarning) {
 
     validateFields(fields , "Special_Find/Special_Find_Validation/validationResults" , showWarning);
 }
+
+onEvent("Special_Find/Special_Find_Details/validate" , "delayclick" , "showTab(\"Special_Find/Special_Find_Validation\")");
+onEvent("Special_Find/Special_Find_Validation"       , "show"       , "validateSpecialFindTabGroup(false)");
+onEvent("Special_Find"                               , "show"       , "validateSpecialFindTabGroup(false)");
 
 /*
  * If value of field specified by `ref` is null, sets the field to `defaultVal`,
