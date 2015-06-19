@@ -315,7 +315,6 @@ loadControlSettings() {
 loadStartingIds() {
     // This function should only be called once since it creates event handlers, otherwise multiple copies of the same handler will trigger with the event.
     List l = new ArrayList();
-    l.add("control/data/SpecialFind_Starting_ID");
     l.add("control/data/ContextIncrement");
     l.add("control/data/ContextGroup_Starting_ID");
     l.add("control/data/Sample_Starting_ID");
@@ -1694,8 +1693,6 @@ newSpecialFind(){
     newTabGroup("Special_Find");
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
-    setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID"));
-    incField("control/data/SpecialFind_Starting_ID", 1);
 }
 
 loadSpecialFind() {
@@ -2353,9 +2350,7 @@ duplicateSpecialFind() {
   populateCameraPictureGallery("Special_Find/Special_Find_GeneralInformation/Photo", new ArrayList());
   populateFileList("Special_Find/Special_Find_GeneralInformation/Audio", new ArrayList());
   populateVideoGallery("Special_Find/Special_Find_GeneralInformation/Video", new ArrayList());
-  setFieldValue("Special_Find/Special_Find_GeneralInformation/Special_Find_ID", getFieldValue("control/data/SpecialFind_Starting_ID")); 
-  incField("control/data/SpecialFind_Starting_ID", 1);
-
+  
   String oldSpecialFind_ID = special_find_id;
   saveCallback = new SaveCallback() {
     onSave(uuid, newRecord) {
