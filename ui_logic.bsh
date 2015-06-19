@@ -393,6 +393,7 @@ entityTypes.add(new NameValuePair("{Sample}", "Sample"));
 entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
 entityTypes.add(new NameValuePair("{Special_Find}", "Special Find"));
 entityTypes.add(new NameValuePair("{Photograph_Log}", "Photograph Log"));
+entityTypes.add(new NameValuePair("{Height}", "Height"));
 populateDropDown("control/search/entityTypes", entityTypes);
 
 loadEntity() {
@@ -420,6 +421,8 @@ loadEntityFrom(String entityID) {
           loadSpecialFindFrom(entityID);
         } else if (name.equals("Photograph Log")) {
           loadPhotoLogFrom(entityID);
+        } else if (name.equals("Height")) {
+          loadHeightFrom(entityID);
         }
       }
     });
@@ -434,7 +437,16 @@ onEvent("Height", "show", "addNavigationButtons(\"Height\"); keepTabGroupChanges
 String height_id = null;
 
 newHeight() {
-
+    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
+        showWarning("{Error}", "{Cannot_save_record_without_id}");
+        return;
+    }
+    if (isNull(context_id)){
+        showToast("{You_must_save_a_context_first}");
+        return;
+    }
+    height_id = null;
+    newTabGroup("Height");
 }
 
 loadHeight() {
@@ -443,7 +455,9 @@ loadHeight() {
 }
 
 loadHeightFrom(String heightID) {
-
+    height_id = heightID;
+    if (isNull(height_id)) return;
+    showTabGroup("Height", height_id);
 }
 
 saveHeight() {
@@ -451,7 +465,23 @@ saveHeight() {
 }
 
 saveHeight(String callback) {
-
+    Boolean enable_autosave = true;
+    List attributes = createAttributeList();
+    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    saveTabGroup("Height", height_id, null, attributes, new SaveCallback() {
+        onSave(uuid, newRecord) {
+            height_id = uuid;
+            if (newRecord) {
+                saveEntitiesToRel("ContextHeight", context_id, height_id);
+                showToast("{Associated_with} {Context}");
+            }
+            execute(callback);
+        }
+        onError(message) {
+            showToast(message);
+        }
+    }, enable_autosave);
 }
 
 deleteHeight() {
@@ -556,7 +586,9 @@ onEvent("Context", "load", "showTab(\"Context/Context_Structures\");");
 onEvent("Context/Context_GeneralInformation/Details","click","openContextTabs()");
 onEvent("Context/Context_GeneralInformation/Add_Date_Closed", "click", "addCloseDate()");
 
+onEvent("Context/Context_Measure", "show", "updateAllContextHeights()");
 onEvent("Context/Context_Measure/Add_Height", "delayclick", "newHeight()");
+onEvent("Context/Context_Measure/Height_List", "click", "loadHeight()");
 
 onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
 
@@ -823,6 +855,10 @@ updateAllContextArtefacts(){
 
 updateAllContextSamples(){
     updateContextRelationshipBasedCursorList("Context/Context_Samples/sampleList", "ContextSample", context_id);
+}
+
+updateAllContextHeights() {
+    updateContextRelationshipBasedCursorList("Context/Context_Measure/Height_List", "ContextHeight", context_id);   
 }
 
 updateAllContextRelationships(){
@@ -1978,6 +2014,8 @@ getRecordId(String tabgroup) {
     return special_find_id;
   } else if (tabgroup.equals("Photograph_Log")) {
     return photolog_id;
+  } else if (tabgroup.equals("Height")) {
+    return height_id;
   } else {
     Log.e("PAZC Module", "Can't get the record id for the tabgroup '"+tabgroup+"'");
     return;
@@ -2007,6 +2045,9 @@ newRecord(String tabgroup) {
   } else if (tabgroup.equals("Photograph_Log")) {
     cancelTabGroup(tabgroup, false);
     newPhotoLog();
+  } else if (tabgroup.equals("Height")) {
+    cancelTabGroup(tabgroup, false);
+    newHeight();
   } else {
     Log.e("PAZC Module", "Can't make new record for the tabgroup '"+tabgroup+"'");
     return;
@@ -2029,6 +2070,8 @@ deleteRecord(String tabgroup, String id) {
     deleteSpecialFind();
   } else if (tabgroup.equals("Photograph_Log")) {
     deletePhotoLog();
+  } else if (tabgroup.equals("Height")) {
+    deleteHeight();
   } else {
     Log.e("PAZC Module", "Can't delete the record for the tabgroup '"+tabgroup+"' of id '"+id+"'");
     return;
@@ -2054,6 +2097,8 @@ duplicateRecord(String tabgroup) {
     duplicateSpecialFind();
   } else if (tabgroup.equals("Photograph_Log")) {
     duplicatePhotoLog();
+  } else if (tabgroup.equals("Height")) {
+    duplicateHeight();
   } else {
     Log.e("PAZC Module", "Can't make duplicate the record for the tabgroup '"+tabgroup+"'");
     dialog.dismiss();
@@ -2376,6 +2421,40 @@ duplicatePhotoLog() {
       //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       duplicateTabGroup("Photograph_Log", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+    }
+  });
+}
+
+duplicateHeight() {
+  disableAutoSave("Height");
+
+  String oldHeight_ID = height_id;
+  saveCallback = new SaveCallback() {
+    onSave(uuid, newRecord) {
+      height_id = uuid;
+      Boolean enable_autosave = true;
+      fetchAll(getDuplicateRelnQuery(oldHeight_ID), new FetchCallback(){
+          onFetch(result) {
+              makeDuplicateRelationships(result, height_id);
+              showToast("{Duplicated_record}");
+              dialog.dismiss();
+          }
+        }); 
+
+      saveTabGroup("Height", height_id, null, null, new SaveCallback(){
+        onSave(autosaveUuid, autosaveNewRecord) {
+          height_id = autosaveUuid;          
+        }
+      }, enable_autosave);
+    }
+  };
+
+  fetchAll(getDuplicateAttributeQuery(height_id), new FetchCallback(){
+    onFetch(result) {
+      excludeAttributes = new ArrayList();
+      //excludeAttributes.add("AreaCode");
+      //excludeAttributes.add("Site Code");
+      duplicateTabGroup("Height", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
   });
 }

@@ -69,6 +69,10 @@
     <description>Implements a 1:N between context and its photograph logs
     </description>
   </RelationshipElement>
+  <RelationshipElement name="ContextHeight" type="bidirectional">
+    <description>Implements a 1:N between context and its heights
+    </description>
+  </RelationshipElement>
   <RelationshipElement name="ContextGroupPhotographLog" type="bidirectional">
     <description>Implements a 1:N between context group and its photograph logs
     </description>

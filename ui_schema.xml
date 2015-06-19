@@ -1149,7 +1149,7 @@
         <trigger ref="Add_Height">
           <label>{Add_Height}</label>
         </trigger>
-        <select1 ref="Height_List" faims_certainty="false" faims_read_only="false" appearance="compact">
+        <select1 ref="Height_List" faims_certainty="false" faims_read_only="false" appearance="compact" faims_style_class="double-record-list">
           <label>{Height_List}</label>
           <item>
             <label>placeholder</label>
@@ -2349,23 +2349,23 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       </group>
     </group>
     <!-- ArchEnt: Height -->
-    <group ref="Height" faims_archent_type="Height ">
+    <group ref="Height" faims_archent_type="Height">
       <label>{Height}</label>
       <group ref="Height">
         <label>{Height}</label>
-        <input faims_certainty="false" faims_read_only="false" ref="Number" faims_attribute_name="Number">
+        <input faims_certainty="false" faims_read_only="false" ref="Number" faims_attribute_name="Number" faims_attribute_type="measure">
           <label>Number</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="X" faims_attribute_name="X">
+        <input faims_certainty="false" faims_read_only="false" ref="X" faims_attribute_name="X" faims_attribute_type="measure">
           <label>X</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Y" faims_attribute_name="Y">
+        <input faims_certainty="false" faims_read_only="false" ref="Y" faims_attribute_name="Y" faims_attribute_type="measure">
           <label>Y</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Z" faims_attribute_name="Z">
+        <input faims_certainty="false" faims_read_only="false" ref="Z" faims_attribute_name="Z" faims_attribute_type="measure">
           <label>Z</label>
         </input>
-        <input faims_certainty="false" faims_read_only="false" ref="Notes" faims_attribute_name="Notes">
+        <input faims_certainty="false" faims_read_only="false" ref="Notes" faims_attribute_name="Notes" faims_attribute_type="measure">
           <label>Notes</label>
         </input>
       </group>
