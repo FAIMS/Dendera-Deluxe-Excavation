@@ -1182,6 +1182,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property isIdentifier="true" name="Sample Type" type="enum">
       <description>The type of Sample collected eg Soil Wood Pollen.</description>
+      <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>{No_Observation}
         <description>data not collected</description></term>

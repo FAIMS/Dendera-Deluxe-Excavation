@@ -285,17 +285,59 @@ incField(String ref) {
 }
 
 /*** control ***/
+onEvent("control"                     , "load"      , "loadControlSettings()");
 onEvent("control"                     , "show"      , "removeNavigationButtons(); setSearchAreaCode();");
 onEvent("control/data"                , "show"      , "refreshEntities(); updateGPSDiagnostics();");
 onEvent("control/data/newContext"     , "delayclick", "newContext();");
 onEvent("control/data/newContextGroup", "delayclick", "newContextGroup(true);");
 onEvent("control/data/newDiary"       , "delayclick", "newDiary()");
+onFocus("control/data/teamMembers"    , null        , "insertIntoLocalSettings(\"teamMembers\", getFieldValue(\"control/data/teamMembers\"))");
 onEvent("control/search"              , "show"      , "search();");
 onEvent("control/search/Search"       , "click"     , "clearSearch()");
 onEvent("control/search/searchButton" , "click"     , "search()");
 onEvent("control/search/entityTypes"  , "click"     , "search()");
 onEvent("control/search/Area_Code"    , "click"     , "search()");
 onEvent("control/search/entityList"   , "click"     , "loadEntity();");
+
+loadControlSettings() {
+    fetchOne("SELECT value FROM localSettings WHERE key = 'teamMembers';", new FetchCallback() {
+        onFetch(result) {
+            if (!isNull(result)) {
+                setFieldValue("control/data/teamMembers", result.get(0));
+            }
+        }
+    });
+    loadStartingIds();
+}
+
+loadStartingIds() {
+    // This function should only be called once since it creates event handlers, otherwise multiple copies of the same handler will trigger with the event.
+    List l = new ArrayList();
+    l.add("control/data/SpecialFind_Starting_ID");
+    l.add("control/data/ContextIncrement");
+    l.add("control/data/ContextGroup_Starting_ID");
+    l.add("control/data/Sample_Starting_ID");
+
+    for (ref : l) {
+        loadStartingId(ref);
+    }
+    for (ref : l) {
+        onFocus(ref, null,  "insertIntoLocalSettings(\"" + ref + "\", getFieldValue(\"" + ref + "\"));");
+    }
+}
+
+loadStartingId(String ref) {
+    String idQ = "SELECT value FROM localSettings WHERE key = '" + ref + "';";
+    fetchOne(idQ, new FetchCallback() {
+        onFetch(result) {
+            if (!isNull(result)) {
+                setFieldValue(ref, result.get(0));
+            } else {
+                setFieldValue(ref, "1");
+            }
+        }
+    });
+}
 
 setSearchAreaCode() {
     setFieldValue("control/search/Area_Code", getFieldValue("user/usertab/Area_Code"));
@@ -553,8 +595,7 @@ newContext(){
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
     setFieldValue("Context/Context_GeneralInformation/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
-    // todo: should excavator be copied as in PAZC? (answer was no, instead use the team members. see gdocs for more info.)
-    // setFieldValue("Context/Context_GeneralInformation/Excavators", username);
+    setFieldValue("Context/Context_GeneralInformation/Excavators", getFieldValue("control/data/teamMembers"));
     setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
     keepTabGroupChanges("Context");
 
@@ -1003,8 +1044,8 @@ removeContextGroupReln() {
 }
 
 addCloseDate() {
-    if(getFieldValue("Context/Context_GeneralInformation/Add_Date_Closed").equals("")){
-        setTimestamp("Context/Context_GeneralInformation/Add_Date_Closed");
+    if(isNull(getFieldValue("Context/Context_GeneralInformation/Date_Closed"))){
+        setTimestamp("Context/Context_GeneralInformation/Date_Closed");
     } else {
         showToast("{To_avoid_accidents_please_clear_the_Date_Closed_field_before_updating}");
     }
@@ -1666,12 +1707,15 @@ doNotDelete(){
 loadSpecialFindAttributes(){
     makeVocab("HierarchicalDropDown", "Special_Find/Special_Find_GeneralInformation/Special_Find_Class", "Special Find Class");
     makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Device_Code", "Device Code");
+    makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Source", "Source");
+    makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Groundstone", "Groundstone");
 }
 
 /*** Arch Ent: PhotoLog ***/
 onEvent("Photograph_Log", "show", "addNavigationButtons(\"Photograph_Log\"); keepTabGroupChanges(\"Photograph_Log\"); savePhotoLog(\"\");");
 
 String photolog_id = null;
+List photologAttributes = null;
 
 newPhotoLog(){
     if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
@@ -1683,12 +1727,12 @@ newPhotoLog(){
         return;
     }
     photolog_id = null;
+    photologAttributes = null;
+    photologAttributes = createAttributeList();
+    photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
-    setFieldValue("Photograph_Log/Photograph_Log/Area_Code", getFieldValue("Context/Context_GeneralInformation/Area_Code"));
-
-    
 }
 
 newPhotoLogFromContextGroup(){
@@ -1701,11 +1745,12 @@ newPhotoLogFromContextGroup(){
         return;
     }
     photolog_id = null;
+    photologAttributes = null;
+    photologAttributes = createAttributeList();
+    photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
     setFieldValue("Photograph_Log/Photograph_Log/Device_Code", getFieldValue("ContextGroup/ContextGroup_Details/Device_Code"));
-    setFieldValue("Photograph_Log/Photograph_Log/Area_Code", getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"));
-
 }
 
 loadPhotoLog() {
@@ -1716,20 +1761,18 @@ loadPhotoLog() {
 loadPhotoLogFrom(String id) {
     photolog_id = id;
     if (isNull(photolog_id)) return;
+    photologAttributes = null;
     showTabGroup("Photograph_Log", photolog_id);
 }
 
 loadPhotoLogAttributes(){
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Device_Code", "Device Code");
     makeVocab("DropDown", "Photograph_Log/Photograph_Log/Scene_Type", "Scene Type");
-    makeVocab("DropDown", "Photograph_Log/Photograph_Log/Area_Code", "AreaCode");
-
 }
 
 savePhotoLog(String callback) {
     Boolean enable_autosave = true;
-    List attributes = null;
-    saveTabGroup("Photograph_Log", photolog_id, null, attributes, new SaveCallback() {
+    saveTabGroup("Photograph_Log", photolog_id, null, photologAttributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             photolog_id = uuid;
             if (newRecord) {
@@ -2435,7 +2478,6 @@ login(){
                 username = result.get(1) + " " + result.get(2);
 
                 showTabGroup("control");
-                loadStartingIds();
             }
 
         });
@@ -2491,34 +2533,6 @@ loadLoginDetails() {
       }
     }  
   });
-}
-
-loadStartingIds() {
-    List l = new ArrayList();
-    l.add("control/data/SpecialFind_Starting_ID");
-    l.add("control/data/ContextIncrement");
-    l.add("control/data/ContextGroup_Starting_ID");
-    l.add("control/data/Sample_Starting_ID");
-
-    for (ref : l) {
-        loadStartingId(ref);
-    }
-    for (ref : l) {
-        onFocus(ref, null,  "insertIntoLocalSettings(\"" + ref + "\", getFieldValue(\"" + ref + "\"));");
-    }
-}
-
-loadStartingId(String ref) {
-    String idQ = "SELECT value FROM localSettings WHERE key = '" + ref + "';";
-    fetchOne(idQ, new FetchCallback() {
-        onFetch(result) {
-            if (!isNull(result)) {
-                setFieldValue(ref, result.get(0));
-            } else {
-                setFieldValue(ref, "1");
-            }
-        }
-    });
 }
 
 onEvent("user", "load", "loadLoginDetails()");
