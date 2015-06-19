@@ -1707,6 +1707,8 @@ doNotDelete(){
 loadSpecialFindAttributes(){
     makeVocab("HierarchicalDropDown", "Special_Find/Special_Find_GeneralInformation/Special_Find_Class", "Special Find Class");
     makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Device_Code", "Device Code");
+    makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Source", "Source");
+    makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Groundstone", "Groundstone");
 }
 
 /*** Arch Ent: PhotoLog ***/
