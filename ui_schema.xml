@@ -1085,7 +1085,6 @@
       </group>
       <group faims_hidden="true" ref="Context_Cuts">
         <label>{Cut}</label>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Cut Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
           <label>Your Interpretation</label>
           <item>
@@ -1112,7 +1111,6 @@
             </input>
           </group>
         </group>
-        <!--We would like to see Radiogroup-->
         <select1 appearance="full" faims_attribute_name="Shape of Corners" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Shape_of_Corners">
           <label>{Shape_of_Corners}</label>
           <item>
@@ -1120,7 +1118,6 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <!--We would like to see Radiogroup-->
         <select1 appearance="full" faims_attribute_name="Break of Slope - Top" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Break_of_Slope_Top">
           <label>{Break_of_Slope_-_Top}</label>
           <item>
@@ -1142,7 +1139,6 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <!--We would like to see Dropdown-->
             <select1 faims_attribute_name="Shape of Base" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Shape_of_Base">
               <label>{Shape_of_Base}</label>
               <item>
@@ -1155,8 +1151,7 @@
         <input faims_attribute_name="Cut Function" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Cut_Function">
           <label>{Cut_Function}</label>
         </input>
-        <!--We would like to see Dropdown-->
-        <select1 appearance="full" faims_attribute_name="Orientation" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Orientation">
+        <select1 faims_attribute_name="Orientation" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Orientation">
           <label>{Orientation}</label>
           <item>
             <label>placeholder</label>
@@ -1173,7 +1168,6 @@
       </group>
       <group faims_hidden="true" ref="Context_Structures">
         <label>{Structures}</label>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Structure Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
           <label>Your Interpretation</label>
           <item>
@@ -1191,7 +1185,6 @@
         <input faims_attribute_name="Component Finish" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Component_Finish">
           <label>{Component_Finish}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Bonding" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Bonding">
           <label>{Bonding}</label>
           <item>
@@ -1202,7 +1195,6 @@
         <input faims_attribute_name="Bonding Details" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Bonding_Details">
           <label>{BondingPacking_Details}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <input faims_attribute_name="Distinguishing Marks" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Distinguishing_Marks">
           <label>{Distinguishing_Marks}</label>
         </input>
@@ -1235,7 +1227,6 @@
       </group>
       <group faims_hidden="true" ref="Context_Deposits">
         <label>Dep</label>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Deposit Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation">
           <label>Your Interpretation</label>
           <item>
@@ -1253,7 +1244,6 @@
         <input faims_attribute_name="Soil Compaction Description" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Soil_Compaction_Description">
           <label>{Soil_Compaction_Description}</label>
         </input>
-        <!--We would like to see Dropdown-->
         <select1 faims_attribute_name="Soil Particle Sorting" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Particle_Sorting" type="image">
           <label>{Soil_Particle_Sorting}</label>
           <item>
@@ -1502,7 +1492,6 @@
         </input>
       </group>
       <group ref="Context_Interpretation">
-        <!--  PUT THIS f IN BEFORE SENDING TO PENNY -->
         <label>Int</label>
         <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description" faims_style_class="required">
           <label>{Your_description}</label>
@@ -1512,15 +1501,7 @@
         </input>
       </group>
       <group ref="Context_Feature" faims_scrollable="false">
-        <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
         <label>{Context_Group}</label>
-        <!-- <select1 appearance="compact" ref="guide1">
-          <label/>
-          <item>
-            <label>Here you can group Contexts into a single {Context_Group}.</label>
-            <value>Help</value>
-          </item>
-        </select1> -->
         <trigger ref="AddContextGroup">
           <label>{Add_New_Context_Group}</label>
         </trigger>

@@ -29,9 +29,9 @@ String WEB_GUIDE = "" +
 "<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
 // TODO: determine what the intended text is for these web views, as they still use old text or text copied from PAZC.
 // String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
-String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship on the left, the specified context on the right and click the button 'Relate Features' to record the relationship.";
+String WEB_REL_1 = "Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship in the middle, the specified context on the right and click the button 'Relate Features' to record the relationship.";
 String WEB_REL_2 = "{toLoadRemove} {Contexts}, {tapOne}";
-String WEB_REL_3 = "{useToRelate} {ContextGroups}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
+String WEB_REL_3 = "{useToRelate} {ContextGroups}. {selectReln} {ContextGroup} {clickButtonRelate} {ContextGroups}'.";
 String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
 String WEB_REL_5 = "Use this tab to add a {Context} to the {ContextGroup}.";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
@@ -983,7 +983,7 @@ loadContextAttributes(){
     makeVocab("RadioGroup", "Context/Context_Cuts/Shape_of_Corners", "Shape of Corners");
     makeVocab("RadioGroup", "Context/Context_Cuts/Break_of_Slope_Top", "Break of Slope - Top");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Shape_of_Base", "Shape of Base");
-    makeVocab("RadioGroup", "Context/Context_Cuts/Orientation", "Orientation");
+    makeVocab("DropDown", "Context/Context_Cuts/Orientation", "Orientation");
     makeVocab("DropDown", "Context/Context_Cuts/Your_Interpretation", "Cut Your Interpretation");
     makeVocab("HierarchicalDropDown", "Context/Context_Cuts/Sides_of_Cut", "Sides of Cut");
     makeVocab("DropDown", "Context/Context_Cuts/Inclination_of_axis", "Inclination of axis");
