@@ -264,9 +264,6 @@
               <newMatrix/>
               <matrixList/>
               <container4>
-                <child1>
-                  <deleteMatrix/>
-                </child1>
                 <child2>
                   <loadMatrix/>
                 </child2>
@@ -424,7 +421,6 @@
               <newPhotoLog/>
               <PhotoLogList/>
               <loadPhotoLog/>
-              <deletePhotoLog/>
             </Context_Attachments>
             <Texture_Helper>
               <Soil_Texture/>
@@ -578,7 +574,6 @@
               <newPhotoLog/>
               <PhotoLogList/>
               <loadPhotoLog/>
-              <deletePhotoLog/>
             </ContextGroup_Attachments>
           </ContextGroup>
           <!--ArchEnt / Record Type: SAMPLE-->
@@ -1454,12 +1449,6 @@
         </select1>
         <group faims_style="orientation" ref="container4">
           <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <trigger ref="deleteMatrix">
-              <label>Delete {Matrix}</label>
-            </trigger>
-          </group>
           <group faims_style="even" ref="child2">
             <label/>
             <trigger ref="loadMatrix">
@@ -1849,9 +1838,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="loadPhotoLog">
           <label>Load {Photograph_Log}</label>
         </trigger>
-        <trigger ref="deletePhotoLog">
-          <label>Delete {Photograph_Log}</label>
-        </trigger>
       </group>
       <group ref="Texture_Helper" faims_hidden="true">
         <label>Material Helper</label>
@@ -2234,9 +2220,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </select1>
         <trigger ref="loadPhotoLog">
           <label>Load {Photograph_Log}</label>
-        </trigger>
-        <trigger ref="deletePhotoLog">
-          <label>Delete {Photograph_Log}</label>
         </trigger>
       </group>
     </group>
