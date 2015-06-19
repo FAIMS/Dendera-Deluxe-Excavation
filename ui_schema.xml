@@ -89,9 +89,6 @@
                 <child2>
                   <Grid_Y/>
                 </child2>
-                <child3>
-                  <blank/>
-                </child3>
               </container2>
               <Location_Note/>
               <container3>
@@ -136,12 +133,6 @@
                 <child1>
                   <Volume/>
                 </child1>
-                <child2>
-                  <blank0/>
-                </child2>
-                <child3>
-                  <blank1/>
-                </child3>
               </container7>
               <container8>
                 <child1>
@@ -963,16 +954,6 @@
               <label>{Grid_Y}</label>
             </input>
           </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <select1 appearance="compact" ref="blank" faims_annotation="false" faims_certainty="false">
-              <label/>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
         </group>
         <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note">
           <label>{Location_Note}</label>
@@ -1075,26 +1056,6 @@
             <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume">
               <label>{Volume}</label>
             </input>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <select1 appearance="compact" ref="blank0" faims_annotation="false" faims_certainty="false">
-              <label/>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-          <group faims_style="even" ref="child3">
-            <label/>
-            <select1 appearance="compact" ref="blank1" faims_annotation="false" faims_certainty="false">
-              <label/>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
           </group>
         </group>
         <group faims_style="orientation" ref="container8">
@@ -1614,7 +1575,7 @@
         </input>
       </group>
       <group ref="Context_Interpretation">
-        <!--  PUT THIS BACK IN BEFORE SENDING TO PENNY -->
+        <!--  PUT THIS f IN BEFORE SENDING TO PENNY -->
         <label>Int</label>
         <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description">
           <label>{Your_description}</label>
