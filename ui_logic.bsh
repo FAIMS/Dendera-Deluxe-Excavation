@@ -242,7 +242,6 @@ validateContextGroupTabGroup() {
 validateContextGroupTabGroup(showWarning) {
     List f = new ArrayList();
 
-    // TODO? "GEN"
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Area_Code"               , "{Trench}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID"        , "{Context_Group_ID}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Title"                   , "{Title}"));
@@ -509,9 +508,11 @@ saveHeight() {
 saveHeight(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
-    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
+    // TODO: Fix saving
+    //attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    //attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
+    print(context_id);
+    print(height_id);
     saveTabGroup("Height", height_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             height_id = uuid;
@@ -2775,27 +2776,15 @@ makeVocab(String type, String path, String attrib, List vocabExclusions, String 
 /** Entity Relationship Saving **/
 /** Saves two entity id's as a relation. **/
 saveEntitiesToRel(String type, String entity1, String entity2) {
-    if (isNull(entity1) || isNull(entity2)) return;
-    saveRel(null, type, null, null, new SaveCallback() {
-        onSave(rel_id, newRecord) {
-            addReln(entity1, rel_id, null);
-            addReln(entity2, rel_id, null);
-        }
-    });
+    String callback = null;
+    saveEntitiesToRel(type, entity1, entity2, callback);
 }
 
 /** Saves two entity id's as a relation with some callback executed. **/
 saveEntitiesToRel(String type, String entity1, String entity2, String callback) {
-    if (isNull(entity1) || isNull(entity2)) return;
-    saveRel(null, type, null, null, new SaveCallback() {
-        onSave(rel_id, newRecord) {
-            addReln(entity1, rel_id, null);
-            addReln(entity2, rel_id, null);
-            if(!isNull(callback)) {
-               execute(callback);
-            }
-        }
-    });
+    String e1verb = null;
+    String e2verb = null;
+    saveEntitiesToHierRel(type, entity1, entity2, e1verb, e2verb, callback);
 }
 
 /** Saves two entity id's as a hierachical relation with some callback executed. **/
@@ -2808,6 +2797,10 @@ saveEntitiesToHierRel(String type, String entity1, String entity2, String e1verb
             if(!isNull(callback)) {
                execute(callback);
             }
+        }
+        onError(message) {
+            Log.e("saveEntitiesToHierRel", message);
+            showToast(message);
         }
     });
 }
