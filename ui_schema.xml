@@ -798,9 +798,9 @@
       </group>
     </group>
     <group ref="user">
-      <label>{User_List}</label>
+      <label>{User} {List}</label>
       <group ref="usertab">
-        <label>{User_List}</label>
+        <label>{User} {List}</label>
         <select1 ref="users">
           <label>{Users}:</label>
           <item>
@@ -816,7 +816,7 @@
           </item>
         </select1>
         <select1 ref="Device_Code" faims_style_class="required">
-          <label>{Select_Device_Code}</label>
+          <label>{Select} {Device_Code}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
@@ -841,13 +841,13 @@
       <group faims_scrollable="true" ref="data">
         <label>{Contexts}</label>
         <trigger ref="newContext">
-          <label>{Create_New_Context}</label>
+          <label>{Create_New} {Context}</label>
         </trigger>
         <trigger ref="newContextGroup">
-          <label>{New_Context_Group}</label>
+          <label>{New} {Context_Group}</label>
         </trigger>
         <trigger ref="newDiary">
-          <label>{New_Diary}</label>
+          <label>{New} {Diary}</label>
         </trigger>
         <input faims_certainty="false" faims_read_only="false" ref="teamMembers">
           <label>{Team_Members}</label>
@@ -900,7 +900,7 @@
           <group faims_style="even" ref="child2">
             <label/>
             <select1 ref="Area_Code">
-              <label>{Select_Trench}</label>
+              <label>{Select} {Trench}</label>
               <item>
                 <label>{placeholder}</label>
                 <value>placeholder</value>
@@ -948,7 +948,7 @@
           </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Select_Device_Code}</label>
+          <label>{Select} {Device_Code}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
@@ -1742,7 +1742,7 @@
           <group faims_style="even" ref="child2">
             <label/>
             <input ref="selectedEnt" faims_web="true">
-              <label>{Selected_Entity}</label>
+              <label>{Selected} {Entity}</label>
             </input>
             <input ref="help" faims_web="true">
               <label/>
@@ -1762,7 +1762,7 @@
           <label>{Add_Special_Find}</label>
         </trigger>
         <select1 appearance="compact" faims_certainty="false" faims_read_only="false" ref="specialFindList" faims_style_class="double-record-list">
-          <label>{Select_Special_Find}</label>
+          <label>{Select} {Special_Find}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
@@ -1898,7 +1898,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Select_Device_Code}</label>
+          <label>{Select} {Device_Code}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
@@ -2060,7 +2060,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <group ref="right" faims_style="even">
             <label/>
             <input ref="selectedEnt" faims_web="true">
-              <label>{Selected_Entity}</label>
+              <label>{Selected} {Entity}</label>
             </input>
             <input ref="help" faims_web="true">
               <label/>
@@ -2154,7 +2154,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <group faims_style="even" ref="child2">
             <label/>
             <input ref="selectedEnt" faims_web="true">
-              <label>{Selected_Entity}</label>
+              <label>{Selected} {Entity}</label>
             </input>
             <input ref="help" faims_web="true">
               <label/>
@@ -2271,7 +2271,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Select_Device_Code}</label>
+          <label>{Select} {Device_Code}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
@@ -2454,7 +2454,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Select_Device_Code}</label>
+          <label>{Select} {Device_Code}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
@@ -2566,7 +2566,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
         </group>
         <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Select_Device_Code}</label>
+          <label>{Select} {Device_Code}</label>
           <item>
             <label>{placeholder}</label>
             <value>placeholder</value>
