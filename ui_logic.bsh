@@ -428,6 +428,53 @@ loadEntityFrom(String entityID) {
   }
 }
 
+/*** ArchEnt: Height ***/
+onEvent("Height", "show", "addNavigationButtons(\"Height\"); keepTabGroupChanges(\"Height\"); saveHeight(); refreshTabgroupCSS(\"Height\");");
+
+String height_id = null;
+
+newHeight() {
+
+}
+
+loadHeight() {
+    height_id = getListItemValue();
+    loadHeightFrom(height_id); 
+}
+
+loadHeightFrom(String heightID) {
+
+}
+
+saveHeight() {
+    saveHeight(null);
+}
+
+saveHeight(String callback) {
+
+}
+
+deleteHeight() {
+    if (!isNull(height_id)) {
+        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this} {Height}", "reallyDeleteHeight()", "doNotDelete()");
+    } else {
+        cancelTabGroup("Height", true);
+    }
+}
+
+reallyDeleteHeight() {
+    deleteArchEnt(height_id);
+    cancelTabGroup("Height", false);
+}
+
+doNotDelete(){
+  showToast("{Delete_Cancelled}");
+}
+
+loadHeightAttributes() {
+    
+}
+
 /*** ArchEnt: Diary **/
 onEvent("Diary", "show", "addNavigationButtons(\"Diary\"); keepTabGroupChanges(\"Diary\"); saveDiary(); refreshTabgroupCSS(\"Diary\");");
 onEvent("Diary/Diary/attachPhoto", "click", "attachPictureTo(\"Diary/Diary/Photo\")");
@@ -508,9 +555,12 @@ onEvent("Context", "load", "showTab(\"Context/Context_Structures\");");
 
 onEvent("Context/Context_GeneralInformation/Details","click","openContextTabs()");
 onEvent("Context/Context_GeneralInformation/Add_Date_Closed", "click", "addCloseDate()");
-onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
-onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
 
+onEvent("Context/Context_Measure/Add_Height", "delayclick", "newHeight()");
+
+onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
+
+onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
 onEvent("Context/Context_Deposits", "show", "updateAllContextMatrices()");
 onEvent("Context/Context_Deposits/newMatrix", "click", "newMatrix()");
 onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
@@ -2661,6 +2711,7 @@ initialiseModule() {
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
     makeVocab("DropDown", "control/search/Area_Code", "AreaCode");
     loadContextAttributes();
+    loadHeightAttributes();
     loadContextGroupAttributes();
     loadDiaryAttributes();
     loadSampleAttributes();
