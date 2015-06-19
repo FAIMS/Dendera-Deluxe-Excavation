@@ -467,8 +467,9 @@ saveHeight() {
 saveHeight(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    // attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     // attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
     saveTabGroup("Height", height_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             height_id = uuid;
@@ -1616,6 +1617,7 @@ saveMatrix(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
     attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
+    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
     saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             matrix_id = uuid;
