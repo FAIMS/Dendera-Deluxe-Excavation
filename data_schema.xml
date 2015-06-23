@@ -230,13 +230,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Excavation Method" type="enum">
       <description>Method and conditions of archaeological excavation.</description>
       <lookup>
-        <term>{aHand_pick} 
+        <term>{Hand_pick} 
         <description>Excavated by hand-pick.</description></term>
-        <term>{bTrowel}
+        <term>{Trowel}
         <description>Excavated by trowel.</description></term>
-        <term>{cPick} 
+        <term>{Pick} 
         <description>Excavated by pick.</description></term>
-        <term>{dOther} 
+        <term>{Other} 
         <description>Excavated by another method.</description></term>
       </lookup>
     </property>
@@ -575,13 +575,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{No_Observation}
         <description>data not collected</description></term>
-        <term>{aVertical} 
+        <term>{Vertical} 
         <description/></term>
-        <term>{b45-90_degrees} 
+        <term>{45-90_degrees} 
         <description/></term>
-        <term>{c45_degrees} 
+        <term>{45_degrees} 
         <description/></term>
-        <term>{dless_than_45} 
+        <term>{less_than_45} 
         <description/></term>
       </lookup>
     </property>
@@ -607,7 +607,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
         <term>{Pillar} 
         <description/></term>
-        <term>{zOther} 
+        <term>{Other} 
         <description>Function not elsewhere described. Provide details in Annotation field.</description></term>
       </lookup>
     </property>
@@ -615,7 +615,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Your interpretation of the likely function of the Context using standardised definitions.</description>
       <lookup>
         <term>{No_Observation}<description/></term>
-        <term>{aYour_Interpretation_Cut_Indeterminate} 
+        <term>{Your_Interpretation_Cut_Indeterminate} 
         <description/></term>
         <term>{Animal_or_Plant_hole} 
         <description/></term>
@@ -635,7 +635,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/></term>
         <term>{Erosional_Feature} 
         <description/></term>
-        <term>{zOther} 
+        <term>{Other} 
         <description>Function not elsewhere described. Provide details in Annotation field.</description></term>
       </lookup>
     </property>
@@ -673,7 +673,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>To be used for material that directly reflects the use of a surface or floor - artifact material on the surface perhaps thin deposits of occupation material. These contexts will be gridded into spatial units for closer control of artifact distributions.</description></term>
         <term>{Animal_or_Plant} 
         <description>Deposit derived from plant or animal activity</description></term>
-        <term>{zOther} 
+        <term>{Other} 
         <description>Function not elsewhere described. Provide details in Annotation field.</description></term>
       </lookup>
     </property>
@@ -725,7 +725,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>No visible bonding material ie unmortared.</description></term>
         <term>{Stones} 
         <description>Unmortared stones.</description></term>
-        <term>{zOther} 
+        <term>{Other} 
         <description>Other bonding/packing material.</description></term>
       </lookup>
     </property>
@@ -996,7 +996,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Stakehole}<description>Cuts smaller than postholes, typically c. 1-5 cm diameter.</description></term>
         <term>{Hearth}<description>A prepared structure in which a fire is set.</description></term>
         <term>{Stakehole_row} <description>A row of cuts smaller than postholes, typically c. 1-5 cm diameter.</description></term>
-        <term>{zOther}<description>Function not elsewhere described. Provide details in Annotation field.</description></term>
+        <term>{Other}<description>Function not elsewhere described. Provide details in Annotation field.</description></term>
       </lookup>
     </property>
     <property name="CG Your Interpretation" type="blocktext">
@@ -1237,7 +1237,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>A sample of bone identified as animal.</description></term>
         <term>{Human_Bone}
         <description>A sample of bone identified as human.</description></term>
-        <term>{zOther}
+        <term>{Other}
         <description>Sample not elsewhere described. Include details in Annotation field.</description></term>
       </lookup>
     </property>
@@ -1272,7 +1272,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Site_depot}<description/> </term>
         <term>{Export_Liverpool}<description/> </term>
         <term>{Export_Turkey}<description/> </term>
-        <term>{zaOther}<description/> </term>
+        <term>{OtherWithAnnotation}<description/> </term>
       </lookup>
     </property>
     <property name="Sample X" type="float">
@@ -1387,7 +1387,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{No_Observation}
         <description>data not collected</description></term>
-        <term>{aChipped_Stone} 
+        <term>{Chipped_Stone} 
         <description/>
           <term>{Blade} 
           <description/></term>
@@ -1395,10 +1395,10 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description/></term>
           <term>{Cache} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{bGround_Stone} 
+        <term>{Ground_Stone} 
         <description/>
           <term>{Grinder} 
           <description/></term>
@@ -1412,26 +1412,26 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description/></term>
           <term>{Polisher} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{cBone} 
+        <term>{Bone} 
         <description/>
           <term>{Point} 
           <description/></term>
           <term>{Bead} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{dShell} 
+        <term>{Shell} 
         <description/>
           <term>{Bead} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{ePlant} 
+        <term>{Plant} 
         <description/>
           <term>{Charcoal} 
           <description/></term>
@@ -1445,21 +1445,21 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description/></term>
           <term>{Impression_Cast} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{fOchre} 
+        <term>{Ochre} 
         <description/></term>
-        <term>{hClay_Object} 
+        <term>{Clay_Object} 
         <description/>
           <term>{Figurine} 
           <description/></term>
           <term>{Token} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{iCeramic} 
+        <term>{Ceramic} 
         <description/>
           <term>{Coarse} 
           <description/></term>
@@ -1467,10 +1467,10 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description/></term>
           <term>{Terracotta} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{jGlass} 
+        <term>{Glass} 
         <description/>
           <term>{Black} 
           <description/></term>
@@ -1479,18 +1479,18 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <term>{Coloured} 
           <description/></term>
         </term>
-        <term>{kMetal} 
+        <term>{Metal} 
         <description/>
           <term>{Ferrous} 
           <description/></term>
           <term>{Copper-alloy} 
           <description/></term>
-          <term>{zOther} 
+          <term>{Other} 
           <description/></term>
         </term>
-        <term>{lBuilding_Materials} 
+        <term>{Building_Materials} 
         <description/></term>
-        <term>{mMiscellaneous} 
+        <term>{Miscellaneous} 
         <description/></term>
       </lookup>
     </property>

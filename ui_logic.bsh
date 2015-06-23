@@ -1081,24 +1081,35 @@ openContextTabs(Boolean showGeneralInformationTab){
                 if ((vocab.equals("{Deposit}")) || (vocab.equals("{Natural}"))){
                     cancelTab("Context/Context_Cuts", false);
                     cancelTab("Context/Context_Structures", false);
+                    cancelTab("Context/Context_Skeletons", false);
                     showTab("Context/Context_Deposits");
                 } else if (vocab.equals("{Cut}")){
                     cancelTab("Context/Context_Deposits", false);
                     cancelTab("Context/Context_Structures", false);
+                    cancelTab("Context/Context_Skeletons", false);                    
                     showTab("Context/Context_Cuts");
                 } else if (vocab.equals("{Structure}")){
                     cancelTab("Context/Context_Deposits", false);
                     cancelTab("Context/Context_Cuts", false);
+                    cancelTab("Context/Context_Skeletons", false);                    
                     showTab("Context/Context_Structures");
+                } else if (vocab.equals("{Skeleton}")){
+                    cancelTab("Context/Context_Deposits", false);
+                    cancelTab("Context/Context_Cuts", false);
+                    cancelTab("Context/Context_Structures", false);                                        
+                    showTab("Context/Context_Skeletons");
                 } else {
                     cancelTab("Context/Context_Cuts", false);
                     cancelTab("Context/Context_Deposits", false);
                     cancelTab("Context/Context_Structures", false);
+                    cancelTab("Context/Context_Skeletons", false);
+
                 }
             } else {
                 cancelTab("Context/Context_Cuts", false);
                 cancelTab("Context/Context_Deposits", false);
                 cancelTab("Context/Context_Structures", false);
+                cancelTab("Context/Context_Skeletons", false);
             }
             if(showGeneralInformationTab) {
               showTab("Context/Context_GeneralInformation");
