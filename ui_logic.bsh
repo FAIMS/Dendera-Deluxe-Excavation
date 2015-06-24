@@ -1686,7 +1686,7 @@ saveMatrix(String callback) {
               onMatrixSaved();
             }
             String percentage = getFieldValue("Matrix/Matrix/Percentage");
-            if(percentage.charAt(percentage.length()-1) != '%') {
+            if(percentage.length() > 0 && percentage.charAt(percentage.length() - 1) != '%') {
                 percentage = percentage + "%";
                 setFieldValue("Matrix/Matrix/Percentage", percentage);
             }
