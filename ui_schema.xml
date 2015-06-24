@@ -1610,7 +1610,7 @@
             <select1 ref="listOfRelns" appearance="compact" faims_style_class="record-list">
               <label></label>
               <item>
-                <label>placeholder</label>
+                <label>{Err_Leave_Tab}</label>
                 <value>placeholder</value>
               </item>
             </select1>
