@@ -1804,7 +1804,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <input faims_attribute_name="Location Note CG" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note_CG">
           <label>{Location_Note}</label>
         </input>
-        <select1 faims_attribute_name="CG Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type">
+        <select1 faims_attribute_name="CG Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" faims_style_class="required">
           <label>{Context_Group} Type</label>
           <item>
             <label>placeholder</label>
