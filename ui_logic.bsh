@@ -245,7 +245,7 @@ validateContextGroupTabGroup(showWarning) {
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Area_Code"               , "{Trench}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID"        , "{Context_Group_ID}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Title"                   , "{Title}"));
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type"            , "{Context_Type}"));
+    f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type"            , "{Context_Group} Type"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_description"     , "{CG_Your_description}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/CG_Your_Interpretation"  , "{CG_Your_Interpretation}"));
     f.add(fieldPair("ContextGroup/Feature_Relationships_to_Other_Features/reln" , "Relationship"));
