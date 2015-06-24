@@ -117,8 +117,9 @@
     <validator type='querychecker'>
         <query><![CDATA[ select ? is not null or ? not in ('{Deposit}'), 'Deposit Inclusions must not be blank when Negative is selected';
                                ]]></query>
+
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select vocabname from latestnondeletedarchent left outer join latestnondeletedaentvalue using (uuid) join attributekey using (attributeid) join vocabulary using (vocabid) where uuid = ? and (valuetimestamp = ? or 1=1) and attributename='Context Type'" />
         
     </validator>  
 </property>
