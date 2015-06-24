@@ -2467,7 +2467,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <group faims_style="even" ref="child3">
             <label/>
             <input faims_attribute_name="Photograph Reference ID" faims_attribute_type="measure" faims_read_only="false" ref="Photograph_Reference_ID" faims_certainty="false">
-              <label>{Photograph_Log}</label>
+              <label>{Photograph_Log} ID</label>
             </input>
           </group>
         </group>
