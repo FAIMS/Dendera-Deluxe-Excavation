@@ -35,6 +35,7 @@ String WEB_REL_3 = "{useToRelate} {ContextGroups}. {selectReln} {ContextGroup} {
 String WEB_REL_4 = "{toLoadRemove} {ContextGroups}, {tapOne}";
 String WEB_REL_5 = "Use this tab to add a {Context} to the {ContextGroup}.";
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
+String WEB_WARN_ART_ID = "Beware that Artefact ID is not auto-generated. Ensure you fill it in correctly.";
 
 populateWebViewHtml("user/help/guide", WEB_GUIDE);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WEB_REL_1);
@@ -42,6 +43,7 @@ populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/spacer", WEB_REL_3);
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/help", WEB_REL_4);
 populateWebViewHtml("ContextGroup/ContextGroup_Contexts/spacer", WEB_REL_5);
+populateWebViewHtml("Special_Find/Special_Find_GeneralInformation/warn", WEB_WARN_ART_ID);
 
 makeLocalID(){
     fetchOne("CREATE TABLE IF NOT EXISTS localSettings (key text primary key, value text);", null);
