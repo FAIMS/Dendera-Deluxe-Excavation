@@ -775,7 +775,7 @@
       </group>
     </group>
     <group ref="user">
-      <label>{User} {List}</label>
+      <label></label>
       <group ref="usertab">
         <label>{User} {List}</label>
         <select1 ref="users" faims_style_class="required">
