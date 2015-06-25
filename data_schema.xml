@@ -83,7 +83,7 @@
     <!-- TODO: identifier format? -->
     <property name="AreaCode" type="enum" isIdentifier="true">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
-      <formatString><![CDATA[$1-]]></formatString>
+      <formatString><![CDATA[Trench $1 - ]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
       <lookup>
         <term>H
@@ -110,7 +110,7 @@
     </property>
     <property name="CreatedBy" type="freetext" isIdentifier="true" >
       <description></description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[$2 - ]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property name="Title" type="freetext" isIdentifier="true">
@@ -119,16 +119,16 @@
     <property name="Text" type="freetext">
       <description></description>
     </property>
-    <property name="Audio" type="file" thumbnail="true">
+    <property name="Audio" type="file" file="true" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file" thumbnail="true">
+    <property name="Video" type="file" file="true" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
-    <property name="Photo" type="file" thumbnail="true">
+    <property name="Photo" type="file" file="true" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="FileAttach" type="file" thumbnail="true">
+    <property name="FileAttach" type="file" file="true" thumbnail="true">
       <description></description>
     </property>
   </ArchaeologicalElement>
@@ -685,16 +685,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Your description" type="blocktext">
       <description>Enter a verbal description of the Context, including its form, contexts, relationship to other Contexts and any other relevant information. This is the main place to record all other descriptive information that may be treated briefly or not covered elsewhere, including signs of disturbance  by burrowing animals etc.</description>
     </property>
-    <property name="Sketch" type="file" thumbnail="true">
+    <property name="Sketch" type="file" file="true" thumbnail="true">
       <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
     </property>
-    <property name="Photo" type="file" thumbnail="true">
+    <property name="Photo" type="file" file="true" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file" thumbnail="true">
+    <property name="Audio" type="file" file="true" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file" thumbnail="true">
+    <property name="Video" type="file" file="true" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
     <property name="Structural Components" type="enum">
@@ -1034,16 +1034,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="CG Section Numbers" type="freetext">
       <description>Reference numbers to section drawings of this Context</description>
     </property>
-    <property name="Sketch" type="file" thumbnail="true">
+    <property name="Sketch" type="file" file="true" thumbnail="true">
       <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
     </property>
-    <property name="Photo" type="file" thumbnail="true">
+    <property name="Photo" type="file" file="true" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file" thumbnail="true">
+    <property name="Audio" type="file" file="true" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file" thumbnail="true">
+    <property name="Video" type="file" file="true" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
@@ -1338,16 +1338,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Structure Description" type="blocktext">
       <description>Other description about structural elements eg slate dry-proofing.</description>
     </property>
-    <property name="Sketch" type="file" thumbnail="true">
+    <property name="Sketch" type="file" file="true" thumbnail="true">
       <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
     </property>
-    <property name="Photo" type="file" thumbnail="true">
+    <property name="Photo" type="file" file="true" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file" thumbnail="true">
+    <property name="Audio" type="file" file="true" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file" thumbnail="true">
+    <property name="Video" type="file" file="true" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
@@ -1551,13 +1551,13 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Special Find Comment" type="freetext">
       <description/>
     </property>
-    <property name="Photo" type="file" thumbnail="true">
+    <property name="Photo" type="file" file="true" thumbnail="true">
       <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
     </property>
-    <property name="Audio" type="file" thumbnail="true">
+    <property name="Audio" type="file" file="true" thumbnail="true">
       <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
     </property>
-    <property name="Video" type="file" thumbnail="true">
+    <property name="Video" type="file" file="true" thumbnail="true">
       <description>Use this button to record a video using the tablet of this context/artefact etc</description>
     </property>
   </ArchaeologicalElement>
