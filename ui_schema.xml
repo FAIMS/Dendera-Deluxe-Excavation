@@ -927,34 +927,34 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Grid X" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Grid_X">
+            <input faims_attribute_name="Grid X" faims_attribute_type="measure" faims_read_only="false" ref="Grid_X">
               <label>{Grid_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Grid Y" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Grid_Y">
+            <input faims_attribute_name="Grid Y" faims_attribute_type="measure" faims_read_only="false" ref="Grid_Y">
               <label>{Grid_Y}</label>
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note" faims_style_class="required">
+        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_read_only="false" ref="Location_Note" faims_style_class="required">
           <label>{Location_Note}</label>
         </input>
         <group faims_style="orientation" ref="container3">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Date Opened" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Date_Opened">
+            <input faims_attribute_name="Date Opened" faims_attribute_type="measure" faims_read_only="false" ref="Date_Opened">
               <label>{Date_Opened}</label>
             </input>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Excavators" ref="Excavators">
+            <input faims_attribute_type="measure" faims_attribute_name="Excavators" ref="Excavators">
               <label>Excavators:</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <select faims_attribute_name="Excavation Method" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Excavation_Method" faims_style_class="required">
+            <select faims_attribute_name="Excavation Method" faims_attribute_type="vocab" faims_read_only="false" ref="Excavation_Method" faims_style_class="required">
               <label>{Excavation_Method}</label>
               <item>
                 <label>placeholder</label>
@@ -967,7 +967,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Horizon Boundary" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Horizon_Boundary">
+            <select1 faims_attribute_name="Horizon Boundary" faims_attribute_type="vocab" faims_read_only="false" ref="Horizon_Boundary">
               <label>{Horizon_Boundary}</label>
               <item>
                 <label>placeholder</label>
@@ -977,7 +977,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_attribute_name="Contamination" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Contamination">
+            <select1 faims_attribute_name="Contamination" faims_attribute_type="vocab" faims_read_only="false" ref="Contamination">
               <label>{Contamination}</label>
               <item>
                 <label>placeholder</label>
@@ -986,7 +986,7 @@
             </select1>
           </group>
         </group>
-        <select1 faims_attribute_name="Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" type="image" faims_style_class="required">
+        <select1 faims_attribute_name="Context Type" faims_attribute_type="vocab" faims_read_only="false" ref="Context_Type" type="image" faims_style_class="required">
           <label>{Context_Type}</label>
           <item>
             <label>placeholder</label>
@@ -1000,13 +1000,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans" faims_style_class="required">
+            <input faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans" faims_style_class="required">
               <label>{Plans}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers" faims_style_class="required">
+            <input faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers" faims_style_class="required">
               <label>{Section_Numbers}</label>
             </input>
           </group>
@@ -1015,7 +1015,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="Date Closed" ref="Date_Closed">
+            <input faims_attribute_type="measure" faims_attribute_name="Date Closed" ref="Date_Closed">
               <label>{Date_Closed}</label>
             </input>
           </group>
@@ -1030,13 +1030,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="CreatingUser">
+            <input faims_read_only="true" ref="CreatingUser">
               <label>Record Created By:</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="CreatingDate">
+            <input faims_read_only="true" ref="CreatingDate">
               <label>Record Created Date:</label>
             </input>
           </group>
@@ -1048,13 +1048,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Highest_Level" faims_style_class="required">
+            <input faims_attribute_name="Highest Level" faims_attribute_type="measure" faims_read_only="false" ref="Context_Highest_Level" faims_style_class="required">
               <label>{Context_Highest_Level}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Lowest_Level" faims_style_class="required">
+            <input faims_attribute_name="Lowest Level" faims_attribute_type="measure" faims_read_only="false" ref="Context_Lowest_Level" faims_style_class="required">
               <label>{Context_Lowest_Level}</label>
             </input>
           </group>
@@ -1063,24 +1063,24 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Length" faims_style_class="required">
+            <input faims_attribute_name="Length" faims_attribute_type="measure" faims_read_only="false" ref="Length" faims_style_class="required">
               <label>{Length}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Width" faims_style_class="required">
+            <input faims_attribute_name="Width" faims_attribute_type="measure" faims_read_only="false" ref="Width" faims_style_class="required">
               <label>{Width}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Depth" faims_style_class="required">
+            <input faims_attribute_name="Depth" faims_attribute_type="measure" faims_read_only="false" ref="Depth" faims_style_class="required">
               <label>{Depth}</label>
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Volume" faims_style_class="required">
+        <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_read_only="false" ref="Volume" faims_style_class="required">
           <label>{Volume}</label>
         </input>
         <trigger ref="Add_Height">
@@ -1096,7 +1096,7 @@
       </group>
       <group faims_hidden="true" ref="Context_Cuts">
         <label>{Cut}</label>
-        <select1 faims_attribute_name="Cut Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation" faims_style_class="required">
+        <select1 faims_attribute_name="Cut Your Interpretation" faims_attribute_type="vocab" faims_read_only="false" ref="Your_Interpretation" faims_style_class="required">
           <label>Your Interpretation</label>
           <item>
             <label>placeholder</label>
@@ -1107,7 +1107,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Shape of Cut" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Shape_of_Cut" faims_style_class="required">
+            <select1 faims_attribute_name="Shape of Cut" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Cut" faims_style_class="required">
               <label>{Shape_of_Cut}</label>
               <item>
                 <label>placeholder</label>
@@ -1117,19 +1117,19 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Shape of Cut - Note" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Shape_of_Cut_Note">
+            <input faims_attribute_name="Shape of Cut - Note" faims_attribute_type="measure" faims_read_only="false" ref="Shape_of_Cut_Note">
               <label>{Shape_of_Cut_-_Note}</label>
             </input>
           </group>
         </group>
-        <select1 appearance="full" faims_attribute_name="Shape of Corners" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Shape_of_Corners" faims_style_class="required">
+        <select1 appearance="full" faims_attribute_name="Shape of Corners" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Corners" faims_style_class="required">
           <label>{Shape_of_Corners}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 appearance="full" faims_attribute_name="Break of Slope - Top" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Break_of_Slope_Top" faims_style_class="required">
+        <select1 appearance="full" faims_attribute_name="Break of Slope - Top" faims_attribute_type="vocab" faims_read_only="false" ref="Break_of_Slope_Top" faims_style_class="required">
           <label>{Break_of_Slope_-_Top}</label>
           <item>
             <label>placeholder</label>
@@ -1140,7 +1140,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Sides of Cut" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Sides_of_Cut" faims_style_class="required">
+            <select1 faims_attribute_name="Sides of Cut" faims_attribute_type="vocab" faims_read_only="false" ref="Sides_of_Cut" faims_style_class="required">
               <label>{Sides_of_Cut}</label>
               <item>
                 <label>placeholder</label>
@@ -1150,7 +1150,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_attribute_name="Shape of Base" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Shape_of_Base" faims_style_class="required">
+            <select1 faims_attribute_name="Shape of Base" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Base" faims_style_class="required">
               <label>{Shape_of_Base}</label>
               <item>
                 <label>placeholder</label>
@@ -1159,17 +1159,17 @@
             </select1>
           </group>
         </group>
-        <input faims_attribute_name="Cut Function" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Cut_Function" faims_style_class="required">
+        <input faims_attribute_name="Cut Function" faims_attribute_type="measure" faims_read_only="false" ref="Cut_Function" faims_style_class="required">
           <label>{Cut_Function}</label>
         </input>
-        <select1 faims_attribute_name="Orientation" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Orientation" faims_style_class="required">
+        <select1 faims_attribute_name="Orientation" faims_attribute_type="vocab" faims_read_only="false" ref="Orientation" faims_style_class="required">
           <label>{Orientation}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Inclination of axis" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Inclination_of_axis" faims_style_class="required">
+        <select1 faims_attribute_name="Inclination of axis" faims_attribute_type="vocab" faims_read_only="false" ref="Inclination_of_axis" faims_style_class="required">
           <label>{Inclination_of_axis}</label>
           <item>
             <label>placeholder</label>
@@ -1179,53 +1179,53 @@
       </group>
       <group faims_hidden="true" ref="Context_Structures">
         <label>{Structures}</label>
-        <select1 faims_attribute_name="Structure Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation" faims_style_class="required">
+        <select1 faims_attribute_name="Structure Your Interpretation" faims_attribute_type="vocab" faims_read_only="false" ref="Your_Interpretation" faims_style_class="required">
           <label>Your Interpretation</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Structural Components" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Structural_Components">
+        <select1 faims_attribute_name="Structural Components" faims_attribute_type="vocab" faims_read_only="false" ref="Structural_Components">
           <label>{Structural_Components}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="Component Finish" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Component_Finish">
+        <input faims_attribute_name="Component Finish" faims_attribute_type="measure" faims_read_only="false" ref="Component_Finish">
           <label>{Component_Finish}</label>
         </input>
-        <select1 faims_attribute_name="Bonding" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Bonding">
+        <select1 faims_attribute_name="Bonding" faims_attribute_type="vocab" faims_read_only="false" ref="Bonding">
           <label>{Bonding}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="Bonding Details" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Bonding_Details">
+        <input faims_attribute_name="Bonding Details" faims_attribute_type="measure" faims_read_only="false" ref="Bonding_Details">
           <label>{BondingPacking_Details}</label>
         </input>
-        <input faims_attribute_name="Distinguishing Marks" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Distinguishing_Marks">
+        <input faims_attribute_name="Distinguishing Marks" faims_attribute_type="measure" faims_read_only="false" ref="Distinguishing_Marks">
           <label>{Distinguishing_Marks}</label>
         </input>
-        <input faims_attribute_name="Structure Description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Structure_Description" faims_style_class="required">
+        <input faims_attribute_name="Structure Description" faims_attribute_type="measure" faims_read_only="false" ref="Structure_Description" faims_style_class="required">
           <label>{Structure_Description}</label>
         </input>
-        <input faims_attribute_name="Number Courses" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_read_only="false" ref="Number_Courses">
+        <input faims_attribute_name="Number Courses" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" ref="Number_Courses">
           <label>{Number_Courses}</label>
         </input>
-        <input faims_attribute_name="Set In Cut" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_read_only="false" ref="Set_In_Cut">
+        <input faims_attribute_name="Set In Cut" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" ref="Set_In_Cut">
           <label>{Set_Cut}</label>
         </input>
-        <select1 faims_attribute_name="Structure Shape" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Structure_Shape">
+        <select1 faims_attribute_name="Structure Shape" faims_attribute_type="vocab" faims_read_only="false" ref="Structure_Shape">
           <label>{Structure_Shape}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Mudbrick Shape" faims_attribute_type="vocab" faims_annotation="true" faims_certainty="true" faims_read_only="false" ref="Mudbrick_Shape">
+        <select1 faims_attribute_name="Mudbrick Shape" faims_attribute_type="vocab" faims_annotation="true" faims_read_only="false" ref="Mudbrick_Shape">
           <label>{Mudbrick_Shape}</label>
           <item>
             <label>placeholder</label>
@@ -1238,24 +1238,24 @@
       </group>
       <group faims_hidden="true" ref="Context_Deposits">
         <label>Dep</label>
-        <select1 faims_attribute_name="Deposit Your Interpretation" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Your_Interpretation" faims_style_class="required">
+        <select1 faims_attribute_name="Deposit Your Interpretation" faims_attribute_type="vocab" faims_read_only="false" ref="Your_Interpretation" faims_style_class="required">
           <label>Your Interpretation</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Soil Compaction Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Compaction_Type" faims_style_class="required">
+        <select1 faims_attribute_name="Soil Compaction Type" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Compaction_Type" faims_style_class="required">
           <label>{Soil_Compaction_Type}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="Soil Compaction Description" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Soil_Compaction_Description">
+        <input faims_attribute_name="Soil Compaction Description" faims_attribute_type="measure" faims_read_only="false" ref="Soil_Compaction_Description">
           <label>{Soil_Compaction_Description}</label>
         </input>
-        <select1 faims_attribute_name="Soil Particle Sorting" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Particle_Sorting" type="image">
+        <select1 faims_attribute_name="Soil Particle Sorting" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Particle_Sorting" type="image">
           <label>{Soil_Particle_Sorting}</label>
           <item>
             <label>placeholder</label>
@@ -1266,7 +1266,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Soil Texture" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Soil_Texture" faims_style_class="required">
+            <select1 faims_attribute_name="Soil Texture" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Texture" faims_style_class="required">
               <label>{Soil_Texture}</label>
               <item>
                 <label>placeholder</label>
@@ -1281,14 +1281,14 @@
             </trigger>
           </group>
         </group>
-        <input faims_attribute_name="Soil Colour" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Soil_Colour">
+        <input faims_attribute_name="Soil Colour" faims_attribute_type="measure" faims_read_only="false" ref="Soil_Colour">
           <label>{Soil_Colour}</label>
         </input>
         <group faims_style="orientation" ref="container2">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Composition Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Composition_Type" faims_style_class="required">
+            <select1 faims_attribute_name="Composition Type" faims_attribute_type="vocab" faims_read_only="false" ref="Composition_Type" faims_style_class="required">
               <label>{Composition_Type}</label>
               <item>
                 <label>placeholder</label>
@@ -1298,7 +1298,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_attribute_name="Deposit Bedding" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Deposit_Bedding" faims_style_class="required">
+            <select1 faims_attribute_name="Deposit Bedding" faims_attribute_type="vocab" faims_read_only="false" ref="Deposit_Bedding" faims_style_class="required">
               <label>{Deposit_Bedding}</label>
               <item>
                 <label>placeholder</label>
@@ -1311,7 +1311,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Sterile" faims_attribute_type="vocab" appearance="full" faims_certainty="true" faims_read_only="false" ref="Sterile">
+            <select1 faims_attribute_name="Sterile" faims_attribute_type="vocab" appearance="full" faims_read_only="false" ref="Sterile">
               <label>{Sterile}</label>
               <item>
                 <label>placeholder</label>
@@ -1321,7 +1321,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Deposit_Inclusions" faims_style_class="required">
+            <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="measure" faims_read_only="false" ref="Deposit_Inclusions" faims_style_class="required">
               <label>{Deposit_Inclusions}</label>
             </input>
           </group>
@@ -1352,13 +1352,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Space" faims_attribute_name="Space" faims_attribute_type="measure" faims_certainty="true" faims_annotation="false" faims_read_only="false">
+            <input ref="Space" faims_attribute_name="Space" faims_attribute_type="measure" faims_read_only="false">
               <label>{Space}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Building" faims_attribute_name="Building" faims_attribute_type="measure" faims_certainty="true" faims_annotation="false" faims_read_only="false">
+            <input ref="Building" faims_attribute_name="Building" faims_attribute_type="measure" faims_read_only="false">
               <label>{Building}</label>
             </input>
           </group>
@@ -1367,31 +1367,31 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Mid_X" faims_attribute_name="Mid_X" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Mid_X" faims_attribute_name="Mid_X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Mid_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Mid_Y" faims_attribute_name="Mid_Y" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Mid_Y" faims_attribute_name="Mid_Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Mid_Y}</label>
             </input>
           </group>
         </group>
-        <input ref="Skeleton_Dimensions" faims_attribute_name="Skeleton Dimensions" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+        <input ref="Skeleton_Dimensions" faims_attribute_name="Skeleton Dimensions" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
           <label>{Skeleton_Dimensions}</label>
         </input>
         <group faims_style="orientation" ref="container2">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Skeleton_Head" faims_attribute_name="Skeleton Head" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Head" faims_attribute_name="Skeleton Head" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Skeleton_Head}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Skeleton_Body" faims_attribute_name="Skeleton Body" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Body" faims_attribute_name="Skeleton Body" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Skeleton_Body}</label>
             </input>
           </group>
@@ -1400,13 +1400,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Skeleton_Left_Arm" faims_attribute_name="Skeleton Left Arm" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Left_Arm" faims_attribute_name="Skeleton Left Arm" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Skeleton_Left_Arm}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Skeleton_Right_Arm" faims_attribute_name="Skeleton Right Arm" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Right_Arm" faims_attribute_name="Skeleton Right Arm" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Skeleton_Right_Arm}</label>
             </input>
           </group>
@@ -1415,40 +1415,40 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Skeleton_Left_Leg" faims_attribute_name="Skeleton Left Leg" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Left_Leg" faims_attribute_name="Skeleton Left Leg" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Skeleton_Left_Leg}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Skeleton_Right_Leg" faims_attribute_name="Skeleton Right Leg" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Right_Leg" faims_attribute_name="Skeleton Right Leg" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Skeleton_Right_Leg}</label>
             </input>
           </group>
         </group>
-        <input ref="Skeleton_Condition" faims_attribute_name="Skeleton Condition" faims_attribute_type="measure" faims_certainty="true" faims_annotation="false" faims_read_only="false" faims_style_class="required">
+        <input ref="Skeleton_Condition" faims_attribute_name="Skeleton Condition" faims_attribute_type="measure" faims_read_only="false" faims_style_class="required">
           <label>{Skeleton_Condition}</label>
         </input>
-        <input ref="Skeleton_Surface_Modifications" faims_attribute_name="Skeleton Surface Modifications" faims_attribute_type="measure" faims_certainty="true" faims_annotation="false" faims_read_only="false">
+        <input ref="Skeleton_Surface_Modifications" faims_attribute_name="Skeleton Surface Modifications" faims_attribute_type="measure" faims_read_only="false">
           <label>{Skeleton_Surface_Modifications}</label>
         </input>
-        <input ref="Skeleton_Environment" faims_attribute_name="Skeleton Environment" faims_attribute_type="measure" faims_certainty="false" faims_annotation="true" faims_read_only="false">
+        <input ref="Skeleton_Environment" faims_attribute_name="Skeleton Environment" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
           <label>{Skeleton_Environment}</label>
         </input>
-        <input ref="Skeleton_Days_Exposed" faims_attribute_name="Skeleton Days Exposed" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+        <input ref="Skeleton_Days_Exposed" faims_attribute_name="Skeleton Days Exposed" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
           <label>{Skeleton_Days_Exposed}</label>
         </input>
         <group faims_style="orientation" ref="container5">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Target_A_X" faims_attribute_name="Target A X" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Target_A_X" faims_attribute_name="Target A X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Target_A_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Target_A_Y" faims_attribute_name="Target A Y" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Target_A_Y" faims_attribute_name="Target A Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
               <label>{Target_A_Y}</label>
             </input>
           </group>
@@ -1457,13 +1457,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Target_B_X" faims_attribute_name="Target B X" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Target_B_X" faims_attribute_name="Target B X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_B_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Target_B_Y" faims_attribute_name="Target B Y" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Target_B_Y" faims_attribute_name="Target B Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_B_Y}</label>
             </input>
           </group>
@@ -1472,13 +1472,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Target_C_X" faims_attribute_name="Target C X" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Target_C_X" faims_attribute_name="Target C X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_C_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Target_C_Y" faims_attribute_name="Target C Y" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Target_C_Y" faims_attribute_name="Target C Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_C_Y}</label>
             </input>
           </group>
@@ -1487,27 +1487,27 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Target_D_X" faims_attribute_name="Target D X" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Target_D_X" faims_attribute_name="Target D X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_D_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Target_D_Y" faims_attribute_name="Target D Y" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false">
+            <input ref="Target_D_Y" faims_attribute_name="Target D Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_D_Y}</label>
             </input>
           </group>
         </group>
-        <input ref="Skeleton_Notes" faims_attribute_name="Skeleton Notes" faims_attribute_type="measure" faims_certainty="true" faims_annotation="false" faims_read_only="false">
+        <input ref="Skeleton_Notes" faims_attribute_name="Skeleton Notes" faims_attribute_type="measure" faims_read_only="false">
           <label>{Skeleton_Notes}</label>
         </input>
       </group>
       <group ref="Context_Interpretation">
         <label>Int</label>
-        <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_description" faims_style_class="required">
+        <input faims_attribute_name="Your description" faims_attribute_type="measure" faims_read_only="false" ref="Your_description" faims_style_class="required">
           <label>{Your_description}</label>
         </input>
-        <input faims_attribute_name="Your Discussion" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Your_Discussion" faims_style_class="required">
+        <input faims_attribute_name="Your Discussion" faims_attribute_type="measure" faims_read_only="false" ref="Your_Discussion" faims_style_class="required">
           <label>{Your_Discussion}</label>
         </input>
       </group>
@@ -1516,7 +1516,7 @@
         <trigger ref="AddContextGroup">
           <label>{Add_New_Context_Group}</label>
         </trigger>
-        <select1 faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="ContextGroupList">
+        <select1 faims_attribute_type="vocab" faims_read_only="false" ref="ContextGroupList">
           <label>{List_of_Related_Context_Groups}</label>
           <item>
             <label>{placeholder}</label>
@@ -1652,7 +1652,7 @@
       </group>
       <group ref="Context_Attachments">
         <label>ADD</label>
-        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -1662,7 +1662,7 @@
         <trigger ref="attachSketch">
           <label>{Attach_Sketch}</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_sync="true" ref="Photo" type="camera">
           <label>{Attached_Photos}</label>
           <item>
             <label>placeholder</label>
@@ -1672,7 +1672,7 @@
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -1682,7 +1682,7 @@
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -1707,7 +1707,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="newPhotoLog">
           <label>Add {Photograph_Log}</label>
         </trigger>
-        <select1 faims_certainty="false" faims_read_only="false" ref="PhotoLogList">
+        <select1 faims_certainty="false" faims_annotation="false" faims_read_only="false" ref="PhotoLogList">
           <label>Select a {Photograph_Log}:</label>
           <item>
             <label>placeholder</label>
@@ -1775,31 +1775,31 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_name="Building" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Building">
+            <input faims_attribute_name="Building" faims_attribute_type="measure" faims_read_only="false" ref="Building">
               <label>{Building}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Space" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Space">
+            <input faims_attribute_name="Space" faims_attribute_type="measure" faims_read_only="false" ref="Space">
               <label>{Space}</label>
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Location Note CG" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Location_Note_CG">
+        <input faims_attribute_name="Location Note CG" faims_attribute_type="measure" faims_read_only="false" ref="Location_Note_CG">
           <label>{Location_Note}</label>
         </input>
-        <select1 faims_attribute_name="CG Context Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Context_Type" faims_style_class="required">
+        <select1 faims_attribute_name="CG Context Type" faims_attribute_type="vocab" faims_read_only="false" ref="Context_Type" faims_style_class="required">
           <label>{Context_Group} Type</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="CG Your description" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_description" faims_style_class="required">
+        <input faims_attribute_name="CG Your description" faims_attribute_type="measure" faims_read_only="false" ref="CG_Your_description" faims_style_class="required">
           <label>{Your_description}</label>
         </input>
-        <input faims_attribute_name="CG Your Interpretation" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="CG_Your_Interpretation" faims_style_class="required">
+        <input faims_attribute_name="CG Your Interpretation" faims_attribute_type="measure" faims_read_only="false" ref="CG_Your_Interpretation" faims_style_class="required">
           <label>Your Interpretation</label>
         </input>
         <input ref="Your_Discussion" faims_attribute_type="measure" faims_attribute_name="Your Discussion">
@@ -1841,20 +1841,20 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <input appearance="full" faims_attribute_name="CG Phase Notes" faims_attribute_type="measure" faims_certainty="true" faims_read_only="false" ref="Phase_Notes">
+        <input appearance="full" faims_attribute_name="CG Phase Notes" faims_attribute_type="measure" faims_read_only="false" ref="Phase_Notes">
           <label>Phase Notes</label>
         </input>
         <group faims_style="orientation" ref="container5">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="CG Plans" ref="Plans">
+            <input faims_attribute_type="measure" faims_attribute_name="CG Plans" ref="Plans">
               <label>{Plans}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_certainty="false" faims_attribute_type="measure" faims_attribute_name="CG Section Numbers" ref="Section_Numbers">
+            <input faims_attribute_type="measure" faims_attribute_name="CG Section Numbers" ref="Section_Numbers">
               <label>{Section_Numbers}</label>
             </input>
           </group>
@@ -1863,13 +1863,13 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="CreatingUser">
+            <input faims_read_only="true" ref="CreatingUser">
               <label>Record Created By:</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_certainty="false" faims_read_only="true" ref="DateRecorded">
+            <input faims_read_only="true" ref="DateRecorded">
               <label>Date recorded:</label>
             </input>
           </group>
@@ -2040,7 +2040,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       </group>
       <group ref="ContextGroup_Attachments">
         <label>ADD</label>
-        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -2053,7 +2053,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="viewattached">
           <label>{View_Attached_Sketches}</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_sync="true" ref="Photo" type="camera">
           <label>{Photo}</label>
           <item>
             <label>placeholder</label>
@@ -2063,7 +2063,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2073,7 +2073,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2095,7 +2095,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="newPhotoLog">
           <label>Add {Photograph_Log}</label>
         </trigger>
-        <select1 faims_certainty="false" faims_read_only="false" ref="PhotoLogList">
+        <select1 faims_certainty="false" faims_annotation="false" faims_read_only="false" ref="PhotoLogList">
           <label>Select a {Photograph_Log}:</label>
           <item>
             <label>placeholder</label>
@@ -2137,7 +2137,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
           <group faims_style="even" ref="child4">
             <label/>
-            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Type" faims_style_class="required">
+            <select1 faims_attribute_name="Sample Type" faims_attribute_type="vocab" faims_read_only="false" ref="Sample_Type" faims_style_class="required">
               <label>{Sample_Type}</label>
               <item>
                 <label>placeholder</label>
@@ -2146,7 +2146,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </select1>
           </group>
         </group>
-        <input faims_attribute_name="Sample Volume" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" ref="Sample_Volume">
+        <input faims_attribute_name="Sample Volume" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" ref="Sample_Volume">
           <label>{Sample_Volume}</label>
         </input>
         <group faims_style="orientation" ref="container2">
@@ -2174,7 +2174,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Sample Location" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Sample_Location">
+            <select1 faims_attribute_name="Sample Location" faims_attribute_type="vocab" faims_read_only="false" ref="Sample_Location">
               <label>{Sample_Location}</label>
               <item>
                 <label>placeholder</label>
@@ -2184,7 +2184,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Sample Comments" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Sample_Comments">
+            <input faims_attribute_name="Sample Comments" faims_attribute_type="measure" faims_read_only="false" ref="Sample_Comments">
               <label>{Sample_Comments}</label>
             </input>
           </group>
@@ -2192,7 +2192,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       </group>
       <group ref="Sample_Attachments">
         <label>ADD</label>
-        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="Sketch" faims_attribute_type="measure" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -2202,7 +2202,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachSketch">
           <label>Attach Sketch</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_sync="true" ref="Photo" type="camera">
           <label>{Photo}</label>
           <item>
             <label>placeholder</label>
@@ -2212,7 +2212,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2222,7 +2222,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2267,7 +2267,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <select1 faims_attribute_name="Shape" faims_attribute_type="vocab" faims_certainty="true" faims_read_only="false" ref="Shape" type="image">
+        <select1 faims_attribute_name="Shape" faims_attribute_type="vocab" faims_read_only="false" ref="Shape" type="image">
           <label>{Soil_Stone_Shape}</label>
           <item>
             <label>placeholder</label>
@@ -2281,19 +2281,19 @@ Here you can enter filenames or unique reference numbers for image stored on ano
       <label>{Height}</label>
       <group ref="Height">
         <label>{Height}</label>
-        <input faims_certainty="true" faims_read_only="false" ref="Number" faims_attribute_name="Number" faims_attribute_type="measure" faims_style_class="required">
+        <input faims_read_only="false" ref="Number" faims_attribute_name="Number" faims_attribute_type="measure" faims_style_class="required">
           <label>Number</label>
         </input>
-        <input faims_certainty="true" faims_read_only="false" ref="X" faims_attribute_name="X" faims_attribute_type="measure" faims_style_class="required">
+        <input faims_read_only="false" ref="X" faims_attribute_name="X" faims_attribute_type="measure" faims_style_class="required">
           <label>X</label>
         </input>
-        <input faims_certainty="true" faims_read_only="false" ref="Y" faims_attribute_name="Y" faims_attribute_type="measure" faims_style_class="required">
+        <input faims_read_only="false" ref="Y" faims_attribute_name="Y" faims_attribute_type="measure" faims_style_class="required">
           <label>Y</label>
         </input>
-        <input faims_certainty="true" faims_read_only="false" ref="Z" faims_attribute_name="Z" faims_attribute_type="measure" faims_style_class="required">
+        <input faims_read_only="false" ref="Z" faims_attribute_name="Z" faims_attribute_type="measure" faims_style_class="required">
           <label>Z</label>
         </input>
-        <input faims_certainty="true" faims_read_only="false" ref="Notes" faims_attribute_name="Notes" faims_attribute_type="measure" faims_style_class="required">
+        <input faims_read_only="false" ref="Notes" faims_attribute_name="Notes" faims_attribute_type="measure" faims_style_class="required">
           <label>Notes</label>
         </input>
       </group>
@@ -2334,14 +2334,14 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </select1>
           </group>
         </group>
-        <select1 faims_attribute_name="Source" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Source">
+        <select1 faims_attribute_name="Source" faims_attribute_type="vocab" faims_read_only="false" ref="Source">
           <label>{Source}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Groundstone" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Groundstone">
+        <select1 faims_attribute_name="Groundstone" faims_attribute_type="vocab" faims_read_only="false" ref="Groundstone">
           <label>{Groundstone}</label>
           <item>
             <label>placeholder</label>
@@ -2375,10 +2375,10 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Special Find Comment" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Special_Find_Comment">
+        <input faims_attribute_name="Special Find Comment" faims_attribute_type="measure" faims_read_only="false" ref="Special_Find_Comment">
           <label>{Special_Find} Comment</label>
         </input>
-        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_sync="true" ref="Photo" type="camera">
           <label>{Photo}</label>
           <item>
             <label>placeholder</label>
@@ -2388,7 +2388,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2398,7 +2398,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
@@ -2445,7 +2445,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <select1 faims_attribute_name="Scene Type" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Scene_Type">
+        <select1 faims_attribute_name="Scene Type" faims_attribute_type="vocab" faims_read_only="false" ref="Scene_Type">
           <label>Scene Type</label>
           <item>
             <label>placeholder</label>
@@ -2484,10 +2484,10 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <value>placeholder</value>
           </item>
         </select1>
-        <input faims_attribute_name="Text" faims_attribute_type="measure" faims_read_only="false" ref="Text" faims_certainty="false">
+        <input faims_attribute_name="Text" faims_attribute_type="measure" faims_read_only="false" ref="Text">
           <label>{Text}</label>
         </input>
-        <select faims_annotation="true" faims_attribute_name="FileAttach" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Sketch" type="file">
+        <select faims_annotation="true" faims_attribute_name="FileAttach" faims_attribute_type="measure" faims_sync="true" ref="Sketch" type="file">
           <label>{Sketch}</label>
           <item>
             <label>placeholder</label>
@@ -2497,7 +2497,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachSketch">
           <label>{Attach_Sketch}</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Photo" type="camera">
+        <select faims_annotation="true" faims_attribute_name="Photo" faims_attribute_type="measure" faims_sync="true" ref="Photo" type="camera">
           <label>{Attached_Photos}</label>
           <item>
             <label>placeholder</label>
@@ -2507,7 +2507,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachPhoto">
           <label>Take Picture</label>
         </trigger>
-        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_certainty="true" faims_sync="true" ref="Audio" type="file">
+        <select faims_annotation="true" faims_attribute_name="Audio" faims_attribute_type="measure" faims_sync="true" ref="Audio" type="file">
           <label>{Attached_Audio_Files}</label>
           <item>
             <label>placeholder</label>
@@ -2517,7 +2517,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <trigger ref="attachAudio">
           <label>{Record_Audio}</label>
         </trigger>
-        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_certainty="true" faims_sync="true" ref="Video" type="video">
+        <select faims_attribute_name="Video" faims_attribute_type="measure" faims_annotation="true" faims_sync="true" ref="Video" type="video">
           <label>{Attached_Videos}</label>
           <item>
             <label>placeholder</label>
