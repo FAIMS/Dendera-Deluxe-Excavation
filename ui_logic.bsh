@@ -1684,11 +1684,7 @@ saveMatrix(String callback) {
             if (newRecord) {
               onMatrixSaved();
             }
-            String percentage = getFieldValue("Matrix/Matrix/Percentage");
-            if(percentage.length() > 0 && percentage.charAt(percentage.length() - 1) != '%') {
-                percentage = percentage + "%";
-                setFieldValue("Matrix/Matrix/Percentage", percentage);
-            }
+            
             execute(callback);
         }
         onError(message) {
@@ -2405,7 +2401,7 @@ duplicateMatrix() {
     onFetch(result) {
       excludeAttributes = new ArrayList();
       //excludeAttributes.add("AreaCode");
-      duplicateTabGroup("Matrix", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+      duplicateTabGroup("Matrix", null, getExtraAttributes(result), null, saveCallback);
     }
   });
 }

@@ -1053,7 +1053,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <!-- TODO: identifier format? -->
     <property isIdentifier="true" name="Percentage" type="float">
       <description>Enter the approximate % volume of this material in the Context.</description>
-      <formatString><![CDATA[$2]]></formatString>
+      <formatString><![CDATA[$2% ]]></formatString>
     </property>
     <property isIdentifier="true" name="Component" type="enum">
       <description>Describe the components which make up 10% or more of the deposit.</description>
