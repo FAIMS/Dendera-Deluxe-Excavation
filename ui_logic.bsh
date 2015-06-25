@@ -2828,7 +2828,7 @@ setTimestamp(String path) {
 }
 
 setMonthDay(String path) {
-    setFieldValue(path, new java.text.SimpleDateFormat("Mon-dd").format(new Date()));
+    setFieldValue(path, new java.text.SimpleDateFormat("MMM-dd").format(new Date()));
 }
 
 /** MODULE INITIALISATION **/
