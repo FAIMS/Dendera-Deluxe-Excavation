@@ -2281,7 +2281,7 @@ duplicateContextGroup() {
 duplicateDiary() {
     String oldDiary_ID = diary_id;
     disableAutoSave("Diary");
-    setTimestamp("Diary/Diary/Timestamp");
+    setMonthDay("Diary/Diary/Timestamp");
     setFieldValue("Diary/Diary/CreatedBy", username);
     populateFileList("Diary/Diary/Sketch", new ArrayList());
     populateCameraPictureGallery("Diary/Diary/Photo", new ArrayList());
