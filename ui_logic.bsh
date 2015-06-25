@@ -563,7 +563,7 @@ String diary_id = null;
 newDiary() {
     diary_id = null;
     newTabGroup("Diary");
-    setTimestamp("Diary/Diary/Timestamp");
+    setMonthDay("Diary/Diary/Timestamp");
     setFieldValue("Diary/Diary/CreatedBy", username);
     setFieldValue("Diary/Diary/Area_Code", getFieldValue("user/usertab/Area_Code"));
     keepTabGroupChanges("Diary");
@@ -2825,6 +2825,10 @@ saveEntitiesToHierRel(String type, String entity1, String entity2, String e1verb
 
 setTimestamp(String path) {
     setFieldValue(path, new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss z").format(new Date()));
+}
+
+setMonthDay(String path) {
+    setFieldValue(path, new java.text.SimpleDateFormat("Mon-dd").format(new Date()));
 }
 
 /** MODULE INITIALISATION **/
