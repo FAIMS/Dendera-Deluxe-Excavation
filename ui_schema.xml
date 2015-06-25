@@ -814,7 +814,7 @@
       </group>
     </group>
     <group ref="control">
-      <label/>
+      <label>{Home}</label>
       <group faims_scrollable="true" ref="data">
         <label>{Contexts}</label>
         <trigger ref="newContext">
