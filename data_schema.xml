@@ -81,20 +81,10 @@
   <ArchaeologicalElement name="Diary">
     <description></description>
     <!-- TODO: identifier format? -->
-    <property name="Timestamp" type="freetext" isIdentifier="true">
-      <description></description>
-      <formatString><![CDATA[$2 by:]]></formatString>
-    </property>
-    <property name="CreatedBy" type="freetext" isIdentifier="true" >
-      <description></description>
-      <formatString><![CDATA[$2]]></formatString>
-    </property>
-    <property name="Title" type="freetext">
-      <description></description>
-    </property>
-    <property name="AreaCode" type="enum">
+    <property name="AreaCode" type="enum" isIdentifier="true">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
-      <formatString><![CDATA[$1]]></formatString>
+      <formatString><![CDATA[$1-]]></formatString>
+      <appendCharacterString><![CDATA[-]]></appendCharacterString>
       <lookup>
         <term>H
         <description/></term>
@@ -113,6 +103,18 @@
         <term>X
         <description/></term>
       </lookup>
+    </property>
+    <property name="Timestamp" type="freetext" isIdentifier="true">
+      <description></description>
+      <formatString><![CDATA[$2 by: ]]></formatString>
+    </property>
+    <property name="CreatedBy" type="freetext" isIdentifier="true" >
+      <description></description>
+      <formatString><![CDATA[$2-]]></formatString>
+      <appendCharacterString><![CDATA[-]]></appendCharacterString>
+    </property>
+    <property name="Title" type="freetext" isIdentifier="true">
+      <description></description>
     </property>
     <property name="Text" type="freetext">
       <description></description>
