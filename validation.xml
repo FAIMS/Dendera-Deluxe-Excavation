@@ -68,7 +68,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Your Interepretation must not be blank when deposit is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>
 </property>
@@ -81,7 +81,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Texture must not be blank when deposit is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>
 </property>
@@ -91,7 +91,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Material must not be blank when deposit is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>    
 </property>
@@ -100,7 +100,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Structure must not be blank when deposit is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -109,17 +109,17 @@
         <query><![CDATA[ select ? is not null or ? != '{Deposit}' , 'Deposit Bedding must not be blank when deposit is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
 <property name='Deposit Inclusions'>
     <validator type='querychecker'>
-        <query><![CDATA[ select ? is not null or ? not in ('{Deposit}'), 'Deposit Inclusions must not be blank when Negative is selected';
+        <query><![CDATA[ select ? is not null or ? != '{Deposit}', 'Deposit Inclusions must not be blank when Negative is selected';
                                ]]></query>
 
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from latestnondeletedarchent left outer join latestnondeletedaentvalue using (uuid) join attributekey using (attributeid) join vocabulary using (vocabid) where uuid = ? and (valuetimestamp = ? or 1=1) and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type'; " />
         
     </validator>  
 </property>
@@ -128,7 +128,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Cut Your Interpretation must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -137,7 +137,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Shape of Cut must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -146,7 +146,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Shape of Cut - Note must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -155,7 +155,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Shape of Corners must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -164,7 +164,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Break of Slope - Top must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -173,7 +173,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Break of Slope - Base must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -182,7 +182,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Sides of Cut must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -191,7 +191,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Shape of Base must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -200,7 +200,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Cut Function must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -209,7 +209,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Orientation must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -218,7 +218,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Cut}', 'Inclination of axis must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -230,7 +230,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Head must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -241,7 +241,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Body must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -251,7 +251,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Left Arm must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -261,7 +261,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Right Arm must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -271,7 +271,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Left Leg must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -281,7 +281,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Right Leg must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -291,7 +291,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Condition must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -301,7 +301,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Skeleton Days Exposed must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -311,7 +311,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Target A X must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -321,7 +321,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Skeleton}', 'Target A Y must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -333,7 +333,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Structure}', 'Structure Your Interpretation must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="vocab" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>
@@ -343,7 +343,7 @@
         <query><![CDATA[ select ? is not null or ? != '{Structure}', 'Structure Description must not be blank when Negative is selected';
                                ]]></query>
         <param type='field' value="measure" />
-        <param type='query' value="select vocabname from aentvalue join attributekey using (attributeid) left outer join vocabulary using (vocabid) where uuid = ? and valuetimestamp = ? and attributename='Context Type'" />
+        <param type='query' value="select coalesce(vocabname, 'None') from latestnondeletedarchent join idealaent using (aenttypeid) join attributekey using (attributeid) left outer join latestnondeletedaentvalue using (uuid, attributeid)   left outer join vocabulary using (vocabid) where uuid = ? and (aenttimestamp = ? or 1=1) and attributename='Context Type';" />
         
     </validator>  
 </property>

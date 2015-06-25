@@ -83,7 +83,7 @@
     <!-- TODO: identifier format? -->
     <property name="AreaCode" type="enum" isIdentifier="true">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
-      <formatString><![CDATA[Trench $1 - ]]></formatString>
+      <formatString><![CDATA[$1-]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
       <lookup>
         <term>H
@@ -106,7 +106,7 @@
     </property>
     <property name="Timestamp" type="freetext" isIdentifier="true">
       <description></description>
-      <formatString><![CDATA[$2 by: ]]></formatString>
+      <formatString><![CDATA[ $2 by: ]]></formatString>
     </property>
     <property name="CreatedBy" type="freetext" isIdentifier="true" >
       <description></description>
@@ -1143,14 +1143,20 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description/>
       <formatString><![CDATA[$2]]></formatString>
     </property>
-    <property name="X" type="freetext">
+    <property isIdentifier="true" name="X" type="freetext">
       <description/>
+      <formatString><![CDATA[ $2,]]></formatString>
+
     </property>
-    <property name="Y" type="freetext">
+    <property isIdentifier="true" name="Y" type="freetext">
       <description/>
+      <formatString><![CDATA[ $2,]]></formatString>
+
     </property>
-    <property name="Z" type="freetext">
+    <property isIdentifier="true" name="Z" type="freetext">
       <description/>
+      <formatString><![CDATA[ $2]]></formatString>
+
     </property>
     <property name="Notes" type="freetext">
       <description/>

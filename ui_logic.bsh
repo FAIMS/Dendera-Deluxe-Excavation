@@ -1677,7 +1677,7 @@ saveMatrix(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
     attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    attributes.add(createEntityAttribute("Context ID", null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null, null));
+    attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
     saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             matrix_id = uuid;
@@ -2165,10 +2165,10 @@ duplicateRecord(String tabgroup) {
 }
 
 // generic fetch saved attributes query
-getDuplicateAttributeQuery(String originalRecordID) {
+getDuplicateAttributeQuery(String originalRecordID, String attributesToDupe) {
   String duplicateQuery = "SELECT attributename, freetext, vocabid, measure, certainty " +
     " FROM latestnondeletedaentvalue JOIN attributekey USING (attributeid) " +
-    " WHERE attributename IN ('AreaCode', 'Site Code') " + 
+    " WHERE attributename IN ("+attributesToDupe+") " + 
     " AND uuid = '"+originalRecordID+"'; ";
   return duplicateQuery;
 }
@@ -2230,12 +2230,17 @@ duplicateContext() {
     }
   };
 
-  excludeAttributes = new ArrayList();
-  excludeAttributes.add("Photo");
-  excludeAttributes.add("Sketch");
-  excludeAttributes.add("Audio");
-  excludeAttributes.add("Video");
-  duplicateTabGroup("Context", null, extraAttributes, excludeAttributes, saveCallback);
+  
+  fetchAll(getDuplicateAttributeQuery(context_id, "'Site Code', 'Device Code'"), new FetchCallback(){
+    onFetch(result) { 
+        excludeAttributes = new ArrayList();
+        excludeAttributes.add("Photo");
+        excludeAttributes.add("Sketch");
+        excludeAttributes.add("Audio");
+        excludeAttributes.add("Video"); 
+        duplicateTabGroup("Context", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+        }
+  });
     
 }
 
@@ -2249,10 +2254,10 @@ duplicateContextGroup() {
   populateVideoGallery("ContextGroup/ContextGroup_Attachments/Video", new ArrayList());
   setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", getFieldValue("control/data/ContextGroup_Starting_ID"));
   incField("control/data/ContextGroup_Starting_ID", 1);
-
+/*
   List extraAttributes = createAttributeList();
   extraAttributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
-
+*/
   saveCallback = new SaveCallback() {
     onSave(uuid, newRecord) {
       context_group_id = uuid;
@@ -2268,14 +2273,16 @@ duplicateContextGroup() {
       }, enable_autosave);
     }
   };
-
-  excludeAttributes = new ArrayList();
-  excludeAttributes.add("Photo");
-  excludeAttributes.add("Sketch");
-  excludeAttributes.add("Audio");
-  excludeAttributes.add("Video");
-  duplicateTabGroup("ContextGroup", null, extraAttributes, excludeAttributes, saveCallback);
-  
+  fetchAll(getDuplicateAttributeQuery(context_group_id, "'Site Code', 'Device Code'"), new FetchCallback(){
+    onFetch(result) { 
+      excludeAttributes = new ArrayList();
+      excludeAttributes.add("Photo");
+      excludeAttributes.add("Sketch");
+      excludeAttributes.add("Audio");
+      excludeAttributes.add("Video");
+      duplicateTabGroup("ContextGroup", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+      }
+    });
 }
 
 duplicateDiary() {
@@ -2319,7 +2326,7 @@ duplicateDiary() {
       excludeAttributes.add("Photo");
       excludeAttributes.add("Audio");
       excludeAttributes.add("Video");
-      duplicateTabGroup("Diary", null, getExtraAttributes(result), excludeAttributes, saveCallback);
+      duplicateTabGroup("Diary", null, null, excludeAttributes, saveCallback);
     }
   });
 }
@@ -2357,7 +2364,7 @@ duplicateSample() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(sample_id), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(sample_id, "'Site Code', 'Device Code'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
       //excludeAttributes.add("AreaCode");
@@ -2394,7 +2401,7 @@ duplicateMatrix() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(matrix_id), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(matrix_id, "'AreaCode', 'Context ID'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
       //excludeAttributes.add("AreaCode");
@@ -2434,7 +2441,7 @@ duplicateSpecialFind() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(special_find_id), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(special_find_id, "'AreaCode', 'Site Code'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
       //excludeAttributes.add("AreaCode");
@@ -2471,7 +2478,7 @@ duplicatePhotoLog() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(photolog_id), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(photolog_id, "'AreaCode', 'Site Code'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
       //excludeAttributes.add("AreaCode");
@@ -2505,7 +2512,7 @@ duplicateHeight() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(height_id), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(height_id, "'AreaCode', 'Context ID'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
       //excludeAttributes.add("AreaCode");
