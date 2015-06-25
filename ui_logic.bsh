@@ -720,7 +720,6 @@ newContext(){
     setFieldValue("Context/Context_GeneralInformation/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
     setFieldValue("Context/Context_GeneralInformation/Excavators", getFieldValue("control/data/teamMembers"));
-    setFieldValue("Context/Context_GeneralInformation/Device_Code", getFieldValue("user/usertab/Device_Code"));
     keepTabGroupChanges("Context");
 
     incField("control/data/ContextIncrement", 1);
@@ -747,6 +746,7 @@ saveContext(String callback) {
     Boolean enable_autosave = true;
     attributes = createAttributeList();
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     saveTabGroup("Context", context_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             context_id = uuid;
@@ -1020,7 +1020,6 @@ loadContextAttributes(){
     makeVocab("CheckBoxGroup", "Context/Context_GeneralInformation/Excavation_Method", "Excavation Method");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Horizon_Boundary", "Horizon Boundary");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Contamination", "Contamination");
-    makeVocab("DropDown", "Context/Context_GeneralInformation/Device_Code", "Device Code");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Area_Code", "AreaCode");
 
     makeVocab("HierarchicalDropDown", "Context/Context_Deposits/Soil_Compaction_Type", "Soil Compaction Type");
@@ -1220,7 +1219,6 @@ newContextGroup(menu){
     newTabGroup("ContextGroup");
     context_group_id = null;
     setTimestamp("ContextGroup/ContextGroup_Details/DateRecorded");
-    setFieldValue("ContextGroup/ContextGroup_Details/Device_Code", getFieldValue("user/usertab/Device_Code"));
     setFieldValue("ContextGroup/ContextGroup_Details/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
     setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", getFieldValue("control/data/ContextGroup_Starting_ID"));
@@ -1259,6 +1257,7 @@ saveContextGroup(){
     Boolean enable_autosave = true;
     attributes = createAttributeList();
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     saveTabGroup("ContextGroup", context_group_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             context_group_id = uuid;
@@ -1530,7 +1529,6 @@ deleteRelnCG(){
 loadContextGroupAttributes(){
     makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Area_Code", "AreaCode");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Device_Code", "Device Code");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Contexts/Target_Area", "AreaCode");
     makeVocab("DropDown", "ContextGroup/Feature_Relationships_to_Other_Features/Target_Area", "AreaCode");
 
@@ -1575,7 +1573,6 @@ newSample(){
     sample_id = null;
     newTabGroup("Sample");
     setFieldValue("Sample/Sample_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
-    setFieldValue("Sample/Sample_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
     setFieldValue("Sample/Sample_GeneralInformation/Sample_ID", getFieldValue("control/data/Sample_Starting_ID"));
     incField("control/data/Sample_Starting_ID", 1);
 }
@@ -1596,6 +1593,7 @@ saveSample(String callback) {
     List attributes = createAttributeList();
     attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     saveTabGroup("Sample", sample_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             sample_id = uuid;
@@ -1644,7 +1642,6 @@ doNotDelete(){
 loadSampleAttributes(){
     makeVocab("DropDown", "Sample/Sample_GeneralInformation/Sample_Type", "Sample Type");
     makeVocab("DropDown", "Sample/Sample_GeneralInformation/Sample_Location", "Sample Location");
-    makeVocab("DropDown", "Sample/Sample_GeneralInformation/Device_Code", "Device Code");
 }
 
 /*** Matrix ***/
@@ -1756,7 +1753,6 @@ newSpecialFind(){
     special_find_id = null;
     newTabGroup("Special_Find");
     setFieldValue("Special_Find/Special_Find_GeneralInformation/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
-    setFieldValue("Special_Find/Special_Find_GeneralInformation/Device_Code", getFieldValue("Context/Context_GeneralInformation/Device_Code"));
 }
 
 loadSpecialFind() {
@@ -1775,6 +1771,7 @@ saveSpecialFind(String callback) {
     List attributes = createAttributeList();
     attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
+    attributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     saveTabGroup("Special_Find", special_find_id, null, attributes, new SaveCallback() {
         onSave(uuid, newRecord) {
             special_find_id = uuid;
@@ -1821,7 +1818,6 @@ doNotDelete(){
 
 loadSpecialFindAttributes(){
     makeVocab("HierarchicalDropDown", "Special_Find/Special_Find_GeneralInformation/Special_Find_Class", "Special Find Class");
-    makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Device_Code", "Device Code");
     makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Source", "Source");
     makeVocab("DropDown", "Special_Find/Special_Find_GeneralInformation/Groundstone", "Groundstone");
 }
@@ -1845,7 +1841,7 @@ newPhotoLog(){
     photologAttributes = null;
     photologAttributes = createAttributeList();
     photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    photologAttributes.add(createEntityAttribute("Device Code", null, getFieldValue("Context/Context_GeneralInformation/Device_Code"), null, null));
+    photologAttributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
 }
@@ -1863,7 +1859,7 @@ newPhotoLogFromContextGroup(){
     photologAttributes = null;
     photologAttributes = createAttributeList();
     photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"), null, null));
-    photologAttributes.add(createEntityAttribute("Device Code", null, getFieldValue("ContextGroup/ContextGroup_Details/Device_Code"), null, null));
+    photologAttributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
 }

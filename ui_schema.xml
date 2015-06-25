@@ -81,7 +81,6 @@
                   <Context_Name/>
                 </child4>
               </container1>
-              <Device_Code/>
               <container2>
                 <child1>
                   <Grid_X/>
@@ -415,7 +414,6 @@
                   <Title/>
                 </child4>
               </container1>
-              <Device_Code/>
               <container2>
                 <child1>
                   <Building/>
@@ -566,7 +564,6 @@
                   <Sample_Type/>
                 </child4>
               </container1>
-              <Device_Code/>
               <Sample_Volume/>
               <container2>
                 <child1>
@@ -643,7 +640,6 @@
                   <Special_Find_Class/>
                 </child4>
               </container1>
-              <Device_Code/>
               <Source/>
               <Groundstone/>
               <Special_Find_Name/>
@@ -686,7 +682,6 @@
                   <Photograph_Reference_ID/>
                 </child3>
               </container1>
-              <Device_Code/>
               <Scene_Type/>
             </Photograph_Log>
           </Photograph_Log>
@@ -928,13 +923,6 @@
             </input>
           </group>
         </group>
-        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Device_Code}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
         <group faims_style="orientation" ref="container2">
           <label/>
           <group faims_style="even" ref="child1">
@@ -1783,13 +1771,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </input>
           </group>
         </group>
-        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Device_Code}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
         <group faims_style="orientation" ref="container2">
           <label/>
           <group faims_style="even" ref="child1">
@@ -2165,13 +2146,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </select1>
           </group>
         </group>
-        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Device_Code}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
         <input faims_attribute_name="Sample Volume" faims_attribute_type="measure" faims_certainty="true" faims_annotation="true" faims_read_only="false" ref="Sample_Volume">
           <label>{Sample_Volume}</label>
         </input>
@@ -2360,13 +2334,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             </select1>
           </group>
         </group>
-        <select1 faims_attribute_name="Device Code" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Device_Code">
-          <label>{Device_Code}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
         <select1 faims_attribute_name="Source" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Source">
           <label>{Source}</label>
           <item>
