@@ -1620,7 +1620,7 @@
             <input ref="selectedEnt" faims_web="true">
               <label>{Selected} {Entity}</label>
             </input>
-            <input ref="help" faims_web="true">
+            <input ref="help" faims_web="true" faims_style_class="faims-blue-text">
               <label/>
             </input>
             <trigger ref="deleteReln">
@@ -1947,7 +1947,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <input ref="selectedEnt" faims_web="true">
               <label>{Selected} {Entity}</label>
             </input>
-            <input ref="help" faims_web="true">
+            <input ref="help" faims_web="true" faims_style_class="faims-blue-text">
               <label/>
             </input>
             <trigger ref="ShowContext">
@@ -2041,7 +2041,7 @@ Here you can enter filenames or unique reference numbers for image stored on ano
             <input ref="selectedEnt" faims_web="true">
               <label>{Selected} {Entity}</label>
             </input>
-            <input ref="help" faims_web="true">
+            <input ref="help" faims_web="true" faims_style_class="faims-blue-text">
               <label/>
             </input>
             <trigger ref="deleteReln">

@@ -44,6 +44,10 @@
     height: 130px;
 }
 
+.faims-blue-text {
+	color:      #33b5e5;
+	text-color: #33b5e5;
+}
 .faims-blue {
     background-color: #33b5e5;
     border-color: #26a0cd;
