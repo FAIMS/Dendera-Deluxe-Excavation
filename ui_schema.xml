@@ -1539,7 +1539,7 @@
         </trigger>
       </group>
       <group ref="Context_Relationships_to_Other_Contexts" faims_scrollable="false">
-        <label>{Context} {Relationships}</label>
+        <label>{Relationships}</label>
         <group ref="colgroup" faims_style="orientation">
           <label/>
           <group ref="left" faims_style="even">
