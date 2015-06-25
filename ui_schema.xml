@@ -843,7 +843,7 @@
         </input>
       </group>
       <group ref="search" faims_scrollable="false">
-        <label>{Search}</label>
+        <label>{Records}</label>
         <group faims_style="orientation" ref="container1">
           <label/>
           <group faims_style="even" ref="child1">
