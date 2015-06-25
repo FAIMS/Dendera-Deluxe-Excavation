@@ -2328,10 +2328,10 @@ duplicateSample() {
   String oldSample_ID = sample_id;
 
   disableAutoSave("Sample");
-  populateCameraPictureGallery("Sample/Sample_GeneralInformation/Photo", new ArrayList());
-  populateFileList("Sample/Sample_GeneralInformation/Sketch", new ArrayList());
-  populateFileList("Sample/Sample_GeneralInformation/Audio", new ArrayList());
-  populateVideoGallery("Sample/Sample_GeneralInformation/Video", new ArrayList());
+  populateCameraPictureGallery("Sample/Sample_Attachments/Photo", new ArrayList());
+  populateFileList("Sample/Sample_Attachments/Sketch", new ArrayList());
+  populateFileList("Sample/Sample_Attachments/Audio", new ArrayList());
+  populateVideoGallery("Sample/Sample_Attachments/Video", new ArrayList());
   setFieldValue("Sample/Sample_GeneralInformation/Sample_ID", getFieldValue("control/data/Sample_Starting_ID")); 
   incField("control/data/Sample_Starting_ID", 1);
 
