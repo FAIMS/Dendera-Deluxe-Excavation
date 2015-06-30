@@ -13,20 +13,6 @@ Boolean menu = true;
 String moduleYear = new java.text.SimpleDateFormat("yy").format(new Date());
 String moduleSiteCode = "BK" + moduleYear;
 
-String WEB_GUIDE = "" +
-"<p>The Boncuklu Excavation Module was prepared in 2014 for Dr Andrew Fairbairn, University of Queensland, to record data about the contexts and features excavated at Boncuklu in Turkey.</p>" + 
-"<p>It is an adaptation of the standard FAIMS Excavation Module, and allows for the single context recording of deposits, which can be grouped into Features.</p>" + 
-"<p>To login:" +
-"<br>" +
-"<ol>" +
-"<li>Choose your user name from the dropdown USERS list. If you do not have a user name see the system administrator;</li>" +
-"<li>Select the excavation area you wish to record by checking one of circles (radio boxes) on the screen next to the trench you are excavating, denoted by a letter (e.g. H, N, M etc);</li>" +
-"<li>Press the LOGIN bar. You will now be taken to the context page.</li>" +
-"</ol>" +
-"</p>" + 
-"<p>WARNING! If two individuals login as the same user on two different devices, and hit &#x2018;Save&#x2019; at the same millisecond, there is risk that the records will be merged during synchronisation. ALWAYS login under the correct username.</p>" +
-"<p>For more information, see the Boncuklu Excavation Module Guide. It provides an overview of the features and navigation of the Module.</p>" +
-"<p>Help can be found for individual entries by pressing the ? buttons throughout the module.</p>";
 // TODO: determine what the intended text is for these web views, as they still use old text or text copied from PAZC.
 // String WEB_REL_1 = "{useToRelate} {Contexts}, eg '{Esta_encima_de}' & '{Esta_debajo_de}'. {selectReln} {Context} {clickButtonRelate} {Contexts}'.";
 String WEB_REL_1 = "<p style=\"color:#33b5e5\">Use this tab to enter relationships between features. You can record several relationship types, including using standard Harris matrix terms, physical and stratigraphical relationships as in the Boncuklu recording guide. Select the type of relationship in the middle, the specified context on the right and click the button 'Relate Features' to record the relationship.</p>";
@@ -37,7 +23,8 @@ String WEB_REL_5 = "<p style=\"color:#33b5e5\">Use this tab to add a {Context} t
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
 String WEB_WARN_ART_ID = "<p style=\"color:#f00\">Beware that Artefact ID is not auto-generated. Ensure you fill it in correctly.</p>";
 
-populateWebViewHtml("user/help/guide", WEB_GUIDE);
+guideFile = getAttachedFilePath("files/guide/guide.html");
+populateWebView    ("user/help/guide", guideFile);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WEB_REL_1);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_REL_2);
 populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/spacer", WEB_REL_3);
