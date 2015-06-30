@@ -898,7 +898,7 @@ updateAllContextRelationships(){
     String targetContextQuery = "SELECT uuid, response "+
                                 "  FROM latestnondeletedarchentformattedidentifiers "+
                                 " WHERE (aenttypename='Legacy' "+
-                                "    OR (aenttypename = 'Context' "+
+                                "    OR (aenttypename in ('Context', 'Context Group') "+
                                 "        AND ('null' = '"+targetContextAreaCode+"' "+
                                 "             OR uuid IN (SELECT uuid "+
                                 "                            FROM latestnondeletedaentvalue  "+
@@ -910,7 +910,7 @@ updateAllContextRelationships(){
                                 "   AND uuid IN (SELECT uuid "+
                                 "                  FROM latestnondeletedaentvalue  "+
                                 "                  JOIN attributekey USING (attributeid) "+
-                                "                 WHERE attributename IN ('Context ID', 'LegacyIdentifier') "+
+                                "                 WHERE attributename IN ('Context ID', 'LegacyIdentifier', 'Context Group ID') "+
                                 "                   AND measure like '"+targetContextID+"'||'%' "+
                                 "                )         "+
                                 " ORDER BY CAST(response as integer); ";
@@ -1461,7 +1461,7 @@ updateAllContextGroupRelationships(){
     String targetContextGroupQuery = "SELECT uuid, response "+
                                 "  FROM latestnondeletedarchentformattedidentifiers "+
                                 " WHERE (aenttypename='Legacy' "+
-                                "    OR (aenttypename = 'Context Group' "+
+                                "    OR ((aenttypename = 'Context Group' or aenttypename = 'Context')"+
                                 "        AND ('null' = '"+targetContextGroupAreaCode+"' "+
                                 "             OR uuid IN (SELECT uuid "+
                                 "                            FROM latestnondeletedaentvalue  "+
@@ -1473,7 +1473,7 @@ updateAllContextGroupRelationships(){
                                 "   AND uuid IN (SELECT uuid "+
                                 "                  FROM latestnondeletedaentvalue  "+
                                 "                  JOIN attributekey USING (attributeid) "+
-                                "                 WHERE attributename IN ('Context Group ID', 'LegacyIdentifier') "+
+                                "                 WHERE attributename IN ('Context Group ID', 'LegacyIdentifier', 'Context ID') "+
                                 "                   AND measure like '"+targetContextGroupID+"'||'%' "+
                                 "                )         "+
                                 " ORDER BY CAST(response as integer); ";
