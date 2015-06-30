@@ -420,10 +420,10 @@ entityTypes.add(new NameValuePair("{Context}", "Context"));
 entityTypes.add(new NameValuePair("{Context_Group}", "Context Group"));
 entityTypes.add(new NameValuePair("{Diary}", "Diary"));
 entityTypes.add(new NameValuePair("{Sample}", "Sample"));
-entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
+//entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
 entityTypes.add(new NameValuePair("{Special_Find}", "Special Find"));
 entityTypes.add(new NameValuePair("{Photograph_Log}", "Photograph Log"));
-entityTypes.add(new NameValuePair("{Height}", "Height"));
+//entityTypes.add(new NameValuePair("{Height}", "Height"));
 populateDropDown("control/search/entityTypes", entityTypes);
 
 loadEntity() {
@@ -898,7 +898,7 @@ updateAllContextRelationships(){
     String targetContextQuery = "SELECT uuid, response "+
                                 "  FROM latestnondeletedarchentformattedidentifiers "+
                                 " WHERE (aenttypename='Legacy' "+
-                                "    OR (aenttypename in ('Context', 'Context Group') "+
+                                "    OR (aenttypename in ('Context') "+
                                 "        AND ('null' = '"+targetContextAreaCode+"' "+
                                 "             OR uuid IN (SELECT uuid "+
                                 "                            FROM latestnondeletedaentvalue  "+
@@ -910,7 +910,7 @@ updateAllContextRelationships(){
                                 "   AND uuid IN (SELECT uuid "+
                                 "                  FROM latestnondeletedaentvalue  "+
                                 "                  JOIN attributekey USING (attributeid) "+
-                                "                 WHERE attributename IN ('Context ID', 'LegacyIdentifier', 'Context Group ID') "+
+                                "                 WHERE attributename IN ('Context ID', 'LegacyIdentifier') "+
                                 "                   AND measure like '"+targetContextID+"'||'%' "+
                                 "                )         "+
                                 " ORDER BY CAST(response as integer); ";
@@ -1461,7 +1461,7 @@ updateAllContextGroupRelationships(){
     String targetContextGroupQuery = "SELECT uuid, response "+
                                 "  FROM latestnondeletedarchentformattedidentifiers "+
                                 " WHERE (aenttypename='Legacy' "+
-                                "    OR ((aenttypename = 'Context Group' or aenttypename = 'Context')"+
+                                "    OR (aenttypename = 'Context Group'"+
                                 "        AND ('null' = '"+targetContextGroupAreaCode+"' "+
                                 "             OR uuid IN (SELECT uuid "+
                                 "                            FROM latestnondeletedaentvalue  "+
@@ -1473,7 +1473,7 @@ updateAllContextGroupRelationships(){
                                 "   AND uuid IN (SELECT uuid "+
                                 "                  FROM latestnondeletedaentvalue  "+
                                 "                  JOIN attributekey USING (attributeid) "+
-                                "                 WHERE attributename IN ('Context Group ID', 'LegacyIdentifier', 'Context ID') "+
+                                "                 WHERE attributename IN ('Context Group ID', 'LegacyIdentifier') "+
                                 "                   AND measure like '"+targetContextGroupID+"'||'%' "+
                                 "                )         "+
                                 " ORDER BY CAST(response as integer); ";
@@ -2583,9 +2583,9 @@ setSyncMaxInterval(600.0f);
 setSyncDelay(5.0f);
 
 // TODO: Delete this paragraph after development is complete.
-setSyncMinInterval(4.0f);
+/*setSyncMinInterval(4.0f);
 setSyncMaxInterval(6.0f);
-setSyncDelay(5.0f);
+setSyncDelay(5.0f);*/
 setSyncEnabled(true);
 setFileSyncEnabled(true);
 
