@@ -1512,6 +1512,17 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description></description></term>
       </lookup>
     </property>
+    <property name="Special Find Location" type="blocktext">
+      <description>The location of the sample at the time of entry.</description>
+      <lookup>
+        <term>{No_Observation}<description>data not collected</description></term>
+        <term>{Site_depot}<description/> </term>
+        <term>{Export_Liverpool}<description/> </term>
+        <term>{Export_Turkey}<description/> </term>
+        <term>{Museum}<description/> </term>
+        <term>{OtherWithAnnotation}<description/> </term>
+      </lookup>
+    </property>    
     <property name="Device Code" type="enum">
       <description/>
       <lookup>
