@@ -1399,7 +1399,7 @@ removeFromContextGroup() {
 }
 
 updateAllContextGroupPhotologs() {
-    updateNonContextRelationshipBasedDropdown("ContextGroup/ContextGroup_Attachments/PhotoLogList", "ContextGroupPhotographLog", "Photograph Log", context_group_id);
+    updateNonContextRelationshipBasedDropdown("ContextGroup/ContextGroup_Attachments/PhotoLogList", "ContextGroupPhotographLog", "Context Group", context_group_id);
 }
 
 deletePhotoLogFromContextGroup(){
@@ -1893,9 +1893,15 @@ savePhotoLog(String callback) {
 }
 
 onPhotoLogSaved(){
-    saveEntitiesToRel("ContextPhotographLog", context_id, photolog_id);
-    showToast("{Associated_with_Context}");
-
+    if (!isNull(getFieldValue("Photograph_Log/Photograph_Log/Context_ID"))) {           // Photolog tabgroup accessed from Context
+        saveEntitiesToRel("ContextPhotographLog", context_id, photolog_id);
+        showToast("{Associated_with_Context}");
+    } else if (!isNull(getFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID"))) { // Photolog tabgroup accessed from CG
+        saveEntitiesToRel("ContextGroupPhotographLog", context_group_id, photolog_id);
+        showToast("{Associated_with} {ContextGroup}");
+    } else {
+        showToast("{Err_Relating_Log}");
+    }
 }
 
 deletePhotoLogFromContext(){
