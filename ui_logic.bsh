@@ -23,7 +23,7 @@ String WEB_REL_5 = "<p style=\"color:#33b5e5\">Use this tab to add a {Context} t
 String WEB_REL_SELECTED_NONE = "<i>{none}</i>";
 String WEB_WARN_ART_ID = "<p style=\"color:#f00\">Beware that Artefact ID is not auto-generated. Ensure you fill it in correctly.</p>";
 
-guideFile = getAttachedFilePath("files/guide/guide.html");
+guideFile = getAttachedFilePath("files/data/guide/guidePureHtml.html");
 populateWebView    ("user/help/guide", guideFile);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/spacer", WEB_REL_1);
 populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/help", WEB_REL_2);
