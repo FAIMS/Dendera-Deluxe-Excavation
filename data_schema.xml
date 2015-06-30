@@ -1420,6 +1420,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
         </term>
         <term>{Ground_Stone} 
         <description/>
+          <term>{Bead}
+          <description/></term>
           <term>{Grinder} 
           <description/></term>
           <term>{Pestle} 
@@ -1473,6 +1475,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Clay_Object} 
         <description/>
           <term>{Figurine} 
+          <description/></term>
+          <term>{Geometric_Object} 
           <description/></term>
           <term>{Token} 
           <description/></term>
