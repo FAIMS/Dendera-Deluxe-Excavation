@@ -1734,6 +1734,7 @@ onEvent("Special_Find", "show", "addNavigationButtons(\"Special_Find\"); keepTab
 onEvent("Special_Find/Special_Find_GeneralInformation/attachPhoto", "click", "attachPictureTo(\"Special_Find/Special_Find_GeneralInformation/Photo\")");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachAudio", "click", "attachAudioTo(\"Special_Find/Special_Find_GeneralInformation/Audio\")");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachVideo", "click", "attachVideoTo(\"Special_Find/Special_Find_GeneralInformation/Video\")");
+onEvent("Special_Find/Special_Find_GeneralInformation/viewattached", "click", "viewArchEntAttachedFiles(special_find_id)");
 
 String special_find_id = null;
 
