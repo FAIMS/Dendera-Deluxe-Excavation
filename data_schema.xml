@@ -1653,6 +1653,9 @@ When you have selected a context type you can proceed to open the "Fill in conte
         </term>
       </lookup>
     </property>
+    <property name="Photograph Description" type="freetext">
+      <description/>
+    </property>
   </ArchaeologicalElement>
     <ArchaeologicalElement name="Legacy">
     <description></description>
