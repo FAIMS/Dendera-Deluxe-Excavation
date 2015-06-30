@@ -288,6 +288,9 @@
                 <child2>
                   <Target_A_Y/>
                 </child2>
+                <child3>
+                  <Target_A_Z/>
+                </child3>
               </container5>
               <container6>
                 <child1>
@@ -296,6 +299,9 @@
                 <child2>
                   <Target_B_Y/>
                 </child2>
+                <child3>
+                  <Target_B_Z/>
+                </child3>
               </container6>
               <container7>
                 <child1>
@@ -304,6 +310,9 @@
                 <child2>
                   <Target_C_Y/>
                 </child2>
+                <child3>
+                  <Target_C_Z/>
+                </child3>
               </container7>
               <container8>
                 <child1>
@@ -312,6 +321,9 @@
                 <child2>
                   <Target_D_Y/>
                 </child2>
+                <child3>
+                  <Target_D_Z/>
+                </child3>
               </container8>
               <Skeleton_Notes/>
             </Context_Skeletons>
@@ -712,6 +724,8 @@
         </faims>
       </instance>
       <!--list of numeric and blocktext(memo) attributes(fields)-->
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/Grid_X"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_GeneralInformation/Grid_Y"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Measure/Volume"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Measure/container1/child1/Context_Highest_Level"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Measure/container1/child2/Context_Lowest_Level"/>
@@ -723,12 +737,16 @@
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container1/child2/Mid_Y"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container5/child1/Target_A_X"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container5/child2/Target_A_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container5/child2/Target_A_Z"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container6/child1/Target_B_X"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container6/child2/Target_B_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container6/child2/Target_B_Z"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container7/child1/Target_C_X"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container7/child2/Target_C_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container7/child2/Target_C_Z"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container8/child1/Target_D_X"/>
       <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container8/child2/Target_D_Y"/>
+      <bind type="decimal" nodeset="/faims/Context/Context_Skeletons/container8/child2/Target_D_Z"/>
       <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child1/Length"/>
       <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child2/Width"/>
       <bind type="decimal" nodeset="/faims/ContextGroup/ContextGroup_Details/container3/child3/Depth"/>
@@ -1452,6 +1470,12 @@
               <label>{Target_A_Y}</label>
             </input>
           </group>
+          <group faims_style="even" ref="child3">
+            <label/>
+            <input ref="Target_A_Z" faims_attribute_name="Target A Z" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+              <label>{Target_A_Z}</label>
+            </input>
+          </group>
         </group>
         <group faims_style="orientation" ref="container6">
           <label/>
@@ -1465,6 +1489,12 @@
             <label/>
             <input ref="Target_B_Y" faims_attribute_name="Target B Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_B_Y}</label>
+            </input>
+          </group>
+          <group faims_style="even" ref="child3">
+            <label/>
+            <input ref="Target_B_Z" faims_attribute_name="Target B Z" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
+              <label>{Target_B_Z}</label>
             </input>
           </group>
         </group>
@@ -1482,6 +1512,12 @@
               <label>{Target_C_Y}</label>
             </input>
           </group>
+          <group faims_style="even" ref="child3">
+            <label/>
+            <input ref="Target_C_Z" faims_attribute_name="Target C Z" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
+              <label>{Target_C_Z}</label>
+            </input>
+          </group>
         </group>
         <group faims_style="orientation" ref="container8">
           <label/>
@@ -1495,6 +1531,12 @@
             <label/>
             <input ref="Target_D_Y" faims_attribute_name="Target D Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
               <label>{Target_D_Y}</label>
+            </input>
+          </group>
+          <group faims_style="even" ref="child3">
+            <label/>
+            <input ref="Target_D_Z" faims_attribute_name="Target D Z" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
+              <label>{Target_D_Z}</label>
             </input>
           </group>
         </group>
