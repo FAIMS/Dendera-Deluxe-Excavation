@@ -891,11 +891,17 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Target A Y" type="float">
       <description>The Y coordinate of Target A. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
+    <property name="Target A Z" type="float">
+      <description>The Z coordinate of Target A. Targets are white-painted, large-headed nails used to rectify photographs.</description>
+    </property>
     <property name="Target B X" type="float">
       <description>The X coordinate of Target B. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
     <property name="Target B Y" type="float">
       <description>The Y coordinate of Target B. Targets are white-painted, large-headed nails used to rectify photographs.</description>
+    </property>
+    <property name="Target B Z" type="float">
+      <description>The Z coordinate of Target B. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
     <property name="Target C X" type="float">
       <description>The X coordinate of Target C. Targets are white-painted, large-headed nails used to rectify photographs.</description>
@@ -903,11 +909,17 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <property name="Target C Y" type="float">
       <description>The Y coordinate of Target C. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
+    <property name="Target C Z" type="float">
+      <description>The Z coordinate of Target C. Targets are white-painted, large-headed nails used to rectify photographs.</description>
+    </property>
     <property name="Target D X" type="float">
       <description>The X coordinate of Target D. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
     <property name="Target D Y" type="float">
       <description>The Y coordinate of Target D. Targets are white-painted, large-headed nails used to rectify photographs.</description>
+    </property>
+    <property name="Target D Z" type="float">
+      <description>The Z coordinate of Target D. Targets are white-painted, large-headed nails used to rectify photographs.</description>
     </property>
     <property name="SearchHelp" type="freetext">
       <description>This allows you to find any contexts that contain your search term or string in any field in a context record. Type in your term/string and press the "Search" button. Press "My Contexts" to return to the full list of contexts for this trench.</description>
@@ -1399,6 +1411,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
         </term>
         <term>{Ground_Stone} 
         <description/>
+          <term>{Bead}
+          <description/></term>
           <term>{Grinder} 
           <description/></term>
           <term>{Pestle} 
@@ -1453,6 +1467,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description/>
           <term>{Figurine} 
           <description/></term>
+          <term>{Geometric_Object} 
+          <description/></term>
           <term>{Token} 
           <description/></term>
           <term>{Other} 
@@ -1502,16 +1518,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Wet_Sieve}             <description/></term>
         <term>{Other}                 <description/></term>
       </lookup>
-    </property>
-    <property name="Groundstone" type="enum">
-      <description/>
-      <lookup>
-        <term>{Yes} 
-        <description></description></term>
-        <term>{No} 
-        <description></description></term>
-      </lookup>
-    </property>
+    </property>    
     <property name="Special Find Location" type="blocktext">
       <description>The location of the sample at the time of entry.</description>
       <lookup>
@@ -1643,6 +1650,9 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description>Scene not elsewhere described. Enter detail into Annotation field.</description>
         </term>
       </lookup>
+    </property>
+    <property name="Photograph Description" type="freetext">
+      <description/>
     </property>
   </ArchaeologicalElement>
     <ArchaeologicalElement name="Legacy">
