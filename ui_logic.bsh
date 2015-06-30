@@ -1920,6 +1920,12 @@ deletePhotoLog(){
     }
 }
 
+reallyDeletePhotoLog(){
+    deleteArchEnt(photolog_id);
+    showTabGroup("Photograph_Log");
+    cancelTabGroup("Photograph_Log", false);
+}
+
 doNotDelete(){
     showToast("{Delete_Cancelled}");
 }
