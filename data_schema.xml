@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dataSchema name="Boncuklu" preparer="Penny Crook">
-  <!--   <RelationshipElement name="Above - Below" type="hierarchical">
-    <description>Implements a above below for contexts.</description>
-    <parent>Above</parent>
-    <child>Below</child>
-  </RelationshipElement>
-  <RelationshipElement name="Same As" type="bidirectional">
-    <description>Implements a same as for contexts.</description>
-  </RelationshipElement>
-  <RelationshipElement name="Contains - Contained By" type="hierarchical">
-    <description>Implements a contains-containedby for contexts.</description>
-    <parent>Contains</parent>
-    <child>Contained By</child>
-  </RelationshipElement>
+  
   <RelationshipElement name="Butts - Butted By" type="hierarchical">
     <description>Implements a Butts-ButtedBy for contexts.</description>
     <parent>Butts</parent>
@@ -25,7 +13,7 @@
   </RelationshipElement>  
   <RelationshipElement name="Bonded To" type="bidirectional">
     <description>Implements a bonded to for contexts</description>
-  </RelationshipElement> -->
+  </RelationshipElement>
   <RelationshipElement name="Physically - Cuts - Cut By" type="hierarchical">
     <description>Implements a cuts-cutby for contexts.</description>
     <parent>Physically - Cuts</parent>
@@ -34,7 +22,7 @@
   <RelationshipElement name="Physically - Fill Of - Filled With" type="hierarchical">
     <description>Implements a fillof-filledwith for contexts.</description>
     <parent>Physically - Fill Of </parent>
-    <child>Physically - Filled With</child>
+    <child>Physically - Filled With </child>
   </RelationshipElement>
   <RelationshipElement name="Stratigraphically - Arbitrarily separated from" type="bidirectional">
     <description>When two or more context codes have been assigned to what is ultimately determined to be the same context</description>
@@ -108,13 +96,14 @@
       <description></description>
       <formatString><![CDATA[ $2 by: ]]></formatString>
     </property>
-    <property name="CreatedBy" type="freetext" isIdentifier="true" >
+    <property name="CreatedName" type="freetext" isIdentifier="true" >
       <description></description>
-      <formatString><![CDATA[$2 - ]]></formatString>
+      <formatString><![CDATA[$2 - Diary:]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property name="Title" type="freetext" isIdentifier="true">
       <description></description>
+      <formatString><![CDATA[$2]]></formatString>      
     </property>
     <property name="Text" type="freetext">
       <description></description>
@@ -135,6 +124,7 @@
   <!-- CONTEXT -->
   <ArchaeologicalElement name="Context">
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
+ 
     <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
@@ -165,7 +155,7 @@
       Burial context codes begin with the letter Z, followed by the trench letter. Hence burial ZHA is the first burial context from trench H.
 
       Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.</description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[Cxtx-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Context Name" type="freetext">
       <description>Brief name for the Context eg 'House A - west wall'</description>
@@ -926,14 +916,14 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!--CONTEXT GROUP-->
   <ArchaeologicalElement name="Context Group" type="container">
     <description>A group of contexts.</description>
-    <!-- TODO: identifier format? -->
+    <!-- TODO: identifier format? -->    
     <property isIdentifier="true" name="AreaCode" type="freetext">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1]]></formatString>
     </property>
     <property isIdentifier="true" name="Context Group ID" type="freetext">
       <description>Feature number taken from the appropriate running list.</description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[Feat-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Title" type="freetext">
       <description>Enter the Feature name e.g. Hearth in Building 2.</description>
@@ -1213,11 +1203,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for the Context from which this Artefact Cluster was collected.</description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[Cxtx-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Sample ID" type="freetext">
       <description>The unique code or reference for the Sample.</description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[Sample-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Sample Type" type="enum">
       <description>The type of Sample collected eg Soil Wood Pollen.</description>
@@ -1280,6 +1270,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Site_depot}<description/> </term>
         <term>{Export_Liverpool}<description/> </term>
         <term>{Export_Turkey}<description/> </term>
+        <term>{Museum}<description/> </term>
         <term>{OtherWithAnnotation}<description/> </term>
       </lookup>
     </property>
@@ -1384,11 +1375,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property isIdentifier="true" name="Context ID" type="freetext">
       <description>Unique number or code for each Context.</description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[Cxtx-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Special Find ID" type="freetext">
       <description>Unique number or code for the Small Find.</description>
-      <formatString><![CDATA[$2-]]></formatString>
+      <formatString><![CDATA[Artefact-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Special Find Class" type="freetext">
       <description>Broad Artefact Class for each Artefact (eg Glass Ceramic Building Material).</description>
@@ -1570,6 +1561,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <!-- PHOTOGRAPH LOG -->
   <ArchaeologicalElement name="Photograph Log">
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
+
     <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
       <formatString><![CDATA[$1-]]></formatString>
@@ -1595,17 +1587,17 @@ When you have selected a context type you can proceed to open the "Fill in conte
     </property>
     <property isIdentifier="true" name="Photo Context ID" type="freetext">
       <description>Unique number or code for each Context</description>
-      <formatString><![CDATA[{{if $2 then "$2-" else ""}}]]></formatString>
+      <formatString><![CDATA[{{if $2 then "Cxtx-$2-" else ""}}]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property isIdentifier="true" name="Photo Context Group ID" type="freetext">
       <description>Unique number or code for each Context Group</description>
-      <formatString><![CDATA[{{if $2 then "$2-" else ""}}]]></formatString>
+      <formatString><![CDATA[{{if $2 then "Feature-$2-" else ""}}]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property isIdentifier="true" name="Photograph Reference ID" type="freetext">
       <description>Unique number or code allocated by creator of the image. It could be a filename or a reference number</description>
-      <formatString><![CDATA[$2]]></formatString>
+      <formatString><![CDATA[Photo-$2]]></formatString>
     </property>
     <property name="Site Code" type="freetext">
       <description>Short code to signify the excavation site and often the year of excavation. </description>
@@ -1646,7 +1638,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <description></description>
     <property name="LegacyIdentifier" isIdentifier="true" type="freetext">
       <description></description>
-      <formatString><![CDATA[$2]]></formatString>
+      <formatString><![CDATA[Legacy-$2]]></formatString>
     </property>
   </ArchaeologicalElement>
 </dataSchema>
