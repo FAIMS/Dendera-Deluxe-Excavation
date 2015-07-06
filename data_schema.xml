@@ -498,7 +498,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Sharp} 
         <description>Clear sharp slope, almost right-angled.</description></term>
         <term>{Shallow} 
-        <description/></term>
+        <description>Gentle slope less than 45 degrees.</description></term>
       </lookup>
     </property>
     <property name="Sides of Cut" type="enum">
