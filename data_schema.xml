@@ -506,7 +506,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <lookup>
         <term>{No_Observation}<description/></term>
         <term>{Vertical} 
-        <description/></term>
+        <description>Sides are vertical</description></term>
         <term>{Convex} 
         <description/></term>
         <term>{Concave} 
