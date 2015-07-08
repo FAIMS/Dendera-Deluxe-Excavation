@@ -70,7 +70,7 @@
     <description></description>
     <!-- TODO: identifier format? -->
     <property name="AreaCode" type="enum" isIdentifier="true">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1-]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
       <lookup>
@@ -93,29 +93,29 @@
       </lookup>
     </property>
     <property name="Timestamp" type="freetext" isIdentifier="true">
-      <description></description>
+      <description>The date this entry is created will automatically appear here</description>
       <formatString><![CDATA[ $2 by: ]]></formatString>
     </property>
     <property name="CreatedName" type="freetext" isIdentifier="true" >
-      <description></description>
+      <description>Your name will be added here based on your login</description>
       <formatString><![CDATA[$2 - Diary:]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
     </property>
     <property name="Title" type="freetext" isIdentifier="true">
-      <description></description>
+      <description>Give your entry a simple, short title, such as Daily Trench Update, Burial 34, Storm Damage. Note that diary entries allow you to add information in addition to the context, feature and artefact records elsewhere in the module and should not be the primary description point for those entities</description>
       <formatString><![CDATA[$2]]></formatString>      
     </property>
     <property name="Text" type="freetext">
-      <description></description>
+      <description>Record your diary entry here in as much detail as necessary and append with photographs, video and/or audio</description>
     </property>
     <property name="Audio" type="file" file="true" thumbnail="true">
-      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+      <description>Use this button to record an audio file of your observations concerning this entry</description>
     </property>
     <property name="Video" type="file" file="true" thumbnail="true">
-      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+      <description>Use this button to record a video relevant to this entry using the tablet's camera</description>
     </property>
     <property name="Photo" type="file" file="true" thumbnail="true">
-      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+      <description>Use this button to take a photo relevant to this entry using the camera on the tablet</description>
     </property>
     <property name="FileAttach" type="file" file="true" thumbnail="true">
       <description></description>
@@ -126,7 +126,7 @@
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
  
     <property isIdentifier="true" name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>H
@@ -148,17 +148,17 @@
       </lookup>
     </property>
     <property isIdentifier="true" name="Context ID" type="freetext">
-      <description>Every archaeological context (negative element (cut), deposit, structure, skeleton) is given a unique 3 or 4 letter context code. Each trench is designated with a separate letter which starts the code, so it is immediately obvious to which trench a context belongs. For example context HAA belongs to Trench H, context MQP to Trench M etc.
+      <description>Every archaeological context (negative element (cut), deposit, structure, skeleton, artefact cluster) is given a unique 3 or 4 letter context code. Each trench is designated with a separate letter which starts the code, so it is immediately obvious to which trench a context belongs. For example context HAA belongs to Trench H, context MQP to Trench M etc.
 
       The contexts are labelled consecutively in alphabetical order using the letters following the trench letter. For Trench H the first context would be HAA, the second HAB, the third HAB and so on. In addition sets of letters can denote parts of trenches, buildings etc. E.g. HFs might denote contexts from a specific building.
 
       Burial context codes begin with the letter Z, followed by the trench letter. Hence burial ZHA is the first burial context from trench H.
 
-      Check with the trench supervisor who will assign the context code. The module will not allow a context code to be used twice on a single device.</description>
+      Check with the trench supervisor who will assign the context code from the central register.</description>
       <formatString><![CDATA[Cxtx-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Context Name" type="freetext">
-      <description>Brief name for the Context eg 'House A - west wall'</description>
+      <description>Enter a brief, clear name for the Context eg 'House A - west wall'</description>
       <formatString><![CDATA[$2]]></formatString>
     </property>
     <property name="Site Code" type="freetext">
@@ -207,7 +207,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term pictureURL="files/data/gallery/ContextType/Orange/Skeleton.png">{Skeleton} 
         <description>Human skeletal remains.</description></term>
         <term pictureURL="files/data/gallery/ContextType/Orange/Artefact group.png">{Artefact_Group} 
-        <description></description></term>
+        <description>Groups of artefacts found in association during excavation such as obsidian caches.</description></term>
       </lookup>
     </property>
     <property name="Date Opened" type="date">
@@ -217,10 +217,10 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>The date excavation of the Context ended and it was closed. Press the 'Add Date Closed' button to insert today's date.</description>
     </property>
     <property name="Location Note" type="freetext">
-      <description>For Approx location in area provide information on rough location eg centre of Area A or NW corner area A but also in relation to other archaeological contexts or features e.g. between walls x and y.</description>
+      <description>Record the approximate location in the excavation area, for example: centre of Area A; NW corner area A. Also include, where relevant, the position in relation to other archaeological contexts or features e.g. between walls x and y.</description>
     </property>
     <property name="Excavation Method" type="enum">
-      <description>Method and conditions of archaeological excavation.</description>
+      <description>Enter details here about the method of archaeological excavation.</description>
       <lookup>
         <term>{Hand_pick} 
         <description>Excavated by hand-pick.</description></term>
@@ -229,14 +229,14 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Pick} 
         <description>Excavated by pick.</description></term>
         <term>{Other} 
-        <description>Excavated by another method.</description></term>
+        <description>Excavated by another method. Add details in Annotation field.</description></term>
       </lookup>
     </property>
     <property name="Highest Level" type="float">
-      <description>The highest elevation or 'starting level' recorded for that context. This may be relative to the site grid or real world co-ordinates depending on the method of measurement.</description>
+      <description>The highest elevation or 'starting level' recorded for that context relative to the site grid.</description>
     </property>
     <property name="Lowest Level" type="float">
-      <description>The lowest elevation recorded for that context. This may be relative to the site grid or real world co-ordinates depending on the method of measurement.</description>
+      <description>The lowest elevation recorded for that context relative to the site grid.</description>
     </property>
     <property name="Length" type="float">
       <description>Longest dimension in metres.</description>
@@ -418,7 +418,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       </lookup>
     </property>
     <property name="Deposit Inclusions" type="blocktext">
-      <description>Brief description of inclusions (eg stone flecks artefacts).</description>
+      <description>Enter a brief description of inclusions (eg stone flecks artefacts).</description>
     </property>
     <property name="Volume" type="float">
       <description>Estimate the volume of the context in litres. All soil will be collected in buckets of a known volume. A tally should be kept of buckets produced from a context and the total volume calculated using that tally.</description>
@@ -662,7 +662,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Arbitrary} 
         <description>This applies to artificial contexts excavated for excavational convenience eg section cleaning material whose precise provenience is unclear. Does not include arbitrary spits or spatial units deliberately excavated for finer control of horizontal and vert</description></term>
         <term>{Distinct_floor_contact} 
-        <description>To be used for material that directly reflects the use of a surface or floor - artifact material on the surface perhaps thin deposits of occupation material. These contexts will be gridded into spatial units for closer control of artifact distributions.</description></term>
+        <description>To be used for material that directly reflects the use of a surface or floor - artefact material on the surface perhaps thin deposits of occupation material. These contexts will be gridded into spatial units for closer control of artifact distributions.</description></term>
         <term>{Animal_or_Plant} 
         <description>Deposit derived from plant or animal activity</description></term>
         <term>{Other} 
@@ -676,16 +676,16 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Enter a verbal description of the Context, including its form, contexts, relationship to other Contexts and any other relevant information. This is the main place to record all other descriptive information that may be treated briefly or not covered elsewhere, including signs of disturbance  by burrowing animals etc.</description>
     </property>
     <property name="Sketch" type="file" file="true" thumbnail="true">
-      <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
+      <description>Upload the file of a sketch of the context drawn on another application using the button below</description>
     </property>
     <property name="Photo" type="file" file="true" thumbnail="true">
-      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+      <description>Use this button to take a photo of the context using the camera on the tablet. Use a scale in the photo</description>
     </property>
     <property name="Audio" type="file" file="true" thumbnail="true">
-      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+      <description>Use this button to record an audio file of your observations concerning this context</description>
     </property>
     <property name="Video" type="file" file="true" thumbnail="true">
-      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+      <description>Use this button to record a video using the tablet of this context</description>
     </property>
     <property name="Structural Components" type="enum">
       <description>Describe what the structure is made from.</description>
@@ -930,11 +930,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <description>A group of contexts.</description>
     <!-- TODO: identifier format? -->    
     <property isIdentifier="true" name="AreaCode" type="freetext">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1]]></formatString>
     </property>
     <property isIdentifier="true" name="Context Group ID" type="freetext">
-      <description>Feature number taken from the appropriate running list.</description>
+      <description>Feature number taken from the central register.</description>
       <formatString><![CDATA[Feat-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Title" type="freetext">
@@ -1028,25 +1028,25 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>An appropriate mid-point on the feature should be recorded on the X/Y coordinates. This will locate the feature on the site grid system.</description>
     </property>
     <property name="CG Phase Notes" type="freetext">
-      <description>The site or building phase in which this Feature was constructed or deposited.</description>
+      <description>The site or building phase in which this feature was constructed or deposited.</description>
     </property>
     <property name="CG Plans" type="freetext">
-      <description>Reference numbers to plans or drawings of this Context.</description>
+      <description>Reference numbers to plans or drawings of this feature.</description>
     </property>
     <property name="CG Section Numbers" type="freetext">
-      <description>Reference numbers to section drawings of this Context</description>
+      <description>Reference numbers to section drawings of this feature</description>
     </property>
     <property name="Sketch" type="file" file="true" thumbnail="true">
-      <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
+      <description>Upload the file of a sketch of the feature drawn on another application using the button below</description>
     </property>
     <property name="Photo" type="file" file="true" thumbnail="true">
-      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+      <description>Use this button to take a photo of the feature using the camera on the tablet. Remember to include a scale in the photo.</description>
     </property>
     <property name="Audio" type="file" file="true" thumbnail="true">
-      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+      <description>Use this button to record an audio file of your observations concerning this feature</description>
     </property>
     <property name="Video" type="file" file="true" thumbnail="true">
-      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+      <description>Use this button to record a video using the tablet of this feature</description>
     </property>
   </ArchaeologicalElement>
   <!-- Matrix -->
@@ -1084,7 +1084,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       </lookup>
     </property>
     <property name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>H
@@ -1142,29 +1142,29 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <ArchaeologicalElement name="Height">
     <description></description>
     <property isIdentifier="true" name="Number" type="freetext">
-      <description/>
+      <description>Add a short description of the point being recorded, for example, 1. North edge of floor, 2. South edge of floor. Mark your points on the sketch for each context.</description>
       <formatString><![CDATA[$2]]></formatString>
     </property>
     <property isIdentifier="true" name="X" type="freetext">
-      <description/>
+      <description>Add X coordinate using the site grid</description>
       <formatString><![CDATA[ $2,]]></formatString>
 
     </property>
     <property isIdentifier="true" name="Y" type="freetext">
-      <description/>
+      <description>Add Y coordinate using the site grid</description>
       <formatString><![CDATA[ $2,]]></formatString>
 
     </property>
     <property isIdentifier="true" name="Z" type="freetext">
-      <description/>
+      <description>Add Z coordinate using the site grid</description>
       <formatString><![CDATA[ $2]]></formatString>
 
     </property>
     <property name="Notes" type="freetext">
-      <description/>
+      <description>Add a description here concerning the entity whose position you have recorded</description>
     </property>
     <property name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <lookup>
         <term>H
         <description/></term>
@@ -1192,7 +1192,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
   <ArchaeologicalElement name="Sample">
     <description>Deposit samples or samples of building elements recovered from this Context for the purpose of further analysis or ongoing reference.</description>
     <property isIdentifier="true" name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>H
@@ -1218,11 +1218,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <formatString><![CDATA[Cxtx-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Sample ID" type="freetext">
-      <description>The unique code or reference for the Sample.</description>
+      <description>The unique code or reference for the Sample. This should be assigned with reference to the central register</description>
       <formatString><![CDATA[Sample-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Sample Type" type="enum">
-      <description>The type of Sample collected eg Soil Wood Pollen.</description>
+      <description>The type of Sample collected as detailed below.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>{No_Observation}
@@ -1276,7 +1276,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Additional comments about this sample or its collection.</description>
     </property>
     <property name="Sample Location" type="blocktext">
-      <description>The location of the sample at the time of entry.</description>
+      <description>The storage location of the sample at the time of entry.</description>
       <lookup>
         <term>{No_Observation}<description>data not collected</description></term>
         <term>{Site_depot}<description/> </term>
@@ -1348,23 +1348,23 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Other description about structural elements eg slate dry-proofing.</description>
     </property>
     <property name="Sketch" type="file" file="true" thumbnail="true">
-      <description>Upload the file of a sketch of the context/artefact etc drawn on another application using the button below</description>
+      <description>Upload the file of a sketch of the sample/sample location drawn on another application using the button below</description>
     </property>
     <property name="Photo" type="file" file="true" thumbnail="true">
-      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+      <description>Use this button to take a photo of the sample/sample location using the camera on the tablet</description>
     </property>
     <property name="Audio" type="file" file="true" thumbnail="true">
-      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+      <description>Use this button to record an audio file of your observations concerning this sample</description>
     </property>
     <property name="Video" type="file" file="true" thumbnail="true">
-      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+      <description>Use this button to record a video using the tablet of this sample</description>
     </property>
   </ArchaeologicalElement>
   <!-- SPECIAL FIND -->
   <ArchaeologicalElement name="Special Find">
     <description/>
     <property isIdentifier="true" name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1]]></formatString>
       <lookup>
         <term>H
@@ -1390,11 +1390,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <formatString><![CDATA[Cxtx-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Special Find ID" type="freetext">
-      <description>Unique number or code for the Small Find.</description>
+      <description>Unique number or code for the artefact applying either a Small Find or Groundstone number from the site register.</description>
       <formatString><![CDATA[Artefact-$2-]]></formatString>
     </property>
     <property isIdentifier="true" name="Special Find Class" type="freetext">
-      <description>Broad Artefact Class for each Artefact (eg Glass Ceramic Building Material).</description>
+      <description>Broad Artefact Class for each Artefact (eg Chipped stone, Clay object, Building Material).</description>
       <lookup>
         <term>{No_Observation}
         <description>data not collected</description></term>
@@ -1506,11 +1506,11 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <term>{Building_Materials} 
         <description/></term>
         <term>{Miscellaneous} 
-        <description/></term>
+        <description>Add detail in the Annotation field</description></term>
       </lookup>
     </property>
     <property name="Source" type="enum">
-      <description/>
+      <description>Record the source of the artefact and whether it was collected during the excavation at the trench or from a sample</description>
       <lookup>
         <term>{No_Observation}        <description/></term>
         <term>{Excavation}            <description/></term>
@@ -1520,7 +1520,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       </lookup>
     </property>    
     <property name="Special Find Location" type="blocktext">
-      <description>The location of the sample at the time of entry.</description>
+      <description>The storage location of the artefact at the time of entry.</description>
       <lookup>
         <term>{No_Observation}<description>data not collected</description></term>
         <term>{Site_depot}<description/> </term>
@@ -1549,7 +1549,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Short code to signify the excavation site and often the year of excavation. Assigned automatically by the module.</description>
     </property>
     <property name="Special Find Name" type="freetext">
-      <description>Brief name or description of the Small Find e.g. Ground Stone Pounder</description>
+      <description>Enter a brief name for or description of the artefact e.g. Ground Stone Pounder</description>
     </property>
     <property name="Special Find X" type="float">
       <description>The reading from the x-axis (horizontal) of an arbitrary site grid corresponding to the location of the Small Find at the time of excavation.</description>
@@ -1561,19 +1561,19 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>The elevation or depth of the Small Find at the time of excavation.</description>
     </property>
     <property name="Special Find Description" type="freetext">
-      <description>Description of the Small Find.</description>
+      <description>Description of the Artefact.</description>
     </property>
     <property name="Special Find Comment" type="freetext">
-      <description/>
+      <description>Enter any additional observations concerning the artefact, its context and/or events surrounding it, for example damage or breakage suring excavation and storage.</description>
     </property>
     <property name="Photo" type="file" file="true" thumbnail="true">
-      <description>Use this button to take a photo of the context/artefact etc using the camera on the tablet</description>
+      <description>Use this button to take a photo of the artefact etc using the camera on the tablet. Make sure the artefact is shown with a scale</description>
     </property>
     <property name="Audio" type="file" file="true" thumbnail="true">
-      <description>Use this button to record an audio file of your observations concerning this context/artefact</description>
+      <description>Use this button to record an audio file of your observations concerning this artefact</description>
     </property>
     <property name="Video" type="file" file="true" thumbnail="true">
-      <description>Use this button to record a video using the tablet of this context/artefact etc</description>
+      <description>Use this button to record a video using the tablet of this artefact etc</description>
     </property>
   </ArchaeologicalElement>
   <!-- PHOTOGRAPH LOG -->
@@ -1581,7 +1581,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
     <description>A record of images created and stored on another device, eg by a professional site photographer.</description>
 
     <property isIdentifier="true" name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module.</description>
+      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1-]]></formatString>
       <appendCharacterString><![CDATA[-]]></appendCharacterString>
       <lookup>
