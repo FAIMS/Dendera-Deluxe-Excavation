@@ -14,29 +14,29 @@
   <RelationshipElement name="Bonded To" type="bidirectional">
     <description>Implements a bonded to for contexts</description>
   </RelationshipElement>
-  <RelationshipElement name="Physically - Cuts - Cut By" type="hierarchical">
+  <RelationshipElement name="Cuts - Cut By" type="hierarchical">
     <description>Implements a cuts-cutby for contexts.</description>
-    <parent>Physically - Cuts</parent>
-    <child>Physically - Cut by</child>
+    <parent>Cuts</parent>
+    <child>Cut by</child>
   </RelationshipElement>
-  <RelationshipElement name="Physically - Fill Of - Filled With" type="hierarchical">
+  <RelationshipElement name="Fill Of - Filled With" type="hierarchical">
     <description>Implements a fillof-filledwith for contexts.</description>
-    <parent>Physically - Fill Of </parent>
-    <child>Physically - Filled With </child>
+    <parent>Fill Of </parent>
+    <child>Filled With </child>
   </RelationshipElement>
-  <RelationshipElement name="Stratigraphically - Arbitrarily separated from" type="bidirectional">
+  <RelationshipElement name="Arbitrarily separated from" type="bidirectional">
     <description>When two or more context codes have been assigned to what is ultimately determined to be the same context</description>
   </RelationshipElement>
-  <RelationshipElement name="Stratigraphically - Precisely contemporary with" type="bidirectional">
+  <RelationshipElement name="Precisely contemporary with" type="bidirectional">
     <description>Contexts unequivocally contemporary</description>
   </RelationshipElement>
-  <RelationshipElement name="Stratigraphically - Broadly contemporary with" type="bidirectional">
+  <RelationshipElement name="Broadly contemporary with" type="bidirectional">
     <description>Contexts suspected to be contemporary but no direct physical relationship or evidence (i.e. adjacent buildings)</description>
   </RelationshipElement>
-  <RelationshipElement name="Stratigraphically - EarlierLater" type="hierarchical">
+  <RelationshipElement name="EarlierLater" type="hierarchical">
     <description>Implements a Stratigraphically Immediately Earlier-Later for contexts.</description>
-    <parent>Stratigraphically - Immediately Earlier Than</parent>
-    <child>Stratigraphically - Immediately Later Than</child>
+    <parent>Immediately Earlier Than</parent>
+    <child>Immediately Later Than</child>
   </RelationshipElement>
   <RelationshipElement name="ContextMatrix" type="bidirectional">
     <description>Implements a 1:N between contexts and matrices</description>
@@ -206,8 +206,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
         <description>Any Context consisting of deliberately constructed structural element, independent of a Negative Element (i.e. cut, such as a wall or a hearth).</description></term>
         <term pictureURL="files/data/gallery/ContextType/Orange/Skeleton.png">{Skeleton} 
         <description>Human skeletal remains.</description></term>
-        <term pictureURL="files/data/gallery/ContextType/Orange/Artefact group.png">{Artefact_Group} 
-        <description>Groups of artefacts found in association during excavation such as obsidian caches.</description></term>
       </lookup>
     </property>
     <property name="Date Opened" type="date">
