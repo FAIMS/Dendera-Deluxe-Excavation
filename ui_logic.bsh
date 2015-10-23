@@ -420,7 +420,6 @@ entityTypes.add(new NameValuePair("{Context}", "Context"));
 entityTypes.add(new NameValuePair("{Context_Group}", "Context Group"));
 entityTypes.add(new NameValuePair("{Diary}", "Diary"));
 entityTypes.add(new NameValuePair("{Sample}", "Sample"));
-//entityTypes.add(new NameValuePair("{Matrix}", "Matrix"));
 entityTypes.add(new NameValuePair("{Special_Find}", "Special Find"));
 entityTypes.add(new NameValuePair("{Photograph_Log}", "Photograph Log"));
 //entityTypes.add(new NameValuePair("{Height}", "Height"));
@@ -445,8 +444,6 @@ loadEntityFrom(String entityID) {
             loadDiaryFrom(entityID);
         } else if (name.equals("Sample")) {
           loadSampleFrom(entityID);
-        } else if (name.equals("Matrix")) {
-          loadMatrixFrom(entityID);
         } else if (name.equals("Special Find")) {
           loadSpecialFindFrom(entityID);
         } else if (name.equals("Photograph Log")) {
@@ -625,9 +622,6 @@ onEvent("Context/Context_Measure/Height_List", "click", "loadHeight()");
 onEvent("Context/Texture_Helper/Update_Texture", "click", "setTextureActual()");
 
 onEvent("Context/Context_Deposits/Texture_Helper", "click", "helpSetTextureActual()");
-onEvent("Context/Context_Deposits", "show", "updateAllContextMatrices()");
-onEvent("Context/Context_Deposits/newMatrix", "click", "newMatrix()");
-onEvent("Context/Context_Deposits/loadMatrix", "click", "loadMatrix()");
 
 onEvent("Context/Context_Structures/Deposit", "click", "showTab(\"Context/Context_Deposits\")");
 
@@ -869,10 +863,6 @@ updateNonContextRelationshipBasedDropdown(path, relntypename, parentaenttypename
           }
         });
     }
-}
-
-updateAllContextMatrices() {
-    updateContextRelationshipBasedDropdown("Context/Context_Deposits/matrixList", "ContextMatrix",context_id);
 }
 
 updateAllContextGroups() {
@@ -1631,91 +1621,6 @@ loadSampleAttributes(){
     makeVocab("DropDown", "Sample/Sample_GeneralInformation/Sample_Location", "Sample Location");
 }
 
-/*** Matrix ***/
-onEvent("Matrix", "show", "addNavigationButtons(\"Matrix\");keepTabGroupChanges(\"Matrix\"); saveMatrix(\"\");");
-
-String matrix_id = null;
-
-newMatrix(){
-    if (isNull(getFieldValue("Context/Context_GeneralInformation/Context_ID"))) {
-        showWarning("Logic Error", "Cannot save record without id");
-        return;
-    }
-    if (isNull(context_id)){
-        showToast("You must save a context first.");
-        return;
-    }
-    matrix_id = null;
-    newTabGroup("Matrix");
-}
-
-loadMatrix() {
-    matrix_id = getFieldValue("Context/Context_Deposits/matrixList");
-    loadMatrixFrom(matrix_id);
-}
-
-loadMatrixFrom(String id) {
-    matrix_id = id;
-    if (isNull(matrix_id)) return;
-    showTabGroup("Matrix", matrix_id);
-}
-
-saveMatrix(String callback) {
-    Boolean enable_autosave = true;
-    List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
-    attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
-    saveTabGroup("Matrix", matrix_id, null, attributes, new SaveCallback() {
-        onSave(uuid, newRecord) {
-            matrix_id = uuid;
-            if (newRecord) {
-              onMatrixSaved();
-            }
-            
-            execute(callback);
-        }
-        onError(message) {
-            showToast(message);
-        }
-    }, enable_autosave);
-}
-
-onMatrixSaved(){
-    saveEntitiesToRel("ContextMatrix", context_id, matrix_id);
-    showToast("{Associated_with_Context}");
-
-}
-
-deleteMatrixFromContext(){
-    matrix_id = getFieldValue("Context/Context_Deposits/matrixList");
-    if (!isNull(matrix_id)) {
-        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Matrix}", "reallyDeleteMatrix()", "doNotDelete()");
-    }
-}
-
-deleteMatrix(){
-    if (!isNull(matrix_id)) {
-        showAlert("{Confirm_Deletion}", "{Press_OK_to_Delete_this_Matrix}", "reallyDeleteMatrix()", "doNotDelete()");
-    } else {
-        cancelTabGroup("Matrix", true);
-    }
-}
-
-reallyDeleteMatrix(){
-    deleteArchEnt(matrix_id);
-    showTabGroup("Matrix");
-    cancelTabGroup("Matrix", false);
-}
-
-doNotDelete(){
-    showToast("{Delete_Cancelled}");
-}
-
-loadMatrixAttributes(){
-    makeVocab("DropDown", "Matrix/Matrix/Component", "Component");
-    makeVocab("HierarchicalPictureGallery", "Matrix/Matrix/Shape", "Shape");
-}
-
 /*** Special Find ***/
 onEvent("Special_Find", "show", "addNavigationButtons(\"Special_Find\"); keepTabGroupChanges(\"Special_Find\"); saveSpecialFind(\"\");");
 onEvent("Special_Find/Special_Find_GeneralInformation/attachPhoto", "click", "attachPictureTo(\"Special_Find/Special_Find_GeneralInformation/Photo\")");
@@ -2064,8 +1969,6 @@ getRecordId(String tabgroup) {
     return diary_id;
   } else if (tabgroup.equals("Sample")) {
     return sample_id;
-  } else if (tabgroup.equals("Matrix")) {
-    return matrix_id;
   } else if (tabgroup.equals("Special_Find")) {
     return special_find_id;
   } else if (tabgroup.equals("Photograph_Log")) {
@@ -2092,9 +1995,6 @@ newRecord(String tabgroup) {
   } else if (tabgroup.equals("Sample")) {
     cancelTabGroup(tabgroup, false);
     newSample();
-  } else if (tabgroup.equals("Matrix")) {
-    cancelTabGroup(tabgroup, false);
-    newMatrix();
   } else if (tabgroup.equals("Special_Find")) {
     cancelTabGroup(tabgroup, false);
     newSpecialFind();
@@ -2120,8 +2020,6 @@ deleteRecord(String tabgroup, String id) {
     deleteDiary();
   } else if (tabgroup.equals("Sample")) {
     deleteSample();
-  } else if (tabgroup.equals("Matrix")) {
-    deleteMatrix();
   } else if (tabgroup.equals("Special_Find")) {
     deleteSpecialFind();
   } else if (tabgroup.equals("Photograph_Log")) {
@@ -2147,8 +2045,6 @@ duplicateRecord(String tabgroup) {
     duplicateDiary();
   } else if (tabgroup.equals("Sample")) {
     duplicateSample();
-  } else if (tabgroup.equals("Matrix")) {
-    duplicateMatrix();
   } else if (tabgroup.equals("Special_Find")) {
     duplicateSpecialFind();
   } else if (tabgroup.equals("Photograph_Log")) {
@@ -2375,39 +2271,6 @@ duplicateSample() {
     }
   });
 }
-
-duplicateMatrix() {
-  String oldMatrix_ID = matrix_id;
-  disableAutoSave("Matrix");
-
-  saveCallback = new SaveCallback() {
-    onSave(uuid, newRecord) {
-      matrix_id = uuid;
-      Boolean enable_autosave = true;
-      fetchAll(getDuplicateRelnQuery(oldMatrix_ID), new FetchCallback(){
-          onFetch(result) {
-            makeDuplicateRelationships(result, matrix_id);
-            dialog.dismiss();
-            showToast("{Duplicated_record}");
-          }
-        });
-      saveTabGroup("Matrix", matrix_id, null, null, new SaveCallback(){
-        onSave(autosaveUuid, autosaveNewRecord) {
-          matrix_id = autosaveUuid;          
-        }
-      }, enable_autosave);
-    }
-  };
-
-  fetchAll(getDuplicateAttributeQuery(matrix_id, "'AreaCode', 'Context ID'"), new FetchCallback(){
-    onFetch(result) {
-      excludeAttributes = new ArrayList();
-      //excludeAttributes.add("AreaCode");
-      duplicateTabGroup("Matrix", null, getExtraAttributes(result), null, saveCallback);
-    }
-  });
-}
-
 duplicateSpecialFind() {
   disableAutoSave("Special_Find");
 
@@ -2848,7 +2711,6 @@ initialiseModule() {
     loadContextGroupAttributes();
     loadDiaryAttributes();
     loadSampleAttributes();
-    loadMatrixAttributes();
     loadSpecialFindAttributes();
     loadPhotoLogAttributes();
 }

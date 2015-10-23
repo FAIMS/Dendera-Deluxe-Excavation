@@ -23,7 +23,6 @@
           </style>
           <user>
             <usertab>
-              <Area_Code/>
               <users/>
               <Device_Code/>
               <login/>
@@ -58,9 +57,6 @@
                 <child1>
                   <entityTypes/>
                 </child1>
-                <child2>
-                  <Area_Code/>
-                </child2>
               </container2>
               <entityList/>
             </search>
@@ -71,9 +67,9 @@
             <Context_GeneralInformation>
               <validate/>
               <container1>
-                <child2>
-                  <Area_Code/>
-                </child2>
+                <child1>
+                  <Prefix/>
+                </child1>
                 <child3>
                   <Context_ID/>
                 </child3>
@@ -227,13 +223,6 @@
                   <Deposit_Inclusions/>
                 </child2>
               </container3>
-              <newMatrix/>
-              <matrixList/>
-              <container4>
-                <child2>
-                  <loadMatrix/>
-                </child2>
-              </container4>
             </Context_Deposits>
             <Context_Skeletons>
               <container0>
@@ -416,9 +405,6 @@
             <ContextGroup_Details>
               <validate/>
               <container1>
-                <child2>
-                  <Area_Code/>
-                </child2>
                 <child3>
                   <Context_Group_ID/>
                 </child3>
@@ -612,20 +598,6 @@
               <validationResults/>
             </Sample_Validation>
           </Sample>
-          <!--Matrix, a relationship on deposits -->
-          <Matrix>
-            <Matrix>
-              <container1>
-                <child1>
-                  <Component/>
-                </child1>
-                <child2>
-                  <Percentage/>
-                </child2>
-              </container1>
-              <Shape/>
-            </Matrix>
-          </Matrix>
           <!--ArchEnt / Record Type: HEIGHT-->
           <Height>
             <Height>
@@ -710,7 +682,6 @@
                 </right>
               </colgroup>
               <Title/>
-              <Area_Code/>
               <Text/>
               <Sketch/>
               <attachSketch/>
@@ -757,7 +728,6 @@
       <bind type="decimal" nodeset="/faims/Height/Height/X"/>
       <bind type="decimal" nodeset="/faims/Height/Height/Y"/>
       <bind type="decimal" nodeset="/faims/Height/Height/Z"/>
-      <bind type="decimal" nodeset="/faims/Matrix/Matrix/container1/child2/Percentage"/>
       <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/Sample_Volume"/>
       <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/container2/child1/X"/>
       <bind type="decimal" nodeset="/faims/Sample/Sample_GeneralInformation/container2/child2/Y"/>
@@ -799,13 +769,6 @@
         <label>{User} {List}</label>
         <select1 ref="users" faims_style_class="required">
           <label>{Users}:</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <select1 ref="Area_Code" faims_style_class="required">
-          <label>{AreaCode}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
@@ -890,16 +853,6 @@
               </item>
             </select1>
           </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <select1 ref="Area_Code">
-              <label>{Select} {Trench}</label>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
         </group>
         <select1 appearance="compact" ref="entityList" faims_style_class="menu-list">
           <label>{EntityList}</label>
@@ -920,10 +873,10 @@
         </trigger>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child2">
+          <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="requiredsharedwithvocab">
-              <label>{AreaCode}</label>
+            <select1 faims_annotation="false" faims_attribute_name="Prefix" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Prefix" faims_style_class="requiredsharedwithvocab">
+              <label>{Prefix}</label>
               <item>
                 <label>{placeholder}</label>
                 <value>placeholder</value>
@@ -1344,25 +1297,6 @@
             <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="measure" faims_read_only="false" ref="Deposit_Inclusions" faims_style_class="required">
               <label>{Deposit_Inclusions}</label>
             </input>
-          </group>
-        </group>
-        <trigger ref="newMatrix">
-          <label>Add New {Matrix}</label>
-        </trigger>
-        <select1 faims_certainty="false" faims_read_only="false" ref="matrixList">
-          <label>Associated {Matrices}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-        <group faims_style="orientation" ref="container4">
-          <label/>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <trigger ref="loadMatrix">
-              <label>Load {Matrix}</label>
-            </trigger>
           </group>
         </group>
       </group>
@@ -1792,16 +1726,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </trigger>
         <group faims_style="orientation" ref="container1">
           <label/>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="requiredsharedwithvocab">
-              <label>{AreaCode}</label>
-              <item>
-                <label>{placeholder}</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
           <group faims_style="even" ref="child3">
             <label/>
             <input faims_attribute_name="Context Group ID" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Context_Group_ID" faims_style_class="required">
@@ -2288,39 +2212,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         </input>
       </group>
     </group>
-    <!-- Matrix, an archent on deposits -->
-    <group ref="Matrix" faims_archent_type="Matrix">
-      <label>{Matrix}</label>
-      <group ref="Matrix">
-        <label>{Matrix}</label>
-        <group faims_style="orientation" ref="container1">
-          <label/>
-          <group faims_style="even" ref="child1">
-            <label/>
-            <select1 faims_attribute_name="Component" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Component">
-              <label>{Component}</label>
-              <item>
-                <label>placeholder</label>
-                <value>placeholder</value>
-              </item>
-            </select1>
-          </group>
-          <group faims_style="even" ref="child2">
-            <label/>
-            <input faims_attribute_name="Percentage" faims_attribute_type="measure" faims_certainty="false" faims_read_only="false" ref="Percentage">
-              <label>{Percentage}</label>
-            </input>
-          </group>
-        </group>
-        <select1 faims_attribute_name="Shape" faims_attribute_type="vocab" faims_read_only="false" ref="Shape" type="image">
-          <label>{Soil_Stone_Shape}</label>
-          <item>
-            <label>placeholder</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
-      </group>
-    </group>
     <!-- ArchEnt: Height -->
     <group ref="Height" faims_archent_type="Height">
       <label>{Height}</label>
@@ -2522,13 +2413,6 @@ Here you can enter filenames or unique reference numbers for image stored on ano
         <input faims_attribute_name="Title" faims_attribute_type="measure" faims_read_only="false" ref="Title" faims_certainty="false">
           <label>{Title}</label>
         </input>
-        <select1 faims_annotation="false" faims_attribute_name="AreaCode" faims_attribute_type="vocab" faims_certainty="false" faims_read_only="false" ref="Area_Code" faims_style_class="sharedwithvocab">
-          <label>{AreaCode}</label>
-          <item>
-            <label>{placeholder}</label>
-            <value>placeholder</value>
-          </item>
-        </select1>
         <input faims_attribute_name="Text" faims_attribute_type="measure" faims_read_only="false" ref="Text">
           <label>{Text}</label>
         </input>

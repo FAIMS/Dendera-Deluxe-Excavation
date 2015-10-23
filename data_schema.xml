@@ -38,9 +38,6 @@
     <parent>Immediately Earlier Than</parent>
     <child>Immediately Later Than</child>
   </RelationshipElement>
-  <RelationshipElement name="ContextMatrix" type="bidirectional">
-    <description>Implements a 1:N between contexts and matrices</description>
-  </RelationshipElement>
   <RelationshipElement name="ContextContextGroup" type="bidirectional">
     <description>Implements a N:N between contexts and context groups</description>
   </RelationshipElement>
@@ -124,7 +121,21 @@
   <!-- CONTEXT -->
   <ArchaeologicalElement name="Context">
     <description>The physical result of any single action whether it leaves a positive or negative record within the stratigraphic sequence. (MoLAS 1994)</description>
- 
+    <property isIdentifier="true" name="Prefix" type="enum">
+      <description/>
+      <formatString><![CDATA[$1-]]></formatString>
+      <lookup>
+        <term>{Ch}    <description/></term>
+        <term>{F}     <description/></term>
+        <term>{Fy}    <description/></term>
+        <term>{MR}    <description/></term>
+        <term>{Pu}    <description/></term>
+        <term>{S}     <description/></term>
+        <term>{TP}    <description/></term>
+        <term>{TR}    <description/></term>
+        <term>{Other} <description/></term>
+      </lookup>
+    </property>
     <property isIdentifier="true" name="AreaCode" type="enum">
       <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
       <formatString><![CDATA[$1]]></formatString>
@@ -1047,95 +1058,6 @@ When you have selected a context type you can proceed to open the "Fill in conte
       <description>Use this button to record a video using the tablet of this feature</description>
     </property>
   </ArchaeologicalElement>
-  <!-- Matrix -->
-  <ArchaeologicalElement name="Matrix">
-    <description/>
-    <!-- TODO: identifier format? -->
-    <property isIdentifier="true" name="Percentage" type="float">
-      <description>Enter the approximate % volume of this material in the Context.</description>
-      <formatString><![CDATA[$2% ]]></formatString>
-    </property>
-    <property isIdentifier="true" name="Component" type="enum">
-      <description>Describe the components which make up 10% or more of the deposit.</description>
-      <formatString><![CDATA[$1]]></formatString>
-      <lookup>
-        <term>{No_Observation}
-        <description>data not collected</description></term>
-        <term>{Grit} 
-        <description>Size up to 5 mm.</description></term>
-        <term>{Small_Stones} 
-        <description>Size up to 10 mm.</description></term>
-        <term>{Large_stones} 
-        <description>Size over 10 mm.</description></term>
-        <term>{Tauf} 
-        <description>Mud building material including mortar.</description></term>
-        <term>{Midden} 
-        <description>Organic debris e.g. bones carbonised material phytoliths etc</description></term>
-        <term>{Plaster} 
-        <description>Fragments of plaster.</description></term>
-        <term>{Mudbrick} 
-        <description>Fragments of mudbrick or whole mudbricks not part of a coherent structural element.</description></term>
-        <term>{Ash} 
-        <description>White/grey fine material which may contain charcoal and other burnt plant material.</description></term>
-        <term>{Artefacts} 
-        <description>Human manufactured materials including lithics, beads, ground stone etc.</description></term>
-      </lookup>
-    </property>
-    <property name="AreaCode" type="enum">
-      <description>The excavation trench, designated by a letter code and assigned automatically by the module based on your selection when you log in.</description>
-      <formatString><![CDATA[$1]]></formatString>
-      <lookup>
-        <term>H
-        <description/></term>
-        <term>K 
-        <description/></term>
-        <term>L 
-        <description/></term>
-        <term>M 
-        <description/></term>
-        <term>N 
-        <description/></term>
-        <term>P 
-        <description/></term>
-        <term>Q
-        <description/></term>
-        <term>X
-        <description/></term>
-      </lookup>
-    </property>
-    <property name="Context ID" type="freetext">
-      <description></description>
-    </property>
-    <property name="Shape" type="enum">
-      <description>Shape and roundness of stones and pebbles in the deposit.</description>
-      <lookup>
-        <term pictureURL="files/data/gallery/Other/NA.png">{No_Observation}
-        <description>data not collected</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/Angular.png">{Angular} 
-        <description>Sharp pebbles or stones.</description>
-        <term pictureURL="files/data/gallery/Pebbles/AngularAngular.png">{Angular} 
-        <description>Sharp and pointed.</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/AngularSub.png">{Sub-angular} 
-        <description>A little sharp and pointed.</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/AngularVery.png">{Very_angular} 
-        <description>Very sharp and pointed.</description></term></term>
-        <term pictureURL="files/data/gallery/Pebbles/Rounded.png">{Rounded} 
-        <description>Rounded stones and pebbles.</description>
-        <term pictureURL="files/data/gallery/Pebbles/RoundedRounded.png">{Rounded} 
-        <description>Mostly rounded pebble or stone.</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/RoundedSub.png">{Sub-rounded} 
-        <description>Some rounding to pebbles or stones.</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/RoundedWell.png">{Well-rounded} 
-        <description>Very rounded pebble or stone.</description></term></term>
-        <term pictureURL="files/data/gallery/Pebbles/DressedStone.png">{Dressed_Stone} 
-        <description>Those that have been clearly shaped for use.</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/Tabular.png">{Tabular} 
-        <description>Stones with flattened upper and lower surfaces.</description></term>
-        <term pictureURL="files/data/gallery/Pebbles/Ground.png">{Ground} 
-        <description>Stones that have been deliberately shaped smooth by grinding.</description></term>
-      </lookup>
-    </property>
-  </ArchaeologicalElement>
   <!--HEIGHT-->
   <ArchaeologicalElement name="Height">
     <description></description>
@@ -1409,7 +1331,7 @@ When you have selected a context type you can proceed to open the "Fill in conte
         </term>
         <term>{Ground_Stone} 
         <description/>
-          <term>{Bead}
+          <term>{Bead} 
           <description/></term>
           <term>{Grinder} 
           <description/></term>
@@ -1423,6 +1345,10 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description/></term>
           <term>{Polisher} 
           <description/></term>
+          <term>{Stone_Vessel} 
+          <description/></term>
+          <term>{Flint} 
+          <description/></term>
           <term>{Other} 
           <description/></term>
         </term>
@@ -1435,6 +1361,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <term>{Other} 
           <description/></term>
         </term>
+        <term>{Ivory} 
+        <description/></term>
         <term>{Shell} 
         <description/>
           <term>{Bead} 
@@ -1455,6 +1383,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <term>{Phytolith} 
           <description/></term>
           <term>{Impression_Cast} 
+          <description/></term>
+          <term>{Wood_Organic} 
           <description/></term>
           <term>{Other} 
           <description/></term>
@@ -1480,6 +1410,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <description/></term>
           <term>{Terracotta} 
           <description/></term>
+          <term>{Pottery} 
+          <description/></term>
           <term>{Other} 
           <description/></term>
         </term>
@@ -1497,6 +1429,8 @@ When you have selected a context type you can proceed to open the "Fill in conte
           <term>{Ferrous} 
           <description/></term>
           <term>{Copper-alloy} 
+          <description/></term>
+          <term>{Copper} 
           <description/></term>
           <term>{Other} 
           <description/></term>

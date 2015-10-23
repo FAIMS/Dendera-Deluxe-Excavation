@@ -258,8 +258,6 @@ insert into keyval (key, val) values('Loamy_Sand','Loamy Sand');
 insert into keyval (key, val) values('Location_Note','Approx location in area');
 insert into keyval (key, val) values('Loose','Loose');
 insert into keyval (key, val) values('Lowest_Level','Abs Ht Bottom (m)');
-insert into keyval (key, val) values('Matrices','Sediments/Aggregates');
-insert into keyval (key, val) values('Matrix','Sediment/Aggregate');
 insert into keyval (key, val) values('Medium_Pebbles','Medium Pebbles');
 insert into keyval (key, val) values('Medium_ribbon_(2.5-5cm_long)','Medium ribbon (2.5-5cm long)');
 insert into keyval (key, val) values('Merging','Merging');
