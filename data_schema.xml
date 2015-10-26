@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dataSchema name="Boncuklu" preparer="Penny Crook">
-  
-  <RelationshipElement name="Butts - Butted By" type="hierarchical">
-    <description>Implements a Butts-ButtedBy for contexts.</description>
-    <parent>Butts</parent>
-    <child>Butted By</child>
+
+  <!--These relate contexts to one another-->
+  <RelationshipElement name="Chronologically Precedes" type="hierarchical">
+    <description></description>
+    <parent>Precedes</parent>
+    <child>Preceded By</child>
   </RelationshipElement>
-  <RelationshipElement name="Rebuilt - Rebuilt By" type="hierarchical">
-    <description>Implements a Rebuilt - Rebuilt By</description>
-    <parent>Rebuilt</parent>
-    <child>Rebuilt By</child>
-  </RelationshipElement>  
-  <RelationshipElement name="Bonded To" type="bidirectional">
-    <description>Implements a bonded to for contexts</description>
+  <RelationshipElement name="Fills" type="hierarchical">
+    <description></description>
+    <parent>Fills</parent>
+    <child>Filled By</child>
   </RelationshipElement>
-  <RelationshipElement name="Cuts - Cut By" type="hierarchical">
-    <description>Implements a cuts-cutby for contexts.</description>
+  <RelationshipElement name="Cuts" type="hierarchical">
+    <description></description>
     <parent>Cuts</parent>
-    <child>Cut by</child>
+    <child>Cut By</child>
   </RelationshipElement>
-  <RelationshipElement name="Fill Of - Filled With" type="hierarchical">
-    <description>Implements a fillof-filledwith for contexts.</description>
-    <parent>Fill Of </parent>
-    <child>Filled With </child>
+  <RelationshipElement name="Covers" type="hierarchical">
+    <description></description>
+    <parent>Covers</parent>
+    <child>Covered By</child>
   </RelationshipElement>
-  <RelationshipElement name="Arbitrarily separated from" type="bidirectional">
-    <description>When two or more context codes have been assigned to what is ultimately determined to be the same context</description>
+  <RelationshipElement name="Contemporary With" type="bidirectional">
+    <description></description>
   </RelationshipElement>
-  <RelationshipElement name="Precisely contemporary with" type="bidirectional">
-    <description>Contexts unequivocally contemporary</description>
+  <RelationshipElement name="Relation Uncertain" type="bidirectional">
+    <description></description>
   </RelationshipElement>
-  <RelationshipElement name="Broadly contemporary with" type="bidirectional">
-    <description>Contexts suspected to be contemporary but no direct physical relationship or evidence (i.e. adjacent buildings)</description>
+  <RelationshipElement name="Is Synchronous" type="bidirectional">
+    <description></description>
   </RelationshipElement>
-  <RelationshipElement name="EarlierLater" type="hierarchical">
-    <description>Implements a Stratigraphically Immediately Earlier-Later for contexts.</description>
-    <parent>Immediately Earlier Than</parent>
-    <child>Immediately Later Than</child>
+  <RelationshipElement name="Identic" type="bidirectional">
+    <description></description>
   </RelationshipElement>
+
+  <!--Child-entity relationships-->
   <RelationshipElement name="ContextContextGroup" type="bidirectional">
     <description>Implements a N:N between contexts and context groups</description>
   </RelationshipElement>
@@ -62,6 +60,7 @@
     <description>Implements a 1:N between context group and its photograph logs
     </description>
   </RelationshipElement>
+
   <!-- DIARY -->
   <ArchaeologicalElement name="Diary">
     <description></description>
