@@ -161,20 +161,18 @@ validateContextTabGroup(Boolean showWarning) {
     List f = new ArrayList(); // fields to be validated
 
     // General information
-    f.add(fieldPair("Context/Context_GeneralInformation/Area_Code"             , "{Trench}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_ID"            , "{Context_ID}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Location_Note"         , "{Location_Note}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Excavation_Method"     , "{Excavation_Method}"));
     f.add(fieldPair("Context/Context_GeneralInformation/Context_Type"          , "{Context_Type}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Plans"                 , "{Plans}"));
-    f.add(fieldPair("Context/Context_GeneralInformation/Section_Numbers"       , "{Section_Numbers}"));
+    
+    
     // Measure
     f.add(fieldPair("Context/Context_Measure/Context_Highest_Level" , "{Context_Highest_Level}"));
     f.add(fieldPair("Context/Context_Measure/Context_Lowest_Level"  , "{Context_Lowest_Level}"));
     f.add(fieldPair("Context/Context_Measure/Length"                , "{Length}"));
     f.add(fieldPair("Context/Context_Measure/Width"                 , "{Width}"));
     f.add(fieldPair("Context/Context_Measure/Depth"                 , "{Depth}"));
-    f.add(fieldPair("Context/Context_Measure/Volume"                , "{Volume}"));
+    
 
     String condCut        = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Cut}\")";
     String condDeposit    = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Deposit}\")";
@@ -182,32 +180,11 @@ validateContextTabGroup(Boolean showWarning) {
     String condStructures = "isSelected(\"Context/Context_GeneralInformation/Context_Type\", CONTEXT_TYPE_VOCAB, \"{Structure}\")";
     // Cut
     f.add(fieldPair("Context/Context_Cuts/Your_Interpretation"               , "{Your_Interpretation}"   , condCut));
-    f.add(fieldPair("Context/Context_Cuts/Shape_of_Cut"                      , "{Shape_of_Cut}"          , condCut));
-    f.add(fieldPair("Context/Context_Cuts/Shape_of_Corners"                  , "{Shape_of_Corners}"      , condCut));
-    f.add(fieldPair("Context/Context_Cuts/Shape_of_Base"                     , "{Shape_of_Base}"         , condCut));
-    f.add(fieldPair("Context/Context_Cuts/Break_of_Slope_Top"                , "{Break_of_Slope_Top}"    , condCut));
-    f.add(fieldPair("Context/Context_Cuts/Sides_of_Cut"                      , "{Sides_of_Cut}"          , condCut));
     f.add(fieldPair("Context/Context_Cuts/Cut_Function"                      , "{Cut_Function}"          , condCut));
     f.add(fieldPair("Context/Context_Cuts/Orientation"                       , "{Orientation}"           , condCut));
-    f.add(fieldPair("Context/Context_Cuts/Inclination_of_axis"               , "{Inclination_of_axis}"   , condCut));
     // Deposit
     f.add(fieldPair("Context/Context_Deposits/Your_Interpretation"           , "{Your_Interpretation}"   , condDeposit));
-    f.add(fieldPair("Context/Context_Deposits/Soil_Compaction_Type"          , "{Soil_Compaction_Type}"  , condDeposit));
-    f.add(fieldPair("Context/Context_Deposits/Soil_Texture"                  , "{Soil_Texture}"          , condDeposit));
-    f.add(fieldPair("Context/Context_Deposits/Composition_Type"              , "{Composition_Type}"      , condDeposit));
-    f.add(fieldPair("Context/Context_Deposits/Deposit_Bedding"               , "{Deposit_Bedding}"       , condDeposit));
-    f.add(fieldPair("Context/Context_Deposits/Deposit_Inclusions"            , "{Deposit_Inclusions}"    , condDeposit));
     // Skeleton
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Head"                , "{Skeleton_Head}"         , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Body"                , "{Skeleton_Body}"         , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Left_Arm"            , "{Skeleton_Left_Arm}"     , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Right_Arm"           , "{Skeleton_Right_Arm}"    , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Left_Leg"            , "{Skeleton_Left_Leg}"     , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Right_Leg"           , "{Skeleton_Right_Leg}"    , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Condition"           , "{Skeleton_Condition}"    , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Skeleton_Days_Exposed"        , "{Skeleton_Days_Exposed}" , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Target_A_X"                   , "{Target_A_X}"            , condSkeleton));
-    f.add(fieldPair("Context/Context_Skeletons/Target_A_Y"                   , "{Target_A_Y}"            , condSkeleton));
     // Structures
     f.add(fieldPair("Context/Context_Structures/Your_Interpretation"         , "{Your_Interpretation}"   , condStructures));
     f.add(fieldPair("Context/Context_Structures/Structure_Description"       , "{Structure_Description}" , condStructures));
@@ -231,7 +208,6 @@ validateContextGroupTabGroup() {
 validateContextGroupTabGroup(showWarning) {
     List f = new ArrayList();
 
-    f.add(fieldPair("ContextGroup/ContextGroup_Details/Area_Code"               , "{Trench}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Group_ID"        , "{Context_Group_ID}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Title"                   , "{Title}"));
     f.add(fieldPair("ContextGroup/ContextGroup_Details/Context_Type"            , "{Context_Group} Type"));
@@ -319,7 +295,7 @@ incField(String ref) {
 
 /*** control ***/
 onEvent("control"                     , "load"      , "loadControlSettings()");
-onEvent("control"                     , "show"      , "removeNavigationButtons(); setSearchAreaCode();");
+onEvent("control"                     , "show"      , "removeNavigationButtons();");
 onEvent("control/data"                , "show"      , "refreshEntities(); updateGPSDiagnostics();");
 onEvent("control/data/newContext"     , "delayclick", "newContext();");
 onEvent("control/data/newContextGroup", "delayclick", "newContextGroup(true);");
@@ -329,7 +305,6 @@ onEvent("control/search"              , "show"      , "search();");
 onEvent("control/search/Search"       , "click"     , "clearSearch()");
 onEvent("control/search/searchButton" , "click"     , "search()");
 onEvent("control/search/entityTypes"  , "click"     , "search()");
-onEvent("control/search/Area_Code"    , "click"     , "search()");
 onEvent("control/search/entityList"   , "click"     , "loadEntity();");
 
 loadControlSettings() {
@@ -371,9 +346,7 @@ loadStartingId(String ref) {
     });
 }
 
-setSearchAreaCode() {
-    setFieldValue("control/search/Area_Code", getFieldValue("user/usertab/Area_Code"));
-}
+
 
 clearSearch(){
     setFieldValue("control/search/Search","");
@@ -387,7 +360,6 @@ refreshEntities() {
 
 search(){
     String type = getFieldValue("control/search/entityTypes");
-    String areaCode = getFieldValue("control/search/Area_Code");
     String term = getFieldValue("control/search/Search");
     String searchQuery = "SELECT uuid, response "+
                          "  FROM latestNonDeletedArchEntFormattedIdentifiers  "+
@@ -396,14 +368,7 @@ search(){
                          "                   WHERE attributename != 'Site Code' "+
                          "                     AND measure LIKE '"+term+"'||'%'  "+
                          "                     AND ( aenttypename LIKE '"+type+"' OR 'All' = '"+type+"' ) "+                         
-                         "                  )  "+
-                         "   AND (   'null' = '"+areaCode+"'  "+
-                         "        OR uuid in (SELECT uuid "+
-                         "                     FROM latestnondeletedaentvalue  "+
-                         "                     JOIN attributekey using (attributeid) "+
-                         "                    WHERE attributename = 'AreaCode' "+
-                         "                      AND vocabid = '"+areaCode+"') "+
-                         "       ) "+
+                         "                  )  "+                         
                          " ORDER BY response "+
                          " LIMIT ? "+
                          "OFFSET ? ";
@@ -494,7 +459,6 @@ saveHeight() {
 saveHeight(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Context ID", null, null, getFieldValue("Context/Context_GeneralInformation/Context_ID"), null));
     print(context_id);
     print(height_id);
@@ -549,7 +513,7 @@ newDiary() {
     newTabGroup("Diary");
     setMonthDay("Diary/Diary/Timestamp");
     setFieldValue("Diary/Diary/CreatedBy", username);
-    setFieldValue("Diary/Diary/Area_Code", getFieldValue("user/usertab/Area_Code"));
+
     keepTabGroupChanges("Diary");
 }
 
@@ -603,7 +567,7 @@ doNotDelete(){
 }
 
 loadDiaryAttributes() {
-    makeVocab("DropDown", "Diary/Diary/Area_Code", "AreaCode");
+
 }
 
 /*** ArchEnt: Context **/
@@ -698,7 +662,6 @@ newContext(){
 
     setFieldValue("Context/Context_GeneralInformation/Context_ID", contextIncrement);
     setTimestamp("Context/Context_GeneralInformation/Date_Opened");
-    setFieldValue("Context/Context_GeneralInformation/Area_Code", getFieldValue("user/usertab/Area_Code"));
     setFieldValue("Context/Context_GeneralInformation/CreatingUser", username);
     setFieldValue("Context/Context_GeneralInformation/Excavators", getFieldValue("control/data/teamMembers"));
     keepTabGroupChanges("Context");
@@ -787,7 +750,6 @@ deleteReln(){
 }
 
 updateContextRelationshipTargetArea() {
-    setFieldValue("Context/Context_Relationships_to_Other_Contexts/Target_Area", getFieldValue("Context/Context_GeneralInformation/Area_Code"));
     populateWebViewHtml("Context/Context_Relationships_to_Other_Contexts/selectedEnt", WEB_REL_SELECTED_NONE);
 
 }
@@ -883,20 +845,12 @@ updateAllContextHeights() {
 
 updateAllContextRelationships(){
     Object contextList = new ArrayList();
-    String targetContextAreaCode = getFieldValue("Context/Context_Relationships_to_Other_Contexts/Target_Area");
     String targetContextID = getFieldValue("Context/Context_Relationships_to_Other_Contexts/Target_Context_ID");
     String targetContextQuery = "SELECT uuid, response "+
                                 "  FROM latestnondeletedarchentformattedidentifiers "+
                                 " WHERE (aenttypename='Legacy' "+
-                                "    OR (aenttypename in ('Context') "+
-                                "        AND ('null' = '"+targetContextAreaCode+"' "+
-                                "             OR uuid IN (SELECT uuid "+
-                                "                            FROM latestnondeletedaentvalue  "+
-                                "                            JOIN attributekey USING (attributeid) "+
-                                "                           WHERE attributename = 'AreaCode' "+
-                                "                             AND vocabid = '"+targetContextAreaCode+"') "+
-                                "                ) "+
-                                "        )) "+
+                                "    OR aenttypename in ('Context') "+
+                                "         "+
                                 "   AND uuid IN (SELECT uuid "+
                                 "                  FROM latestnondeletedaentvalue  "+
                                 "                  JOIN attributekey USING (attributeid) "+
@@ -997,8 +951,7 @@ loadContextAttributes(){
     makeVocab("CheckBoxGroup", "Context/Context_GeneralInformation/Excavation_Method", "Excavation Method");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Horizon_Boundary", "Horizon Boundary");
     makeVocab("DropDown", "Context/Context_GeneralInformation/Contamination", "Contamination");
-    makeVocab("DropDown", "Context/Context_GeneralInformation/Area_Code", "AreaCode");
-
+    makeVocab("DropDown", "Context/Context_GeneralInformation/Prefix", "Prefix");
     makeVocab("HierarchicalDropDown", "Context/Context_Deposits/Soil_Compaction_Type", "Soil Compaction Type");
     makeVocab("DropDown", "Context/Context_Deposits/Soil_Texture", "Soil Texture");
     makeVocab("RadioGroup", "Context/Context_Deposits/Sterile", "Sterile");
@@ -1023,7 +976,6 @@ loadContextAttributes(){
     makeVocab("DropDown", "Context/Context_Structures/Mudbrick_Shape", "Mudbrick Shape");
     makeVocab("DropDown", "Context/Context_Structures/Your_Interpretation", "Structure Your Interpretation");
 
-    makeVocab("DropDown", "Context/Context_Relationships_to_Other_Contexts/Target_Area", "AreaCode");
 
     makeVocab("HierarchicalDropDown", "Context/Texture_Helper/Soil_Texture", "Soil Texture Helper");
 
@@ -1196,7 +1148,7 @@ newContextGroup(menu){
     newTabGroup("ContextGroup");
     context_group_id = null;
     setTimestamp("ContextGroup/ContextGroup_Details/DateRecorded");
-    setFieldValue("ContextGroup/ContextGroup_Details/Area_Code", getFieldValue("user/usertab/Area_Code"));
+    
     setFieldValue("ContextGroup/ContextGroup_Details/CreatingUser", username);
     setFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID", getFieldValue("control/data/ContextGroup_Starting_ID"));
     incField("control/data/ContextGroup_Starting_ID", 1);
@@ -1257,10 +1209,7 @@ onContextGroupSaved(){
 }
 
 populateContextGroupContextsArea() {
-    String contextgroupAreaCode = getFieldValue("ContextGroup/ContextGroup_Details/Area_Code");
-    if (!isNull(contextgroupAreaCode)) {
-      setFieldValue("ContextGroup/ContextGroup_Contexts/Target_Area", contextgroupAreaCode);
-    }
+    
     populateWebViewHtml("ContextGroup/ContextGroup_Contexts/selectedEnt", WEB_REL_SELECTED_NONE);
     selectedEntityIdentifer = null;
 }
@@ -1302,26 +1251,17 @@ addToContextGroup() {
 
 populateContextGroup() {
     String targetContextID = getFieldValue("ContextGroup/ContextGroup_Contexts/Target_Context_ID");
-    String targetContextAreaCode = getFieldValue("ContextGroup/ContextGroup_Contexts/Target_Area");
 
     String targetContextQuery = "SELECT uuid, response "+
                                     "  FROM latestnondeletedarchentformattedidentifiers "+
                                     " WHERE (aenttypename='Legacy' "+
-                                    "    OR (aenttypename = 'Context' "+
-                                    "        AND ('null' = '"+targetContextAreaCode+"' "+
-                                    "             OR uuid IN (SELECT uuid "+
-                                    "                            FROM latestnondeletedaentvalue  "+
-                                    "                            JOIN attributekey USING (attributeid) "+
-                                    "                           WHERE attributename = 'AreaCode' "+
-                                    "                             AND vocabid = '"+targetContextAreaCode+"') "+
-                                    "                ) "+
-                                    "        )) "+
+                                    "    OR aenttypename = 'Context') "+
                                     "   AND uuid IN (SELECT uuid "+
                                     "                  FROM latestnondeletedaentvalue  "+
                                     "                  JOIN attributekey USING (attributeid) "+
                                     "                 WHERE attributename IN ('Context ID', 'LegacyIdentifier') "+
                                     "                   AND measure like '"+targetContextID+"'||'%' "+
-                                    "                )         "+
+                                    ")         "+
                                     " ORDER BY CAST(response as integer); ";
 
     fetchAll(targetContextQuery, new FetchCallback() {
@@ -1417,7 +1357,6 @@ updateContextGroupIdentifier(){
 }
 
 updateContextGroupRelationshipTargetArea() {
-    setFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/Target_Area", getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"));
     populateWebViewHtml("ContextGroup/Feature_Relationships_to_Other_Features/selectedEnt", WEB_REL_SELECTED_NONE);
 }
 
@@ -1446,20 +1385,11 @@ updateRelnsCG(){
 
 updateAllContextGroupRelationships(){
     Object contextGroupList = new ArrayList();
-    String targetContextGroupAreaCode = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/Target_Area");
     String targetContextGroupID = getFieldValue("ContextGroup/Feature_Relationships_to_Other_Features/Target_ContextGroup_ID");
     String targetContextGroupQuery = "SELECT uuid, response "+
                                 "  FROM latestnondeletedarchentformattedidentifiers "+
                                 " WHERE (aenttypename='Legacy' "+
-                                "    OR (aenttypename = 'Context Group'"+
-                                "        AND ('null' = '"+targetContextGroupAreaCode+"' "+
-                                "             OR uuid IN (SELECT uuid "+
-                                "                            FROM latestnondeletedaentvalue  "+
-                                "                            JOIN attributekey USING (attributeid) "+
-                                "                           WHERE attributename = 'AreaCode' "+
-                                "                             AND vocabid = '"+targetContextGroupAreaCode+"') "+
-                                "                ) "+
-                                "        )) "+
+                                "    OR aenttypename = 'Context Group'"+
                                 "   AND uuid IN (SELECT uuid "+
                                 "                  FROM latestnondeletedaentvalue  "+
                                 "                  JOIN attributekey USING (attributeid) "+
@@ -1504,10 +1434,7 @@ deleteRelnCG(){
 }
 
 loadContextGroupAttributes(){
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Area_Code", "AreaCode");
     makeVocab("DropDown", "ContextGroup/ContextGroup_Details/Context_Type", "CG Context Type");
-    makeVocab("DropDown", "ContextGroup/ContextGroup_Contexts/Target_Area", "AreaCode");
-    makeVocab("DropDown", "ContextGroup/Feature_Relationships_to_Other_Features/Target_Area", "AreaCode");
 
     String relnListQuery = "SELECT relntypename||'~!~'||coalesce(nullif(parent||'~!~'||child,'~!~'),relntypename||'~!~'||relntypename) as relntypeid, coalesce(nullif(parent,''), relntypename) as name, relntypeid "+
                            "  FROM relntype "+
@@ -1568,7 +1495,6 @@ loadSampleFrom(String id) {
 saveSample(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     attributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     saveTabGroup("Sample", sample_id, null, attributes, new SaveCallback() {
@@ -1658,7 +1584,6 @@ loadSpecialFindFrom(String id) {
 saveSpecialFind(String callback) {
     Boolean enable_autosave = true;
     List attributes = createAttributeList();
-    attributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     attributes.add(createEntityAttribute("Site Code", null, null, moduleSiteCode, null));
     attributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     saveTabGroup("Special_Find", special_find_id, null, attributes, new SaveCallback() {
@@ -1729,7 +1654,6 @@ newPhotoLog(){
     photolog_id = null;
     photologAttributes = null;
     photologAttributes = createAttributeList();
-    photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("Context/Context_GeneralInformation/Area_Code"), null, null));
     photologAttributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_ID", getFieldValue("Context/Context_GeneralInformation/Context_ID"));
@@ -1747,7 +1671,6 @@ newPhotoLogFromContextGroup(){
     photolog_id = null;
     photologAttributes = null;
     photologAttributes = createAttributeList();
-    photologAttributes.add(createEntityAttribute("AreaCode", null, getFieldValue("ContextGroup/ContextGroup_Details/Area_Code"), null, null));
     photologAttributes.add(createEntityAttribute("Device Code", null, getFieldValue("user/usertab/Device_Code"), null, null));
     newTabGroup("Photograph_Log");
     setFieldValue("Photograph_Log/Photograph_Log/Context_Group_ID", getFieldValue("ContextGroup/ContextGroup_Details/Context_Group_ID"));
@@ -2214,7 +2137,6 @@ duplicateDiary() {
   fetchAll(getDuplicateAttributeQuery(diary_id), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("FileAttach");
       excludeAttributes.add("Photo");
@@ -2261,7 +2183,6 @@ duplicateSample() {
   fetchAll(getDuplicateAttributeQuery(sample_id, "'Site Code', 'Device Code'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
       excludeAttributes.add("Sketch");
@@ -2302,10 +2223,9 @@ duplicateSpecialFind() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(special_find_id, "'AreaCode', 'Site Code'"), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(special_find_id, "'Site Code'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       excludeAttributes.add("Photo");
       excludeAttributes.add("Audio");
@@ -2339,10 +2259,9 @@ duplicatePhotoLog() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(photolog_id, "'AreaCode', 'Site Code'"), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(photolog_id, "'Site Code'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       duplicateTabGroup("Photograph_Log", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
@@ -2373,10 +2292,9 @@ duplicateHeight() {
     }
   };
 
-  fetchAll(getDuplicateAttributeQuery(height_id, "'AreaCode', 'Context ID'"), new FetchCallback(){
+  fetchAll(getDuplicateAttributeQuery(height_id, " 'Context ID'"), new FetchCallback(){
     onFetch(result) {
       excludeAttributes = new ArrayList();
-      //excludeAttributes.add("AreaCode");
       //excludeAttributes.add("Site Code");
       duplicateTabGroup("Height", null, getExtraAttributes(result), excludeAttributes, saveCallback);
     }
@@ -2482,10 +2400,9 @@ populateListForUsers(){
 
 String username = "";
 String device = "";
-String areaCode = "";
 
 login(){
-    if(isNull(getFieldValue("user/usertab/Area_Code")) || isNull(getFieldValue("user/usertab/users")) || isNull(getFieldValue("user/usertab/Device_Code"))){
+    if(isNull(getFieldValue("user/usertab/users")) || isNull(getFieldValue("user/usertab/Device_Code"))){
         showWarning("{Warning}", "{Please_select_a_User_and_an_Trench_and_a_Device_Code_before_logging_in}");
         return;
     } else {
@@ -2502,7 +2419,6 @@ login(){
         });
 
         // store the user and area code into local settings, and set the globals
-        areaCode = getFieldValue("user/usertab/Area_Code");
         device = getFieldValue("user/usertab/Device_Code");
         saveLoginDetails();
     }
@@ -2510,9 +2426,7 @@ login(){
 
 saveLoginDetails() {
   fetchOne("REPLACE INTO localSettings(key, value) VALUES('User_VocabID', '"+getFieldValue("user/usertab/users")+"');");
-  fetchOne("REPLACE INTO localSettings(key, value) VALUES('AreaCode_VocabID', '"+getFieldValue("user/usertab/Area_Code")+"');");
   fetchOne("REPLACE INTO localSettings(key, value) VALUES('DeviceCode_VocabID', '"+getFieldValue("user/usertab/Device_Code")+"');");
-  fetchOne("REPLACE INTO localsettings(key, value) SELECT 'AreaCode_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Area_Code")+";");
   fetchOne("REPLACE INTO localsettings(key, value) SELECT 'DeviceCode_VocabName', vocabname FROM vocabulary WHERE vocabid = "+getFieldValue("user/usertab/Device_Code")+";");
 }
 
@@ -2529,7 +2443,6 @@ insertIntoLocalSettings(String key, Integer val) {
 
 loadLoginDetails() {
   String userQ = localSettingsQuery("User_VocabID");
-  String areaCodeQ = localSettingsQuery("AreaCode_VocabID");
   String deviceCodeQ = localSettingsQuery("DeviceCode_VocabID");
   fetchOne(userQ, new FetchCallback() {
     onFetch(result) {
@@ -2538,13 +2451,7 @@ loadLoginDetails() {
       }
     }  
   });
-  fetchOne(areaCodeQ, new FetchCallback() {
-    onFetch(result) {
-      if (!isNull(result)) {
-        setFieldValue("user/usertab/Area_Code", result.get(0));
-      }
-    }  
-  });
+  
   fetchOne(deviceCodeQ, new FetchCallback() {
     onFetch(result) {
       if (!isNull(result)) {
@@ -2703,9 +2610,7 @@ setMonthDay(String path) {
 
 // Stuff that needs to happen after everything.
 initialiseModule() {
-    makeVocab("DropDown", "user/usertab/Area_Code", "AreaCode");
     makeVocab("DropDown", "user/usertab/Device_Code", "Device Code");
-    makeVocab("DropDown", "control/search/Area_Code", "AreaCode");
     loadContextAttributes();
     loadHeightAttributes();
     loadContextGroupAttributes();

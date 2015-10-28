@@ -177,16 +177,7 @@
     <property name="Device Code" type="enum">
       <description/>
       <lookup>
-        <term>0<description/></term>
         <term>1<description/></term>
-        <term>2<description/></term>
-        <term>3<description/></term>
-        <term>4<description/></term>
-        <term>5<description/></term>
-        <term>6<description/></term>
-        <term>7<description/></term>
-        <term>8<description/></term>
-        <term>9<description/></term>
       </lookup>
     </property>
     <property name="Excavators" type="really shitty multivalued">

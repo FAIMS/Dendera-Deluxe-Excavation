@@ -911,7 +911,7 @@
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_read_only="false" ref="Location_Note" faims_style_class="required">
+        <input faims_attribute_name="Location Note" faims_attribute_type="measure" faims_read_only="false" ref="Location_Note" >
           <label>{Location_Note}</label>
         </input>
         <group faims_style="orientation" ref="container3">
@@ -973,13 +973,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans" faims_style_class="required">
+            <input faims_attribute_type="measure" faims_attribute_name="Plans" ref="Plans" >
               <label>{Plans}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers" faims_style_class="required">
+            <input faims_attribute_type="measure" faims_attribute_name="Section Numbers" ref="Section_Numbers">
               <label>{Section_Numbers}</label>
             </input>
           </group>
@@ -1053,7 +1053,7 @@
             </input>
           </group>
         </group>
-        <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_read_only="false" ref="Volume" faims_style_class="required">
+        <input faims_attribute_name="Volume" faims_attribute_type="measure" faims_read_only="false" ref="Volume" >
           <label>{Volume}</label>
         </input>
         <trigger ref="Add_Height">
@@ -1080,7 +1080,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Shape of Cut" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Cut" faims_style_class="required">
+            <select1 faims_attribute_name="Shape of Cut" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Cut" >
               <label>{Shape_of_Cut}</label>
               <item>
                 <label>placeholder</label>
@@ -1095,14 +1095,14 @@
             </input>
           </group>
         </group>
-        <select1 appearance="full" faims_attribute_name="Shape of Corners" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Corners" faims_style_class="required">
+        <select1 appearance="full" faims_attribute_name="Shape of Corners" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Corners" >
           <label>{Shape_of_Corners}</label>
           <item>
             <label>placeholder</label>
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 appearance="full" faims_attribute_name="Break of Slope - Top" faims_attribute_type="vocab" faims_read_only="false" ref="Break_of_Slope_Top" faims_style_class="required">
+        <select1 appearance="full" faims_attribute_name="Break of Slope - Top" faims_attribute_type="vocab" faims_read_only="false" ref="Break_of_Slope_Top" >
           <label>{Break_of_Slope_-_Top}</label>
           <item>
             <label>placeholder</label>
@@ -1113,7 +1113,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Sides of Cut" faims_attribute_type="vocab" faims_read_only="false" ref="Sides_of_Cut" faims_style_class="required">
+            <select1 faims_attribute_name="Sides of Cut" faims_attribute_type="vocab" faims_read_only="false" ref="Sides_of_Cut" >
               <label>{Sides_of_Cut}</label>
               <item>
                 <label>placeholder</label>
@@ -1123,7 +1123,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_attribute_name="Shape of Base" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Base" faims_style_class="required">
+            <select1 faims_attribute_name="Shape of Base" faims_attribute_type="vocab" faims_read_only="false" ref="Shape_of_Base" >
               <label>{Shape_of_Base}</label>
               <item>
                 <label>placeholder</label>
@@ -1142,7 +1142,7 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Inclination of axis" faims_attribute_type="vocab" faims_read_only="false" ref="Inclination_of_axis" faims_style_class="required">
+        <select1 faims_attribute_name="Inclination of axis" faims_attribute_type="vocab" faims_read_only="false" ref="Inclination_of_axis" >
           <label>{Inclination_of_axis}</label>
           <item>
             <label>placeholder</label>
@@ -1218,7 +1218,7 @@
             <value>placeholder</value>
           </item>
         </select1>
-        <select1 faims_attribute_name="Soil Compaction Type" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Compaction_Type" faims_style_class="required">
+        <select1 faims_attribute_name="Soil Compaction Type" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Compaction_Type" >
           <label>{Soil_Compaction_Type}</label>
           <item>
             <label>placeholder</label>
@@ -1239,7 +1239,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Soil Texture" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Texture" faims_style_class="required">
+            <select1 faims_attribute_name="Soil Texture" faims_attribute_type="vocab" faims_read_only="false" ref="Soil_Texture" >
               <label>{Soil_Texture}</label>
               <item>
                 <label>placeholder</label>
@@ -1261,7 +1261,7 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <select1 faims_attribute_name="Composition Type" faims_attribute_type="vocab" faims_read_only="false" ref="Composition_Type" faims_style_class="required">
+            <select1 faims_attribute_name="Composition Type" faims_attribute_type="vocab" faims_read_only="false" ref="Composition_Type" >
               <label>{Composition_Type}</label>
               <item>
                 <label>placeholder</label>
@@ -1271,7 +1271,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <select1 faims_attribute_name="Deposit Bedding" faims_attribute_type="vocab" faims_read_only="false" ref="Deposit_Bedding" faims_style_class="required">
+            <select1 faims_attribute_name="Deposit Bedding" faims_attribute_type="vocab" faims_read_only="false" ref="Deposit_Bedding" >
               <label>{Deposit_Bedding}</label>
               <item>
                 <label>placeholder</label>
@@ -1294,7 +1294,7 @@
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="measure" faims_read_only="false" ref="Deposit_Inclusions" faims_style_class="required">
+            <input faims_attribute_name="Deposit Inclusions" faims_attribute_type="measure" faims_read_only="false" ref="Deposit_Inclusions" >
               <label>{Deposit_Inclusions}</label>
             </input>
           </group>
@@ -1339,13 +1339,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Skeleton_Head" faims_attribute_name="Skeleton Head" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Head" faims_attribute_name="Skeleton Head" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Skeleton_Head}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Skeleton_Body" faims_attribute_name="Skeleton Body" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Body" faims_attribute_name="Skeleton Body" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Skeleton_Body}</label>
             </input>
           </group>
@@ -1354,13 +1354,13 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Skeleton_Left_Arm" faims_attribute_name="Skeleton Left Arm" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Left_Arm" faims_attribute_name="Skeleton Left Arm" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Skeleton_Left_Arm}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Skeleton_Right_Arm" faims_attribute_name="Skeleton Right Arm" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Right_Arm" faims_attribute_name="Skeleton Right Arm" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Skeleton_Right_Arm}</label>
             </input>
           </group>
@@ -1369,18 +1369,18 @@
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Skeleton_Left_Leg" faims_attribute_name="Skeleton Left Leg" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Left_Leg" faims_attribute_name="Skeleton Left Leg" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Skeleton_Left_Leg}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Skeleton_Right_Leg" faims_attribute_name="Skeleton Right Leg" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Skeleton_Right_Leg" faims_attribute_name="Skeleton Right Leg" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Skeleton_Right_Leg}</label>
             </input>
           </group>
         </group>
-        <input ref="Skeleton_Condition" faims_attribute_name="Skeleton Condition" faims_attribute_type="measure" faims_read_only="false" faims_style_class="required">
+        <input ref="Skeleton_Condition" faims_attribute_name="Skeleton Condition" faims_attribute_type="measure" faims_read_only="false" >
           <label>{Skeleton_Condition}</label>
         </input>
         <input ref="Skeleton_Surface_Modifications" faims_attribute_name="Skeleton Surface Modifications" faims_attribute_type="measure" faims_read_only="false">
@@ -1389,26 +1389,26 @@
         <input ref="Skeleton_Environment" faims_attribute_name="Skeleton Environment" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false">
           <label>{Skeleton_Environment}</label>
         </input>
-        <input ref="Skeleton_Days_Exposed" faims_attribute_name="Skeleton Days Exposed" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+        <input ref="Skeleton_Days_Exposed" faims_attribute_name="Skeleton Days Exposed" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
           <label>{Skeleton_Days_Exposed}</label>
         </input>
         <group faims_style="orientation" ref="container5">
           <label/>
           <group faims_style="even" ref="child1">
             <label/>
-            <input ref="Target_A_X" faims_attribute_name="Target A X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Target_A_X" faims_attribute_name="Target A X" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Target_A_X}</label>
             </input>
           </group>
           <group faims_style="even" ref="child2">
             <label/>
-            <input ref="Target_A_Y" faims_attribute_name="Target A Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Target_A_Y" faims_attribute_name="Target A Y" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Target_A_Y}</label>
             </input>
           </group>
           <group faims_style="even" ref="child3">
             <label/>
-            <input ref="Target_A_Z" faims_attribute_name="Target A Z" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" faims_style_class="required">
+            <input ref="Target_A_Z" faims_attribute_name="Target A Z" faims_attribute_type="measure" faims_annotation="true" faims_read_only="false" >
               <label>{Target_A_Z}</label>
             </input>
           </group>
